@@ -1,0 +1,246 @@
+<h4 class="text-primary mb-4 ml-md-4">
+    Enter the following information
+</h4>
+
+<form #form [formGroup]="formGroup">
+  
+    <div class="form-group row mt-2">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Email Address:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input required type="email" name="email" id="email" formControlName="email" class="form-control col-11 col-sm-8 col-md-6" [ngClass]="{'d-inline-block brc-danger': email && isInvalid(email)}" />
+
+            <span *ngIf="email && isInvalid(email)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="email.errors?.required">
+                    Email is required.
+                </span>
+                <span *ngIf="email.errors?.minlength || email.errors?.email">
+                    Please provide a valid email.
+                </span>
+            </span>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Password:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input required type="password" id="password" name="password" formControlName="password" class="form-control col-11 col-sm-6 col-md-4" [ngClass]="{'d-inline-block brc-danger': password && isInvalid(password)}" />
+
+            <span *ngIf="password && isInvalid(password)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="password.errors?.required">
+                    Password is required.
+                </span>
+                <span *ngIf="password.errors?.minlength || password.errors?.email">
+                    Password should be at least 8 characters.
+                </span>
+            </span>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Confirm Password:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input required type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="form-control col-11 col-sm-6 col-md-4" [ngClass]="{'d-inline-block brc-danger': confirmPassword && isInvalid(confirmPassword)}"/>
+
+            <span *ngIf="confirmPassword && isInvalid(confirmPassword)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="confirmPassword.errors?.required">
+                    Please re-type your password.
+                </span>
+                <span *ngIf="confirmPassword.errors?.mismatch">
+                    Passwords should match.
+                </span>
+            </span>
+        </div>
+    </div>
+    
+    
+    <hr />
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                Company Name:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input type="text" name="company" class="form-control col-11 col-sm-8 col-md-5" placeholder="Optional ..." />
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Phone Number:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input required type="text" name="phone" id="phone" class="form-control col-11 col-sm-8 col-md-3" formControlName="phone" mask="(000) 000-0000||(000) 000-00000||(000) 000-000000" [dropSpecialCharacters]="false" class="form-control col-11 col-sm-6 col-md-4" [ngClass]="{'d-inline-block brc-danger': phone && isInvalid(phone)}" />
+
+            <span *ngIf="phone && isInvalid(phone)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+
+                <span *ngIf="phone.errors?.required">
+                    Please enter your phone number.
+                </span>
+                <span *ngIf="phone.errors?.mask">
+                    Phone number should be valid.
+                </span>
+            </span>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Company URL:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <input required type="url" name="url" id="url" class="form-control col-11 col-sm-8 col-md-8" formControlName="url" [pattern]="urlPattern" class="form-control col-11 col-sm-6 col-md-4" [ngClass]="{'d-inline-block brc-danger': url && isInvalid(url)}" />
+
+            <span *ngIf="url && isInvalid(url)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="url.errors?.required">
+                    Please enter company url.
+                </span>
+                <span *ngIf="url.errors?.pattern">
+                    Url format is not correct.
+                </span>
+            </span>
+        </div>
+    </div>
+    
+    
+    <hr />
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Subscribe to:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3 pt-1">
+            <div *ngFor="let item of subscriptionItems; let i = index">
+                <label>
+                    <input type="checkbox" (change)="updateSubscriptions()" [name]="'subscription'+i" [formControlName]="'subscription'+i" [value]="i" class="mr-1 align-sub" />
+                    {{item.label}}
+                </label>
+            </div>
+
+            <div *ngIf="subscription && isInvalid(subscription) && subscription.errors?.selectOne" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span>
+                    Please choose at least one.
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Gender:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3 pt-1">
+            <div>
+                <label>
+                    <input type="radio" name="gender[]" formControlName="gender[]" value="1" class="mr-1 align-sub" />
+                    Male
+                </label>
+            </div>
+            
+            <div>
+                <label>
+                    <input type="radio" name="gender[]" formControlName="gender[]" value="2" class="mr-1 align-sub" />
+                    Female
+                </label>
+            </div>
+
+            <div *ngIf="gender && isInvalid(gender)" class="d-inline-block form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="gender.errors?.required">
+                    Please select one.
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <hr />
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Platform:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <select required class="form-control col-11 col-sm-4" id="platform" name="platform" formControlName="platform" data-placeholder="Click to Choose...">
+                <option value="">&nbsp;</option>
+                <option value="linux">Linux</option>
+                <option value="windows">Windows</option>
+                <option value="mac">Mac OS</option>
+                <option value="ios">iOS</option>
+                <option value="android">Android</option>
+            </select>
+
+            <div *ngIf="platform && isInvalid(platform)" class="form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="platform.errors?.required">
+                    Please select your platform.
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row">
+        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+            Comment:
+        </div>
+    
+        <div class="col-sm-9 pr-0 pr-sm-3">
+            <textarea class="form-control col-11 col-sm-12 col-md-6" name="comment" id="comment"></textarea>
+        </div>
+    </div>
+    
+    
+    <div class="form-group row mt-4">
+        <div class="col-sm-9 pr-0 pr-sm-3 pt-1 offset-sm-3">
+            <label>
+                <input required type="checkbox" class="border-2 brc-success-m1 brc-on-checked input-lg text-dark-tp3 mr-1" formControlName="agree" name="agree" />
+                I agree to the terms of use
+            </label>
+
+            <div *ngIf="agree && isInvalid(agree)" class="form-text form-error text-danger-m2">
+                <i class="form-text fa fa-exclamation-circle text-danger-m1 text-100 mr-1 ml-2"></i>
+                
+                <span *ngIf="agree.errors?.required">
+                    Please agree to our terms.
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+

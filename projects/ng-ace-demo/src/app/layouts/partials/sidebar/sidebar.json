@@ -1,0 +1,248 @@
+[{
+        "type": "caption",
+        "title": "MAIN"
+    },
+
+    {
+        "id": "dashboard",
+        "link": "dashboard",
+        "title": "Dashboard",
+        "icon": "fa fa-tachometer-alt",
+        "layout": "dashboard"
+    },
+
+    {
+        "id": "elements",
+        "link": "elements",
+        "title": "UI Elements",
+        "icon": "fa fa-desktop"
+    },
+
+    {
+        "id": "elements/buttons",
+        "parent": "elements",
+        "link": "elements/buttons",
+        "title": "Buttons"
+    },
+
+    {
+        "id": "elements/button-groups",
+        "parent": "elements",
+        "link": "elements/button-groups",
+        "title": "Button Groups"
+    },
+
+    {
+        "id": "elements/alerts",
+        "parent": "elements",
+        "link": "elements/alerts",
+        "title": "Toasts & Alerts"
+    },
+
+    {
+        "id": "elements/modals",
+        "parent": "elements",
+        "link": "elements/modals",
+        "title": "Modals"
+    },
+
+    {
+        "id": "elements/asides",
+        "parent": "elements",
+        "link": "elements/asides",
+        "title": "Asides"
+    },
+
+    {
+        "id": "elements/tabs",
+        "parent": "elements",
+        "link": "elements/tabs",
+        "title": "Tabs"
+    },
+
+    {
+        "id": "elements/accordions",
+        "parent": "elements",
+        "link": "elements/accordions",
+        "title": "Accordions"
+    },
+
+    {
+        "id": "elements/tooltips",
+        "parent": "elements",
+        "link": "elements/tooltips",
+        "title": "Tooltips & Popovers"
+    },
+
+    {
+        "id": "elements/badges",
+        "parent": "elements",
+        "link": "elements/badges",
+        "title": "Badges"
+    },
+
+    {
+        "id": "elements/pagination",
+        "parent": "elements",
+        "link": "elements/pagination",
+        "title": "Pagination"
+    },
+
+    {
+        "id": "elements/dropdowns",
+        "parent": "elements",
+        "link": "elements/dropdowns",
+        "title": "Dropdowns"
+    },
+
+    {
+        "id": "elements/icons",
+        "parent": "elements",
+        "link": "elements/icons",
+        "title": "Icons"
+    },
+
+    {
+        "id": "elements/typography",
+        "parent": "elements",
+        "link": "elements/typography",
+        "title": "Typography"
+    },
+
+    {
+        "id": "elements/treeview",
+        "parent": "elements",
+        "link": "elements/treeview",
+        "title": "Treeview"
+    },
+
+
+    {
+        "id": "tables",
+        "link": "tables",
+        "title": "Tables",
+        "icon": "fa fa-table"
+    },
+
+    {
+        "id": "tables/basic",
+        "parent": "tables",
+        "link": "tables/basic",
+        "title": "Basic Tables"
+    },
+    {
+        "id": "tables/dynamic",
+        "parent": "tables",
+        "link": "tables/dynamic",
+        "title": "Dynamic Table"
+    },
+    {
+        "id": "tables/grid",
+        "parent": "tables",
+        "link": "tables/grid",
+        "title": "Grid"
+    },
+
+
+    {
+        "id": "forms",
+        "link": "forms",
+        "title": "Forms",
+        "icon": "fa fa-edit"
+    },
+
+    {
+        "id": "forms/basic",
+        "parent": "forms",
+        "link": "forms/basic",
+        "title": "Basic Elements"
+    },
+
+    {
+        "id": "forms/more",
+        "parent": "forms",
+        "link": "forms/more",
+        "title": "More Elements"
+    },
+
+    {
+        "id": "forms/wizard",
+        "parent": "forms",
+        "link": "forms/wizard",
+        "title": "Wizard & Validation"
+    },
+
+    {
+        "id": "forms/upload",
+        "parent": "forms",
+        "link": "forms/upload",
+        "title": "File Upload"
+    },
+
+    {
+        "id": "forms/wysiwyg",
+        "parent": "forms",
+        "link": "forms/wysiwyg",
+        "title": "Wysiwyg & Markdown"
+    },
+
+    {
+        "id": "more",
+        "link": "more",
+        "title": "More Pages",
+        "icon": "fa fa-tag",
+        "badge-class": "badge-primary py-1 radius-round text-90 mr-2px badge-sm",
+        "badge": "5"
+    },
+
+    {
+        "id": "more/profile",
+        "parent": "more",
+        "link": "more/profile",
+        "title": "Profile"
+    },
+
+    {
+        "id": "more/login",
+        "parent": "more",
+        "link": "more/login",
+
+        "title": "Login",
+        "layout": "login"
+    },
+
+    {
+        "id": "more/pricing",
+        "parent": "more",
+        "link": "more/pricing",
+        "title": "Pricing"
+    },
+
+    {
+        "id": "more/invoice",
+        "parent": "more",
+        "link": "more/invoice",
+        "title": "Invoice"
+    },
+
+    {
+        "id": "more/inbox",
+        "parent": "more",
+        "link": "more/inbox",
+        "title": "Inbox"
+    },
+
+    {
+        "id": "more/search",
+        "parent": "more",
+        "link": "more/search",
+        "title": "Search Results"
+    },
+
+    {
+        "id": "more/error",
+        "parent": "more",
+        "link": "more/error",
+        "title": "Error"
+    }
+]

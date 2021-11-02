@@ -1,0 +1,118 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            overview &amp; stats
+        </small>
+    </h1>
+
+    <!-- <div class="page-tools d-inline-flex">
+        <button type="button" class="btn btn-light-green btn-h-green btn-a-green border-0 radius-3 py-2 text-600 text-90">
+            <span class="d-none d-sm-inline mr-1">
+                Save
+            </span>
+            <i class="fa fa-save text-110 w-2 h-2"></i>
+        </button>
+
+        <button type="button" class="mx-2px btn btn-light-purple btn-h-purple btn-a-purple border-0 radius-3 py-2 text-90">
+            <i class="fa fa-undo text-110 w-2 h-2"></i>
+        </button>
+
+        <div ngbDropdown class="d-inline-block dd-backdrop dd-backdrop-none-md">
+            <button ngbDropdownToggle type="button" class="dropdown-toggle btn btn-light-primary btn-h-primary btn-a-primary border-0 radius-3 py-2 text-90">
+				<i class="fa fa-search text-110 w-2 h-2"></i>
+            </button>
+
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated animated-2 dd-slide-up dd-slide-none-md">
+                <div class="dropdown-inner">
+                    <a role="button" ngbDropdownItem>Action</a>
+                    <a role="button" ngbDropdownItem>Another action</a>
+                    <a role="button" ngbDropdownItem>Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a role="button" ngbDropdownItem>Separated link</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+
+
+
+
+
+<div class="row mt-3">
+    <div class="col-xl-8">
+        <div class="row px-3 px-lg-4">
+            <dashboard-infobox class="col-12"></dashboard-infobox>
+
+            <dashboard-infobox2 class="col-12 mt-35"></dashboard-infobox2>
+        </div>
+    </div>
+
+    <div class="col-xl-4 mt-4 mt-xl-0">
+        <dashboard-traffic-chart></dashboard-traffic-chart>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row pt-3 mt-1 mt-lg-3">
+    <div class="col-lg-5 order-last order-lg-first mt-lg-3">
+        <dashboard-products></dashboard-products>
+    </div>
+
+    <div class="col-lg-7 mb-4 mb-lg-0 mt-3">
+        <dashboard-sales-chart></dashboard-sales-chart>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="row mt-5 pt-lg-3">
+    <div class="col-12 col-lg-3">
+        <dashboard-transfers></dashboard-transfers>
+    </div>
+
+    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+        <dashboard-todo-list></dashboard-todo-list>
+    </div>
+
+    <div class="col-12 col-lg-5 mt-4 mt-lg-0">
+        <dashboard-conversation></dashboard-conversation>
+    </div>
+</div> -->
+
+
+
+
+<ng-template #welcomeToast let-toast="toast">
+    <div class="d-flex" [NgAceClass]="{'+2': 'p-0'}">
+        <div class="toast-main">
+            <div class="toast-header d-none"></div>
+            <div class="toast-body border-1 border-t-0 brc-secondary-l2 text-dark-tp3 text-120 p-2">
+                <div class="py-2 pl-1 pr-3 d-flex ">
+                    <span class="d-inline-block mr-2 text-center py-3 px-1">
+                        <i class="pos-abs fa fa-leaf fa-2x w-6 text-dark-m3 mt-2px"></i>
+                        <i class="pos-rel fa fa-leaf fa-2x w-6 text-success-m3 mr-1"></i>
+                    </span>
+                    <div>
+                        <h3 class="text-125 text-success">Welcome to Koncent!</h3>
+                        <p class="mb-1">
+                            <!-- A lightweight, feature-rich, customizable and easy to use admin template! -->
+                        </p>
+                    </div>
+                    <button class="close-btn btn btn-sm btn-brc-tp btn-lighter-grey btn-h-lighter-danger btn-a-lighter-danger radius-round position-tr mt-1 mr-2px">
+                        <i class="fa fa-times px-1px"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

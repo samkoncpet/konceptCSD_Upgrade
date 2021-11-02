@@ -1,0 +1,7 @@
+// general styles
+app-sidebar-submenu {
+    display: block;
+    > div {
+        display: list-item;
+    }
+}

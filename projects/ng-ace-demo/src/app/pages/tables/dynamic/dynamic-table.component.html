@@ -1,0 +1,23 @@
+<div class="page-header mb-2 pb-2 flex-column flex-sm-row align-items-start align-items-sm-center py-25 px-1">
+    <h1 class="page-title text-primary-d2 text-140">
+        ng2-smart-table
+         <small class="page-info text-dark-m3">
+            <i class="fa fa-angle-double-right text-80"></i>
+            dynamic tables
+        </small>
+    </h1>
+
+    <div class="page-tools">
+        <a role="button" class="btn btn-outline-green radius-1 btn-sm btn-bold" (click)="displayCreateRow()">
+            <i class="fa fa-plus"></i> Add New
+        </a>
+    </div>
+</div>
+
+
+<div class="card bcard h-auto">
+
+    <div class="border-t-4 brc-blue-m1"></div>
+    <ng2-smart-table [(settings)]="settings" [source]="employees" class="border-t-0 border-1 brc-secondary-l2 mt-n2px table-responsive-lg"></ng2-smart-table>
+
+</div>

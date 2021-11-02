@@ -1,0 +1,62 @@
+@if $plugin-aggrid == true {
+
+    .ag-root-wrapper {
+        --ag-border-color: #{bgc-color('secondary', 'l2')};
+        --ag-header-background-color: #{bgc-color('secondary', 'l3')};
+
+        --ag-row-hover-color: #{bgc-color('green', 'l3')};
+        --ag-range-selection-border-color: #{bgc-color('primary', 'm3')};
+
+        --ag-row-border-color: rgba(0,0,0,0.075);
+
+        --ag-header-foreground-color: rgba(0, 0, 0, 0.7);
+
+        --ag-selected-row-background-color:  #{bgc-color('green', 'l2')};
+
+        
+        .ag-header-cell-sortable:hover {
+            background-color: bgc-color('yellow', 'l3');
+        }
+
+        .ag-checkbox-input-wrapper input[type=checkbox] {
+            opacity: 1;
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+        .ag-checkbox-input-wrapper {
+            box-shadow: none !important;
+            &::after {
+                display: none !important;
+            }
+        }
+
+        .ag-cell-focus[col-id="checkbox"] {
+            border-color: transparent !important;
+        }
+
+        .ag-cell-inline-editing {
+            box-shadow: none !important;
+            input {
+                border-color: transparent !important;
+            }
+        }
+
+        .ag-center-cols-container {
+            width: auto !important;
+        }
+
+        .ag-body-viewport.ag-layout-normal {
+            scrollbar-width: thin;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $scrollbar-grey-thumb;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: $scrollbar-grey-track;
+            }
+        }
+    }
+}

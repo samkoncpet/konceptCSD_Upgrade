@@ -1,0 +1,48 @@
+<div class="card ccard radius-t-0 h-100">
+    <div class="position-tl w-102 border-t-3 brc-primary-tp3 ml-n1px mt-n1px"></div><!-- the blue line on top -->
+
+    <div class="card-header brc-secondary-l3 pb-3">
+        <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+            Todo List
+            <span class="text-sm">
+                (Sortable)
+            </span>
+        </h5>
+
+        <div class="card-toolbar no-border pl-0 pl-md-2">
+            <a role="button" class="btn btn-sm btn-lighter-grey btn-bgc-white btn-h-light-orange btn-a-light-orange text-600 px-25 radius-round">
+                View all
+                <i class="fa fa-arrow-right ml-2 text-90"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body bgc-white p-0 pb-15" >
+        <div id="tasks" class="mt-n1px">
+            <div *ngFor="let task of tasks; index as index; first as isFirst" class="task-item d-flex align-items-center bgc-h-green-l3 border-t-1 brc-secondary-l3 px-2" [ngClass]="{'bgc-secondary-l4': task['selected']}">
+                <label class="checkbox">
+                    <input type="checkbox" class="align-middle input-sm ml-2 mr-25" id="task-item-{{index}}" (change)="task['selected'] = !task['selected']" />
+                </label>
+
+                <label class="task-title flex-grow-1 mr-3 py-3" [ngClass]="{'line-through text-grey-d2': task['selected']}" for="task-item-{{index}}">
+                    <span class="align-middle">
+                        {{task.title}}
+                    </span>
+                    <i *ngIf="task.urgent" class="fa fa-exclamation-circle text-danger-m2 text-110 align-middle ml-1"></i>
+                </label>
+
+                <span *ngIf="task.urgent" class="badge bgc-danger-l3 border-r-2 radius-r-0 brc-danger-m2 text-danger-d1 ml-1 mr-2">
+                    urgent
+                </span>
+
+                <span *ngIf="task.medium" class="badge bgc-success-l3 border-r-2 radius-r-0 brc-success-m2 text-dark-tp3 ml-1 mr-2">
+                    normal
+                </span>
+
+                <span *ngIf="task.low" class="badge bgc-blue-l3 border-r-2 radius-r-0 brc-blue-m2 text-dark-tp3 ml-1 mr-2">
+                    low
+                </span>
+            </div>
+        </div>
+    </div><!-- /.card-body -->
+</div>

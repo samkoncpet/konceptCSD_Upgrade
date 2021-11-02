@@ -1,0 +1,87 @@
+// Smart Table Plugin
+@if $plugin-ng2-smarttable == true {
+    .ng2-smart-titles th {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075), 0 1px 0 rgba(0, 0, 0, 0.075);
+        background-color: #fff;
+    
+        .ng2-smart-sort-link {
+            padding: .75em 1em;
+            display: block;
+            text-decoration: none !important;
+            position: relative;
+    
+            color: text-color('secondary');
+            text-transform: uppercase;
+            font-size: 0.8rem;
+    
+            &.asc, &.desc {
+                color: text-color('primary', 'd2');
+                background-color: bgc-color('yellow', 'l2') !important;
+            }
+    
+            &::after {
+                color: inherit;
+                border-bottom-color: currentColor !important;
+    
+                border-width: 0.325rem !important;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+            }
+    
+            &.asc::after {       
+                top: calc(50% - 0.5rem)
+            }
+        }
+    
+        .ng2-smart-sort {
+            padding: .75em 1em;
+            display: block;
+        }
+    }
+    
+    ng2-smart-table .table {
+        .ng2-smart-row td {
+            padding: 0.75em 1em;
+            font-size: 0.925rem;
+        }
+    
+        th:not(.ng2-smart-th) {
+            padding: .75em 1em;
+        }
+    
+        input[type=checkbox] {
+            margin: 0 auto;
+            display: block;
+        }
+        input[type=checkbox].form-control {
+            margin-top: 0.5rem;
+        }
+    }
+    
+    .ng2-smart-pagination-nav {
+        margin-left: auto;
+        margin-right: 1rem;
+    
+        .page-link {
+            text-decoration: none !important;
+            line-height: 2;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .page-link-next, .page-link-prev {
+            font-size: 0.9rem !important;
+        }
+    }
+    
+    ng2-smart-table-pager {
+        padding-top: 0.75rem;
+        background-color: bgc-color('default', 'l4');
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        margin-top: -1px;
+    }
+    
+    .ng2-smart-pagination-per-page {
+        order: -1;
+    }
+}

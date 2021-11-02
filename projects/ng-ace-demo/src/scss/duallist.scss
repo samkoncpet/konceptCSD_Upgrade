@@ -1,0 +1,34 @@
+@if $plugin-duallist == true {
+    .dual-listbox__available {
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $scrollbar-grey-thumb;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: $scrollbar-grey-track;
+        }
+    }
+
+    .dual-listbox {
+        .dual-listbox__item {
+            color: text-color('dark', 'l1');
+            border-bottom-color: rgba(0,0,0,0.05);
+        
+            &:hover {
+                background-color: bgc-color('secondary', 'l3');
+            }
+        }
+
+        .dual-listbox__item--selected {
+            background-color: bgc-color('primary', 'd1') !important;
+            color: #fff;
+        }
+
+        .dual-listbox__available, .dual-listbox__selected {
+            border-color: bgc-color('default', 'l1');
+        }    
+    }
+}

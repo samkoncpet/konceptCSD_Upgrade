@@ -1,0 +1,168 @@
+<div #card="NgAceCard" NgAceCard class="card border-0 shadow-sm h-100">
+
+    <div class="card-header bgc-primary-d1">
+        <h6 class="card-title text-white font-normal">
+            <i class="far fa-comment-dots text-130 mr-1"></i>
+            <span class="text-110">
+                Conversation
+            </span>
+            <span class="text-95 d-block d-sm-inline text-center">
+                (6 online)
+            </span>
+        </h6>
+
+        <div class="card-toolbar align-self-center text-white text-90 no-border p-2px">
+            Jack is typing 
+            <div class="typing-dots text-160 text-white mx-md-1">
+                <span class="typing-dot">.</span>
+                <span class="typing-dot">.</span>
+                <span class="typing-dot">.</span>
+            </div>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a role="button" (click)="reload()" class="card-toolbar-btn text-white">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="card-body border-x-1 brc-primary-l1 p-0">
+        <div #scrollEl [NgAceScroll]='{"height": 380, "smooth":true}'>
+            <div *ngFor="let conversation of conversations">
+                <ng-container *ngTemplateOutlet="conversation.left ? leftAlignedMessage : rightAlignedMessage; context: {$implicit: conversation}">
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- conversation footer -->
+    <div class="card-footer px-25 pt-1px bgc-white border-1 border-t-0 brc-primary-l1 radius-b-2">
+        <div class="mb-0 p-3 dcard brc-grey-l1">
+            <div class="input-group input-group-fade">
+                <input id="id-reply" type="text" class="form-control pl-2 border-0 radius-0 shadow-none" placeholder="Write your message ..." />
+            
+                <!-- smiley dropdown -->
+                <div ngbDropdown placement="top-right" class="btn-group mx-2 dropup">
+                    <button ngbDropdownToggle type="button" class="btn btn-xs px-1 border-0 btn-lighter-warning btn-bgc-tp dropdown-toggle">
+                        <span class="fa-stack">
+                            <i class="far fa-smile text-dark-tp5 text-150 fa-stack-1x"></i>
+                        </span>
+                    </button>
+
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right p-1">
+                        <div class="d-flex">
+                            <a role="button" ngbDropdownItem class="dropdown-item px-25">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a role="button" ngbDropdownItem class="dropdown-item px-25">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile-beam text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+
+                            <a role="button" ngbDropdownItem class="dropdown-item px-25">
+                                <span class="fa-stack w-auto">
+                                    <i class="fas fa-circle text-dark fa-stack-1x text-100"></i>
+                                    <i class="fas fa-smile-wink text-warning-m3 text-125 fa-stack-1x pos-rel"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group-append">
+                    <button class="btn btn-info radius-3px" type="button">
+                        Send
+                        <i class="fa fa-angle-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.card-footer -->
+
+</div><!-- /.card -->
+
+
+
+<ng-template #leftAlignedMessage let-conversation>
+    <div class="px-3 conversation" [ngClass]="{'mt-425': conversation.avatar, 'mt-1': !conversation.avatar}">
+        <div class="d-flex align-items-start col px-0">
+            <div *ngIf="conversation.avatar" class="mr-3 mt-2px">
+                <div class="pos-rel">
+                    <img alt="{{conversation.name}}'s avatar" src="assets/image/avatar/{{conversation.avatar}}" class="radius-round w-4 h-4" />
+                    <span class="position-tr bgc-{{conversation.status}}-d1 brc-white border-2 p-1 mt-n1 radius-round"></span>
+                </div>
+                <div class="text-600 text-90 ml-1">
+                    <a role="button" class="font-bolder btn-text-dark btn-h-text-primary">
+                        {{conversation.name}}
+                    </a>
+                </div>
+            </div>
+
+            <div class="col px-0">
+                <div *ngFor="let message of conversation.messages; first as isFirst" class="d-flex mb-15 pos-rel">
+                    <!-- the triangle -->
+                    <span *ngIf="isFirst" class="position-tl ml-n15 mt-15 w-3 h-3 bgc-grey-l3 rotate-n45"></span>
+
+                    <div *ngIf="message.unstyled" class="mt-2px pos-rel" [innerHTML]="message.content">
+                    </div>
+
+                    <div *ngIf="!message.unstyled" class="py-2 px-3 radius-1 bgc-grey-l3 text-dark-m1 pos-rel">
+                        <div class="text-90" style="max-width: 480px;" [innerHTML]="message.content">
+                        </div>
+                    </div>
+
+                    <div *ngIf="!message.unstyled" class="text-80 text-grey-m2 ml-2 mt-2">
+                        {{message.time}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #rightAlignedMessage let-conversation>
+    <div class="px-3 conversation text-right" [ngClass]="{'mt-425': conversation.avatar, 'mt-1': !conversation.avatar}">
+        <div class="d-flex flex-row-reverse align-items-start col px-0">
+            <div *ngIf="conversation.avatar" class="ml-3 mt-2px">
+                <div class="pos-rel">
+                    <img alt="{{conversation.name}}'s avatar" src="assets/image/avatar/{{conversation.avatar}}" class="radius-round w-4 h-4" />
+                    <span class="position-tr bgc-{{conversation.status}}-d1 brc-white border-2 p-1 mt-n1 radius-round"></span>
+                </div>
+                <div class="text-600 text-90 ml-1">
+                    <a role="button" class="font-bolder btn-text-dark btn-h-text-primary">
+                        {{conversation.name}}
+                    </a>
+                </div>
+            </div>
+
+            <div class="col px-0">
+                <div *ngFor="let message of conversation.messages; first as isFirst" class="d-flex flex-row-reverse mb-15 pos-rel">
+                    <!-- the triangle -->
+                    <span *ngIf="isFirst" class="position-tr mr-n15 mt-15 w-3 h-3 bgc-primary-l3 rotate-n45"></span>
+
+                    <div *ngIf="message.unstyled" class="mt-2px pos-rel" [innerHTML]="message.content">
+                    </div>
+
+                    <div *ngIf="!message.unstyled" class="py-2 px-3 radius-1 bgc-primary-l3 text-dark-m1 pos-rel">
+                        <div class="text-90" style="max-width: 480px;" [innerHTML]="message.content">
+                        </div>
+                    </div>
+                    
+                    <div *ngIf="!message.unstyled" class="text-80 text-grey-m2 mr-2 mt-2">
+                        {{message.time}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

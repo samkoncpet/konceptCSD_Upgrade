@@ -1,0 +1,37 @@
+<div class="row h-100 mx-n425">
+    
+    <div *ngFor="let stat of stats2" class="col-12 col-md-4 px-0 mb-2 mb-md-0">
+        <div class="ccard h-100 pt-2 pb-25 px-25 d-flex mx-2 overflow-hidden">
+            <!-- the colored circles on bottom right -->
+            <div class="position-br	mb-n5 mr-n5 radius-round bgc-{{stat.color}}-l3 opacity-3" style="width: 5.25rem; height: 5.25rem;"></div>
+            <div class="position-br	mb-n5 mr-n5 radius-round bgc-{{stat.color}}-l2 opacity-5" style="width: 4.75rem; height: 4.75rem;"></div>
+            <div class="position-br	mb-n5 mr-n5 radius-round bgc-{{stat.color}}-l1 opacity-5" style="width: 4.25rem; height: 4.25rem;"></div>
+    
+    
+            <div class="flex-grow-1 pl-25 pos-rel d-flex flex-column">
+                <div *ngIf="stat.number" class="text-secondary-d4">
+                    <span class="text-200">
+                        {{stat.number}}
+                    </span>
+    
+                    <span *ngIf="stat['stat-success']" class="text-md text-success-m1 align-text-bottom text-nowrap">
+                        (+{{stat['stat-success']}} <i class="ml-2px fa fa-caret-up"></i>)
+                    </span>
+
+                    <span *ngIf="stat['stat-important']" class="text-md text-danger-m1 align-text-bottom text-nowrap">
+                        (-{{stat['stat-important']}} <i class="ml-2px fa fa-caret-down"></i>)
+                    </span>
+                </div>
+    
+                <div *ngIf="stat.text" [innerHTML]="stat.text" class="mt-auto text-nowrap text-secondary-d2 text-105 letter-spacing mt-n1">
+                </div>
+            </div>
+    
+    
+            <div *ngIf="stat.icon" class="ml-auto pr-1 align-self-center pos-rel text-125">
+                <i class="{{stat.icon}} text-{{stat.color}} opacity-1 fa-2x mr-25"></i>
+            </div>
+        </div><!-- /.ccard -->
+    </div><!-- /.col -->
+    
+</div>

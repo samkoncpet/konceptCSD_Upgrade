@@ -1,0 +1,18 @@
+<div class="body-container">
+    <app-navbar class="navbar navbar-expand-lg navbar-fixed navbar-blue"></app-navbar>
+
+    <div class="main-container bgc-white">
+        <app-sidebar #sidebar="NgAceSidebar" NgAceSidebar id="sidebar-1" class="sidebar sidebar-fixed expandable sidebar-light">
+            <!-- sidebar content is inside `app/layouts/partials/sidebar/sidebar.compontent.html` -->
+        </app-sidebar>
+
+        <div role="main" class="main-content">
+            <div class="page-content container container-plus">
+                <router-outlet></router-outlet>
+            </div>
+
+            <app-footer></app-footer>
+        </div>
+    </div>
+
+</div>

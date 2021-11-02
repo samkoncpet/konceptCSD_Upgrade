@@ -1,0 +1,179 @@
+<div class="page-header">
+    <h1 class="page-title text-primary-d2">
+        AG Grid
+    </h1>
+</div>
+
+
+<div class="bgc-blue-d2 text-white text-110 radius-t-1 px-3 py-25">
+    Grid library with inline editing
+
+    <a (click)="collapse.toggle()" role="button" class="text-white float-right bgc-h-white-tp9 px-2 py-1 radius-1 mt-n1">
+        <i class="fa fa-chevron-{{collapse.collapsed ? 'down': 'up'}}"></i>
+    </a>
+</div>
+
+<div [ngbCollapse]="false" #collapse="ngbCollapse">
+    <ag-grid-angular
+        style="width: 100%; height: 400px;"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        rowSelection="multiple"
+        [pagination]="true"
+        [suppressPaginationPanel]="true"
+        (paginationChanged)="onPaginationChanged()"
+        [paginationPageSize]="itemPerPage"
+        (gridReady)="onGridReady($event)"
+    >
+    </ag-grid-angular>
+
+    <!-- table footer (action buttons, pagination, etc) -->
+    <div class="bgc-primary-l4 p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px">
+        <!-- actions -->
+        <div>
+            <a role="button" class="mr-2 text-110 action-btn" ngbTooltip="Add new record" (click)="modalService.open(addRecord)">
+                <i class="fas fa-plus-circle text-purple"></i>
+            </a>
+
+            <a role="button" class="mr-2 text-110 action-btn" ngbTooltip="Remove selected records" (click)="removeRows()">
+                <i class="fas fa-trash text-danger-m1"></i>
+            </a>
+
+            <a role="button" class="mr-2 text-110 action-btn" ngbTooltip="Reload table" (click)="reloadData()">
+                <i class="fa fa-sync text-success-m1"></i>
+            </a>
+        </div>
+
+
+        <!-- pagination -->
+        <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
+            <div>
+                <a (click)="gotoFirst()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-double-left w-2 text-90 mx-2px"></i>
+                </a>
+                <a (click)="gotoPrev()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-left w-2 text-90 mx-2px"></i>
+                </a>
+            </div>
+            
+            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+            <div class="d-flex align-items-center mx-2">
+                Page
+                <input class="form-control form-control-sm w-5 mx-1" [(ngModel)]="currentPage" (change)="gotoPage()" />
+                of
+                {{totalPages || 1}}
+            </div>
+
+            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+            <div>
+                <a (click)="gotoNext()" role="button"[ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}"  class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-right w-2 text-90 mx-2px"></i>
+                </a>
+                <a (click)="gotoLast()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                    <i class="fa fa-angle-double-right w-2 text-90 mx-2px"></i>
+                </a>
+            </div>
+
+            <div>
+                <select [(ngModel)]="itemPerPage" (change)="updatePerPage()" class="ml-2 ace-select no-border caret-double text-dark-tp3 bgc-white brc-secondary-l2 brc-h-secondary-m4 radius-1 border-2" style="width: 80px;">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div *ngIf="rowData.length > 0">
+            Showing
+                <span class="w-2 d-inline-block text-center">
+                    {{(currentPage - 1) * itemPerPage + 1}}
+                </span>
+                -
+                <span class="w-2 d-inline-block text-center mr-1">
+                    {{currentPage * itemPerPage < rowData.length ? currentPage * itemPerPage : rowData.length}}
+                </span>
+                of
+                <span class="w-2 d-inline-block text-center">
+                    {{rowData.length}}
+                </span>
+        </div>
+
+        <div *ngIf="rowData.length == 0">
+            Showing
+                <span class="w-2 d-inline-block text-center">
+                    0
+                </span>
+                -
+                <span class="w-2 d-inline-block text-center mr-1">
+                    0
+                </span>
+                of
+                <span class="w-2 d-inline-block text-center">
+                    0
+                </span>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ad new row modal -->
+<ng-template #addRecord let-modal>
+    <div ngbAutofocus class="modal-header">
+        <h5 class="modal-title text-primary-d3">
+            Add new record
+        </h5>
+
+        <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form #form="ngForm" id="ngForm" (ngSubmit)="addRow(); modal.close()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="newRow.name" name="name" #name="ngModel" />
+                <div *ngIf="name?.errors?.required" class="text-danger text-95">
+                    Name is required.
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="stock">In Stock</label>
+                <input type="checkbox" class="float-right ace-switch ace-switch-check ace-switch-times" id="stock" [(ngModel)]="newRow.stock" name="stock" />
+            </div>
+
+            <div class="form-group">
+                <label for="ship">Ship Via</label>
+                <select class="ace-select form-control" id="ship" [(ngModel)]="newRow.ship" name="ship">
+                    <option value="FedEx">FedEx</option>
+                    <option value="InTime">InTime</option>
+                    <option value="TNT">TNT</option>
+                    <option value="ARAMEX">ARAMEX</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Note</label>
+                <textarea type="text" class="form-control" id="note" [(ngModel)]="newRow.note" name="note"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary px-4" (click)="modal.close()">
+            Close
+        </button>
+
+        <button type="submit" class="btn btn-primary" form="ngForm">
+            Save
+        </button>
+    </div>
+</ng-template>

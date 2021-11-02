@@ -1,0 +1,80 @@
+<!-- the left side section is carousel in this demo, to show some example variations -->
+<ngb-carousel #carousel class="minw-100 h-100" [interval]="4000" [pauseOnHover]="false" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide>
+        <div style="background-image: url(assets/image/login-bg-1.svg);" class="px-3 bgc-blue-l4 d-flex flex-column align-items-center justify-content-center">
+            <a class="mt-5 mb-2" [routerLink]="['/']" role="button">
+                <i class="fa fa-leaf text-success-m2 fa-3x"></i>
+            </a>
+
+            <h2 class="text-primary-d1">
+                Koncept <span class="text-80 text-dark-l1">Application</span>
+            </h2>
+
+            <div class="mt-5 mx-4 text-dark-tp3">
+                <span class="text-120">
+                    Join our community to make friends,<br /> meet experts &amp; receive exclusive offers!
+                </span>
+                <hr class="mb-1 brc-black-tp10" />
+                <!-- <div>
+                    <a (click)="startCarousel()" role="button" class="text-95 text-dark-l2 d-inline-block mt-3">
+                        <i class="far fa-image text-110 text-purple-m1 mr-1 w-2"></i>
+                        Change background image
+                    </a>
+                    <br />
+                    <a (click)="removeCarousel()" role="button" class="text-md text-dark-l2 d-inline-block mt-3">
+                        <i class="far fa-trash-alt text-110 text-orange-d1 mr-1 w-2"></i>
+                        Remove this section
+                    </a>
+                    <br />
+                    <a (click)="makeFullsize()" role="button" class="text-md text-dark-l2 d-inline-block mt-3">
+                        <i class="fa fa-expand text-110 text-green-m1 mr-1 w-2"></i>
+                        Make full-size 
+                    </a>
+                </div> -->
+            </div>
+
+            <div class="mt-auto mb-4 text-dark-tp2">
+                Koncept Company &copy; 2021
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+        <!-- the second carousel item with dark background -->
+        <div style="background-image: url(assets/image/login-bg-2.svg);" class="d-flex flex-column align-items-center justify-content-start">
+            <a class="mt-5 mb-2" [routerLink]="['/']" role="button">
+                <i class="fa fa-leaf text-success-m2 fa-3x"></i>
+            </a>
+
+            <h2 class="text-blue-l1">
+                Koncept <span class="text-80 text-white-tp3">Application</span>
+            </h2>
+        </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+        <div style="background-image: url(assets/image/login-bg-3.jpg);" class="d-flex flex-column align-items-center justify-content-start">
+            <div class="bgc-black-tp4 radius-1 p-3 w-90 text-center my-3 h-100">
+                <a class="mt-5 mb-2" [routerLink]="['/']" role="button">
+                    <i class="fa fa-leaf text-success-m2 fa-3x"></i>
+                </a>
+
+                <h2 class="text-blue-l1">
+                    Koncept <span class="text-80 text-white-tp3">Application</span>
+                </h2>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+        <div style="background-image: url(assets/image/login-bg-4.jpg);" class="d-flex flex-column align-items-center justify-content-start">
+            <a class="mt-5 mb-2" [routerLink]="['/']" role="button">
+                <i class="fa fa-leaf text-success-m2 fa-3x"></i>
+            </a>
+
+            <h2 class="text-blue-d1">
+                Koncept <span class="text-80 text-dark-tp3">Application</span>
+            </h2>
+        </div>
+    </ng-template>
+</ngb-carousel>

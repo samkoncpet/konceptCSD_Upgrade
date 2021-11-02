@@ -1,0 +1,61 @@
+<ul ngbNav #notificationNav="ngbNav" [destroyOnHide]="false" [animation]="false" class="nav nav-tabs nav-tabs-simple w-100 nav-justified dropdown-clickable border-b-1 brc-secondary-l2">
+    <li [ngbNavItem]="1">
+        <a ngbNavLink class="d-style px-0 mx-0 py-3 nav-link text-600 brc-blue-m1 text-dark-tp5 bgc-h-blue-l4">
+            <span class="d-active text-blue-d1 text-105">Notifications</span>
+            <span class="d-n-active">Notifications</span>
+        </a>
+
+        <ng-template ngbNavContent>
+            <div [NgAceClass]='{"+2": "mh-none px-md-1 pt-1"}'>
+                <ng-container *ngFor="let notif of notifications;">
+                    <a role="button" class="mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
+                        <i [ngClass]="[notif['icon'] , notif['icon-color']]" class="text-white text-110 mr-15 p-2 radius-1"></i>
+                        <span class="text-muted">{{notif.title}}</span>
+                        <span *ngIf="notif.badge" [ngClass]="[notif['badge-color']]" class="float-right badge radius-round text-80">{{notif.badge}}</span>
+                    </a>
+                </ng-container>
+            </div>
+
+            <hr class="mt-1 mb-1px brc-secondary-l2" />
+            <a role="button" class="mb-0 py-3 border-0 list-group-item text-blue text-uppercase text-center text-85 font-bolder">
+                See All Notifications
+                <i class="ml-2 fa fa-arrow-right text-muted"></i>
+            </a>
+        </ng-template>
+    </li>
+
+    <li [ngbNavItem]="2">
+        <a ngbNavLink class="d-style px-0 mx-0 py-3 nav-link text-600 brc-purple-m1 text-dark-tp5 bgc-h-purple-l4">                    
+            <span class="d-active text-purple-d1 text-105">Messages</span>
+            <span class="d-n-active">Messages</span>
+        </a>
+
+        <ng-template ngbNavContent>
+            <div [NgAceClass]='{"+2": "mh-none pl-md-2"}' [NgAceScroll]='{"ignore": "mobile", "height": 300, "smooth":true}'>
+                <ng-container *ngFor="let message of messages; let isLast = last;">
+                    <a role="button" class="d-flex mb-0 border-0 list-group-item list-group-item-action btn-h-lighter-secondary">
+                        <img alt="{{message.name}}'s avatar" src="assets/image/avatar/{{message.img}}" width="48" class="align-self-start border-2 brc-primary-m3 p-1px mr-2 radius-round" />
+                        <div>
+                            <span class="text-primary-m1 font-bolder">{{message.name}}:</span>
+                            <span class="text-grey text-90">{{message.summary}}</span>
+                            <br />
+                            <span class="text-grey-m1 text-85">
+                                <i class="far fa-clock"></i>
+                                {{message.time}}
+                            </span>
+                        </div>
+                    </a>
+                    <hr *ngIf="!isLast" class="my-1px brc-grey-l3" />
+                </ng-container>
+            </div><!-- ace-scroll -->
+    
+            <hr class="my-1px brc-secondary-l2 border-double" />
+            <a role="button" class="mb-0 py-3 border-0 list-group-item text-purple text-uppercase text-center text-85 font-bolder">
+                See All Messages
+                <i class="ml-2 fa fa-arrow-right text-muted"></i>
+            </a>
+        </ng-template>
+    </li>
+</ul><!-- .nav-tabs -->
+
+<div [ngbNavOutlet]="notificationNav" NgAceTabSwipe class="p-0 tab-sliding"></div>

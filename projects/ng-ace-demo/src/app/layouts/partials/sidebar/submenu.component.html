@@ -1,0 +1,58 @@
+<ng-container *ngFor="let navItem of items">
+    <ng-container *ngIf="!navItem.type">
+        <ng-container *ngTemplateOutlet="sidebarItem; context: {item: navItem}"></ng-container>
+    </ng-container>
+
+    <div *ngIf="navItem.type == 'caption'" class="nav-item-caption">
+        <span class="fadeable pl-3">{{navItem.title}}</span>
+        <span class="fadeinable mt-n2 text-125">&hellip;</span>
+    </div>
+
+    <div *ngIf="navItem.type == 'divider'" class="nav-item-divider"></div>
+</ng-container>
+
+
+<ng-template #sidebarItem let-navItem='item'>
+    <div class="nav-item" [ngClass]="{'open': navItem.open, 'is-toggling': navItem.isToggling}" routerLinkActive="active">
+        <!-- if item has no children -->
+        <a *ngIf="!navItem.hasChildren" [routerLink]="['/'+navItem.link]" class="nav-link">
+            <i *ngIf="navItem.icon" class="nav-icon {{navItem.icon}}"></i>
+
+            <span class="nav-text" [ngClass]="{'fadeable': navItem.isFirstLevel}">
+                <span>
+                    {{navItem.title}}
+                </span>
+
+            <span *ngIf="navItem.badge" class="badge {{navItem['badge-class']}}" [innerHTML]="navItem.badge" placement="right" ngbTooltip="{{navItem.tooltip}}" tooltipClass="ng-custom-tooltip {{navItem['tooltip-class']}}" container="body">
+                </span>
+            </span>
+        </a>
+
+        <!-- if item has children -->
+        <!-- <ng-container *ngIf="navItem.hasChildren">
+            <a (click)="toggleSubmenu(navItem, navItemSub)" [routerLink]="['/'+navItem.link]" [state]="{skipNavigation: true}" class="nav-link dropdown-toggle" [ngClass]="{'collapsed': !navItem.open}" [attr.aria-expanded]="navItem.open">
+                <i *ngIf="navItem.icon" class="nav-icon {{navItem.icon}}"></i>
+    
+                <span class="nav-text" [ngClass]="{'fadeable': navItem.isFirstLevel}">
+                    <span>
+                        {{navItem.title}}
+                    </span>
+    
+                    <span *ngIf="navItem.badge"
+                            class="badge {{navItem['badge-class']}}"
+                            [innerHTML]="navItem.badge" placement="right" ngbTooltip="{{navItem.tooltip}}" tooltipClass="ng-custom-tooltip {{navItem['tooltip-class']}}" container="body">
+                    </span>
+                </span>
+    
+                <b class="caret fa fa-angle-left rt-n90"></b>
+            </a>
+
+            <div class="submenu collapse" [ngClass]="{'hideable': navItem.isFirstLevel}" [ngbCollapse]="!navItem.open" (shown)="navItem.isToggling=false" (hidden)="navItem.isToggling=false">
+                <app-sidebar-submenu NgAceSubmenu #navItemSub="NgAceSubmenu" class="submenu-inner" [items]="navItem.children"></app-sidebar-submenu>    
+            </div>
+        </ng-container> -->
+
+        <!-- sub arrow -->
+        <b class="sub-arrow" *ngIf="navItem.hasChildren || navItem.isFirstLevel"></b>
+    </div>
+</ng-template>

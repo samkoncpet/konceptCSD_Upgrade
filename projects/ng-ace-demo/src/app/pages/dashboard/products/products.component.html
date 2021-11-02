@@ -1,0 +1,60 @@
+<div class="card border-0">
+	<div class="card-header bg-transparent border-0 pl-1">
+		<h5 class="card-title mb-2 mb-md-0 text-120 text-grey-d3">
+			<i class="fa fa-star mr-1 text-orange text-90"></i>
+			Best Sellers
+		</h5>
+
+		<div class="card-toolbar align-self-center">
+			<a role="button" (click)="collapse.toggle()" [attr.aria-expanded]="!collapse.collapsed" class="card-toolbar-btn text-grey text-110">
+				<i *ngIf="!collapse.collapsed" class="fa fa-chevron-up"></i>
+				<i *ngIf="collapse.collapsed" class="fa fa-chevron-down"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="card-body p-0 ccard overflow-hidden" #collapse="ngbCollapse" [ngbCollapse]="false">
+		<table class="table brc-black-tp11">
+			<thead class="border-0">
+				<tr class="border-0 bgc-dark-l5 text-dark-tp5">
+					<th class="border-0 pl-4">
+						name
+					</th>
+					<th class="border-0">
+						price
+					</th>
+					<th class="border-0">
+						status
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr *ngFor="let product of products" class="bgc-h-secondary-l4">
+					<td class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+						{{product.name}}
+					</td>
+
+					<td>
+						<small *ngIf="product.old_price"><s class="text-danger-m1">{{product.old_price}}</s></small>
+						<span *ngIf="product.old_price" class="text-success-m1 font-bolder text-95">
+							{{product.price}}
+						</span>
+						<span *ngIf="!product.old_price" class="text-info-d2 text-95 font-bolder">
+							{{product.price}}
+						</span>
+					</td>
+
+					<td>
+						<span *ngIf="product.status == 'on_sale'" class="badge text-75 border-l-3 brc-black-tp8 bgc-info-d2 text-white">on sale</span>
+						<span *ngIf="product.status == 'approved'" class="badge text-75 border-l-3 brc-black-tp8 bgc-success text-white">approved</span>
+						<span *ngIf="product.status == 'pending'" class="badge text-75 border-l-3 brc-black-tp8 bgc-danger text-white">pending</span>
+						<span *ngIf="product.status == 'out_of_stock'" class="badge bgc-secondary-l1 text-dark-tp4 border-1 brc-black-tp10"><s>out of stock</s></span>
+						<span *ngIf="product.status == 'sold'" class="badge text-75 border-l-3 brc-black-tp8 bgc-orange text-white">SOLD</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+

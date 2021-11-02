@@ -1,0 +1,57 @@
+// some extra styling for jodit editor in compose dialog
+
+.compose-editor .jodit-container {
+  position: relative;
+
+  &:not(.jodit_inline) {
+    border: none !important;
+  }
+
+  .jodit-workplace {
+    padding: 0 0.5rem 0 1rem;
+    max-height: calc(100vh - 360px) !important;
+    min-height: 240px !important;
+  }
+  .jodit-wysiwyg {
+    margin-bottom: 0.5rem !important;
+    padding: 0 !important;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+  }
+  .jodit-placeholder {
+    padding: 0 0.875rem !important;
+  }
+
+  .jodit-toolbar__box:not(:empty) {
+    position: absolute;
+
+    left: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+
+    width: 100%;
+    z-index: 111;
+
+    border-bottom: none !important;
+    border-top: 1px solid #e4e6e9;
+  }
+
+  .jodit-toolbar__box.collapse.show ~ .jodit-workplace {
+    padding-bottom: 4rem;
+  }
+
+  
+  .jodit-editor__resize {
+    display: none;
+  }
+}
+
+
+
+

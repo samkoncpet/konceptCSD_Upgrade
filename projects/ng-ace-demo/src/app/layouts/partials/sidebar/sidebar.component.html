@@ -1,0 +1,45 @@
+<div class="sidebar-inner">
+
+    <div class="flex-grow-1 ace-scroll" NgAceScroll>
+        <div class="sidebar-section my-2">
+            <ng-container *ngTemplateOutlet="sidebarHeader">
+                <!-- sidebar header is below -->
+            </ng-container>
+        </div>
+
+        <app-sidebar-submenu NgAceSubmenu (onToggleItem)="onToggleItem($event)" class="nav has-active-border" [items]="sidebarItems"></app-sidebar-submenu>
+    </div>
+
+    <div class="sidebar-section">
+        <ng-container *ngTemplateOutlet="sidebarFooter">
+        </ng-container>
+    </div>
+
+</div>
+
+
+
+<!------------ SIDEBAR HEADER ------------>
+<ng-template #sidebarHeader>
+    <!-- the search box -->
+    <div class="sidebar-section-item">
+        <i class="fadeinable fa fa-search text-info-m1 mr-n1"></i>
+
+        <div class="fadeable d-inline-flex align-items-center ml-3 ml-lg-0">
+            <i class="fa fa-search mr-n3 text-info-m1"></i>
+            <input type="text" class="sidebar-search-input pl-4 pr-3 mr-n2" maxlength="60" placeholder="Search ..." aria-label="Search" />
+            <a role="button" class="ml-n25 px-2 py-1 radius-round bgc-h-secondary-l2 mb-2px">
+                <i class="fa fa-microphone px-3px text-dark-tp5"></i>
+            </a>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+
+<!------------ SIDEBAR FOOTER ------------>
+<ng-template #sidebarFooter>
+
+</ng-template>

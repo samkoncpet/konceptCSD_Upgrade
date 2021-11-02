@@ -1,0 +1,51 @@
+<div class="row" id="row-1">
+    <div class="col-12 col-xl-10 offset-xl-1 bgc-white shadow radius-1 overflow-hidden">
+   
+       <div class="row" id="row-2">
+   
+            <app-login-intro id="id-col-intro" class="col-lg-5 d-none d-lg-flex border-r-1 brc-default-l3 px-0"></app-login-intro>
+   
+   
+            <div id="id-col-main" class="col-12 col-lg-7 py-lg-5 bgc-white px-0">
+                <!-- signin/signup and forgot are separate tab-panes but we hide the "nav" menu -->
+                <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" [destroyOnHide]="false" [animation]="false" class="d-none mt-n4 mb-4 nav nav-tabs nav-tabs-simple justify-content-end bgc-black-tp11">
+                    <li [ngbNavItem]="'signin'" class="nav-item mx-2">
+                        <a ngbNavLink class="nav-link px-2" role="button">
+                            Login
+                        </a>
+                        <ng-template ngbNavContent>
+                            <app-demo-signin class="d-block px-3 px-lg-0 pb-3" [NgAceClass]="{'+2': 'mh-100'}" (tabChange)="activeTab = $event"></app-demo-signin>
+                        </ng-template>
+                    </li>
+
+                    <li [ngbNavItem]="'signup'" class="nav-item mx-2">
+                        <a ngbNavLink class="nav-link px-2" role="button">
+                            Signup
+                        </a>
+                        <ng-template ngbNavContent>
+                            <app-demo-signup class="d-block px-3 px-lg-0 pb-3" [NgAceClass]="{'+2': 'mh-100'}" (tabChange)="activeTab = $event"></app-demo-signup>
+                        </ng-template>
+                    </li>
+
+                    <li [ngbNavItem]="'forgot'" class="nav-item mx-2">
+                        <a ngbNavLink class="nav-link px-2" role="button">
+                            Forgot
+                        </a>
+                        <ng-template ngbNavContent>
+                            <app-demo-forgot class="d-block px-3 px-lg-0 pb-3" [NgAceClass]="{'+2': 'mh-100'}" (tabChange)="activeTab = $event"></app-demo-forgot>
+                        </ng-template>
+                    </li>
+                </ul>
+
+                <div [ngbNavOutlet]="nav" [NgAceTabSwipe]='{"swipe": "right", "forgot": {"prev": "signin"}, "signup": {"prev": "signin"}}' class="tab-sliding p-0 border-0">
+                </div>
+            </div>
+           
+       </div><!-- /.row -->
+       
+    </div><!-- /.col -->
+   </div><!-- /.row -->
+   
+   <div class="d-lg-none my-3 text-white-tp1 text-center">
+       <i class="fa fa-leaf text-success-l3 mr-1 text-110"></i> Ace Company &copy; 2021
+   </div>

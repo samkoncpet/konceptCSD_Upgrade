@@ -1,0 +1,53 @@
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+
+@import "../ace/scss/ace-features";
+@import "../ace/scss/variables";
+@import "../ace/scss/functions";
+@import "../ace/scss/button-colors";
+@import "../ace/scss/variables-more";
+@import "../ace/scss/font-size";
+
+
+// general styles
+app-sidebar-submenu {
+    display: block;
+    > div {
+        display: list-item;
+    }
+}
+app-sidebar, app-footer {
+    display: block;
+}
+
+.ngx-bar {
+    margin-top: 1px;
+}
+
+
+
+// set to false to exclude
+$plugin-ngselect: true;
+$plugin-fullcalendar: true;
+$plugin-ng2-smarttable: true;
+$plugin-aggrid: true;
+
+$plugin-ngx-treeview: true;
+$plugin-angular-wizard: true;
+
+$plugin-duallist: true;
+$plugin-jodit: true;
+
+
+
+
+@import "./ng-select.scss";
+@import "./fullcalendar.scss";
+@import "./ng-smart-table.scss";
+@import "./ag-grid.scss";
+@import "./wizard.scss";
+@import "./ngx-treeview.scss";
+@import "./duallist.scss";
+@import "./jodit.scss";
+

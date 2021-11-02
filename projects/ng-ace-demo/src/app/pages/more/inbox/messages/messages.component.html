@@ -1,0 +1,69 @@
+<ng-container *ngFor="let message of messages">
+    <div role="button" class="message-item d-flex align-items-start bgc-h-primary-l4 px-2 px-md-3 py-25 radius-2px d-style pos-rel" (click)="showMessageDetail($event, message)">
+        <label class="mb-0 message-select-btn" preventDetailClick>
+            <input type="checkbox" class="input-sm" [checked]="isSelected(message)" (click)="toggleSelected(message)" />
+        </label>
+
+        <!-- attachment icon on large devices -->
+        <a role="button" class="d-none d-md-block ml-md-3 message-star-btn" preventDetailClick>
+            <i *ngIf="message.starred" class="fa fa-star text-warning-m1"></i>
+            <i *ngIf="!message.starred" class="far fa-star text-grey-l1"></i>
+        </a>
+
+        <!-- attachment icon on small devices -->
+        <a role="button" class="d-md-none position-br mr-1 mb-2px message-star-btn" preventDetailClick>
+            <i *ngIf="message.starred" class="fa fa-star text-warning-m1"></i>
+            <i *ngIf="!message.starred" class="far fa-star text-grey-l1"></i>
+        </a>
+
+        <div *ngIf="message.abbr" class="col-auto px-0 ml-2 ml-md-3 w-5 h-5 bgc-{{message.color}} text-white text-90 text-600 text-center pt-15 radius-round border-2 brc-white">
+            {{message.abbr}}
+        </div>
+
+        <img *ngIf="message.avatar" src="assets/image/avatar/{{message.avatar}}" class="col-auto px-0 ml-2 ml-md-3 w-5 h-5 radius-round border-2 brc-white" />
+
+        <div class="ml-3 d-flex flex-column flex-lg-row align-items-lg-center">
+            <div class="message-user mb-1 mb-lg-0 col-auto px-0 text-95" [ngClass]="{'text-600 text-dark-m2': message.unread, 'text-dark-m3': !message.unread}">
+                {{message.name}}
+                <span *ngIf="message.count" class="text-400 text-sm text-grey-m3 ml-1">{{message.count}}</span>
+            </div>
+            <div class="message-text ml-lg-3 ml-lg-5 pr-1 pr-lg-0 text-90 text-dark-m3 pos-rel" [ngClass]="{'text-600': message.unread}">
+                <span *ngIf="message['tag-family']" class="p-1 bgc-pink radius-round d-inline-block mr-1"></span>
+                <span *ngIf="message['tag-work']" class="p-1 bgc-green radius-round d-inline-block mr-1"></span>
+                <span *ngIf="message['tag-friends']" class="p-1 bgc-blue radius-round d-inline-block mr-1"></span>
+                <span *ngIf="message['tag-other']" class="p-1 bgc-orange radius-round d-inline-block mr-1"></span>
+
+                <span *ngIf="message.urgent" class="badge bgc-red-l2 text-danger-d2 mr-1 radius-1">Urgent</span>
+                <span *ngIf="message.important" class="badge bgc-orange-l2 text-dark-m3 mr-1 radius-1">Important</span>
+
+                {{message.title}}
+            </div>
+        </div>
+
+
+        
+        <!-- attachment icon on larger devices -->
+        <div class="message-time d-none d-lg-flex align-items-center ml-auto pl-2 col-auto text-nowrap pr-0 pl-1 text-90" [ngClass]="{'text-600 text-dark-m1': message.unread}">
+            <i *ngIf="message.attachment" class="w-3 fa fa-paperclip ml-n35" [ngClass]="{'text-blue-m1': message.unread, 'text-grey-l1': !message.unread}"></i>
+            {{message.time}}
+        </div>
+
+        <!-- attachment icon on small devices -->
+        <div class="position-tr mt-15 w-auto message-time d-flex d-lg-none align-items-center text-nowrap  text-90" [ngClass]="{'text-600 text-dark-m1': message.unread}">
+            <i *ngIf="message.attachment" class="w-2 mr-2px fa fa-paperclip ml-n3" [ngClass]="{'text-blue-m1': message.unread, 'text-grey-l1': !message.unread}"></i>
+            {{message.time}}
+        </div>
+
+
+        <div class="message-actions position-r mr-1 v-hover p-15 bgc-white-tp1 shadow-sm radius-2px" preventDetailClick>
+            <a role="button" class="btn btn-tp border-0 btn-text-danger btn-light-danger mr-2px px-2">
+                <i class="fa fa-trash-alt text-danger-m1 w-2"></i>
+            </a>
+            <a role="button" class="btn btn-tp border-0 btn-text-info btn-light-info px-2">
+                <i class="fa fa-reply w-2"></i>
+            </a>                    
+        </div>
+    </div>
+
+    <hr class="brc-black-tp10 my-0" />
+</ng-container>

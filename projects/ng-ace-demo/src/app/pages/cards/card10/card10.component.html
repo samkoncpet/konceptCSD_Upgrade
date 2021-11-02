@@ -1,0 +1,69 @@
+<div #card="NgAceCard" NgAceCard class="card dcard">
+    <div class="card-header flex-wrap pb-0 align-items-center">
+        <h5 class="card-title text-primary-d2 mb-2">
+            Tabbed
+        </h5>
+
+        <div class="card-toolbar no-border pt-1 pb-25 ml-auto">
+            <ul ngbNav #nav="ngbNav" class="nav nav-tabs nav-tabs-simple nav-tabs-scroll nav-tabs-static" role="tablist">
+                <li [ngbNavItem]="1" class="nav-item mr-2">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-white btn-h-light-primary btn-a-lighter-primary p-25 border-0 radius-2 text-95">
+                        <i class="fa fa-home mr-2px"></i>
+                        Home
+                    </a>
+                    <ng-template ngbNavContent>
+                        <p>
+                            <b>1.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+                        </p>
+                        <p>
+                            Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+                        </p>
+                        <p>
+                            Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+                        </p>
+                    </ng-template>
+                </li>
+
+                <li [ngbNavItem]="2" class="nav-item mr-2">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-white btn-h-light-success btn-a-lighter-success p-25 border-0 radius-2 text-95">
+                        <i class="far fa-user mr-2px"></i>
+                        Profile
+                    </a>
+                    <ng-template ngbNavContent>
+                        <p>
+                            <b>2.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+                        </p>
+                        <p>
+                            Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+                        </p>
+                        <p>
+                            Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+                        </p>
+                    </ng-template>
+                </li>
+
+                <li [ngbNavItem]="3" class="nav-item">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-white btn-h-light-red btn-a-lighter-red p-25 border-0 radius-2 text-95">
+                        More
+                        <i class="fa fa-ellipsis-v ml-2px opacity-2"></i>
+                    </a>
+                    <ng-template ngbNavContent>
+                        <p>
+                            <b>3.</b> Nibh sed pulvinar proin gravida hendrerit lectus a. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium.
+                        </p>
+                        <p>
+                            Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. 
+                        </p>
+                        <p>
+                            Quis viverra nibh cras pulvinar. Netus et malesuada fames ac.
+                        </p>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.card-header -->
+
+    <div class="card-body px-4 py-3">
+        <div [ngbNavOutlet]="nav" class="border-0 p-1"></div>
+    </div><!-- /.card-body -->
+</div><!-- /.card -->

@@ -1,0 +1,51 @@
+// Wizard Plugin
+@if $plugin-angular-wizard == true {
+    .ace-wizard {
+        aw-wizard-navigation-bar.horizontal.large-empty-symbols {
+            
+            @media (min-width: 1000px) {
+                width: 75%;
+                margin: 0 auto;
+            }
+
+            ul.steps-indicator {
+                li .step-indicator {
+                    width: 4rem !important;
+                    height: 4rem !important;
+                
+                    top: -4rem !important;
+                    left: calc(50% - 2rem) !important;
+                
+                    z-index: 1;
+                
+                    background-color: #fff;
+                
+                    border-width: 5px !important;
+                }
+
+                li::after {
+                    content: "";
+                    position: absolute;
+                
+                    height: 0;
+                    border-top: 4px solid;
+                    border-color: inherit;
+                
+                    width: 100% !important;
+                    top: calc(-2rem - 2px) !important;
+                    left: 0 !important;
+                }
+
+                li:first-child:after {
+                    width: 50% !important;
+                    left: 50% !important;
+                }
+                
+                li:last-child:after {
+                    width: 50% !important;
+                }
+            }
+        }
+        
+    }
+}

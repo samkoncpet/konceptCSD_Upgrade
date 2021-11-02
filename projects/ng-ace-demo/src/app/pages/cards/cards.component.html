@@ -1,0 +1,25 @@
+<div class="page-header border-0 pb-4">
+    <h1 class="page-title text-dark-m2 text-140">
+        Sortable cards with persistent state
+    </h1>
+
+	<div class="page-tools mt-3 mt-sm-0 mb-sm-n1">
+		<button (click)="resetAll()" type="button" class="btn btn-sm btn-lighter-primary btn-bgc-white btn-bold px-4 radius-round">
+			<i class="fa fa-undo text-green-d1"></i>
+			Reset
+		</button>
+	</div>
+</div>
+
+
+<div>
+
+	<div class="row" *ngFor="let cardRow of cardRows; first as isFirst; index as rowId" [ngClass]="{'mt-475':!isFirst}" [attr.row-id]="rowId">
+		<div #container *ngFor="let col of cardRow; first as isFirst; index as colId" [attr.row-id]="rowId" [attr.col-id]="colId" class="col-12 col-sm-6 cards-container" [ngClass]="{'mt-3 mt-sm-0':!isFirst}">
+			<ng-container *ngFor="let card of col">
+				{{AddCard(card, container)}}
+			</ng-container>
+		</div>
+	</div>
+
+</div>

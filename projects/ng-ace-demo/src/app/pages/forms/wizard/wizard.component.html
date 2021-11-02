@@ -1,0 +1,151 @@
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar mr-auto no-border">
+                <label class="mb-0">
+                    <span class="align-middle d-block d-sm-inline text-600">
+                        Input Validation:
+                    </span>
+                    <input type="checkbox" [(ngModel)]="enableValidation" [ngModelOptions]="{standalone: true}" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" />
+                </label>
+            </div>
+
+            <div class="card-toolbar pl-3">
+                <!-- buttons used to control/navigate the wizard -->
+                <button id="wizard-1-prev" type="button" class="mx-2px btn btn-outline-default btn-h-outline-primary btn-bgc-white btn-a-primary border-2 radius-1"  (click)="wizard.goToPreviousStep()" [disabled]="wizard.currentStepIndex == 0">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+
+                <button id="wizard-1-next" type="button" class="mx-2px btn btn-outline-default btn-h-outline-primary btn-bgc-white btn-a-primary border-2 radius-1" (click)="wizard.goToNextStep()" [class.d-none]="wizard.currentStepIndex == 3">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+
+                <button id="wizard-1-finish" type="button" class="d-none mx-2px px-3 btn btn-outline-success btn-h-outline-success btn-bgc-white border-2 radius-1" [class.d-none]="wizard.currentStepIndex < 3">
+                    <i class="fa fa-arrow-right"></i>                    
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card-body pt-45">
+
+            <div class="mx-n3 mx-sm-auto">
+                
+              <aw-wizard [navBarLayout]="'large-empty-symbols'" class="ace-wizard" #wizard>
+                <aw-wizard-step [canExit]="canExitStep1">
+                  <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                    <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                      <div class="text-dark-l2 text-lg pt-3px">1</div>
+                    </div>
+
+                    <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                      <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                      <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">1</div>
+                    </div>
+                  </ng-template>
+            
+                  <ng-template awWizardStepTitle>
+                    <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Validation States</span>
+                  </ng-template>
+
+                  <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                    <div [ngClass]="{'d-none': enableValidation}">
+                      <app-wizard-step1></app-wizard-step1>
+                    </div>
+                    
+                    <div [ngClass]="{'d-none': !enableValidation}">
+                      <app-wizard-validation></app-wizard-validation>
+                    </div>
+                  </div>
+                </aw-wizard-step>
+              
+                <aw-wizard-step>
+                  <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                    <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                      <div class="text-dark-l2 text-lg pt-3px">2</div>
+                    </div>
+
+                    <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                      <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                      <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">2</div>
+                    </div>
+                  </ng-template>
+            
+                  <ng-template awWizardStepTitle>
+                    <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Alerts</span>
+                  </ng-template>
+            
+                  <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                    <app-wizard-step2></app-wizard-step2>
+                  </div>
+                </aw-wizard-step>
+            
+                <aw-wizard-step>
+                  <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                    <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                      <div class="text-dark-l2 text-lg pt-3px">3</div>
+                    </div>
+
+                    <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                      <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                      <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">3</div>
+                    </div>
+                  </ng-template>
+            
+                  <ng-template awWizardStepTitle>
+                    <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Payment Info</span>
+                  </ng-template>
+            
+                  <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                    <app-wizard-step3></app-wizard-step3>
+                  </div>
+                </aw-wizard-step>
+            
+                <aw-wizard-step>
+                  <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                    <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                      <div class="text-dark-l2 text-lg pt-3px">4</div>
+                    </div>
+
+                    <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                      <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                      <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">4</div>
+                    </div>
+                  </ng-template>
+            
+                  <ng-template awWizardStepTitle>
+                    <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Other Info</span>
+                  </ng-template>
+            
+                  <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                    <app-wizard-step4></app-wizard-step4>
+                  </div>
+                </aw-wizard-step>
+              </aw-wizard>
+            </div>
+
+            <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
+              <div class="btn-group mr-2 sw-btn-group" role="group"></div>
+              <div class="btn-group mr-2 sw-btn-group-extra" role="group">
+                <button class="btn btn-outline-secondary radius-l-1 mr-2px" (click)="wizard.goToPreviousStep()" [disabled]="wizard.currentStepIndex == 0">
+                  <i class="fa fa-arrow-left mr-15"></i> Previous
+                </button>
+
+                <button class="btn btn-outline-primary radius-r-1" (click)="wizard.goToNextStep()" [class.d-none]="wizard.currentStepIndex == 3">
+                  Next <i class="fa fa-arrow-right mr-15"></i>
+                </button>
+
+                <button class="btn btn-green radius-r-1" [class.d-none]="wizard.currentStepIndex < 3">
+                  Finish <i class="fa fa-check mr-15"></i>
+                </button>
+              </div>
+            </div>
+
+        </div><!-- /.card-body -->
+       </div><!-- .card -->
+
+    </div>
+</div>
+
+

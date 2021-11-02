@@ -1,0 +1,33 @@
+
+@if $plugin-jodit == true {
+    .jodit-ui-separator {
+      border-color: transparent;
+    }
+  
+    .jodit-toolbar-editor-collection {
+      background-color: #fff;
+      background-image: none !important;
+    }
+  
+    .jodit-toolbar-button_with-trigger_true:hover:not([disabled]) {
+      border-color: transparent !important;
+    }
+  
+    .jodit-toolbar-button__trigger:hover:not([disabled]) {
+      background-color: bgc-color('secondary', 'l3') !important;
+    }
+  
+    .editor-toolbar  {
+      border: none;
+    }
+  
+    .CodeMirror {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+  
+    .CodeMirror-fullscreen, .editor-toolbar.fullscreen {
+      z-index: 1111;
+    }
+  }
+  

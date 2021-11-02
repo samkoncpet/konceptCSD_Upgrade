@@ -1,0 +1,30 @@
+@if $plugin-ngx-treeview == true {
+    ngx-treeview {
+        .form-check-inline, .form-inline {
+            .form-check-input {
+                position: relative;
+                margin-right: .5rem;
+            }
+        }
+
+        input[type="checkbox"] {
+            width: 1.175rem;
+            height: 1.175rem;
+
+            &:indeterminate::after {
+                right: 0.1875rem;
+                left: 0.1875rem;
+                top: 0.1875rem;
+                bottom: 0.1875rem;
+            }
+        }
+
+        .treeview-item .treeview-item {
+            margin-left: 1.25rem !important;
+        }
+
+        ngx-treeview-item .is-parent-label + div {
+            margin-bottom: 0.625rem;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<div class="bgc-orange-l2 py-25 px-4 border-b-1 brc-orange-l2">
+    <span class="text-dark-tp4 text-600 text-90 text-uppercase">
+      <i class="fa fa-check mr-2px text-warning-d2 text-120"></i>
+      4 Tasks to complete
+    </span>
+  </div>
+  
+  
+  <ng-container *ngFor="let task of tasks; let isLast = last;">
+    <div class="px-4 py-2">
+      <div class="text-95">
+          <span class="text-grey-d1">{{task.title}}</span>
+      </div>
+      <div class="progress mt-2">
+          <div class="progress-bar {{task.color}}" role="progressbar" style="width: {{task.percent}}%;" aria-valuemin="0" aria-valuemax="100">{{task.percent}}%</div>
+      </div>
+    </div>  
+
+    <hr *ngIf="!isLast" class="my-1 mx-4" />
+  </ng-container>
+  
+  
+  <hr class="my-1px mx-2 brc-info-l2 " />
+  <a role="button" class="d-block bgc-h-primary-l4 py-3 border-0 text-center text-blue-m2">
+    <span class="text-85 text-600 text-uppercase">See All Tasks</span>
+    <i class="ml-2 fa fa-arrow-right text-muted"></i>
+  </a>
+  

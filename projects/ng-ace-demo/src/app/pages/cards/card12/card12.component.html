@@ -1,0 +1,46 @@
+<div class="card bgc-primary-d3">
+    <div class="card-header">
+        <h5 class="card-title text-125 text-white pt-1">
+            Contextual
+        </h5>
+        
+        <div class="card-toolbar no-border">
+            <span class="badge bgc-orange-m3 text-dark-tp3">
+                16%
+                <i class="fa fa-arrow-down"></i>
+            </span>
+
+            <label class="mb-0 ml-2">
+                <input type="checkbox" class="ace-switch align-bottom text-dark-tp5 brc-yellow-m2" />
+            </label>
+        </div>
+
+        <div class="card-toolbar pl-1">
+            <a role="button" (click)="toggle()" class="card-toolbar-btn text-white">
+                <i *ngIf="!collapse.collapsed" class="fa fa-chevron-up w-2 mx-1px"></i>
+                <i *ngIf="collapse.collapsed" class="fa fa-chevron-down w-2 mx-1px"></i>
+            </a>
+
+            <a role="button" (click)="close()" class="card-toolbar-btn text-dark-tp4">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div><!-- /.card-header -->
+
+    <div class="card-body p-0 text-white" #collapse="ngbCollapse" [ngbCollapse]="defaultExpanded()">
+     <div class="p-3">
+        <p>
+           Commodo odio aenean sed adipiscing diam donec. Libero volutpat sed cras ornare arcu dui vivamus arcu felis. Mauris a diam maecenas sed enim. 
+        </p>
+        <p>
+           Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Tincidunt lobortis feugiat vivamus at augue eget arcu.
+        </p>
+        <p>
+            Neque vitae tempus quam pellentesque nec nam. Accumsan sit amet nulla facilisi morbi tempus iaculis. Convallis a cras semper auctor neque vitae tempus quam.
+        </p>
+        <p class="mb-0">
+           Blandit cursus risus at ultrices mi tempus imperdiet. Porta nibh venenatis cras sed felis eget velit aliquet sagittis.
+        </p>
+     </div>
+    </div><!-- /.card-body -->
+</div><!-- /.card -->

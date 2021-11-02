@@ -1,0 +1,36 @@
+<div #card="NgAceCard" NgAceCard class="card border-0 h-100">
+    <div class="card-header border-0 bgc-transparent pl-1">
+        <h5 class="card-title mb-2 mb-md-0 text-120 text-grey-d3">
+            <i class="fas fa-chart-line text-primary-m2 mr-1 text-105"></i>
+            Sale Stats
+        </h5>
+
+        <div class="card-toolbar no-border">
+            <div ngbDropdown class="dropdown dd-backdrop dd-backdrop-none-md">
+                <a role="button" ngbDropdownToggle type="button" class="btn btn-xs btn-light-secondary border-1 text-600 px-4 radius-round dropdown-toggle">
+                    2021
+                </a>
+                
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-animated dd-appear-center dd-slide-none-md mw-auto">
+                    <div class="dropdown-inner">
+                        <a role="button" ngbDropdownItem class="active">2021</a>
+                        <a role="button" ngbDropdownItem>2020</a>
+                        <a role="button" ngbDropdownItem>2019</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-toolbar align-self-center">
+            <a role="button" (click)="reload()" class="card-toolbar-btn text-success-m2 text-100">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body p-0 ccard px-1 mx-n1 mx-md-0 h-100 d-flex align-items-center">
+        <div class="mx-n2 px-0 mx-md-0 my-2 w-100">
+            <canvas #canvasRef height="105"></canvas>
+        </div>
+    </div>
+</div>

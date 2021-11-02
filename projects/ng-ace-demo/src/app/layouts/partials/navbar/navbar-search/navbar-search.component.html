@@ -1,0 +1,12 @@
+<ng-template #template>
+    <button class="navbar-toggler py-2" type="button" (click)="collapse.toggle()" aria-controls="navbarSearch" [attr.aria-expanded]="!isMenuCollapsed" aria-label="Toggle navbar search">
+        <i class="fa fa-search text-white text-90 py-1"></i>
+    </button><!-- mobile #navbarSearch toggler -->
+
+    <div #collapse="ngbCollapse" [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse navbar-backdrop">
+        <form class="d-flex align-items-center ml-lg-4 py-1" (ngSubmit)="collapse.toggle()">
+            <i class="fa fa-search text-white d-none d-lg-block pos-rel"></i>
+            <input NgAceAutofocus type="text" class="navbar-input mx-3 flex-grow-1 mx-md-auto pr-1 pl-lg-4 ml-lg-n3 py-2" placeholder="SEARCH ..." aria-label="Search" />
+        </form>
+    </div>
+</ng-template>

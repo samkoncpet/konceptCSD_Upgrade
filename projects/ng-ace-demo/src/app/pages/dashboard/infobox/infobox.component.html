@@ -1,0 +1,47 @@
+<div class="row h-100 mx-n425">
+
+    <div *ngFor="let stat of stats1" class="col-12 col-sm-4 p-0 pos-rel mt-3 mt-sm-0 pt-0 pt-sm-0 text-center">
+         <div class="ccard h-100 d-flex flex-column mx-2 px-2 py-3">
+            <div class="d-flex text-center">
+                <div class="flex-grow-1 mb-3">
+                    <div *ngIf="stat.text" class="text-nowrap text-100 text-dark-l2">
+                        {{stat.text}}
+                    </div>
+    
+                    <div *ngIf="stat.content" [innerHTML]="stat.content" class="text-nowrap text-125 text-secondary-d3">
+                    </div>
+    
+                    <div *ngIf="stat.number">
+                        <span *ngIf="stat['dollar-sign']" class="text-150 text-secondary-d1 mr-n1">$</span>
+                        <span class="text-170 text-secondary-d4">
+                            {{stat.number}}
+                        </span>
+    
+                        <span *ngIf="stat['stat-success']" class="text-blue text-nowrap ml-n1">
+                            +{{stat['stat-success']}}
+                            <i class="fa fa-caret-up"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div *ngIf="stat.progress" class="align-self-center pos-rel text-{{stat.textColor}}">
+                <dashboard-infobox-piechart [dataset]="stat.progress"></dashboard-infobox-piechart>
+                <span class="position-center text-600 text-110 text-dark-tp4">
+                    {{stat.progress}}%
+                </span>
+            </div>
+    
+            <div *ngIf="stat.chart" class="align-self-center w-95">
+                <dashboard-infobox-linechart [dataset]="stat.chart"></dashboard-infobox-linechart>
+            </div>
+
+           <button *ngIf="stat.button" type='button' class='btn btn-outline-blue radius-round btn-bold px-4 py-1 mt-3 mx-auto'>
+               View Report
+            </button>
+
+        </div><!-- /.ccard -->
+    </div><!-- /.col -->
+
+</div><!-- /.row -->

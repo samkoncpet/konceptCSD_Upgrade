@@ -1,0 +1,66 @@
+<div *ngIf="!isClosed()" #card="NgAceCard" NgAceCard class="card">
+    <div class="card-header">
+        <h5 class="card-title">
+            Default Card
+        </h5>
+        
+        <div class="card-toolbar">
+            <div ngbDropdown class="dropdown">
+                <a role="button" ngbDropdownToggle class="card-toolbar-btn text-blue">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-caret mr-n3 dropdown-animated">
+                    <a role="button" class="dropdown-item" ngbDropdownItem>
+                        Action 1
+                    </a>
+                    <a role="button" class="dropdown-item" ngbDropdownItem>
+                        Action 2
+                    </a>
+                    <hr class="my-1" />
+                    <a role="button" class="dropdown-item" ngbDropdownItem>
+                        Separated link
+                    </a>
+                </div>
+            </div>
+
+            <a role="button" (click)="card.toggleFullscreen()" class="card-toolbar-btn text-orange-d3">
+                <i *ngIf="!card.fullscreen" class="fa fa-expand"></i>
+                <i *ngIf="card.fullscreen" class="fa fa-compress"></i>
+            </a>
+
+            <a role="button" (click)="reload()" class="card-toolbar-btn text-green">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+
+            <a role="button" (click)="toggle()" [attr.aria-expanded]="!collapse.collapsed" class="card-toolbar-btn text-grey-d1">
+                <i *ngIf="!collapse.collapsed" class="fa fa-chevron-up"></i>
+                <i *ngIf="collapse.collapsed" class="fa fa-chevron-down"></i>
+            </a>
+
+            <a role="button" (click)="close()" class="card-toolbar-btn text-danger">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div><!-- /.card-header -->
+
+    <div class="card-body p-0" #collapse="ngbCollapse" [ngbCollapse]="defaultExpanded()"><!-- to have smooth .card toggling, it should have zero padding -->
+     <div class="p-3">
+        <p class="alert bgc-secondary-l4 brc-info-m1 border-0 border-l-4 radius-0 text-dark-tp2">
+            <i class="far fa-hand-point-right mr-1"></i>
+            You can drag and drop cards to sort them. The new position is saved and will be restored when you reload this page.
+        </p>
+        <p class="alert bgc-secondary-l4 brc-orange-m1 border-0 border-l-4 radius-0 text-dark-tp2">
+            <i class="far fa-hand-point-right mr-1"></i>
+            When you toggle or close a card, its state is saved and will be restored upon page reload.
+        </p>
+        <p class="alert bgc-secondary-l4 brc-green-m1 border-0 border-l-4 radius-0 text-dark-tp2 mb-1">
+            <i class="far fa-hand-point-right mr-1"></i>
+            You can
+            <a role="button" (click)="resetAll()" class="text-600 text-primary-d2 bgc-h-orange-l1 px-1 ml-n1 no-underline">
+              reset cards
+            </a>
+            back to their original position and state.
+        </p>
+     </div>
+    </div><!-- /.card-body -->
+</div>

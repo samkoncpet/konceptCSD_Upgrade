@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12 col-md-4 col-xl-3">
+        <app-inbox-side-menu></app-inbox-side-menu>
+    </div>
+
+    <div class="col-12 col-md-8 col-xl-9 pt-3" [ngClass]="{'d-none': viewMode != 'messageList'}">
+        <app-inbox-toolbar></app-inbox-toolbar>
+
+        <div>
+            <hr class="brc-black-tp10 my-0" />
+
+            <app-inbox-messages></app-inbox-messages>
+        </div>
+
+        <app-inbox-footer></app-inbox-footer>
+    </div>
+
+    <div class="col-12 col-sm-8 col-xl-9 pt-3" [ngClass]="{'d-none': viewMode != 'messageDetail'}">
+        <app-inbox-message-detail class="d-block"></app-inbox-message-detail>
+    </div>
+</div>
+
+
+
+<!-- the "compose" trigger button to show the "Compose" aside/dialog  ... only shown in small devices -->
+<div class="position-br pos-fixed mb-5 pb-3 mr-2 d-sm-none">
+    <button (click)="openComposeDialog()" type="button" class="shadow ml-2 btn btn-info radius-round mw-auto px-3 py-2">
+        <i class="fa fa-pen mr-1"></i>
+        Compose
+    </button> 
+</div>
+
+
+<!-- the "message compose" aside (dialog) -->
+<app-inbox-compose></app-inbox-compose>

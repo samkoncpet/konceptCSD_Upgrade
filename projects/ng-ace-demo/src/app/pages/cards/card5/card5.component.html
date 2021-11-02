@@ -1,0 +1,43 @@
+<div *ngIf="!isClosed()" #card="NgAceCard" NgAceCard class="card dcard">
+    <div class="card-header">
+        <h5 class="card-title text-120 text-primary-d2">
+            With Badge
+        </h5>
+        
+        <div class="card-toolbar">
+            <span class="badge badge-success badge-lg ml-2 badge-pill">
+                16%
+                <i class="fa fa-arrow-up"></i>
+            </span>
+
+            <div class="card-toolbar no-border">
+                <a role="button" (click)="reload()" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-success mx-2px">
+                    <i class="fas fa-sync-alt w-2 mx-1px"></i>
+                </a>
+
+                <a role="button" (click)="toggle()" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-default mx-2px">
+                    <i *ngIf="!collapse.collapsed" class="fa fa-angle-double-up w-2 mx-1px"></i>
+                    <i *ngIf="collapse.collapsed" class="fa fa-angle-double-down w-2 mx-1px"></i>
+                </a>
+
+                <a role="button" (click)="close()" class="card-toolbar-btn btn btn-sm radius-1 btn-outline-danger mx-2px">
+                    <i class="fa fa-times w-2 mx-1px"></i>
+                </a>
+            </div>
+        </div>
+    </div><!-- /.card-header -->
+
+    <div class="card-body p-0" #collapse="ngbCollapse" [ngbCollapse]="defaultExpanded()">
+     <div class="p-3">
+        <p>
+            Est placerat in egestas erat. Arcu bibendum at varius vel pharetra vel turpis. Tristique risus nec feugiat in fermentum posuere urna nec.
+        </p>
+        <p>
+            Vel pharetra vel turpis nunc eget lorem dolor sed. Egestas purus viverra accumsan in. Amet massa vitae tortor condimentum lacinia quis vel eros donec.
+        </p>
+        <p class="mb-0">
+            Neque vitae tempus quam pellentesque nec nam!
+        </p>
+     </div>
+    </div><!-- /.card-body -->
+</div>

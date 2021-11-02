@@ -1,0 +1,84 @@
+<div class="card bcard h-auto border-0">
+    <div class="card-header bgc-green-d3">
+      <h3 class="card-title text-130 text-white">
+        Browse Files
+      </h3>
+    </div>
+
+    <div class="card-body bgc-white border-1 border-t-0 brc-success-m3">
+      <ngx-treeview [items]="items" [config]="config" [headerTemplate]="fileHeaderTemplate" [itemTemplate]="fileItemTemplate">
+      </ngx-treeview>
+    </div>
+</div>
+
+
+
+<ng-template #fileItemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand"
+  let-onCheckedChange="onCheckedChange">
+  <div class="form-inline row-item mb-2px" [ngClass]="{'is-parent-label': item.children}">
+    
+    <!-- the caret icon to expand/collapse -->
+    <a *ngIf="item.children" (click)="onCollapseExpand()" [attr.aria-hidden]="item.collapsed" class="btn-text-lightgrey btn-h-text-default px-1 radius-1 mr-2px" role="button">
+      <i class="fa fa-caret-right text-110" [ngClass]="{'rotate-45': !item.collapsed}"></i>
+    </a>
+
+    <!-- the dot before file names -->
+    <i *ngIf="!item.children" class="d-inline-block p-3px bgc-secondary-m1 radius-1 mr-15 ml-25"></i>
+
+
+    <div role="button" (click)="item.checked = !item.checked; onCheckedChange()" class="d-flex align-items-center flex-grow-1 radius-3px px-15" [ngClass]="{'bgc-h-warning-l3': !item.checked, 'bgc-blue-l3':item.checked && !item.children, 'bgc-success-l2':item.checked && item.children}">
+      <!-- show 'open' icon if exists (and not collapsed) -->
+      <ng-container *ngIf="!item.collapsed && item.icons && item.icons.open">
+        <span class="mr-25 w-2" [innerHTML]="item.icons.open"></span>
+      </ng-container>
+
+      <!-- show 'default' icon if exists -->
+      <ng-container *ngIf="(item.collapsed && item.icons && item.icons.default || !item.collapsed && item.icons && !item.icons.open && item.icons.default)">
+        <span class="mr-25 w-2" [innerHTML]="item.icons.default"></span>
+      </ng-container>
+
+      <div class="form-check flex-grow-1 justify-content-start py-1 pl-0 w-auto">
+        <input type="checkbox" class="pos-abs invisible form-check-input bgc-orange mr-2 ml-1" [(ngModel)]="item.checked" (ngModelChange)="onCheckedChange()"
+          [disabled]="item.disabled" [indeterminate]="item.indeterminate" />
+        <label class="form-check-label text-secondary-d4 text-100">
+          {{item.text}}
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- the search area -->
+<ng-template #fileHeaderTemplate let-config="config" let-item="item" let-onCollapseExpand="onCollapseExpand"
+  let-onCheckedChange="onCheckedChange" let-onFilterTextChange="onFilterTextChange">
+  <div *ngIf="config.hasFilter" class="row row-filter mb-3">
+    <div class="col-12">
+      <input class="form-control brc-blue-m3 brc-on-focus" type="text" placeholder="Search ..." [(ngModel)]="filterText"
+        (ngModelChange)="onFilterTextChange($event)" />
+    </div>
+  </div>
+  <div *ngIf="true">
+    <div *ngIf="config.hasAllCheckBox || config.hasCollapseExpand" class="row row-all">
+      <div class="col-12">
+        <div class="form-check form-check-inline" *ngIf="config.hasAllCheckBox">
+          <input type="checkbox" class="form-check-input text-info" [(ngModel)]="item.checked" (ngModelChange)="onCheckedChange()"
+            [indeterminate]="item.indeterminate" />
+          <label class="form-check-label" (click)="item.checked = !item.checked; onCheckedChange()">
+            Select All
+          </label>
+        </div>
+        <label *ngIf="config.hasCollapseExpand" class="float-right form-check-label btn btn-xs btn-white btn-h-outline-white btn-a-outline-white btn-brc-tp px-2" (click)="onCollapseExpand()">
+          <span [ngSwitch]="item.collapsed">
+            <span *ngSwitchCase="true">
+              Expand All
+            </span>
+            <span *ngSwitchCase="false">
+              Collapse All
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

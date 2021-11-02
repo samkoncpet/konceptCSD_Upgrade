@@ -1,0 +1,29 @@
+.speech-bubble {
+    margin: 1rem;
+    
+    position: relative;
+    border-radius: 1rem;
+
+    max-width: 300px;
+
+    &::before {
+        content: "";
+
+        position: absolute;
+        right: 40%;
+        top: -15px;
+        transform-origin: center;
+        transform: rotate(-90deg) skew(-25deg);
+
+        height: 0;
+        width: 0;
+
+        border: 0.75rem solid;
+        border-color: transparent;
+        border-bottom: none;
+
+        border-top: 1.5rem solid;
+        border-top-color: inherit;       
+    }
+}
+
