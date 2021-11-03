@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.showWelcomeMessage()
+    //this.showWelcomeMessage()
   }
 
   private _welcomeToast: any;

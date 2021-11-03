@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -34,7 +35,7 @@ const routes: Routes = [
     CommonModule,
 
     NgbModule,
-
+    ReactiveFormsModule,
     NgAceAdminModule,
     
     RouterModule.forChild(routes)

@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgAceAdminModule } from 'ng-ace-admin';
@@ -33,6 +33,8 @@ import { LoginLayoutComponent } from './layouts/login/login.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
 
     BrowserAnimationsModule,
     LoadingBarModule,

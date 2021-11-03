@@ -10,6 +10,6 @@ export class AppsettingsService {
   // Koncent Host URL's
   koncentAPI: string = environment.koncentAPI;
   
-  // Login API
-  loginAPI: string = "";
+  // Signin API
+  signinAPI: string = "api/authentication/signin";
 }

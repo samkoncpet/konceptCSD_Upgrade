@@ -42,6 +42,15 @@ export class ConfigurationService implements HttpInterceptor {
     return headers
   }
 
+  private prepareCustomHeader(method: string, url: string, headers: HttpHeaders | null): HttpHeaders {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'language': 'en'
+      });
+  
+      return headers
+    }
+
   getWithoutHeader<T>(url: string): Observable<T> {
       return this._http.get<T>(url, {withCredentials: false});
   }
@@ -49,6 +58,11 @@ export class ConfigurationService implements HttpInterceptor {
   get<T>(url: string, headers?: HttpHeaders | null,): Observable<T> {
     const expandedHeaders = this.prepareHeader('GET', url, headers);
       return this._http.get<T>(url, {headers: expandedHeaders, withCredentials: false});
+  }
+
+  postWithoutHeader<T>(url: string, body: any, headers?: HttpHeaders | null): Observable<T> {     
+    const expandedHeaders = this.prepareCustomHeader('POST', url, headers);
+      return this._http.post<T>(url, body, {headers: expandedHeaders, withCredentials: false});
   }
 
   post<T>(url: string, body: any, headers?: HttpHeaders | null): Observable<T> {     
