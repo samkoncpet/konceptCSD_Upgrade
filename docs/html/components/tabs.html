@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Tabs</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/components/tooltips.html" class="prev-link" title="Tooltips &amp; Popovers">‹</a>
+			
+					<a href="./html/components/accordions.html" class="next-link" title="Accordions">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="tabs"><div class="h-inner">Tabs <a href="./html/components/tabs.html#tabs"></a></div></h1>
+<p>For information about tabs please refer to Bootstrap's documentation.</p>
+<h2 id="styling-position"><div class="h-inner">Styling &amp; Position <a href="./html/components/tabs.html#styling-position"></a></div></h2>
+<p>Tabs can be above, on right or on left of the content.<br>
+You can disable the extra positions in <em>ace-features.scss</em> by changing <code>$tabs-left</code>, etc to <code>false</code>:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;&#13;&#10;  ...&#13;&#10;&lt;/ul&gt;&#13;&#10;&#13;&#10;&lt;div class=&quot;tab-content&quot;&gt;&#13;&#10;  ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>To use other tabs positions such as <code>.tabs-left</code>, etc, you just need to change the parent class name:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;tabs-left&quot;&gt;&#13;&#10;  &lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;&#13;&#10;    ...&#13;&#10;  &lt;/ul&gt;&#13;&#10;  &lt;div class=&quot;tab-content&quot;&gt;&#13;&#10;    ...&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="tab-options"><div class="h-inner">Tab Options <a href="./html/components/tabs.html#tab-options"></a></div></h3>
+<h4 id="nav-tabs-detached-tab-buttons-will-be-detached-from-tab-content-as-in-the-bike-train-car-etc-example"><div class="h-inner"><code>.nav-tabs-detached</code>: Tab buttons will be detached from <code>.tab-content</code> (as in the Bike, Train, Car, etc example) <a href="./html/components/tabs.html#nav-tabs-detached-tab-buttons-will-be-detached-from-tab-content-as-in-the-bike-train-car-etc-example"></a></div></h4>
+<h4 id="nav-tabs-static-the-active-tab-button-won-t-move-up"><div class="h-inner"><code>.nav-tabs-static</code>: The active tab button won't move (up) <a href="./html/components/tabs.html#nav-tabs-static-the-active-tab-button-won-t-move-up"></a></div></h4>
+<h4 id="nav-tabs-faded-the-non-active-tab-buttons-will-be-somewhat-faded"><div class="h-inner"><code>.nav-tabs-faded</code>: The non-active tab buttons will be somewhat faded <a href="./html/components/tabs.html#nav-tabs-faded-the-non-active-tab-buttons-will-be-somewhat-faded"></a></div></h4>
+<h4 id="nav-tabs-shadow-the-active-tab-button-will-have-a-small-shadow"><div class="h-inner"><code>.nav-tabs-shadow</code>: The active tab button will have a small shadow <a href="./html/components/tabs.html#nav-tabs-shadow-the-active-tab-button-will-have-a-small-shadow"></a></div></h4>
+<h3 id="simple-tabs"><div class="h-inner">Simple Tabs <a href="./html/components/tabs.html#simple-tabs"></a></div></h3>
+<p>Add <code>.nav-tabs-simple</code> for simple style tabs and you can use custom border color for <code>.active</code> item:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="3,9"><code class="language-html">&lt;ul class=&quot;nav nav-tabs nav-tabs-simple&quot;&gt;&#13;&#10;  &lt;li class=&quot;nav-item&quot;&gt;&#13;&#10;    &lt;a href=&quot;#&quot; class=&quot;nav-link brc-danger&quot; ...&gt;&#13;&#10;        ...&#13;&#10;    &lt;/a&gt;&#13;&#10;  &lt;/li&gt;&#13;&#10;&#13;&#10;  &lt;li class=&quot;nav-item&quot;&gt;&#13;&#10;    &lt;a href=&quot;#&quot; class=&quot;nav-link brc-success&quot; ...&gt;&#13;&#10;        ...&#13;&#10;    &lt;/a&gt;&#13;&#10;  &lt;/li&gt;&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can also use <a href="./html/css/d-style.html">Dynamic Styling</a> to show/hide an icon or text when a tab button becomes <code>.active</code> or inactive:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="3,9"><code class="language-html">&lt;li class=&quot;nav-item&quot;&gt;&#13;&#10;    &lt;a href=&quot;#&quot; class=&quot;nav-link brc-success d-style&quot; ...&gt;&#13;&#10;        &lt;i class=&quot;fa fa-home text-grey-l2 d-n-active&quot;&gt;&lt;/i&gt;&#13;&#10;        &lt;i class=&quot;fa fa-home text-success-m1 d-active&quot;&gt;&lt;/i&gt;&#13;&#10;        Home&#13;&#10;    &lt;/a&gt;&#13;&#10;&lt;/li&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="custom-styles"><div class="h-inner">Custom Styles <a href="./html/components/tabs.html#custom-styles"></a></div></h3>
+<p>You can use <code>.btn</code> classes instead of <code>.nav-link</code> for custom tab buttons:<br>
+<img src="./images/tabs-custom.png" alt="Custom Tabs"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav nav-tabs bgc-secondary-l2 border-y-1 brc-secondary-l2&quot; role=&quot;tablist&quot;&gt;&#13;&#10;  &lt;li class=&quot;nav-item mr-2px&quot;&gt;&#13;&#10;    &lt;a id=&quot;home1-tab-btn&quot;&#13;&#10;       class=&quot;d-style active btn btn-tp btn-light-secondary btn-h-white btn-a-text-dark btn-a-white px-3 px-sm-4 py-25 radius-0 border-0&quot;&#13;&#10;       data-toggle=&quot;tab&quot; href=&quot;#tab1&quot; role=&quot;tab&quot; aria-controls=&quot;home1&quot; aria-selected=&quot;true&quot;&gt;&#13;&#10;        &lt;span class=&quot;v-active position-tl w-100 border-t-3 brc-green mt-n3px&quot;&gt;&lt;/span&gt;&lt;!-- when .active show a green border on top --&gt;&#13;&#10;        Home&#13;&#10;    &lt;/a&gt;&#13;&#10;  &lt;/li&gt;&#13;&#10;  .&#13;&#10;  .&#13;&#10;  .&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="sliding-tabs"><div class="h-inner">Sliding Tabs <a href="./html/components/tabs.html#sliding-tabs"></a></div></h2>
+<p>Enable sliding tab panes by adding <code>.tab-sliding</code> to the <code>.tab-content</code>.<br>
+<code>.tab-pane</code> elements shouldn't have <code>.fade</code> any more:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;tab-content tab-sliding px-0&quot;&gt;&#13;&#10;  &lt;div class=&quot;tab-pane active show px-2&quot; id=&quot;tab-1&quot;&gt;&#13;&#10;    ...&#13;&#10;  &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;div class=&quot;tab-pane px-2&quot; id=&quot;tab-2&quot;&gt;&#13;&#10;    ...&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-info">
+If you add <code>.mh-none</code> (max-height: none) class to <code>.tab-pane</code> , the <code>.tab-content</code> instantly becomes as tall as the newly active tab
+</div></p>
+<hr>
+<h3 id="swipe-options"><div class="h-inner">Swipe options <a href="./html/components/tabs.html#swipe-options"></a></div></h3>
+<ul>
+<li><code>data-swipe</code>: If set to <code>none</code>, swiping will be disabled. If set to <code>right</code> or <code>left</code> only swiping right/left will be allowed</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;tab-content tab-sliding px-0&quot; data-swipe=&quot;none&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>data-swipe-prev</code> and <code>data-swipe-next</code>: Can be used to specify the previous or next tab pane when swiping a tab pane:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;tab-pane px-2&quot; id=&quot;tab-4&quot; data-swipe-prev=&quot;#tab-1&quot;&gt;&#13;&#10;&lt;!-- swiping #tab-4 to right will show #tab-1 instead of #tab-3 --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-undefined">
+These options are used in <a href="./html/pages/overview.html#login">login page</a> which contains 3 tab panes for <em>login</em> , <em>signup</em> and <em>forgot</em> sections.<br>
+When inside <em>signup</em> and <em>forgot</em> you can <strong>only</strong> swipe back to <em>login</em>.
+</div></p>
+<p><div class="alert alert-success">
+On page load, swiping gestures are enabled for existing tabs.<br>
+If you add a set of tabs later and want to enable swiping for them, you can use the <code>aceTabSwipe</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#my-tab-content.tab-content&#39;).aceTabSwipe()&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h2 id="scrollable-tab-buttons"><div class="h-inner">Scrollable Tab Buttons <a href="./html/components/tabs.html#scrollable-tab-buttons"></a></div></h2>
+<p><img src="./images/tabs-scrollable.png" alt="Scrollable Tabs"><br>
+In small devices, tab buttons may not fit in available space. They can either be wrapped or made scrollable by using the following options:</p>
+<h4 id="nav-tabs-scroll"><div class="h-inner"><code>.nav-tabs-scroll</code> <a href="./html/components/tabs.html#nav-tabs-scroll"></a></div></h4>
+<p>When a tab button is clicked, <code>.nav</code> element is scrolled for that button to come into center:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav nav-tabs nav-justified nav-tabs-scroll&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="is-scrollable"><div class="h-inner"><code>.is-scrollable</code> <a href="./html/components/tabs.html#is-scrollable"></a></div></h4>
+<p>This will make the tabs scrollable. You can swipe the buttons right or left:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav nav-tabs nav-justified nav-tabs-scroll is-scrollable&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<p>Add <code>.is-scrollbar-shown</code> to make scrollbars visible.</p>
+<p><div class="alert alert-success">
+On page load, scrolling is enabled for existing tabs.<br>
+If you add a set of tabs later and want to enable scrolling for them, you can use the <code>aceTabScroll</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#my-scrollable-nav-tabs&#39;).aceTabScroll()&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h2 id="sticky-nav-tabs"><div class="h-inner">Sticky Nav/Tabs <a href="./html/components/tabs.html#sticky-nav-tabs"></a></div></h2>
+<p><code>.sticky-nav</code> elements stick to page's top or below navbar (if navbar is fixed):</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sticky-nav&quot;&gt;&#13;&#10;   &lt;ul class=&quot;nav nav-tabs page-nav-tabs nav-tabs-boxed nav-justified nav-tabs-scroll is-scrollable&quot; role=&quot;tablist&quot;&gt;&#13;&#10;     ...&#13;&#10;   &lt;/ul&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;&#13;&#10;&lt;div class=&quot;tab-content&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-info">
+In order for an element to have <code>position: sticky</code>, its parents should be <code>overflow: visible</code> .<br>
+Therefore in Ace's demo in pages that have <code>.sticky-nav</code>, I disable <code>overflow: hidden</code> for <code>.body-container</code> dynamically but you should do that in CSS,
+if you have a sticky element on all of your pages:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;.body-container&#39;).css(&#39;overflow&#39;, &#39;visible&#39;) // for sticky to work&#13;&#10;</code></pre>
+					</div>
+<p>Also when sidebar is <a href="./html/basics/sidebar.html#mobile-view"><em>.sidebar-push</em></a> , <code>.main-content</code> has <code>overflow-x: hidden</code> and you can't have sticky nav
+</div></p>
+<p><div class="alert alert-warning">
+Removing <code>overflow: hidden</code> from <code>.body-container</code>, sometimes causes unwanted horizontal scrollbars for <code>body</code> if an element is wider than window size.<br>
+Make sure to check for that and modify/re-structure your elements to fit in window area properly
+</div></p>
+<p><div class="alert alert-success">
+Sometimes when document scrolls and an element becomes stuck/unstuck, you want to change its styling.<br>
+For that, you can listen to the custom <code>sticky-change</code> event:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">var stickyNav = document.querySelector(&#39;.sticky-nav&#39;);&#13;&#10;stickyNav.addEventListener(&#39;sticky-change&#39;, function(e) {&#13;&#10;  stickyNav.classList.toggle(&#39;is-stuck&#39;, e.detail.isSticky)&#13;&#10;  // var myNav = stickyNav.querySelector(&#39;.nav-tabs&#39;)&#13;&#10;  if (e.detail.isSticky) {&#13;&#10;    // if stuck do something    &#13;&#10;    // myNav.classList.add(&#39;bgc-white-tp1&#39;);&#13;&#10;  }&#13;&#10;  else {&#13;&#10;    // if not stuck undo the thing&#13;&#10;    // myNav.classList.remove(&#39;bgc-white-tp1&#39;);&#13;&#10;  }&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<p>See <code>views/pages/page-profile/@page-script.js</code> for more of an example
+</div></p>
+<p><div class="alert alert-info">
+On page load, sticky nav is enabled for existing tabs.<br>
+If you add a set of tabs (or other element) later and want to enable sticky events for them, you can use the <code>aceStickyNav</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#my-sticky-nav&#39;).aceStickyNav()&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h3 id="responsive-sticky-nav"><div class="h-inner">Responsive Sticky Nav <a href="./html/components/tabs.html#responsive-sticky-nav"></a></div></h3>
+<p>You can have sticky navs for smaller devices only:</p>
+<ul>
+<li><code>.sticky-nav-sm</code> will become sticky only below <code>sm</code> size</li>
+<li><code>.sticky-nav-md</code> will become sticky only below <code>md</code> size</li>
+<li><code>.sticky-nav-lg</code> will become sticky only below <code>lg</code> size</li>
+<li><code>.sticky-nav-xl</code> will become sticky only below <code>xl</code> size</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sticky-nav-md&quot;&gt;&#13;&#10; &lt;!-- becomes sticky only below md size --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>Remember for sticky to work, <code>.body-container</code> cannot have <code>overflow: hidden</code></p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">var stickyNav = document.querySelector(&#39;[class*=&quot;sticky-nav&quot;]&#39;);&#13;&#10;stickyNav.addEventListener(&#39;sticky-change&#39;, function(e) {&#13;&#10;  if (e.detail.isSticky) {&#13;&#10;    // if stuck do something&#13;&#10;  }&#13;&#10;  else {&#13;&#10;    // if not sticky undo the thing&#13;&#10;  }&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-success">
+All above sticky classes work on table header (<code>thead</code>) as well.
+</div></p>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/components/tooltips.html" class="prev-link">
+				          Tooltips &amp; Popovers
+				      </a>
+				
+				      <a href="./html/components/accordions.html" class="next-link">
+				          Accordions
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/components/tabs";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

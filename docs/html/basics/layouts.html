@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Page Layout</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/basics/themes.html" class="prev-link" title="Themes">‹</a>
+			
+					<a href="./html/basics/navbar.html" class="next-link" title="Navbar">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="layouts"><div class="h-inner">Layouts <a href="./html/basics/layouts.html#layouts"></a></div></h1>
+<h2 id="main-layout"><div class="h-inner">Main layout <a href="./html/basics/layouts.html#main-layout"></a></div></h2>
+<p>Default layout is used in most pages and has the following structure as you can view in <code>views/layouts/dashboard/#index.hbs</code><br>
+In this layout sidebar starts from top and navbar is inside <code>.main-content</code></p>
+<p><div class="alert alert-success">
+For a quick overview of the main layout, you can also check <code>html/starter.html</code> page.<br>
+It's a minimal (empty) page included to make it easy to easily figure out the main layout without having to look through &quot;layouts&quot; files.
+</div></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;!doctype html&gt;&#13;&#10;&lt;html lang=&quot;en&quot;&gt;&#13;&#10;  &lt;head&gt;&#13;&#10;    {{&gt; layout/_commons/_head}} &lt;!-- contains title, meta tags, stylesheets, etc --&gt;&#13;&#10;  &lt;/head&gt;&#13;&#10;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;div class=&quot;body-container&quot;&gt;&#13;&#10;      &lt;div id=&quot;navbar&quot; class=&quot;navbar navbar-blue navbar-fixed&quot;&gt;&#13;&#10;        &lt;!-- navbar content --&gt;&#13;&#10;      &lt;/div&gt;&#13;&#10;&#13;&#10;      &lt;div class=&quot;main-container bgc-white&quot;&gt;&#13;&#10;&#13;&#10;        &lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-fixed expandable sidebar-light&quot;&gt;&#13;&#10;          &lt;!-- sidebar content --&gt;&#13;&#10;        &lt;/div&gt;&lt;!-- /.sidebar --&gt;&#13;&#10;&#13;&#10;        &lt;div class=&quot;main-content&quot;&gt;&#13;&#10;          &lt;div class=&quot;page-content container container-plus&quot;&gt;&#13;&#10;            &lt;!-- page content --&gt;&#13;&#10;          &lt;/div&gt;&#13;&#10;&#13;&#10;          &lt;div id=&quot;footer&quot; class=&quot;footer&quot;&gt;&#13;&#10;            &lt;!-- footer content --&gt;&#13;&#10;          &lt;/div&gt;&#13;&#10;        &lt;/div&gt;&lt;!-- /.main-content --&gt;&#13;&#10;&#13;&#10;      &lt;/div&gt;&lt;!-- /.main-container --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;    {{&gt; layout/_commons/_tail}} &lt;!-- contains required scripts, etc --&gt;&#13;&#10;&#13;&#10;  &lt;/body&gt;&#13;&#10;&lt;/html&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="head"><div class="h-inner">Head <a href="./html/basics/layouts.html#head"></a></div></h3>
+<p>As you can see in <code>views/layouts/_commons/_head.hbs</code>, it contains title tag, meta tags (viewport, charset, etc),
+list of stylesheets used in all pages and in a specific page, fonts, and ace.css:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;meta charset=&quot;utf-8&quot;&gt;&#13;&#10;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, height=device-height, initial-scale=1&quot;&gt;&#13;&#10;&#13;&#10;&lt;title&gt;Page Title&lt;/title&gt;&#13;&#10;&#13;&#10;&lt;!-- include common stylesheets used in demo pages --&gt;&#13;&#10;&lt;link href=&quot;/path/to/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;&lt;link href=&quot;/path/to/fontawesome or other icon set.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;&lt;link href=&quot;/path/to/my-selected-font.css&quot; rel=&quot;stylesheet&quot; /&gt; &lt;!-- or direct link to Google fonts --&gt;&#13;&#10;&#13;&#10;&lt;!-- include vendor stylesheets used in this page --&gt;&#13;&#10;&lt;link href=&quot;/path/to/plugin1.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;&lt;link href=&quot;/path/to/plugin2.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;&#13;&#10;&lt;!-- include Ace styles --&gt;&#13;&#10;&lt;link href=&quot;/path/to/ace.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;&#13;&#10;&lt;!-- include app styles --&gt;&#13;&#10;&lt;link href=&quot;/path/to/my-app.css&quot; rel=&quot;stylesheet&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="tail"><div class="h-inner">Tail <a href="./html/basics/layouts.html#tail"></a></div></h3>
+<p>As you can see in <code>views/layouts/_commons/_tail.hbs</code>, it contains required scripts:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html"> &lt;!-- include common scripts used in demo pages --&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/jquery.js&quot;&gt;&lt;/script&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/popper.js&quot;&gt;&lt;/script&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/boostrap.js&quot;&gt;&lt;/script&gt;&#13;&#10;&#13;&#10;&lt;!-- include vendor scripts used in this page --&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/plugin1.js&quot;&gt;&lt;/script&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/plugin2.js&quot;&gt;&lt;/script&gt;&#13;&#10;&#13;&#10;&lt;!-- include Ace script --&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/ace.js&quot;&gt;&lt;/script&gt;&#13;&#10;&#13;&#10;&lt;!-- include app script --&gt;&#13;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/my-app.js&quot;&gt;&lt;/script&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="starter-layout"><div class="h-inner">Starter layout <a href="./html/basics/layouts.html#starter-layout"></a></div></h2>
+<p>This layout is used for <em>Starter</em> page and is similar to main layout.
+Its sidebar and navbar have little content to make it easy to figure out the general layout and structure.</p>
+<h2 id="dashboard-2-layout"><div class="h-inner">Dashboard 2 layout <a href="./html/basics/layouts.html#dashboard-2-layout"></a></div></h2>
+<p>This layout is used for <em>Dashboard 2</em> page.<br>
+It has different layout from main dashboard. Sidebar starts from page top and navbar is inside content area.</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;body-container&quot;&gt;&#13;&#10;  &lt;div class=&quot;main-container&quot;&gt;&#13;&#10;&#13;&#10;      &lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-dark sidebar-color sidebar-fixed expandable&quot; data-swipe=&quot;true&quot; data-backdrop=&quot;true&quot; data-dismiss=&quot;true&quot;&gt;&#13;&#10;        &lt;!-- sidebar content --&gt;&#13;&#10;      &lt;/div&gt;&#13;&#10;&#13;&#10;      &lt;div class=&quot;main-content&quot;&gt;&#13;&#10;        &lt;div id=&quot;navbar&quot; class=&quot;navbar navbar-white navbar-fixed&quot;&gt;&#13;&#10;          &lt;!-- navbar content --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;&#13;&#10;        &lt;div role=&quot;main&quot; class=&quot;page-content container container-plus&quot;&gt;&#13;&#10;          &lt;!-- page content --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;&#13;&#10;        &lt;div id=&quot;footer&quot; class=&quot;footer&quot;&gt;&#13;&#10;          &lt;!-- footer content --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;      &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="dashboard-3-layout"><div class="h-inner">Dashboard 3 layout <a href="./html/basics/layouts.html#dashboard-3-layout"></a></div></h2>
+<p>The layout in <em>Dashboard 3</em> is similar to main <em>Dashboard 2</em> layout. There are only some changes to initial navbar and sidebar themes, content and boxed layout.</p>
+<h2 id="dashboard-4-layout"><div class="h-inner">Dashboard 4 layout <a href="./html/basics/layouts.html#dashboard-4-layout"></a></div></h2>
+<p>The layout in <em>Dashboard 4</em> is similar to main <em>Dashboard</em> layout. There are only some changes to initial navbar and sidebar themes, content and boxed layout.</p>
+<h2 id="horizontal-layout"><div class="h-inner">Horizontal layout <a href="./html/basics/layouts.html#horizontal-layout"></a></div></h2>
+<p>Horizontal menu is not different. You sould add required <code>.sidebar-h</code> and <code>.sidebar-hover</code> etc class names to sidebar. <a href="./html/basics/sidebar.html#horizontal-sidebar">See here</a></p>
+<p>Sidebar can be inserted right after <code>.navbar</code> like the following example or inside content area as described later below in <a href="./html/basics/layouts.html#two-menus-layout">Two Menus Layout</a>.</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;body-container&quot;&gt;&#13;&#10;  &lt;div id=&quot;navbar&quot; class=&quot;navbar navbar-sm navbar-fixed-xl navbar-expand-lg navbar-white&quot;&gt;&#13;&#10;    &lt;!-- navbar content --&gt;&#13;&#10;  &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-fixed sidebar-hover sidebar-h sidebar-white sidebar-top&quot; data-swipe=&quot;true&quot; data-backdrop=&quot;true&quot; data-dismiss=&quot;true&quot;&gt;&#13;&#10;    &lt;!-- sidebar content --&gt;&#13;&#10;  &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;div class=&quot;main-container&quot;&gt;&#13;&#10;&#13;&#10;    &lt;div role=&quot;main&quot; class=&quot;main-content&quot;&gt;&#13;&#10;      &lt;div class=&quot;page-content container container-plus px-md-4 px-xl-5&quot;&gt;&#13;&#10;        &lt;!-- page content --&gt;&#13;&#10;      &lt;/div&gt;&#13;&#10;&#13;&#10;      {{&gt; layout/horizontal/footer}}&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;/div&gt;&#13;&#10;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="two-menus-layout"><div class="h-inner">Two menus layout <a href="./html/basics/layouts.html#two-menus-layout"></a></div></h2>
+<p>You can have two (or more) menus. There is an example in Ace's demo.<br>
+Like in <em>Two Menus</em> demo page, main menu is vertical (on left or right) and 2nd menu is horizontal and is inside content area:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;main-container&quot;&gt;&#13;&#10;  &lt;div class=&quot;sidebar expandable sidebar-fixed&quot; id=&quot;sidebar1&quot; data-dismiss=&quot;true&quot; data-backdrop=&quot;true&quot;&gt;&#13;&#10;   &lt;!-- vertical sidebar --&gt;&#13;&#10;  &lt;/div&gt;&#13;&#10;&#13;&#10;  &lt;div class=&quot;main-content&quot;&gt;&#13;&#10;    &lt;div class=&quot;navbar navbar-fixed-xl&quot;&gt;&#13;&#10;      &lt;!-- optional navbar, and fixed only below &#39;xl&#39; when sidebars are hidden --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;    &lt;div class=&quot;sidebar sidebar-h sidebar-hover collapsed-h&quot; id=&quot;sidebar2&quot;&gt;&#13;&#10;      &lt;!-- horizontal sidebar --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;     &lt;div class=&quot;page-content container px-xl-5&quot;&gt;&#13;&#10;        &lt;!-- content --&gt;&#13;&#10;     &lt;/div&gt;&lt;!-- /.page-content --&gt;&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="login-layout"><div class="h-inner">Login layout <a href="./html/basics/layouts.html#login-layout"></a></div></h2>
+<p>Login page has no special extra elements.
+There's no sidebar or navbar and there are 3 options:</p>
+<ul>
+<li>The default one when you open login page</li>
+<li>The compact one when you click <strong>Remove this section</strong></li>
+<li>Fullpage (fullscreen) view when you click <strong>Make full-size</strong></li>
+</ul>
+<p>Please refer to <a href="./html/pages/overview.html#login">Login Page</a> for more details.</p>
+<h2 id="landing-page-and-coming-soon"><div class="h-inner">Landing page and coming soon <a href="./html/basics/layouts.html#landing-page-and-coming-soon"></a></div></h2>
+<p>Landing page and coming soon have no special or extra elements. <a href="./html/pages/overview.html#landing-page">See here</a> for more info.</p>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/basics/themes.html" class="prev-link">
+				          Themes
+				      </a>
+				
+				      <a href="./html/basics/navbar.html" class="next-link">
+				          Navbar
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/basics/layouts";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

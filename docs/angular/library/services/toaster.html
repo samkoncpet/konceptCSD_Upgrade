@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Toaster</title>
+   
+   <base href="./../../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./angular/library/services/action.html" class="prev-link" title="Action">‹</a>
+			
+					<a href="./angular/library/services/modal.html" class="next-link" title="Modal">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="toaster-service"><div class="h-inner">Toaster Service <a href="./angular/library/services/toaster.html#toaster-service"></a></div></h1>
+<p>Toaster service is similar to Ace's <code>$.toaster</code> function.<br>
+You can show toast messages by specifying options such as <code>title</code> etc or you can use <code>TemplateRef</code>:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">import { NgAceToasterService } from &#39;ng-ace-admin&#39;;&#13;&#10;&#13;&#10;export class SomeComponent {&#13;&#10;    constructor(private toasterService: NgAceToasterService) {&#13;&#10;&#13;&#10;    }&#13;&#10;&#13;&#10;    someMethod() {&#13;&#10;        this.toasterService.show({&#13;&#10;            placement: &#39;tr&#39;,&#13;&#10;            className: &#39;...&#39;,&#13;&#10;&#13;&#10;            headerClass: &#39;...&#39;,&#13;&#10;            bodyClass: &#39;...&#39;,&#13;&#10;            closeClass: &#39;...&#39;,&#13;&#10;&#13;&#10;            header: &#39;Notification message!&#39;,&#13;&#10;            body: &#39;...&#39;&#13;&#10;        }).then((result: any) =&gt; {&#13;&#10;            // console.log(result)&#13;&#10;        })&#13;&#10;    }&#13;&#10;}&#13;&#10;</code></pre>
+					</div>
+<p>Or by TemplateRef:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">import { NgAceToasterService } from &#39;ng-ace-admin&#39;;&#13;&#10;&#13;&#10;export class SomeComponent {&#13;&#10;    constructor(private toasterService: NgAceToasterService) {&#13;&#10;&#13;&#10;    }&#13;&#10;&#13;&#10;    @ViewChild(TemplateRef) toastTemplate;&#13;&#10;    someMethod() {&#13;&#10;        this.toasterService.show({&#13;&#10;            templateRef: toastTemplate,&#13;&#10;&#13;&#10;            placement: &#39;center&#39;,&#13;&#10;            className: &#39;bgc-info-tp1&#39;&#13;&#10;        })&#13;&#10;    }&#13;&#10;}&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ng-template #toastTemplate&gt;&#13;&#10;    &lt;div class=&quot;d-flex m-n1 text-white&quot;&gt;&#13;&#10;        &lt;div class=&quot;toast-ico&quot;&gt;&#13;&#10;         &lt;i class=&quot;fas fa-exclamation-triangle fa-3x text-yellow-l5 mx-3&quot;&gt;&lt;/i&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;&#13;&#10;        &lt;div class=&quot;pos-rel&quot;&gt;&#13;&#10;            &lt;div class=&quot;toast-header bg-transparent border-0 text-120 text-white font-bolder pl-0&quot;&gt;&#13;&#10;               ...&#13;&#10;            &lt;/div&gt;&#13;&#10;&#13;&#10;            &lt;div class=&quot;toast-main&quot;&gt;&#13;&#10;               ...&#13;&#10;            &lt;/div&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/ng-template&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="methods"><div class="h-inner">Methods <a href="./angular/library/services/toaster.html#methods"></a></div></h2>
+<h3 id="show"><div class="h-inner">show <a href="./angular/library/services/toaster.html#show"></a></div></h3>
+<p>The following options can be passed to <code>show</code> function.<br>
+Mostly used with the non-TemplateRef version.</p>
+<p>The option values are similar to <a href="./html/components/alerts.html#options">Ace's toaster options</a></p>
+<h4 id="placement"><div class="h-inner"><code>placement</code>: <a href="./angular/library/services/toaster.html#placement"></a></div></h4>
+<h4 id="belownav"><div class="h-inner"><code>belowNav</code> <a href="./angular/library/services/toaster.html#belownav"></a></div></h4>
+<h4 id="sticky"><div class="h-inner"><code>sticky</code> <a href="./angular/library/services/toaster.html#sticky"></a></div></h4>
+<h4 id="delay"><div class="h-inner"><code>delay</code> <a href="./angular/library/services/toaster.html#delay"></a></div></h4>
+<h4 id="classname"><div class="h-inner"><code>className</code> <a href="./angular/library/services/toaster.html#classname"></a></div></h4>
+<h4 id="width"><div class="h-inner"><code>width</code> <a href="./angular/library/services/toaster.html#width"></a></div></h4>
+<h4 id="header"><div class="h-inner"><code>header</code> <a href="./angular/library/services/toaster.html#header"></a></div></h4>
+<h4 id="body"><div class="h-inner"><code>body</code> <a href="./angular/library/services/toaster.html#body"></a></div></h4>
+<h4 id="headerclass"><div class="h-inner"><code>headerClass</code> <a href="./angular/library/services/toaster.html#headerclass"></a></div></h4>
+<h4 id="bodyclass"><div class="h-inner"><code>bodyClass</code> <a href="./angular/library/services/toaster.html#bodyclass"></a></div></h4>
+<h4 id="titleclass"><div class="h-inner"><code>titleClass</code> <a href="./angular/library/services/toaster.html#titleclass"></a></div></h4>
+<h4 id="closeclass"><div class="h-inner"><code>closeClass</code> <a href="./angular/library/services/toaster.html#closeclass"></a></div></h4>
+<h4 id="progress"><div class="h-inner"><code>progress</code> <a href="./angular/library/services/toaster.html#progress"></a></div></h4>
+<h4 id="progressreverse"><div class="h-inner"><code>progressReverse</code> <a href="./angular/library/services/toaster.html#progressreverse"></a></div></h4>
+<h4 id="templateref"><div class="h-inner"><code>templateRef</code> <a href="./angular/library/services/toaster.html#templateref"></a></div></h4>
+<p>You can also pass a templateRef like the above example.</p>
+<hr>
+<p><div class="alert alert-info">
+Elements with <code>.close-btn</code> class in <code>body</code> or <code>header</code>s will hide/close the toast when clicked:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js" data-line="12"><code class="language-js">this.toasterService.show({&#13;&#10;    placement: &#39;tr&#39;,&#13;&#10;    className: &#39;...&#39;,&#13;&#10;&#13;&#10;    headerClass: &#39;...&#39;,&#13;&#10;    bodyClass: &#39;...&#39;,&#13;&#10;    closeClass: &#39;...&#39;,&#13;&#10;&#13;&#10;    header: &#39;Notification message!&#39;,&#13;&#10;    body: `&#13;&#10;        Message Here&#13;&#10;        &lt;a role=&quot;button&quot; class=&quot;close-btn text-red&quot;&gt;Close&lt;/a&gt;&#13;&#10;    `&#13;&#10;}).then((result: any) =&gt; {&#13;&#10;    // console.log(result)&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h3 id="remove"><div class="h-inner">remove <a href="./angular/library/services/toaster.html#remove"></a></div></h3>
+<p>You can remove a specific toast like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">this.toasterService.show({&#13;&#10;    // options here&#13;&#10;}).then((result: any) =&gt; {&#13;&#10;    let $toast = result.toast&#13;&#10;    this.toasterService.remove($toast)&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h3 id="removeall"><div class="h-inner">removeAll <a href="./angular/library/services/toaster.html#removeall"></a></div></h3>
+<p>The following options are available:</p>
+<h4 id="placement-2"><div class="h-inner"><code>placement</code>: <a href="./angular/library/services/toaster.html#placement-2"></a></div></h4>
+<p>If specified removes all toasts only from this position</p>
+<h4 id="instant"><div class="h-inner"><code>instant</code> <a href="./angular/library/services/toaster.html#instant"></a></div></h4>
+<p>If <code>true</code> will instantly remove toasts, no fade animation</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">this.toasterService.removeAll(&#39;tr&#39;)&#13;&#10;this.toasterService.removeAll()&#13;&#10;&#13;&#10;this.toasterService.removeAll(&#39;tr&#39;, true)&#13;&#10;</code></pre>
+					</div>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./angular/library/services/action.html" class="prev-link">
+				          Action
+				      </a>
+				
+				      <a href="./angular/library/services/modal.html" class="next-link">
+				          Modal
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/angular/library/services/toaster";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

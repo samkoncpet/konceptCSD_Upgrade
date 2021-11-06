@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Colors</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/files/demo-files.html" class="prev-link" title="Demo files">‹</a>
+			
+					<a href="./html/css/spacing-sizing.html" class="next-link" title="Spacing &amp; Sizing">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="colors"><div class="h-inner">Colors <a href="./html/css/colors.html#colors"></a></div></h1>
+<h2 id="text"><div class="h-inner">Text <a href="./html/css/colors.html#text"></a></div></h2>
+<p>The following text colors are available:</p>
+<ul>
+<li>primary</li>
+<li>info</li>
+<li>danger</li>
+<li>success</li>
+<li>warning</li>
+<li>default</li>
+<li>secondary</li>
+<li>grey</li>
+<li>blue</li>
+<li>green</li>
+<li>orange</li>
+<li>purple</li>
+<li>pink</li>
+<li>brown</li>
+<li>yellow</li>
+<li>dark</li>
+<li>white</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;span class=&quot;text-primary&quot;&gt; Hello! &lt;/span&gt;&#13;&#10;</code></pre>
+					</div>
+<p>👉 You can modify their values, add new colors or remove a color by modifying <code>$text-colors</code> in <code>scss/_variables.scss</code></p>
+<h3 id="darker-and-lighter"><div class="h-inner">Darker and Lighter <a href="./html/css/colors.html#darker-and-lighter"></a></div></h3>
+<p>You can lighten or darken them using the following variations:</p>
+<ul>
+<li><em>d1</em> to <em>d4</em> for darker colors</li>
+<li><em>m1</em> to <em>m3</em> for medium colors</li>
+<li><em>l1</em> to <em>l5</em> for lighter colors</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;span class=&quot;text-primary-d3&quot;&gt; Darker &lt;/span&gt;&#13;&#10;&lt;span class=&quot;text-primary-m2&quot;&gt; Medium Light &lt;/span&gt;&#13;&#10;&lt;span class=&quot;text-primary-l4&quot;&gt; Very Light &lt;/span&gt;&#13;&#10;</code></pre>
+					</div>
+<p>👉 You can change the number of light/dark/medium colors and their intensity (lightness/darkness) in <code>scss/_colors-text.scss</code> and <code>scss/_functions.scss</code></p>
+<ul>
+<li>In <em>_colors-text.scss</em> change <code>$dark-text-color-count</code> etc for number of available light or dark variations</li>
+<li>In <em>_functions.scss</em> Change values of <code>$dark-text-color-contrasts</code> or <code>$medium-text-color-contrasts</code> to increase or decrease lightness.</li>
+</ul>
+<p><div class="alert alert-info">
+Inside Ace's SCSS files, you can set an element's color using the following function:</p>
+<div class="code-wrap">
+						<span class="language-badge">SCSS</span>
+						<pre class="language-SCSS"><code class="language-SCSS">.my-element1 {&#13;&#10;  color: text-color(&#39;primary&#39;) //will be same color az text-primary&#13;&#10;}&#13;&#10;.my-element2 {&#13;&#10;  color: text-color(&#39;success&#39;, &#39;d1&#39;) //will be same color az text-success-d1&#13;&#10;}&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h3 id="opacity"><div class="h-inner">Opacity <a href="./html/css/colors.html#opacity"></a></div></h3>
+<p>Dark and white text colors are also available with some transparency options:</p>
+<ul>
+<li><em>text-white-tp1</em> to <em>text-white-tp4</em> for transparent white text</li>
+<li><em>text-dark-tp1</em> to <em>text-dark-tp5</em> for transparent dark text</li>
+<li><em>opacity-1</em> to <em>opacity-5</em> for opacity</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;span class=&quot;text-white-tp1&quot;&gt; White with transparency &lt;/span&gt;&#13;&#10;&lt;span class=&quot;text-dark-tp2&quot;&gt; Dark with transparency &lt;/span&gt;&#13;&#10;&lt;span class=&quot;text-danger opacity-2&quot;&gt; Danger with opacity &lt;/span&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="more-classes"><div class="h-inner">More classes <a href="./html/css/colors.html#more-classes"></a></div></h3>
+<ul>
+<li><code>.text-body</code> applies <code>body</code> text color to an element.</li>
+</ul>
+<h2 id="background"><div class="h-inner">Background <a href="./html/css/colors.html#background"></a></div></h2>
+<p>The following background colors are available with <code>bgc-</code> prefix:</p>
+<ul>
+<li>primary</li>
+<li>info</li>
+<li>success</li>
+<li>danger</li>
+<li>warning</li>
+<li>default</li>
+<li>secondary</li>
+<li>purple</li>
+<li>pink</li>
+<li>brown</li>
+<li>yellow</li>
+<li>dark</li>
+<li>white</li>
+<li>light</li>
+<li>grey</li>
+<li>lightgrey</li>
+<li>blue</li>
+<li>green</li>
+<li>red</li>
+<li>orange</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-success text-white&quot;&gt; Hello! &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>👉 You can modify their values or add new colors or remove a color by modifying <code>$background-colors</code> in <code>scss/_variables.scss</code></p>
+<h3 id="darker-lighter-transparent"><div class="h-inner">Darker, Lighter, Transparent <a href="./html/css/colors.html#darker-lighter-transparent"></a></div></h3>
+<p>You can lighten or darken background colors using the following variations:</p>
+<ul>
+<li><em>d1</em> to <em>d3</em> for darker colors</li>
+<li><em>m1</em> to <em>m4</em> for medium colors</li>
+<li><em>l1</em> to <em>l5</em> for lighter colors</li>
+<li><em>tp1</em> to <em>tp4</em> for more transparency</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-primary-d2&quot;&gt; Darker &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-primary-m2&quot;&gt; Medium Light &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-primary-l3&quot;&gt; Very Light &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-primary-tp2&quot;&gt; With transparency &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can change the number of light/dark/medium colors and their intensity (lightness/darkness) in <code>scss/_colors-background.scss</code> and <code>scss/_functions.scss</code></p>
+<ul>
+<li>In <em>_colors-background.scss</em> change <code>$light-color-count</code> , <code>$medium-color-count</code>, etc for number of available light or dark variations</li>
+<li>In <em>_functions.scss</em> Change values of <code>$_lights</code>, <code>$_mediums</code> , <code>$_lightnesses</code> to increase or decrease lightness.</li>
+</ul>
+<p><div class="alert alert-info">
+Inside Ace's SCSS files, you can set an element's color using the following function:</p>
+<div class="code-wrap">
+						<span class="language-badge">SCSS</span>
+						<pre class="language-SCSS"><code class="language-SCSS">background-color: bgc-color(&#39;success&#39;, &#39;l1&#39;)&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h3 id="white-and-dark-transparency"><div class="h-inner">White and Dark Transparency <a href="./html/css/colors.html#white-and-dark-transparency"></a></div></h3>
+<p>For white and dark colors you can use <em>-tp1</em> to <em>-tp10</em> for more transparency. For black there is also <em>tp11</em></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-black-tp11&quot;&gt; Very Light Black Background &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-white-tp5&quot;&gt; Transparent White Background &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="background-on-hover"><div class="h-inner">Background on Hover <a href="./html/css/colors.html#background-on-hover"></a></div></h3>
+<p>Light background colors can be applied on hover using <code>bgc-h-*</code> class name:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-h-yellow-l2&quot;&gt; Light yellow background on hover &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-h-blue-l1&quot;&gt; Light blue background on hover &lt;/div&gt;&#13;&#10;&lt;div class=&quot;bgc-h-black-tp2&quot;&gt; Transparent Black Background on Hover&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="gradient"><div class="h-inner">Gradient <a href="./html/css/colors.html#gradient"></a></div></h3>
+<p>The following three gradient backgrounds are available:</p>
+<ul>
+<li><code>bgc-dark-grad</code></li>
+<li><code>bgc-light-grad</code></li>
+<li><code>bgc-white-grad</code></li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-dark-grad&quot;&gt; Dark gradient background &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="other"><div class="h-inner">Other <a href="./html/css/colors.html#other"></a></div></h3>
+<ul>
+<li><code>bg-none</code> sets background image value to <em>none</em></li>
+<li><code>bgc-current</code> sets background color to current text color</li>
+<li><code>brc-current</code> sets border color to current text color</li>
+<li><code>brc-inherit</code> inherits border color from parent</li>
+<li><code>bgc-current</code> inherits background color from parent</li>
+</ul>
+<h3 id="custom-colors"><div class="h-inner">Custom colors <a href="./html/css/colors.html#custom-colors"></a></div></h3>
+<p>You can have custom background colors for an element by using existing classes:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;bgc-blue pos-rel&quot;&gt;&#13;&#10;    &lt;div class=&quot;bgc-purple-tp4 opacity-4 position-tl h-100 w-100&quot;&gt;&#13;&#10;        &lt;!-- An empty purple overlay element with `position: absolute` on `top:0; left: 0;` and `width: 100%; height: 100%` --&gt;&#13;&#10;        &lt;!-- It has transparency and mixes with background (blue) color to make a new color --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;    &lt;div class=&quot;pos-rel&quot;&gt;&#13;&#10;        &lt;!-- Content inside a `.pos-rel` element to appear above overlay --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="border"><div class="h-inner">Border <a href="./html/css/colors.html#border"></a></div></h2>
+<p>Border colors are similar to background colors but the prefix is <code>brc-</code> (short for border-color).<br>
+For example:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;brc-grey-m4 border-1&quot;&gt; Lighter Grey Border &lt;/div&gt;&#13;&#10;&lt;div class=&quot;brc-danger-tp3 border-t-2&quot;&gt; Transparent Danger Border on Top (2px) &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="border-on-hover"><div class="h-inner">Border on Hover <a href="./html/css/colors.html#border-on-hover"></a></div></h3>
+<p>Medium border colors can be applied on hover using <code>brc-h-*</code> class name:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;border-1 brc-h-yellow-m2&quot;&gt; Medium light yellow border color on hover &lt;/div&gt;&#13;&#10;&lt;div class=&quot;border-t-3 brc-h-blue-m1&quot;&gt; Medium 3px top blue border color on hover &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/files/demo-files.html" class="prev-link">
+				          Demo files
+				      </a>
+				
+				      <a href="./html/css/spacing-sizing.html" class="next-link">
+				          Spacing &amp; Sizing
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/css/colors";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

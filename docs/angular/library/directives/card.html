@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Card</title>
+   
+   <base href="./../../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./angular/library/directives/accordion.html" class="prev-link" title="Accordion">‹</a>
+			
+					<a href="./angular/library/directives/modal.html" class="next-link" title="Modal">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="card-directive"><div class="h-inner">Card Directive <a href="./angular/library/directives/card.html#card-directive"></a></div></h1>
+<p><code>NgAceCard</code> is a wrapper for Ace's Card plugin.<br>
+However it doesn't support <code>collapse</code> functionality. You should use <code>@ng-bootstrap</code> ngbCollapse directive:</p>
+<p>The syntax is as follows:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div #card=&quot;NgAceCard&quot; NgAceCard class=&quot;card&quot;&gt;&#13;&#10;    &lt;div class=&quot;card-header&quot;&gt;&#13;&#10;        &lt;h5 class=&quot;card-title&quot;&gt;&#13;&#10;            Title&#13;&#10;        &lt;/h5&gt;&#13;&#10;        &#13;&#10;        &lt;div class=&quot;card-toolbar&quot;&gt;&#13;&#10;            &lt;a role=&quot;button&quot; (click)=&quot;card.toggleFullscreen()&quot; class=&quot;card-toolbar-btn&quot;&gt;&#13;&#10;                &lt;i *ngIf=&quot;!card.fullscreen&quot; class=&quot;fa fa-expand&quot;&gt;&lt;/i&gt;&#13;&#10;                &lt;i *ngIf=&quot;card.fullscreen&quot; class=&quot;fa fa-compress&quot;&gt;&lt;/i&gt;&#13;&#10;            &lt;/a&gt;&#13;&#10;&#13;&#10;            &lt;a role=&quot;button&quot; (click)=&quot;card.reload()&quot; class=&quot;card-toolbar-btn&quot;&gt;&#13;&#10;                &lt;i class=&quot;fas fa-sync-alt&quot;&gt;&lt;/i&gt;&#13;&#10;            &lt;/a&gt;&#13;&#10;&#13;&#10;            &lt;a role=&quot;button&quot; (click)=&quot;collapse.toggle()&quot; class=&quot;card-toolbar-btn&quot;&gt;&#13;&#10;                &lt;i *ngIf=&quot;!collapse.collapsed&quot; class=&quot;fa fa-chevron-up&quot;&gt;&lt;/i&gt;&#13;&#10;                &lt;i *ngIf=&quot;collapse.collapsed&quot; class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&#13;&#10;            &lt;/a&gt;&#13;&#10;&#13;&#10;            &lt;a role=&quot;button&quot; (click)=&quot;card.close()&quot; class=&quot;card-toolbar-btn&quot;&gt;&#13;&#10;                &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&#13;&#10;            &lt;/a&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;    &lt;/div&gt;&lt;!-- /.card-header --&gt;&#13;&#10;&#13;&#10;    &lt;div class=&quot;card-body p-0&quot; #collapse=&quot;ngbCollapse&quot; [ngbCollapse]=&quot;false&quot;&gt;&#13;&#10;     &lt;div class=&quot;p-3&quot;&gt;&#13;&#10;       Content&#13;&#10;     &lt;/div&gt;&#13;&#10;    &lt;/div&gt;&lt;!-- /.card-body --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="inputs"><div class="h-inner">Inputs <a href="./angular/library/directives/card.html#inputs"></a></div></h3>
+<h4 id="fullscreen"><div class="h-inner"><code>fullscreen</code> <a href="./angular/library/directives/card.html#fullscreen"></a></div></h4>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div #card=&quot;NgAceCard&quot; NgAceCard class=&quot;card&quot; [fullscreen]=&quot;isFullscreen&quot; ...&gt;&#13;&#10;...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="outpus"><div class="h-inner">Outpus <a href="./angular/library/directives/card.html#outpus"></a></div></h3>
+<h4 id="fullscreenchange"><div class="h-inner"><code>fullscreenChange</code> <a href="./angular/library/directives/card.html#fullscreenchange"></a></div></h4>
+<p>Emitted when before card fullscreen/restore.</p>
+<h4 id="onexpanded"><div class="h-inner"><code>onExpanded</code> <a href="./angular/library/directives/card.html#onexpanded"></a></div></h4>
+<p>Emitted after card is fullscreened</p>
+<h4 id="onrestored"><div class="h-inner"><code>onRestored</code> <a href="./angular/library/directives/card.html#onrestored"></a></div></h4>
+<p>Emitted after card is restored (no more fullscreen)</p>
+<h4 id="onclosed"><div class="h-inner"><code>onClosed</code> <a href="./angular/library/directives/card.html#onclosed"></a></div></h4>
+<p>Emitted after card is closed</p>
+<h4 id="onload"><div class="h-inner"><code>onLoad</code> <a href="./angular/library/directives/card.html#onload"></a></div></h4>
+<p>Emitted when card starts/stops loading</p>
+<div class="code-wrap">
+						<span class="language-badge">ts</span>
+						<pre class="language-ts"><code class="language-ts">@ViewChild (&#39;card&#39;) card: NgAceCard;&#13;&#10;&#13;&#10;someMethod() {&#13;&#10;    this.card.onLoad.subscribe((isLoading: boolean) {&#13;&#10;        if (isLoading) {&#13;&#10;            // started loading&#13;&#10;        }&#13;&#10;        else {&#13;&#10;            // stopped loading&#13;&#10;        }&#13;&#10;    })&#13;&#10;}&#13;&#10;</code></pre>
+					</div>
+<h3 id="methods"><div class="h-inner">Methods <a href="./angular/library/directives/card.html#methods"></a></div></h3>
+<h4 id="expand"><div class="h-inner"><code>expand</code> <a href="./angular/library/directives/card.html#expand"></a></div></h4>
+<p>Expands card (makes it fullscreen)</p>
+<h4 id="restore"><div class="h-inner"><code>restore</code> <a href="./angular/library/directives/card.html#restore"></a></div></h4>
+<p>Restores card (no more fullscreen)</p>
+<h4 id="togglefullscreen"><div class="h-inner"><code>toggleFullscreen</code> <a href="./angular/library/directives/card.html#togglefullscreen"></a></div></h4>
+<h4 id="close"><div class="h-inner"><code>close</code> <a href="./angular/library/directives/card.html#close"></a></div></h4>
+<p>Closes card</p>
+<h4 id="reload"><div class="h-inner"><code>reload</code> <a href="./angular/library/directives/card.html#reload"></a></div></h4>
+<p>Adds a loading icon and layer on card</p>
+<h4 id="startloading"><div class="h-inner"><code>startLoading</code> <a href="./angular/library/directives/card.html#startloading"></a></div></h4>
+<p>Adds a loading icon and layer on card. Takes an optional <code>loadingHtml</code> parameter which is a custom HTML content (icon, etc) for the loading layer.</p>
+<h4 id="stoploading"><div class="h-inner"><code>stopLoading</code> <a href="./angular/library/directives/card.html#stoploading"></a></div></h4>
+<p>Removes the loading icon and layer</p>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./angular/library/directives/accordion.html" class="prev-link">
+				          Accordion
+				      </a>
+				
+				      <a href="./angular/library/directives/modal.html" class="next-link">
+				          Modal
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/angular/library/directives/card";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Form Elements</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/components/accordions.html" class="prev-link" title="Accordions">‹</a>
+			
+					<a href="./html/components/cards.html" class="next-link" title="Cards &amp; Widgets">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="form-elements"><div class="h-inner">Form Elements <a href="./html/components/form.html#form-elements"></a></div></h1>
+<p>For information about Form elements you can also refer to Bootstrap's documentation.</p>
+<p>Also for plugins such as inputmask, date pickers, etc please refer to their documentation.<br>
+See the <em>Frameworks &amp; Libraries</em> section for some info and examples.</p>
+<h2 id="inputs"><div class="h-inner">Inputs <a href="./html/components/form.html#inputs"></a></div></h2>
+<p>The following extra options are available:</p>
+<h4 id="floating-label"><div class="h-inner"><code>Floating Label</code> <a href="./html/components/form.html#floating-label"></a></div></h4>
+<p><code>.floating-label</code> is a placeholder that moves up and becomes smaller when input element receives focus:<br>
+<img src="./images/floating-placeholder.png" alt="Floating Label"></p>
+<p>The elements should be inside a <code>.input-floating-label</code> parent:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;input-floating-label text-blue-d1 brc-blue-m1&quot;&gt;&#13;&#10;    &lt;input type=&quot;text&quot; class=&quot;form-control shadow-none&quot; autocomplete=&quot;off&quot; /&gt;&#13;&#10;    &lt;span class=&quot;floating-label text-grey-m3&quot;&gt;Placeholder&lt;/span&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>In this case, when input receives focus, the <code>.floating-label</code> will have the <code>.text-blue-d1</code> color and the input's border will be <code>brc-blue-m1</code> .</p>
+<p>👉 You can also add <code>.active</code> to <code>.floating-label</code>, so it will be moved up and smaller by default:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;span class=&quot;floating-label text-grey-m3 active&quot;&gt;Placeholder&lt;/span&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="border-colors"><div class="h-inner"><code>Border Colors</code> <a href="./html/components/form.html#border-colors"></a></div></h4>
+<ul>
+<li>Use custom border colors for input elements:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control brc-primary-m1&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li>When border is <em>primary</em> , <em>success</em> , <em>danger</em> , <em>warning</em> , <em>info</em> or <em>blue</em> , it will have a colored shadow on <em>focus</em>.
+<ul>
+<li>If you don't want a shadow, add <code>.shadow-none</code> class.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Use <code>.brc-on-focus</code> so that the applied <code>.brc-*</code> color is applied only when input receives focus:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control brc-green-m1 brc-on-focus&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="input-group-fade"><div class="h-inner"><code>Input Group Fade</code> <a href="./html/components/form.html#input-group-fade"></a></div></h4>
+<p>You can use this for input groups and the button becomes semi transparent when the input element doesn't have focus:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;input-group input-group-fade&quot;&gt;&#13;&#10;  &lt;input type=&quot;text&quot; class=&quot;form-control&quot; /&gt;&#13;&#10;  &lt;div class=&quot;input-group-append&quot;&gt;&#13;&#10;    &lt;button class=&quot;btn btn-default&quot; type=&quot;button&quot;&gt;Verify&lt;/button&gt;&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="select-box"><div class="h-inner">Select Box <a href="./html/components/form.html#select-box"></a></div></h2>
+<p>By adding <code>.ace-select</code> and custom coloring/border/etc classes you can customize select boxes:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;select class=&quot;ace-select text-dark-tp3 bgc-success-l3 bgc-h-success-l2 radius-2 border-0&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/select&gt;&#13;&#10;&#13;&#10;&lt;select class=&quot;ace-select caret-double no-border text-dark-tp2 bgc-grey-l4 bgc-h-success-l3 border-2 brc-grey-m4 brc-h-success-m2 radius-round&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/select&gt;&#13;&#10;</code></pre>
+					</div>
+<p>The following caret options are available:</p>
+<ul>
+<li><code>.caret-double</code> adds double carets pointing both up and down</li>
+<li><code>.angle-double</code> adds a double pointing angle instead of caret</li>
+<li><code>.angle-down</code> adds a down pointing angle instead of caret</li>
+<li><code>.angle-up</code> adds an up pointing angle instead of caret</li>
+<li><code>.no-border</code> removes the separator line before the caret</li>
+</ul>
+<hr>
+<p>For Select2 and Chosen plugins see <a href="./html/external/form.html#select2">Select 2</a></p>
+<p><div class="alert alert-info">
+Bootstrap has also custom styling enabled for select boxes, using <code>.custom-select</code> classes which you can find out more about in its docs.
+</div></p>
+<h2 id="checkbox-radio"><div class="h-inner">Checkbox &amp; Radio <a href="./html/components/form.html#checkbox-radio"></a></div></h2>
+<p>Ace changes the styling of checkbox and radio elements by default without any additional class names or changes.</p>
+<p>It is done in <em>CSS</em> and no Javascript is used.
+However it is only supported in modern browsers (custom radio is not supported on Edge and default browser styles will be shown instead).<br>
+Older browsers will display their own default styles.</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; /&gt;&#13;&#10;&lt;input type=&quot;radio&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="colors"><div class="h-inner"><code>Colors</code> <a href="./html/components/form.html#colors"></a></div></h4>
+<ul>
+<li>Use <code>bgc-*</code> classes for a white check mark on a colored background.</li>
+<li>Use <code>text-*</code> classes for a colored check mark on a white background.<br>
+<img src="./images/ace-checkbox.png" alt="Ace Checkbox"></li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;bgc-success-d1&quot; /&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;text-success-d1&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li>Use <code>.brc-*</code> and <code>.brc-h-*</code> classes for custom borders.</li>
+<li>Add <code>.brc-on-checked</code> to have that border color only when checkbox is checked:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;!-- `success` border always --&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;brc-success&quot; /&gt;&#13;&#10;&#13;&#10;&lt;!-- `success` border only when checked --&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;input-lg border-2 text-danger-m1 brc-on-checked brc-success&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.brc-inherit</code> for checkbox to inherit its parent's border color when it's not checked/focused/hovered</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;!-- normal state: `red-m4` ... focus/checked/hover `red-d1` --&gt;&#13;&#10;&lt;label class=&quot;brc-red-m4&quot;&gt;&#13;&#10;  &lt;input type=&quot;checkbox&quot; class=&quot;text-dark brc-inherit brc-on-checked brc-red-d1 border-2&quot; /&gt;&#13;&#10;&lt;/label&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="sizing"><div class="h-inner"><code>Sizing</code> <a href="./html/components/form.html#sizing"></a></div></h4>
+<ul>
+<li><code>.input-lg</code>, <code>.input-xlg</code>  and <code>.input-sm</code> can be used for larger and smaller sizes:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;radio&quot; class=&quot;input-xlg&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.text-80</code> <code>.text-85</code> <code>.text-90</code> and <code>text-95</code> can be used for smaller check mark size.</li>
+</ul>
+<h2 id="on-off-switches"><div class="h-inner">On/Off Switches <a href="./html/components/form.html#on-off-switches"></a></div></h2>
+<p>Switches are not supported on Edge and older browsers. Instead a <em>checkbox</em> element is displayed.<br>
+However you can use Bootstrap's custom switches which are supported on older browsers as well. You can find out about that in Bootstrap's docs.</p>
+<p>To turn a checkbox into a switch, just add <code>.ace-switch</code> to it:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="colors-2"><div class="h-inner"><code>Colors</code> <a href="./html/components/form.html#colors-2"></a></div></h4>
+<p>You can also change the colors using <code>.bgc-*</code> for the <em>checked</em> state and <code>.text-*</code> for the <em>unchecked</em> state:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;!-- warning-d2 when checked --&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch bgc-warning-d2&quot; /&gt;&#13;&#10;&#13;&#10;&lt;!-- purple when checked, grey-m3 when not checked --&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch bgc-purple text-grey-m3&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="borders"><div class="h-inner"><code>Borders</code> <a href="./html/components/form.html#borders"></a></div></h4>
+<p>You can use <code>.brc-*</code> colors for a bordered (outline) version: <img src="./images/ace-switch-outline.png" alt="Ace Switch Outline"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;!-- primary border when checked, grey border when not checked --&gt;&#13;&#10;&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch input-lg text-grey-l1 brc-primary&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can also add <code>.radius-0</code> , <code>.radius-1</code> etc for square switch elements</p>
+<h4 id="thin"><div class="h-inner"><code>Thin</code> <a href="./html/components/form.html#thin"></a></div></h4>
+<p>Use <code>.ace-switch-thin</code> for another version along with <code>.bgc-</code> and <code>.text-*</code> classes: <img src="./images/ace-switch-thin.png" alt="Ace Switch Thin"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch ace-switch-thin&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="sizing-2"><div class="h-inner"><code>Sizing</code> <a href="./html/components/form.html#sizing-2"></a></div></h4>
+<p><code>.input-lg</code> and <code>.input-sm</code> can be used for larger and smaller sizes</p>
+<h4 id="with-text"><div class="h-inner"><code>With Text</code> <a href="./html/components/form.html#with-text"></a></div></h4>
+<p>Use <code>. ace-switch-yesno</code> or <code>.ace-switch-onoff</code> to add the texts:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch ace-switch-lg ace-switch-yesno&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<p>Use <code>.ace-switch-check</code> for check mark when checked and <code>.ace-switch-times</code> for times (×) sign when not checked:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch ace-switch-check&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="with-bars"><div class="h-inner"><code>With Bars</code> <a href="./html/components/form.html#with-bars"></a></div></h4>
+<p>Use <code>.ace-switch-bars</code> for vertical and <code>.ace-switch-bars-h</code> for horizontal bars on the knob:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;checkbox&quot; class=&quot;ace-switch ace-switch-lg ace-switch-bars-h&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="custom-file-input"><div class="h-inner">Custom File Input <a href="./html/components/form.html#custom-file-input"></a></div></h2>
+<p>Custom file input hides browser's file input element and displays a custom styled element with image preview.<br>
+It doesn't do anything about managing/uploading files and you should <a href="./html/components/form.html#uploading-files">handle that separately</a>.</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;input type=&quot;file&quot; id=&quot;myfile&quot; /&gt;&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput()&#13;&#10;</code></pre>
+					</div>
+<h3 id="options"><div class="h-inner">Options <a href="./html/components/form.html#options"></a></div></h3>
+<h4 id="droppable"><div class="h-inner"><code>droppable</code> <a href="./html/components/form.html#droppable"></a></div></h4>
+<p>If <code>true</code>, use can drag and drop files onto the element</p>
+<h4 id="style"><div class="h-inner"><code>style</code> <a href="./html/components/form.html#style"></a></div></h4>
+<p>Can be <em>drop</em> for a larger style suitable for drag &amp; drop and multiple file selection</p>
+<h4 id="persistent"><div class="h-inner"><code>persistent</code> <a href="./html/components/form.html#persistent"></a></div></h4>
+<p>If <code>true</code> when user selects new files, previously selected files will not be cleared</p>
+<h4 id="container"><div class="h-inner"><code>container</code> <a href="./html/components/form.html#container"></a></div></h4>
+<p>List of class names to apply to the file input element</p>
+<h4 id="btnchoosetext-and-btnchangetext"><div class="h-inner"><code>btnChooseText</code> and <code>btnChangeText</code> <a href="./html/components/form.html#btnchoosetext-and-btnchangetext"></a></div></h4>
+<p>Text for <em>Choose</em> and <em>Change</em> buttons</p>
+<h4 id="btnchooseclass-and-btnchooseclass"><div class="h-inner"><code>btnChooseClass</code> and <code>btnChooseClass</code> <a href="./html/components/form.html#btnchooseclass-and-btnchooseclass"></a></div></h4>
+<p>List of class names to apply to <em>Choose</em> and <em>Change</em> buttons</p>
+<h4 id="placeholdericon"><div class="h-inner"><code>placeholderIcon</code> <a href="./html/components/form.html#placeholdericon"></a></div></h4>
+<p>Icon to be displayed when no file is selected</p>
+<h4 id="placeholdertext"><div class="h-inner"><code>placeholderText</code> <a href="./html/components/form.html#placeholdertext"></a></div></h4>
+<p>Text to be displayed when no file is selected</p>
+<h4 id="placeholderclass"><div class="h-inner"><code>placeholderClass</code> <a href="./html/components/form.html#placeholderclass"></a></div></h4>
+<p>List of class names to apply to placeholder</p>
+<h4 id="reset"><div class="h-inner"><code>reset</code> <a href="./html/components/form.html#reset"></a></div></h4>
+<p>If <code>false</code> no reset button will be shown.<br>
+If it's a <em>string</em>, it will be the class names applied to the reset button</p>
+<h4 id="resettext"><div class="h-inner"><code>resetText</code> <a href="./html/components/form.html#resettext"></a></div></h4>
+<p>Optional tooltip for the reset button</p>
+<h4 id="reseticon"><div class="h-inner"><code>resetIcon</code> <a href="./html/components/form.html#reseticon"></a></div></h4>
+<p>The icon inside reset button</p>
+<h4 id="allowext"><div class="h-inner"><code>allowExt</code> <a href="./html/components/form.html#allowext"></a></div></h4>
+<p>Array or <code>|</code> separated list of file extensions allowed to be selected</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput({&#13;&#10;  ...&#13;&#10;  allowExt: &#39;pdf|doc|docx&#39;&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h4 id="denyext"><div class="h-inner"><code>denyExt</code> <a href="./html/components/form.html#denyext"></a></div></h4>
+<p>Array or <code>|</code> separated list of extensions not allowed to be selected</p>
+<h4 id="allowmime"><div class="h-inner"><code>allowMime</code> <a href="./html/components/form.html#allowmime"></a></div></h4>
+<p>Array or <code>|</code> separated list of mime-types allowed to be selected</p>
+<h4 id="denymime"><div class="h-inner"><code>denyMime</code> <a href="./html/components/form.html#denymime"></a></div></h4>
+<p>Array or <code>|</code> separated list of mime-types not allowed to be selected</p>
+<h4 id="maxsize"><div class="h-inner"><code>maxSize</code> <a href="./html/components/form.html#maxsize"></a></div></h4>
+<p>Maximum file size allowed</p>
+<h4 id="previewimage"><div class="h-inner"><code>previewImage</code> <a href="./html/components/form.html#previewimage"></a></div></h4>
+<p>Default is <code>true</code> and enables previewing selected images</p>
+<h4 id="thumbnail"><div class="h-inner"><code>thumbnail</code> <a href="./html/components/form.html#thumbnail"></a></div></h4>
+<p>Can be <code>false</code>, <code>large</code>, <code>fit</code> or <code>small</code></p>
+<h4 id="previewsize"><div class="h-inner"><code>previewSize</code> <a href="./html/components/form.html#previewsize"></a></div></h4>
+<p>Optiona image preview size</p>
+<h4 id="previewwidth"><div class="h-inner"><code>previewWidth</code> <a href="./html/components/form.html#previewwidth"></a></div></h4>
+<p>Optiona image preview width</p>
+<h4 id="previewheight"><div class="h-inner"><code>previewHeight</code> <a href="./html/components/form.html#previewheight"></a></div></h4>
+<p>Optiona image preview height</p>
+<h4 id="fileicons"><div class="h-inner"><code>fileIcons</code> <a href="./html/components/form.html#fileicons"></a></div></h4>
+<p>Object specifying icons to be shown for selected files:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput({&#13;&#10;  ...&#13;&#10;  fileIcons: {&#13;&#10;    video: &#39;&lt;i class=&quot;fas fa-video bgc-success-m1 text-white w-4 py-2 text-center&quot;&gt;&lt;/i&gt;&#39;,&#13;&#10;    audio: &#39;&lt;i class=&quot;fas fa-music bgc-pink-m1 text-white w-4 py-2 text-center&quot;&gt;&lt;/i&gt;&#39;&#13;&#10;  }&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h4 id="beforechange"><div class="h-inner"><code>beforeChange</code> <a href="./html/components/form.html#beforechange"></a></div></h4>
+<p>Function to be called before list of selected files is changed.<br>
+The list of selected files will be passed to it and you can return a filtered/modified list.<br>
+If you return <code>-1</code> the file selection will be cancelled and file input will be reset.</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput({&#13;&#10;  ...&#13;&#10;  beforeChange: function(fileList, dropped) {&#13;&#10;    // `dropped` specifies whether files are dropped or not&#13;&#10;&#13;&#10;    // do something if (fileList) contains an unwanted file&#13;&#10;&#13;&#10;    // return newList&#13;&#10;    // or&#13;&#10;    // return -1&#13;&#10;  }&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h3 id="functions"><div class="h-inner">Functions <a href="./html/components/form.html#functions"></a></div></h3>
+<h4 id="resetinput"><div class="h-inner"><code>resetInput</code> <a href="./html/components/form.html#resetinput"></a></div></h4>
+<p>Reset file input</p>
+<h4 id="enable-and-disable"><div class="h-inner"><code>enable</code> and <code>disable</code> <a href="./html/components/form.html#enable-and-disable"></a></div></h4>
+<p>Enable or disable custom file input</p>
+<h4 id="enablereset-and-disablereset"><div class="h-inner"><code>enableReset</code> and <code>disableReset</code> <a href="./html/components/form.html#enablereset-and-disablereset"></a></div></h4>
+<p>Enable or disable reset/remove button functionality</p>
+<h4 id="files"><div class="h-inner"><code>files</code> <a href="./html/components/form.html#files"></a></div></h4>
+<p>Returns an array of currently selected files</p>
+<h4 id="method"><div class="h-inner"><code>method</code> <a href="./html/components/form.html#method"></a></div></h4>
+<p>Returns a string indicating whether files have been drag &amp; dropped or selected via file browser</p>
+<h4 id="updatesettings"><div class="h-inner"><code>updateSettings</code> <a href="./html/components/form.html#updatesettings"></a></div></h4>
+<p>Update and change custom file elemen settings such as placeholder text, allowed extensions, etc</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput(&#39;updateSettings&#39;, {&#13;&#10;    placeholderText: &#39;Something Else&#39;,&#13;&#10;&#13;&#10;    allowExt: &#39;jpg&#39;,&#13;&#10;&#13;&#10;    maxSize: 100000    &#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h4 id="startloading"><div class="h-inner"><code>startLoading</code> <a href="./html/components/form.html#startloading"></a></div></h4>
+<p>Adds a <em>loading</em> overlay to the file element</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#myfile&#39;).aceFileInput(&#39;startLoading&#39;)&#13;&#10;// or with custom html&#13;&#10;$(&#39;#myfile&#39;).aceFileInput(&#39;startLoading&#39;, &#39;&lt;span class=&quot;overlay-content text-150 text-white&quot;&gt;Please Wait ...&lt;/span&gt;&#39;)&#13;&#10;</code></pre>
+					</div>
+<h4 id="stoploading"><div class="h-inner"><code>stopLoading</code> <a href="./html/components/form.html#stoploading"></a></div></h4>
+<p>Removes the <em>loading</em> overlay to the file element</p>
+<h3 id="events"><div class="h-inner">Events <a href="./html/components/form.html#events"></a></div></h3>
+<h4 id="changed"><div class="h-inner"><code>changed</code> <a href="./html/components/form.html#changed"></a></div></h4>
+<p>This event is triggered every time you select a file using browser or drag &amp; dropped.<br>
+You an check the selected (valid) files using <code>event.$_selectedFiles</code> calling the <code>files</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#ace-file-input2&#39;).aceFileInput({&#13;&#10; ...&#13;&#10;}).on(&#39;changed&#39;, function(event) {&#13;&#10;  var files = event.$_selectedFiles.list&#13;&#10;  var method = event.$_selectedFiles.method&#13;&#10;&#13;&#10;  //// or&#13;&#10;  files = $(this).aceFileInput(&#39;files&#39;)&#13;&#10;&#13;&#10;  // list of files&#13;&#10;  files = $(this).data(&#39;ace_input_files&#39;)&#13;&#10;&#13;&#10;  // the method used which is either &#39;drop&#39; or &#39;select&#39;&#13;&#10;  // console.log( $(this).data(&#39;ace_input_method&#39;) )&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h4 id="invalid-ace-file"><div class="h-inner"><code>invalid.ace.file</code> <a href="./html/components/form.html#invalid-ace-file"></a></div></h4>
+<p>Triggered when some invalid files are selected, such as files with unwanted extension or size:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#ace-file-input2&#39;).aceFileInput({&#13;&#10;  ...&#13;&#10;})&#13;&#10;.on(&#39;invalid.ace.file&#39;, function(event) {&#13;&#10;  var errors = event.$_fileErrors;&#13;&#10;  // console.log(errors)&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<p><code>event.$_fileErrors</code> is an object containing info such as number of invalid files, etc</p>
+<h4 id="preview-failed-ace-file"><div class="h-inner"><code>preview_failed.ace.file</code> <a href="./html/components/form.html#preview-failed-ace-file"></a></div></h4>
+<p>Triggered when an image preview has failed</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#ace-file-input2&#39;).aceFileInput({&#13;&#10;  ...&#13;&#10;})&#13;&#10;.on(&#39;preview_failed.ace.file&#39;, function(event) {&#13;&#10;  var err = event.$_previewError;&#13;&#10;  // if(err.code == 2) alert(err.filename + &#39; is not an image!&#39;)&#13;&#10;})&#13;&#10;Error code is one of the following:  &#13;&#10;* `1` loading the file failed&#13;&#10;* `2` loading the image failed (i.e. file was not an image)&#13;&#10;* `3` previewing the image failed&#13;&#10;</code></pre>
+					</div>
+<h4 id="reset-2"><div class="h-inner"><code>reset</code> <a href="./html/components/form.html#reset-2"></a></div></h4>
+<p>Triggered when <em>reset</em> button is clicked</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#ace-file-input2&#39;).aceFileInput({&#13;&#10; ...&#13;&#10;})&#13;&#10;.on(&#39;clear.ace.file&#39;, function(e) {&#13;&#10;  e.preventDefault() // don&#39;t reset&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+<h3 id="uploading-files"><div class="h-inner">Uploading files <a href="./html/components/form.html#uploading-files"></a></div></h3>
+<p>After selecting files, you can handle file upload using <strong>FormData</strong>  :</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">var formData = new FormData()&#13;&#10;&#13;&#10;var fileFieldName  = $(&#39;#myfile&#39;).attr(&#39;name&#39;)&#13;&#10;var files = $(&#39;#myfile&#39;).aceFileInput(&#39;files&#39;)&#13;&#10;&#13;&#10;if (files &amp;&amp; files.length &gt; 0) {&#13;&#10;  for (var file of files) {&#13;&#10;    formData.append(fileFieldName, file)&#13;&#10;  }&#13;&#10;}&#13;&#10;&#13;&#10;var request = new XMLHttpRequest()&#13;&#10;request.open(&#39;POST&#39;, &#39;url/to/uploadfile&#39;)&#13;&#10;request.send(formData)&#13;&#10;</code></pre>
+					</div>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/components/accordions.html" class="prev-link">
+				          Accordions
+				      </a>
+				
+				      <a href="./html/components/cards.html" class="next-link">
+				          Cards &amp; Widgets
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/components/form";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

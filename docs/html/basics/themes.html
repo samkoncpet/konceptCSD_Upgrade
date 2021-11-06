@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Themes</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/css/misc.html" class="prev-link" title="Misc">‹</a>
+			
+					<a href="./html/basics/layouts.html" class="next-link" title="Page Layout">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="themes"><div class="h-inner">Themes <a href="./html/basics/themes.html#themes"></a></div></h1>
+<h2 id="choosing-default-themes"><div class="h-inner">Choosing default themes <a href="./html/basics/themes.html#choosing-default-themes"></a></div></h2>
+<p>There are a few themes(skins) for sidebar and navbar.</p>
+<p>By default <em>sidebar-light</em> and <em>navbar-blue</em> themes are included in <em>ace.css</em> .<br>
+In demo when you choose a different theme from settings box , <em>ace-themes.css</em> is loaded.</p>
+<p>But if you want to use a theme in your app other than the default ones,
+it's recommended to <a href="./html/files/css.html#build-custom-css">compile</a> <em>ace.css</em> using your chosen theme(s).<br>
+You <strong>should not</strong> use <em>ace-themes.css</em> because it is a large file as it contains all sidebar and navbar themes.</p>
+<p>Open <code>scss/ace-default-themes.scss</code> and add or remove the theme(s) you want.</p>
+<p>👉 <strong>Note</strong>: For <em>Dark Colored Sidebars</em> such as <code>.sidebar-purple</code> you should include and compile both <em>sidebar-color</em> and the sidebar you want. (Except for <code>.sidebar-dark</code> and <code>.sidebar-dark2</code>)</p>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss"><code class="language-scss">$my-navbar-themes: (&#13;&#10;    &quot;blue&quot;: $navbar-blue&#13;&#10;);&#13;&#10;&#13;&#10;$my-sidebar-themes: (&#13;&#10;    &quot;white&quot;: $sidebar-white&#13;&#10;);&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss"><code class="language-scss">$my-sidebar-themes: (&#13;&#10;    &quot;dark&quot;: $sidebar-dark&#13;&#10;);&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss" data-line="3"><code class="language-scss">// OR if you want a dark sidebar like *sidebar-purple*&#13;&#10;$my-sidebar-themes: (&#13;&#10;    &quot;color&quot;: $sidebar-color, // sidebar-color should be included as well&#13;&#10;    &quot;purple&quot;: $sidebar-purple&#13;&#10;);&#13;&#10;</code></pre>
+					</div>
+<p>Then <a href="./html/files/css.html#build-custom-css">rebuild ace.css</a></p>
+<p>And in your HTML change navbar and sidebar theme like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;navbar&quot; class=&quot;navbar navbar-blue navbar-fixed&quot;&gt;&#13;&#10; &lt;!-- navbar content --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-color sidebar-blue sidebar-fixed expandable&quot;&gt;&#13;&#10; &lt;!-- sidebar content --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="sidebar"><div class="h-inner">Sidebar <a href="./html/basics/themes.html#sidebar"></a></div></h2>
+<h3 id="sidebar-colors"><div class="h-inner">Sidebar Colors <a href="./html/basics/themes.html#sidebar-colors"></a></div></h3>
+<p>Sidebar themes are as follows:</p>
+<h4 id="light-colors"><div class="h-inner"><code>Light colors</code> <a href="./html/basics/themes.html#light-colors"></a></div></h4>
+<ul>
+<li><code>light</code>  which is the default sidebar theme in <em>ace.css</em> and used in Dashboard and most pages</li>
+<li><code>white</code> , <code>white2</code> , <code>white3</code> , <code>white4</code></li>
+<li><code>lightblue</code> , <code>lightblue2</code> , <code>lightpurple</code> . These are used along with <a href="./html/basics/sidebar.html#spaced-sidebar">.sidebar-spaced</a></li>
+</ul>
+<h4 id="dark-colors"><div class="h-inner"><code>Dark colors</code> <a href="./html/basics/themes.html#dark-colors"></a></div></h4>
+<ul>
+<li><code>dark</code></li>
+<li><code>dark2</code></li>
+<li><code>blue</code></li>
+<li><code>cadetblue</code></li>
+<li><code>darkblue</code></li>
+<li><code>darkcrimson</code></li>
+<li><code>darkslateblue</code></li>
+<li><code>darkslategrey</code></li>
+<li><code>green</code></li>
+<li><code>plum</code></li>
+<li><code>purple</code></li>
+<li><code>steelblue</code></li>
+<li><code>gradient1</code></li>
+<li><code>gradient2</code></li>
+<li><code>gradient3</code></li>
+<li><code>gradient4</code></li>
+</ul>
+<p>After you rebuild <em>ace.css</em> using your chosen theme as mentioned above, you can use it like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-white&quot;&gt; ... &lt;/div&gt;&#13;&#10;&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-lightblue&quot;&gt; ... &lt;/div&gt;&#13;&#10;&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-color sidebar-dark&quot;&gt; ... &lt;/div&gt;&#13;&#10;&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-color sidebar-teal&quot;&gt; ... &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="customizing-and-editing"><div class="h-inner">Customizing And Editing <a href="./html/basics/themes.html#customizing-and-editing"></a></div></h3>
+<p>If you want to change the colors and other values of a specific theme, you should edit <code>scss/_sidebar-themes-variables.scss</code></p>
+<p>You can customize each theme to change its colors or other features.<br>
+Many themes are extended from another theme. For example <em>sidebar-white</em> is extended from <em>sidebar-light</em>.</p>
+<p>👉 <strong>Some of the options are:</strong></p>
+<h4 id="border-color-and-shadow-some-sidebars-have-a-border-on-right-for-example-white-sidebars-some-have-a-shadow-for-example-the-light-sidebar-some-have-none-for-example-dark-sidebars"><div class="h-inner"><code>border-color</code> and <code>shadow</code> : some sidebars have a border on right (for example <em>white</em> sidebars), some have a shadow (for example the <em>light</em> sidebar), some have none (for example <em>dark</em> sidebars) . <a href="./html/basics/themes.html#border-color-and-shadow-some-sidebars-have-a-border-on-right-for-example-white-sidebars-some-have-a-shadow-for-example-the-light-sidebar-some-have-none-for-example-dark-sidebars"></a></div></h4>
+<p>With a shadow you can have the <strong>.active</strong> element cover the shadow by setting <code>shadow-padding</code> to <code>1px</code> (or more)
+and result is like this:<br>
+<img src="./images/sidebar-shadow.png" alt="Sidebar Shadow"></p>
+<p>But it's not possible with a border. So if you want a border and not a shadow:<br>
+<img src="./images/sidebar-border.png" alt="Sidebdar Border"></p>
+<p>Then you should modify your theme values (in <em>_sidebar-themes-variables.scss</em>) like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss" data-line="3"><code class="language-scss">$sidebar-light: map-merge($sidebar-light-base, (&#13;&#10;    &#39;background-color&#39;: #f1f3f5,&#13;&#10;    &#39;border-color&#39;: #dbdfe2,&#13;&#10;    &#39;shadow&#39;: null,&#13;&#10;    ....&#13;&#10;));&#13;&#10;</code></pre>
+					</div>
+<p>However when <em>active</em> item covers sidebar's shadow in collapsed mode, it sometimes doesn't look good.
+And you can fix that by adding the following theme variable:</p>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss" data-line="5,6,8"><code class="language-scss">$sidebar-light: map-merge($sidebar-light-base, (&#13;&#10;    &#39;background-color&#39;: #f7f7f7,&#13;&#10;    &#39;border-color&#39;: null,&#13;&#10;    &#39;shadow&#39;: (inset -1px 0 0 0 #dbdfe2),&#13;&#10;    &#39;shadow-padding&#39;: 1px,&#13;&#10;    &#39;shadow-padding-collapsed-disabled&#39;: true,&#13;&#10;&#9;// OR&#13;&#10;&#9;&#39;shadow-padding-collapsed-active-on-right&#39;: true,//will show the active highligh border on right, when sidebar is collapsed and hovered&#13;&#10;    ....&#13;&#10;));&#13;&#10;</code></pre>
+					</div>
+<p><img src="./images/sidebar-shadow-padding-collapsed-disabled.png" alt="Sidebdar Shadow"><br>
+<em>or when active item highlight is on right</em>: (Explained in <a href="./html/basics/sidebar.html#nav-options">Sidebar Nav Options</a>)<br>
+<img src="./images/sidebar-active-on-right.png" alt="Sidebdar Active On Right"></p>
+<p><div class="alert alert-undefined">
+If you want to add a 3D shadow to sidebar, you should add it to its <code>.sidebar-inner</code> child:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-white&quot;&gt;&#13;&#10;  &lt;div class=&quot;sidebar-inner shadow-sm&quot;&gt;&#13;&#10;      ...&#13;&#10;  &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<hr>
+<h4 id="item-border-color-adds-a-border-between-sidebar-items-can-be-used-with-item-border-margin-to-specify-distance-from-sides"><div class="h-inner"><code>item-border-color</code> : adds a border between sidebar items. Can be used with <em>item-border-margin</em> to specify distance from sides <a href="./html/basics/themes.html#item-border-color-adds-a-border-between-sidebar-items-can-be-used-with-item-border-margin-to-specify-distance-from-sides"></a></div></h4>
+<hr>
+<h4 id="submenu-bullets-disables-or-changes-submenu-bullets-for-a-theme"><div class="h-inner"><code>submenu-bullets</code> disables or changes submenu bullets for a theme: <a href="./html/basics/themes.html#submenu-bullets-disables-or-changes-submenu-bullets-for-a-theme"></a></div></h4>
+<p><img src="./images/submenu-bullets.png" alt="Submenu Bullets"></p>
+<ul>
+<li><code>null</code> disables it</li>
+<li><code>1</code> only shows it on <em>hover</em></li>
+<li><code>2</code> only shows when item is <em>.active</em></li>
+<li><code>3</code> shows it both on hover and when .active</li>
+<li>set <code>submenu-bullet-style</code> to <code>caret</code> to change it from circle to triangle</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">scss</span>
+						<pre class="language-scss" data-line="3"><code class="language-scss">$sidebar-purple: (&#13;&#10;    ...&#13;&#10;    &#39;submenu-bullets&#39;: 1,&#13;&#10;    &#39;submenu-bullet-style&#39;: caret  &#13;&#10;    ...&#13;&#10;);&#13;&#10;</code></pre>
+					</div>
+<hr>
+<h4 id="link-hover-highlight-border-sidebar-link-a-nav-link-border-when-hovered-null-disables-it"><div class="h-inner"><code>link-hover-highlight-border</code> . Sidebar link (A.nav-link) border when hovered. <code>null</code> disables it: <a href="./html/basics/themes.html#link-hover-highlight-border-sidebar-link-a-nav-link-border-when-hovered-null-disables-it"></a></div></h4>
+<p><img src="./images/sidebar-hover-link-highlight-border.png" alt="Sidebar Link Hover Border"></p>
+<h4 id="link-active-highlight-border-sidebar-link-a-nav-link-border-when-active"><div class="h-inner"><code>link-active-highlight-border</code> . Sidebar link (A.nav-link) border when <em>.active</em>: <a href="./html/basics/themes.html#link-active-highlight-border-sidebar-link-a-nav-link-border-when-active"></a></div></h4>
+<p><img src="./images/sidebar-active-link-highlight-border.png" alt="Sidebar Link Active Border"></p>
+<h4 id="item-active-highlight-border-sidebar-item-li-nav-item-border-when-active"><div class="h-inner"><code>item-active-highlight-border</code> . Sidebar item (LI.nav-item) border when <em>.active</em>: <a href="./html/basics/themes.html#item-active-highlight-border-sidebar-item-li-nav-item-border-when-active"></a></div></h4>
+<p><img src="./images/sidebar-active-item-highlight-border.png" alt="Sidebar Item Active Border"></p>
+<hr>
+<h4 id="submenu-tree-border-if-true-submenu-items-will-have-tree-like-borders-similar-to-previous-image"><div class="h-inner"><code>submenu-tree-border</code> . If <code>true</code> submenu items will have tree like borders. Similar to previous image. <a href="./html/basics/themes.html#submenu-tree-border-if-true-submenu-items-will-have-tree-like-borders-similar-to-previous-image"></a></div></h4>
+<hr>
+<p><div class="alert alert-warning">
+In Ace's demo, when you change sidebar theme, some of the elements such as shortcut buttons are also changed.<br>
+These changes are <strong>not</strong> part of the theme. Instead their relevant class names are changed:<br>
+<img src="./images/sidebar-theme-changes.png" alt="Sidebar Element Changes"></p>
+<p>Here for example the search icon's class name is changed from <code>text-info</code> to <code>text-orange-l2</code> to match the selected sidebar theme
+</div></p>
+<h2 id="navbar"><div class="h-inner">Navbar <a href="./html/basics/themes.html#navbar"></a></div></h2>
+<h3 id="navbar-colors"><div class="h-inner">Navbar Colors <a href="./html/basics/themes.html#navbar-colors"></a></div></h3>
+<p>Navbar theming options are as follows:</p>
+<h4 id="light-colors-2"><div class="h-inner"><code>Light colors</code> <a href="./html/basics/themes.html#light-colors-2"></a></div></h4>
+<ul>
+<li><code>white</code> , <code>white2</code></li>
+<li><code>light</code></li>
+<li><code>lightblue</code></li>
+<li><code>lightpurple</code></li>
+<li><code>lightgreen</code></li>
+<li><code>lightgrey</code></li>
+</ul>
+<h4 id="dark-colors-2"><div class="h-inner"><code>Dark colors</code> <a href="./html/basics/themes.html#dark-colors-2"></a></div></h4>
+<ul>
+<li><code>dark</code></li>
+<li><code>blue</code>. It's the default navbar color included in <em>ace.css</em> and used in Dashboard and most pages</li>
+<li><code>darkblue</code></li>
+<li><code>skyblue</code></li>
+<li><code>cadetblue</code></li>
+<li><code>purple</code></li>
+<li><code>plum</code></li>
+<li><code>teal</code></li>
+<li><code>green</code></li>
+<li><code>darkgreen</code></li>
+<li><code>orange</code></li>
+<li><code>brown</code></li>
+<li><code>slategrey</code></li>
+<li><code>secondary</code></li>
+</ul>
+<p>If you want to change the colors and other values of a theme, you should edit <code>scss/_navbar-themes-variables.scss</code></p>
+<p>Then you should rebuild <em>ace.css</em> using your chosen theme and use it like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;navbar navbar-white&quot;&gt; ... &lt;/div&gt;&#13;&#10;&#13;&#10;&lt;div class=&quot;navbar navbar-lightblue&quot;&gt; ... &lt;/div&gt;&#13;&#10;&#13;&#10;&lt;div class=&quot;navbar navbar-purple&quot;&gt; ... &lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-warning">
+In Ace's demo, when you change navbar theme, some of the elements are also changed.<br>
+These changes are <strong>not</strong> part of the theme. Instead their relevant class names are changed.</p>
+<p><img src="./images/navbar-theme-changes.png" alt="Navbar Element Changes"></p>
+<p>As an example:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle nav-link pl-lg-3 pr-lg-4&quot;&gt;&#13;&#10;    ...&#13;&#10;&lt;/a&gt;&#13;&#10;</code></pre>
+					</div>
+<p><strong>↓ BECOMES ↓</strong></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle btn btn-warning px-lg-3 d-none d-lg-flex&quot;&gt;&#13;&#10;    ...&#13;&#10;&lt;/a&gt;&#13;&#10;</code></pre>
+					</div>
+<p><code>.nav-link</code> class is replaced by <code>.btn.btn-warning</code>.</p>
+<p>Also in the second theme (<em>lightblue</em>), the <code>.btn</code> is displayed only on large (desktop) devices by applying <code>d-none d-lg-flex</code> .<br>
+In small devices a sibling is (inserted and) displayed as well as an orange icon to match the <em>look and feel</em> of the large screen:</p>
+<p><img src="./images/navbar-lightblue-mobile.png" alt="Navbar Element Changes"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="10,11"><code class="language-html">&lt;!-- Show the &quot;orange&quot; button in large screens --&gt;&#13;&#10;&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle btn btn-warning px-lg-3 d-none d-lg-flex&quot;&gt;&#13;&#10;    ...&#13;&#10;&lt;/a&gt;&#13;&#10;&lt;!-- &#13;&#10;    And in small devices show a normal &quot;.nav-link&quot;&#13;&#10;    and place an &quot;orange&quot; icon inside it   &#13;&#10;--&gt;&#13;&#10;&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle nav-link d-lg-none&quot;&gt;    &#13;&#10;    &lt;i class=&quot;fa fa-bell icon-animated-bell &#13;&#10;        btn-warning radius-round w-4 h-4 text-center pt-2 text-110&quot;&gt;&#13;&#10;    &lt;/i&gt;&#13;&#10;    ...&#13;&#10;&lt;/a&gt;&#13;&#10;</code></pre>
+					</div>
+<p></div></p>
+<h2 id="body"><div class="h-inner">Body <a href="./html/basics/themes.html#body"></a></div></h2>
+<p>There are some background image options for body element.  They are visible only in <a href="./html/basics/settings.html#boxed-layout">boxed layout</a><br>
+The following are available:</p>
+<ul>
+<li><code>body-img1</code></li>
+<li><code>body-img2</code></li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;body class=&quot;body-img1&quot;&gt;&#13;&#10;...&#13;&#10;&lt;/body&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-info">
+You can disable these by setting <code>$body-bg-themes</code> to <code>false</code> in <em>ace-features.scss</em> .<br>
+You can also change the values in <em>scss/ace-themes</em> . Search for <code>$body-bg-themes</code> in it
+</div></p>
+<h2 id="content-area"><div class="h-inner">Content Area <a href="./html/basics/themes.html#content-area"></a></div></h2>
+<p>Content area has a lightgrey background color by default. If you want another color for background such as &quot;White&quot; (as seen in default Dashboard and most pages), you can do it like this:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;main-container bgc-white&quot;&gt;&#13;&#10;  ...&#13;&#10;&lt;/div&gt;&#13;&#10;&lt;!-- or other color --&gt;&#13;&#10;&lt;div class=&quot;main-container bgc-secondary-l4&quot;&gt;&#13;&#10;  ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>If you want to use a custom background color for content area and you have <a href="./html/basics/sidebar.html#nav-options">sidebar arrows</a> that point to <em>.active</em> item:</p>
+<p><img src="./images/sidebar-dark-active-arrow.png" alt="Active Item Arrow"></p>
+<p>you should make sure to add the following rule in your CSS so that the arrow color matches content area background:</p>
+<div class="code-wrap">
+						<span class="language-badge">css</span>
+						<pre class="language-css"><code class="language-css">.sidebar .nav.has-active-arrow .nav-item.active &gt; .nav-link::after {&#13;&#10;    border-right-color: #eee; /* put the new content background color here */&#13;&#10;}&#13;&#10;</code></pre>
+					</div>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/css/misc.html" class="prev-link">
+				          Misc
+				      </a>
+				
+				      <a href="./html/basics/layouts.html" class="next-link">
+				          Page Layout
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/basics/themes";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>

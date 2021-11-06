@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8">
+   <title>Sidebar</title>
+   
+   <base href="./../../" />
+   
+   <link rel="stylesheet" href="../ace/node_modules/bootstrap/dist/css/bootstrap-reboot.css">
+   <link rel="stylesheet" href="../ace/node_modules/prism-themes/themes/prism-material-light.css">
+   <link rel="stylesheet" href="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css">
+   <link rel="stylesheet" href="./assets/style.css" />
+   
+   <!-- favicon -->
+   <link rel="icon" type="image/png" href="./assets/favicon.png" /> </head>
+
+ <body>
+   <div class="body-container">
+	   <div class="main-container">
+		 <div class="sidebar">
+		 	
+		  <div class="navbar-brand">
+		 	Ace Admin Docs
+		  </div>
+		 
+		  <ul class="nav">
+		 	<li class="nav-item">
+		 		  <a href="./index.html" data-href="/">Home</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Changes</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./changes/changelog.html" data-href="/changes/changelog">Changelog</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="./changes/migration.html" data-href="/changes/migration">Migration</a>
+		 				 	
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">HTML</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="#">Files</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/overview.html" data-href="/html/files/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/css.html" data-href="/html/files/css">CSS</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/javascript.html" data-href="/html/files/javascript">Javascript</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/files/demo-files.html" data-href="/html/files/demo-files">Demo files</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">CSS</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/colors.html" data-href="/html/css/colors">Colors</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/spacing-sizing.html" data-href="/html/css/spacing-sizing">Spacing &amp; Sizing</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/d-style.html" data-href="/html/css/d-style">Dynamic Styling</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/text-typography.html" data-href="/html/css/text-typography">Text &amp; Typography</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/buttons.html" data-href="/html/css/buttons">Buttons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/css/misc.html" data-href="/html/css/misc">Misc</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Basics</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/themes.html" data-href="/html/basics/themes">Themes</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/layouts.html" data-href="/html/basics/layouts">Page Layout</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/navbar.html" data-href="/html/basics/navbar">Navbar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/sidebar.html" data-href="/html/basics/sidebar">Sidebar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/content.html" data-href="/html/basics/content">Content</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/footer.html" data-href="/html/basics/footer">Footer</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/basics/settings.html" data-href="/html/basics/settings">Settings</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Components</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/scrollbars.html" data-href="/html/components/scrollbars">Scrollbars</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/modals.html" data-href="/html/components/modals">Modals &amp; Asides</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/alerts.html" data-href="/html/components/alerts">Alerts &amp; Notifications</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/dropdowns.html" data-href="/html/components/dropdowns">Dropdowns</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tooltips.html" data-href="/html/components/tooltips">Tooltips &amp; Popovers</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/tabs.html" data-href="/html/components/tabs">Tabs</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/accordions.html" data-href="/html/components/accordions">Accordions</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/form.html" data-href="/html/components/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/components/cards.html" data-href="/html/components/cards">Cards &amp; Widgets</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Pages</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/pages/overview.html" data-href="/html/pages/overview">Overview</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Frameworks &amp; Libraries</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/bs-jquery.html" data-href="/html/external/bs-jquery">Bootstrap &amp; jQuery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/fonts-icons.html" data-href="/html/external/fonts-icons">Fonts &amp; Icons</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/charts.html" data-href="/html/external/charts">Charts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/tables.html" data-href="/html/external/tables">Tables &amp; Grids</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/form.html" data-href="/html/external/form">Form Elements</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wizard.html" data-href="/html/external/wizard">Wizard &amp; Validation</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/gallery.html" data-href="/html/external/gallery">Gallery</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/calendar.html" data-href="/html/external/calendar">Calendar</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/wysiwyg.html" data-href="/html/external/wysiwyg">Wysiwyg</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/treeview.html" data-href="/html/external/treeview">Treeview</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./html/external/other.html" data-href="/html/external/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="#">Angular</a>
+		 		
+		 			<ul class="nav">
+		 				 <li class="nav-item">
+		 				 	  <a href="./angular/overview.html" data-href="/angular/overview">Overview</a>
+		 				 	
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Demo App</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/files.html" data-href="/angular/demo/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/app.html" data-href="/angular/demo/app">App</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/layouts.html" data-href="/angular/demo/layouts">Layouts</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/pages.html" data-href="/angular/demo/pages">Pages</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/demo/other.html" data-href="/angular/demo/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>			 <li class="nav-item">
+		 				 	  <a href="#">Library</a>
+		 				 	
+		 				 		<ul class="nav">
+		 				 			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/files.html" data-href="/angular/library/files">Files</a>
+		 				 			 	
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Directives</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/sidebar.html" data-href="/angular/library/directives/sidebar">Sidebar/Submenu</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/accordion.html" data-href="/angular/library/directives/accordion">Accordion</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/card.html" data-href="/angular/library/directives/card">Card</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/modal.html" data-href="/angular/library/directives/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/fileinput.html" data-href="/angular/library/directives/fileinput">File Input</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/directives/other.html" data-href="/angular/library/directives/other">Other</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="#">Services</a>
+		 				 			 	
+		 				 			 		<ul class="nav">
+		 				 			 			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/action.html" data-href="/angular/library/services/action">Action</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/toaster.html" data-href="/angular/library/services/toaster">Toaster</a>
+		 				 			 			 	
+		 				 			 			 </li>			 <li class="nav-item">
+		 				 			 			 	  <a href="./angular/library/services/modal.html" data-href="/angular/library/services/modal">Modal</a>
+		 				 			 			 	
+		 				 			 			 </li>		</ul>
+		 				 			 </li>			 <li class="nav-item">
+		 				 			 	  <a href="./angular/library/other.html" data-href="/angular/library/other">Other</a>
+		 				 			 	
+		 				 			 </li>		</ul>
+		 				 </li>		</ul>
+		 	</li>	<li class="nav-item">
+		 		  <a href="./credits.html" data-href="/credits">Credits</a>
+		 		
+		 	</li>	<li class="nav-item">
+		 		  <a href="./search.html" data-href="/search">Search</a>
+		 		
+		 	</li> </ul>
+		 </div>		 <div role="main" class="main-content">
+			<div class="navbar">
+			
+				<div class="navbar-search">
+					<form method="GET" action="./search.html" class="d-flex">
+						<span class="search-icon">🔍</span>
+						<input type="text" name="q" placeholder="Search ..." />
+						<button type="submit">
+							Go
+						</button>
+			
+						<div id="navbar-search-jump" style="display: none;">
+							<button type="button" id="prev-highlight-btn">⬆</button><!-- highlight prev match -->
+							<button type="button" id="next-highlight-btn">⬇</button><!-- highlight next match -->
+			
+							<button type="button" id="clear-highlight-btn">✕</button><!-- clear highlights -->
+						</div>
+					</form>
+				</div>
+				 
+				<div class="navbar-menu">
+					<a href="./html/basics/navbar.html" class="prev-link" title="Navbar">‹</a>
+			
+					<a href="./html/basics/content.html" class="next-link" title="Content">›</a>
+				</div>
+			 
+			</div>				   
+			<div class="page-content">
+			  <div class="page-main">
+			 	<h1 id="sidebar"><div class="h-inner">Sidebar <a href="./html/basics/sidebar.html#sidebar"></a></div></h1>
+<h2 id="structure"><div class="h-inner">Structure <a href="./html/basics/sidebar.html#structure"></a></div></h2>
+<p>Sidebar structure in main layout can be viewed in <code>views/layouts/dashboard/sidebar.hbs</code> .<br>
+It's mainly composed of optional <code>.sidebar-section</code> items and <code>.nav</code>.</p>
+<p>They are wrapped inside a <code>.sidebar-inner</code> element:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="2"><code class="language-html">&lt;div class=&quot;sidebar sidebar-light sidebar-fixed expandable&quot;&gt;&#13;&#10; &lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10;&#13;&#10;    &lt;div class=&quot;sidebar-section&quot;&gt;&#13;&#10;        &lt;!-- optional sidebar header, comes before .nav --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10;    &lt;ul class=&quot;nav&quot;&gt;&#13;&#10;        &lt;!-- sidebar items and submenus --&gt;&#13;&#10;    &lt;/ul&gt;&#13;&#10;&#13;&#10;    &lt;div class=&quot;sidebar-section&quot;&gt;&#13;&#10;        &lt;!-- optional sidebar footer --&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&#13;&#10; &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="item-structure"><div class="h-inner">Item Structure <a href="./html/basics/sidebar.html#item-structure"></a></div></h3>
+<p>The <code>.nav</code> section is composed of <code>.nav-item</code> elements and has the following structure as you can view in <code>views/layouts/_commons/sidebar-item.hbs</code>:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;li class=&quot;nav-item&quot;&gt;&#13;&#10;  &lt;a href=&quot;LINK&quot; class=&quot;nav-link dropdown-toggle&quot;&gt;&#13;&#10;&#13;&#10;   &lt;i class=&quot;nav-icon fa fa-user&quot;&gt; &lt;!-- or material icon here, etc --&gt; &lt;/i&gt;&#13;&#10;&#13;&#10;   &lt;span class=&quot;nav-text fadeable&quot;&gt;&lt;!-- .fadeable only used for 1st level links --&gt;&#13;&#10;        &lt;span&gt;link title here&lt;/span&gt;&#13;&#10;        &lt;span class=&quot;badge badge-primary&quot; title=&quot;tooltip title&quot;&gt;badge text&lt;/span&gt;&#13;&#10;   &lt;/span&gt;&lt;!-- /.nav-text --&gt;&#13;&#10;&#13;&#10;    &lt;b class=&quot;caret fa fa-angle-left rt-n90&quot;&gt;&lt;/b&gt;&#13;&#10;  &lt;/a&gt;&#13;&#10;&#13;&#10;  &lt;div class=&quot;submenu collapse hideable&quot;&gt;&#13;&#10;    &lt;ul class=&quot;submenu-inner&quot;&gt;&#13;&#10;        &lt;!-- repeat --&gt;&#13;&#10;    &lt;/ul&gt;&#13;&#10; &lt;/div&gt;&#13;&#10;&lt;/li&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.nav-item</code> can have <em>open</em> and/or <em>active</em> classes depending on its status and whether it has submenu, etc</li>
+<li><code>.nav-link</code> can have <em>dropdown-toggle</em> if it has a <em>submenu</em> sibling.</li>
+<li><code>.nav-text</code> elements in the top level menu should have <code>.fadeable</code> class for collapsed sidebar mode (explained below in <a href="./html/basics/sidebar.html#expandable">expandable</a>)</li>
+<li><code>.caret</code> indicates submenu. It can be a different direction, for example <code>fa-angle-right rt-90</code> or custom icons:
+<ul>
+<li>For custom carets you should add <code>.d-style</code> class to <code>.nav-link</code> as well as <code>.collapsed</code> if submenu is not open.</li>
+</ul>
+</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;a href=&quot;LINK&quot; class=&quot;nav-link d-style dropdown-toggle collapsed&quot;&gt;&#13;&#10;  ....&#13;&#10;&#13;&#10;  &lt;b class=&quot;caret fa fa-plus d-collapsed&quot;&gt;&lt;/b&gt;&lt;!-- will be shown when submenu is closed --&gt;&#13;&#10;  &lt;b class=&quot;caret fa fa-minus d-n-collapsed&quot;&gt;&lt;/b&gt;&lt;!-- will be shown when submenu is open --&gt;&#13;&#10;&lt;/a&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.submenu</code> should have <code>collapse</code> and if it sould be open by default load, you need to add <code>.show</code> class as well.</li>
+<li><code>.fadeable</code> &amp; <code>.hideable</code> classes are for collapsed sidebar mode (explained below in <a href="./html/basics/sidebar.html#expandable">expandable</a>)</li>
+</ul>
+<h3 id="header-footer"><div class="h-inner">Header &amp; Footer <a href="./html/basics/sidebar.html#header-footer"></a></div></h3>
+<p>Sidebar can have custom headers and footers.<br>
+For example in default <em>Dashboard</em> there are shortcut buttons and search box but in <em>Dashboard 2</em>, there are there is user info, image and buttons.<br>
+Each header item is a <code>sidebar-section-item</code>. Please see <code>views/layouts/dashboard/sidebar-header.hbs</code> for more info:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar-section&quot;&gt;&#13;&#10;   &lt;div class=&quot;sidebar-section-item&quot;&gt;&#13;&#10;        &lt;!-- shortcut buttons --&gt;&#13;&#10;   &lt;/div&gt;&#13;&#10;&#13;&#10;   &lt;div class=&quot;sidebar-section-item&quot;&gt;&#13;&#10;        &lt;!-- search box --&gt;&#13;&#10;   &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>Or see <code>views/layouts/dashboard-2/sidebar-header.hbs</code> for another example.</p>
+<p><div class="alert alert-undefined">
+Note that that <code>fadeable</code>, <code>hideable</code> and <code>fadeinable</code> classes are used in collapsed/minimized sidebar as explained later below.
+</div></p>
+<p>Sidebar footer is similar and you can see examples in</p>
+<ul>
+<li><code>views/layouts/dashboard/sidebar-footer.hbs</code> and</li>
+<li><code>views/layouts/dashboard-2/sidebar-footer.hbs</code></li>
+</ul>
+<h3 id="scrollbars"><div class="h-inner">Scrollbars <a href="./html/basics/sidebar.html#scrollbars"></a></div></h3>
+<p>In Ace's demo I'm only using native browser scrollbars as mentioned <a href="./html/components/scrollbars.html">here</a> but you can also use plugins.<br>
+Because of sidebar's structure, it's best to use native scrollbars so it performs better specially on mobile devices.</p>
+<p>To enable scrollbars on sidebar, you should wrap the scrollable sections inside an element with <code>data-ace-scroll</code> attribute and <code>.ace-scroll.flex-grow-1</code> class:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10; &lt;div class=&quot;ace-scroll flex-grow-1&quot; data-ace-scroll&gt;&#13;&#10;    &lt;!-- scrollable content --&gt;&#13;&#10; &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can put sidebar headers or footers inside or outside of scrollable area:<br>
+<img src="./images/sidebar-scroll1.png" alt="Sidebar Scroll"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="4"><code class="language-html">&lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10; &lt;!-- sidebar header can be outside of it --&gt;&#13;&#10;&#13;&#10; &lt;div class=&quot;ace-scroll flex-grow-1&quot; data-ace-scroll&gt;&#13;&#10;    &lt;!-- sidebar header can be inside of it --&gt;&#13;&#10;&#13;&#10;    &lt;!-- scrollable content --&gt;&#13;&#10;&#13;&#10;    &lt;!-- sidebar footer can be inside of it --&gt;&#13;&#10; &lt;/div&gt;&#13;&#10;&#13;&#10; &lt;!-- sidebar footer can be outside of it --&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="sidebar-options"><div class="h-inner">Sidebar Options <a href="./html/basics/sidebar.html#sidebar-options"></a></div></h2>
+<h4 id="sidebar-right"><div class="h-inner"><code>.sidebar-right</code> <a href="./html/basics/sidebar.html#sidebar-right"></a></div></h4>
+<p>Can be added to <code>.sidebar</code> to move sidebar to right (like in <em>Two Menus</em> page)</p>
+<h4 id="no-transition"><div class="h-inner"><code>.no-transition</code> <a href="./html/basics/sidebar.html#no-transition"></a></div></h4>
+<p>Can be added to <code>.sidebar</code> disable sidebar transition when collapsing/expanding.</p>
+<hr>
+<p>The following options (all <code>false</code> by default) can be passed to <em>aceSidebar</em> plugin when it initializes sidebar functionality on page load:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="2"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-light sidebar-fixed&quot; &#13;&#10;     data-swipe=&quot;true&quot; data-gotoactive=&quot;true&quot; data-dismiss=&quot;true&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="backdrop"><div class="h-inner"><code>backdrop</code> <a href="./html/basics/sidebar.html#backdrop"></a></div></h4>
+<p>If <code>true</code> adds a backdrop when sidebar is displayed in mobile view</p>
+<h4 id="dismiss"><div class="h-inner"><code>dismiss</code> <a href="./html/basics/sidebar.html#dismiss"></a></div></h4>
+<p>If <code>true</code> when sidebar is displayed in mobile view, touching/clicking outside sidebar area will hide/dismiss it</p>
+<h4 id="swipe"><div class="h-inner"><code>swipe</code> <a href="./html/basics/sidebar.html#swipe"></a></div></h4>
+<p>If <code>true</code> you can swipe left to hide sidebar in mobile view :<br>
+<img src="./images/sidebar-backdrop-swipe.png" alt="Sidebar Backdrop and Swipe"></p>
+<h4 id="gotoactive"><div class="h-inner"><code>gotoactive</code> <a href="./html/basics/sidebar.html#gotoactive"></a></div></h4>
+<p>When <code>true</code> if sidebar is fixed and has scrollbars, after page is loaded, sidebar is scrolled down so that <code>.active</code> item becomes visible:<br>
+<img src="./images/sidebar-gotoactive.png" alt="Sidebar scroll to active"></p>
+<h4 id="subscroll"><div class="h-inner"><code>subscroll</code> <a href="./html/basics/sidebar.html#subscroll"></a></div></h4>
+<p><strong>Default is <code>true</code></strong> and when sidebar is fixed and you click to open a submenu, sidebar will be scrolled down/up a little to bring submenu into view</p>
+<h4 id="pullup"><div class="h-inner"><code>pullup</code> <a href="./html/basics/sidebar.html#pullup"></a></div></h4>
+<p>If <code>true</code> when sidebar is fixed and collapsed and in hoverable (popup) mode, submenus are pulled up so that they don't get clipped by browser window.
+Note that you can also dynamically enable/disable this feature when needed:</p>
+ <div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#sidebar&#39;)&#13;&#10;.on(&#39;collapsed.ace.sidebar&#39;, function() {&#13;&#10;    if ($(this).hasClass(&#39;hoverable sidebar-fixed&#39;)) {&#13;&#10;      $(this).aceSidebar(&#39;enableSubmenuPullup&#39;)&#13;&#10;    }&#13;&#10;})&#13;&#10;.on(&#39;expanded.ace.sidebar&#39;, function() {&#13;&#10;    $(this).aceSidebar(&#39;disableSubmenuPullup&#39;)&#13;&#10;})&#13;&#10; </code></pre>
+					</div>
+<p><img src="./images/submenu-pullup.png" alt="Submenu Pull up"></p>
+<h2 id="horizontal-sidebar"><div class="h-inner">Horizontal sidebar <a href="./html/basics/sidebar.html#horizontal-sidebar"></a></div></h2>
+<p>Horizontal sidebar can be inserted right after <code>.navbar</code> or inside <code>.main-content</code> (like the <em>Two menus</em> example page).<br>
+By adding <code>.sidebar-h</code> you can have horizontal sidebar.<br>
+You should also add <code>.sidebar-hover</code> class to make submenus appear on mouse hover.</p>
+<p>If you add <code>.align-items-xl-end</code> to <code>.sidebar-inner</code> or the <code>.container</code> element, the nav items won't be 100% height.<br>
+If you remove that, nav items will have <strong>100%</strong> height.</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar sidebar-fixed sidebar-hover sidebar-h sidebar-top&quot;&gt;&#13;&#10;   &lt;div class=&quot;sidebar-inner align-items-xl-end&quot;&gt;&#13;&#10;    ...&#13;&#10;   &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can have a <code>.container</code> element inside <code>.sidebar-inner</code> if you want to apply boxed layout to sidebar:
+<img src=".//images/horizontal-container.png" alt="Horizontal menu container"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="3"><code class="language-html">&lt;div class=&quot;sidebar sidebar-fixed sidebar-hover sidebar-h&quot;&gt;&#13;&#10;   &lt;div class=&quot;sidebar-inner align-items-xl-end&quot;&gt;&#13;&#10;      &lt;div class=&quot;container container-plus px-0 d-flex flex-column flex-xl-row&quot;&gt;&#13;&#10;        ....&#13;&#10;      &lt;/div&gt;&#13;&#10;   &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>See <code>views/layouts/horizontal/sidebar.hbs</code> for more details.</p>
+<p><div class="alert alert-info">
+If you want to change horizontal menu's height, you can do so by changing the value of <em>horizontal-height</em> in <code>_sidebar-theme-variables.scss</code> and rebuilding CSS.
+</div></p>
+<hr>
+<p>There are also the following options available:</p>
+<h4 id="collapsed-h"><div class="h-inner"><code>.collapsed-h</code> <a href="./html/basics/sidebar.html#collapsed-h"></a></div></h4>
+<p>Add this to <code>.sidebar</code> for a more compact (collapsed) horizontal sidebar.<br>
+Also if there is a button to toggle (expand/collapse) sidebar, it should have the extra <code>data-toggle-class</code> attribute:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="2"><code class="language-html">&lt;button type=&quot;button&quot; class=&quot;d-style btn btn-secondary&quot; data-toggle=&quot;sidebar&quot; data-target=&quot;#sidebar2&quot;&#13;&#10;    data-toggle-class=&quot;collapsed-h&quot;&gt;&#13;&#10;    &lt;i class=&quot;fa fa-minus d-n-collapsed&quot;&gt;&lt;/i&gt;&#13;&#10;    &lt;i class=&quot;fa fa-plus d-collapsed&quot;&gt;&lt;/i&gt;&#13;&#10;&lt;/button&gt;&#13;&#10;</code></pre>
+					</div>
+<h4 id="nav-fill"><div class="h-inner"><code>.nav-fill</code> <a href="./html/basics/sidebar.html#nav-fill"></a></div></h4>
+<p>Add this to <code>.nav</code> element to make it fill all the available space. You should also add <code>.text-center</code> to it.</p>
+<h4 id="nav-active-sm"><div class="h-inner"><code>.nav-active-sm</code> <a href="./html/basics/sidebar.html#nav-active-sm"></a></div></h4>
+<p>Add this to <code>.nav</code> so that the highlight border for active element is a bit smaller</p>
+<h4 id="nav-link-rounded"><div class="h-inner"><code>.nav-link-rounded</code> <a href="./html/basics/sidebar.html#nav-link-rounded"></a></div></h4>
+<p>Add this to <code>.nav</code> so that nav links have rounded corners on top. Useful only if nav doesn't have 100% height.</p>
+<h4 id="submenu-right"><div class="h-inner"><code>.submenu-right</code> <a href="./html/basics/sidebar.html#submenu-right"></a></div></h4>
+<p>Add this to a <code>.nav-item</code> and its submenu will be right aligned.
+<div class="alert alert-undefined">
+In horizontal menu, the last item's dropdown is also right aligned like this image:<br>
+<img src=".//images/horizontal-submenu-last.png" alt="Horizontal submenu last"><br>
+If you don't want this, you can add an extra empty &quot;li&quot; after the last &quot;li.nav-item&quot;
+</div></p>
+<h4 id="fadeable-below"><div class="h-inner"><code>.fadeable-below</code> <a href="./html/basics/sidebar.html#fadeable-below"></a></div></h4>
+<p>Add this to <code>.sidebar-section-item</code> so that it appears below sidebar.<br>
+Also add <code>.fadeable-center</code> or <code>.fadeable-right</code> to center/right align it.</p>
+<h4 id="active-on-right"><div class="h-inner"><code>.active-on-right</code> <a href="./html/basics/sidebar.html#active-on-right"></a></div></h4>
+<p>Add to <code>.nav</code> to show the active highlight border on top</p>
+<p><div class="alert alert-info">
+You can have a non-fixed navbar (remove <code>.navbar-fixed</code>)  and a fixed (sticky) horizontal sidebar (add <code>.sidebar-fixed</code>).<br>
+You can also have fixed navbar only on small devices by adding <code>.navbar-fixed-sm</code> , <code>.navbar-fixed-md</code> , <code>.navbar-fixed-lg</code> or <code>.navbar-fixed-xl</code> to navbar.
+</div></p>
+<h2 id="spaced-sidebar"><div class="h-inner">Spaced sidebar <a href="./html/basics/sidebar.html#spaced-sidebar"></a></div></h2>
+<p>Adding <code>.sidebar-spaced</code> will make <code>.nav-item</code> elements have some space from <code>.sidebar</code>.<br>
+In demo, this is used for <code>sidebar-lightblue</code> , <code>sidebar-lightblue2</code> and <code>sidebar-lightpurple</code> themes but you can use it with other sidebar themes as well:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar sidebar-color sidebar-dark sidebar-spaced&quot;&gt;&#13;&#10;    ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p><img src=".//images/sidebar-spaced.png" alt="Sidebar spaced"></p>
+<p>You can disable it by setting <code>sidebar-spaced</code> to <code>false</code> in <em>scss/_variables.scss</em> .<br>
+You can also change values for spaced sidebar by searching for <code>spaced-</code> variables in <em>scss/_sidebar-themes-variables.scss</em> .</p>
+<h2 id="nav-options"><div class="h-inner">Nav options <a href="./html/basics/sidebar.html#nav-options"></a></div></h2>
+<p>The <code>.nav</code> element can have the following options/classes:</p>
+<h4 id="has-active-border"><div class="h-inner"><code>.has-active-border</code> <a href="./html/basics/sidebar.html#has-active-border"></a></div></h4>
+<p>Adds highlight border on left of an active item.<br>
+In each sidebar theme, the color can be specified by modifying <code>link-active-highlight-border</code> in <em>scss/_sidebar-themes-variables.scss</em>.<br>
+See <a href="./html/basics/themes.html#customizing-and-editing">customizing sidebar themes </a> for more info</p>
+<h4 id="active-on-right-2"><div class="h-inner"><code>.active-on-right</code> <a href="./html/basics/sidebar.html#active-on-right-2"></a></div></h4>
+<p>Will show the active highlight border on right.<br>
+<img src="./images/sidebar-active-on-right.png" alt="Active On Top"></p>
+<h4 id="active-on-top"><div class="h-inner"><code>.active-on-top</code> <a href="./html/basics/sidebar.html#active-on-top"></a></div></h4>
+<p>The active border will only be displayed for the 1st level item and not the items in submenus:<br>
+<img src="./images/sidebar-active-on-top.png" alt="Active On Top"></p>
+<h4 id="has-active-arrow"><div class="h-inner"><code>.has-active-arrow</code> <a href="./html/basics/sidebar.html#has-active-arrow"></a></div></h4>
+<p>The active item will have an arrow pointing to it:<br>
+<img src="./images/sidebar-dark-active-arrow.png" alt="Active Item Arrow"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav has-active-border has-active-arrow&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/ul&gt;&#13;&#10;&#13;&#10;&lt;ul class=&quot;nav has-active-border active-on-top&quot;&gt;&#13;&#10; ...&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<p>If you don't want to use these options, you can disable them by setting their values to <code>false</code> in <em>scss/ace-features.scss</em></p>
+<h2 id="submenu-hover"><div class="h-inner">Submenu Hover <a href="./html/basics/sidebar.html#submenu-hover"></a></div></h2>
+<p>You can have submenu elements appear on mouse hover by adding <code>.sidebar-hover</code> to <code>.sidebar</code>.<br>
+In that case, you should also set <code>data-pullup</code> to <code>true</code> for sidebar OR call <code>enableSubmenuPullup</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-dark sidebar-color expandable sidebar-fixed&quot; data-pullup=&quot;true&quot; ...&gt;&#13;&#10; ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js"> $(&#39;#sidebar&#39;).aceSidebar(&#39;enableSubmenuPullup&#39;)&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-warning">
+<code>.sidebar-hover</code> doesn't work with <code>.sidebar-spaced</code>
+</div></p>
+<h2 id="collapsed-sidebar"><div class="h-inner">Collapsed Sidebar <a href="./html/basics/sidebar.html#collapsed-sidebar"></a></div></h2>
+<p><div class="alert alert-info">
+To make sidebar collapsed by default, you can add <code>.collapsed</code> class to <code>.sidebar</code> element.
+</div></p>
+<p>👉 There are 3 different collapsed sidebar modes, all enabled by default in demo.<br>
+But as you only need one in your app, you should disable the unwanted ones
+by setting them to <code>false</code> in <code>scss/ace-features.scss</code> and <a href="./html/files/css.html#build-custom-css">re-building</a> <em>ace.css</em>.</p>
+<h3 id="expandable"><div class="h-inner">Expandable <a href="./html/basics/sidebar.html#expandable"></a></div></h3>
+<p>In expandable sidebar after being collapsed/minimized, when mouse hovers it, the sidebar will be expanded back to noraml full size without taking document space.</p>
+<p>To enable it you should add the following classes:</p>
+<ul>
+<li><code>.expandable</code> for sidebar element</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar expandable&quot;&gt;&#13;&#10;   &lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10;    ....&#13;&#10;   &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li>
+<p>Use <code>.fadeable</code> for an element that should be <em>faded out</em> when sidebar is being collapsed. For example <code>.nav-text</code> should have this</p>
+</li>
+<li>
+<p><code>.hideable</code> for an element that should be <em>hidden</em> and take no space when sidebar is being collapsed. For example <code>.submenu</code> should have this</p>
+</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="4,7"><code class="language-html">&lt;ul class=&quot;nav&quot;&gt;&#13;&#10;    &lt;li class=&quot;nav-item&quot;&gt;&#13;&#10;        &lt;a href=&quot;#&quot; class=&quot;nav-link dropdown-toggle&quot;&gt;&#13;&#10;            &lt;span class=&quot;nav-text fadeable&quot;&gt; ... &lt;/span&gt;&#13;&#10;        &lt;/a&gt;&#13;&#10;&#13;&#10;        &lt;div class=&quot;submenu hideable collapse&quot;&gt;&#13;&#10;            ...&#13;&#10;        &lt;/div&gt;&#13;&#10;    &lt;/li&gt;&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li>Use <code>.fadeinable</code> element will be <em>shown</em> when sidebar is collapsed.</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="3,6"><code class="language-html">&lt;div class=&quot;sidebar-section&quot;&gt;&#13;&#10;    &lt;div class=&quot;sidebar-section-item&quot;&gt;&#13;&#10;        &lt;div class=&quot;fadeinable&quot;&gt;&#13;&#10;            &lt;!-- show this when sidebar is collapsed --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;        &lt;div class=&quot;fadeable&quot;&gt;&#13;&#10;            &lt;!-- show this when sidebar is expanded and will be faded out when collapsed --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>For example, you can make <code>.nav-icon</code> elements <code>.fadeinable</code> too and they will be hidden when sidebar is expanded (full size) and shown when collapsed:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;li class=&quot;nav-item&quot;&gt;&#13;&#10; &lt;a href=&quot;LINK&quot; class=&quot;nav-link dropdown-toggle&quot;&gt;&#13;&#10;   &lt;i class=&quot;nav-icon fadeinable fa fa-user ml-4&quot;&gt;&lt;/i&gt;&#13;&#10;   &lt;!-- or don&#39;t use .nav-icon class --&gt;&#13;&#10;   &lt;i class=&quot;fadeinable fa fa-user&quot;&gt;&lt;/i&gt;&#13;&#10; &lt;/a&gt;&#13;&#10; ...&#13;&#10;&lt;/li&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.let-expanded</code>:
+If you add this class to <code>.sidebar.expandable</code> and you collapse the sidebar using a toggle button that's inside the sidebar,
+sidebar will collapse but because mouse is inside it, it will remain expanded (as expected).<br>
+If you don't add this class to sidebar, sidebar will collapse anyway.<br>
+<img src=".//images/sidebar-let-expanded.png" alt="Sidebar let expanded"></li>
+</ul>
+<h3 id="hoverable"><div class="h-inner">Hoverable <a href="./html/basics/sidebar.html#hoverable"></a></div></h3>
+<p>In hoverable sidebar after being collapsed/minimized, when mouse hovers an item, the item's text and submenu will be shown like a popup menu.</p>
+<p>To enable it you should add the following classes:</p>
+<ul>
+<li><code>.hoverable</code> for sidebar element</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar hoverable&quot;&gt;&#13;&#10;    &lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10;    ....&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<ul>
+<li><code>.fadeinable</code> elements that are child of <code>.sidebar-section-item</code> will be shown when sidebar is collapsed</li>
+<li><code>.fadeable</code> elements that are child of <code>.sidebar-section-item</code> will be hidden when sidebar is collapsed and displayed when mouse hovers it</li>
+<li><code>.fadeable-left</code> , <code>.fadeable-top</code> , <code>.fadeable-bottom</code> classes can be added to <code>.sidebar-section-item</code> to specify where will the <code>.fadeable</code> appear when mouse hovers it:</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="3,6"><code class="language-html">&lt;div class=&quot;sidebar-section&quot;&gt;&#13;&#10;    &lt;div class=&quot;sidebar-section-item fadeable-top&quot;&gt;&#13;&#10;        &lt;div class=&quot;fadeinable&quot;&gt;&#13;&#10;            &lt;!-- show this when sidebar is collapsed --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;        &lt;div class=&quot;fadeable&quot;&gt;&#13;&#10;            &lt;!-- show this when this sidebar is not collapsed / or when sidebar is collapsed and item is hovered --&gt;&#13;&#10;        &lt;/div&gt;&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<p>In that case, you should also set <code>data-pullup</code> to <code>true</code> for sidebar OR call <code>enableSubmenuPullup</code> function:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div id=&quot;sidebar&quot; class=&quot;sidebar sidebar-dark sidebar-color expandable sidebar-fixed&quot; data-pullup=&quot;true&quot; ...&gt;&#13;&#10; ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js"> $(&#39;#sidebar&#39;).aceSidebar(&#39;enableSubmenuPullup&#39;)&#13;&#10;</code></pre>
+					</div>
+<h3 id="hideable"><div class="h-inner">Hideable <a href="./html/basics/sidebar.html#hideable"></a></div></h3>
+<p>Hideable sidebar will be hidden completely rather than being minimized</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar hideable&quot;&gt;&#13;&#10;    &lt;div class=&quot;sidebar-inner&quot;&gt;&#13;&#10;    ....&#13;&#10;    &lt;/div&gt;&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="toggler-desktop"><div class="h-inner">Toggler (desktop) <a href="./html/basics/sidebar.html#toggler-desktop"></a></div></h3>
+<p>You can use any button or element for toggling. It should have <code>data-toggle=&quot;sidebar&quot;</code> attribute:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="2"><code class="language-html">&lt;button type=&quot;button&quot; class=&quot;btn btn-warning d-none d-xl-flex&quot;&#13;&#10;data-toggle=&quot;sidebar&quot; data-target=&quot;#sidebar&quot;&#13;&#10;aria-controls=&quot;sidebar&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Toggle sidebar&quot;&gt;&#13;&#10;&#13;&#10;  &lt;i class=&quot;fa fa-bars&quot;&gt;&lt;/i&gt;&#13;&#10;&#13;&#10;&lt;/button&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can also call the toggle functions directly:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#sidebar&#39;).aceSidebar(&#39;toggle&#39;)&#13;&#10;$(&#39;#sidebar&#39;).aceSidebar(&#39;collapse&#39;)&#13;&#10;$(&#39;#sidebar&#39;).aceSidebar(&#39;expand&#39;)&#13;&#10;</code></pre>
+					</div>
+<h2 id="captions-dividers"><div class="h-inner">Captions &amp; Dividers <a href="./html/basics/sidebar.html#captions-dividers"></a></div></h2>
+<p>Inside <code>.nav</code> element you can have captions and dividers:<br>
+<img src="./images/sidebar-divider.png" alt="Caption &amp; Divider"></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;ul class=&quot;nav&quot;&gt;&#13;&#10;  &lt;li class=&quot;nav-item-caption&quot;&gt;&#13;&#10;     &lt;span class=&quot;fadeable&quot;&gt;MAIN&lt;/span&gt;&#13;&#10;     &lt;span class=&quot;fadeinable&quot;&gt;&hellip;&lt;/span&gt;&#13;&#10;   &lt;/li&gt;&#13;&#10;   &lt;!-- or hide caption when collapsed --&gt;&#13;&#10;   &lt;li class=&quot;nav-item-caption&quot;&gt;&#13;&#10;     &lt;span class=&quot;hideable&quot;&gt;MAIN&lt;/span&gt;&#13;&#10;   &lt;/li&gt;&#13;&#10;&lt;/ul&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-undefined">
+If you set <code>$collapsed-sidebar-caption-no-margin</code> to <code>true</code> in <em>ace-features.scss</em>, when sidebar is collapsed, captions &amp; dividers will have no margin-top or bottom:<br>
+<img src="./images/sidebar-caption-no-margin.png" alt="Caption no margin">
+</div></p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html"> &lt;li class=&quot;nav-item&quot;&gt; ... &lt;/li&gt;&#13;&#10; &#13;&#10; &lt;li class=&quot;nav-item-divider&quot;&gt;&lt;/li&gt;&#13;&#10;&#13;&#10; &lt;li class=&quot;nav-item-divider my-2 mx-0 hideable&quot;&gt;&lt;/li&gt;&#13;&#10;&#13;&#10; &lt;li class=&quot;nav-item&quot;&gt; ... &lt;/li&gt;&#13;&#10;</code></pre>
+					</div>
+<p><div class="alert alert-info">
+You can change the color of dividers and captions by modifying <code>divider-color</code>, <code>caption-color</code>, <code>caption-size</code>, etc in <em>_sidebar-themes-variables.scss</em>
+</div></p>
+<h2 id="mobile-view"><div class="h-inner">Mobile View <a href="./html/basics/sidebar.html#mobile-view"></a></div></h2>
+<p>Mobile view is applied in screen sizes below <em>xl</em> (1200px). You can add the following options:</p>
+<ul>
+<li><em>backdrop</em> , <em>dismiss</em> and <em>swipe</em> as described in <a href="./html/basics/sidebar.html#sidebar-options">sidebar options</a></li>
+<li><code>.sidebar-top</code> will make the sidebar start from <code>top: 0px</code> and not below navbar</li>
+<li><code>.sidebar-push</code> will push content area when sidebar is being displayed<br>
+<img src="./images/sidebar-push.png" alt="Sidebar push"></li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html"><code class="language-html">&lt;div class=&quot;sidebar sidebar-push sidebar-dark sidebar-color expandable&quot;&gt;&#13;&#10;    ...&#13;&#10;&lt;/div&gt;&#13;&#10;</code></pre>
+					</div>
+<h3 id="toggler-mobile"><div class="h-inner">Toggler (mobile) <a href="./html/basics/sidebar.html#toggler-mobile"></a></div></h3>
+<p>You can use any button or element for toggling. It should have <code>data-toggle-mobile=&quot;sidebar&quot;</code> attribute and be <code>.collapsed</code> by default:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="2"><code class="language-html">&lt;button type=&quot;button&quot; class=&quot;btn btn-info d-flex d-xl-none collapsed&quot;&#13;&#10;data-toggle-mobile=&quot;sidebar&quot; data-target=&quot;#sidebar&quot;&#13;&#10;aria-controls=&quot;sidebar&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle sidebar&quot;&gt;&#13;&#10;&#13;&#10;  &lt;i class=&quot;fa fa-bars&quot;&gt;&lt;/i&gt;&#13;&#10;&#13;&#10;&lt;/button&gt;&#13;&#10;</code></pre>
+					</div>
+<p>You can also call the toggle functions directly:</p>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#sidebar&#39;).aceSidebar(&#39;toggleMobile&#39;)&#13;&#10;$(&#39;#sidebar&#39;).aceSidebar(&#39;show&#39;)&#13;&#10;$(&#39;#sidebar&#39;).aceSidebar(&#39;hide&#39;)&#13;&#10;</code></pre>
+					</div>
+<p>There are some toggling buttons included in Ace using <code>.btn-burger</code>. For example <code>.btn-burger.burger-arrowed</code> is changed to this when sidebar is shown:<br>
+<img src="./images/btn-burger-arrowed.png" alt="Btn Burger Arrowed"></p>
+<p>The following burger buttons are available:</p>
+<ul>
+<li><code>.burger-arrowed</code></li>
+<li><code>.burger-times</code> the bars will become like times sign <strong>×</strong></li>
+<li><code>.burger-minus</code> the bars will become one line</li>
+<li><code>.burger-compact</code> the bars will become compact</li>
+<li><code>.burger-steps</code> the bars will become step like</li>
+<li><code>.burger-dots</code> there are no bars but dots instead</li>
+</ul>
+<p>For these options, you should use the button with <code>.static</code> class and the child element should be a <code>.bars</code> element:</p>
+<div class="code-wrap">
+						<span class="language-badge">html</span>
+						<pre class="language-html" data-line="5"><code class="language-html">&lt;button&#13;&#10;      type=&quot;button&quot; data-toggle-mobile=&quot;sidebar&quot; data-target=&quot;#sidebar&quot; aria-controls=&quot;sidebar&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle sidebar&quot;&#13;&#10;      class=&quot;btn btn-burger burger-compact static d-flex d-xl-none collapsed&quot;&gt;&#13;&#10;&#13;&#10;       &lt;span class=&quot;bars&quot;&gt;&lt;/span&gt;&#13;&#10;&#13;&#10;&lt;/button&gt;&#13;&#10;</code></pre>
+					</div>
+<h2 id="themes"><div class="h-inner">Themes <a href="./html/basics/sidebar.html#themes"></a></div></h2>
+<p>See <a href="./html/basics/themes.html#sidebar">Sidebar Themes</a></p>
+<h2 id="javascript"><div class="h-inner">Javascript <a href="./html/basics/sidebar.html#javascript"></a></div></h2>
+<p>Sidebar's functionality is enabled in <em>aceSidebar</em> plugin which is initialized on page load.<br>
+You can pass some options to it using <code>data-*</code> attributes as explained in <a href="./html/basics/sidebar.html#sidebar-options">sidebar options</a></p>
+<h3 id="functions"><div class="h-inner">Functions <a href="./html/basics/sidebar.html#functions"></a></div></h3>
+<p>The following functions are available:</p>
+<ul>
+<li><code>toggle</code> , <code>collapse</code> , <code>expand</code></li>
+<li><code>toggleMobile</code> , <code>show</code> , <code>hide</code></li>
+<li><code>enableSubmenuPullup</code> , <code>disableSubmenuPullup</code></li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#sidebar&#39;).aceSidebar(&#39;collapse&#39;)&#13;&#10;</code></pre>
+					</div>
+<h3 id="events"><div class="h-inner">Events <a href="./html/basics/sidebar.html#events"></a></div></h3>
+<p>The following events are available:</p>
+<ul>
+<li><code>show</code> , <code>shown</code> : triggered before/after sidebar is shown in <em>mobile</em> view</li>
+<li><code>hide</code> , <code>hidden</code> : triggered before/after sidebar is hidden in <em>mobile</em> view</li>
+<li><code>expand</code> : <code>expanded</code> : triggered before/after sidebar is expanded in <em>desktop</em> view</li>
+<li><code>collapse</code> : <code>collapsed</code> : triggered before/after sidebar is collapsed in <em>desktop</em> view</li>
+</ul>
+<div class="code-wrap">
+						<span class="language-badge">js</span>
+						<pre class="language-js"><code class="language-js">$(&#39;#sidebar&#39;).on(&#39;show.ace.sidebar&#39;, function(e) {&#13;&#10;  // e.preventDefault();&#13;&#10;})&#13;&#10;$(&#39;#sidebar&#39;).on(&#39;collapsed.ace.sidebar&#39;, function(e) {&#13;&#10;  // do something&#13;&#10;})&#13;&#10;</code></pre>
+					</div>
+
+
+				<div class="footer">
+				 <div class="footer-inner">
+				      <a href="./html/basics/navbar.html" class="prev-link">
+				          Navbar
+				      </a>
+				
+				      <a href="./html/basics/content.html" class="next-link">
+				          Content
+				      </a>
+				 </div>
+				
+				 <a href="#" class="btn-scroll-up">↑</a>
+				</div>			  </div>
+
+			  <div class="toc"></div>			</div>
+			
+		 </div>	
+	   </div><!-- /.main-container -->
+
+   </div>
+   
+   <script src="../ace/node_modules/jquery/dist/jquery.js"></script>
+   <script src="../ace/node_modules/prismjs/prism.js"></script>
+   <script src="../ace/node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"></script>
+   <script src="../ace/node_modules/mark.js/dist/jquery.mark.js"></script>
+   
+   <script>
+   window._currentPage = "/html/basics/sidebar";
+   </script>
+   <script src="./assets/docs.js"></script>
+   <script src="./assets/search.js"></script> </body> 
+</html>
