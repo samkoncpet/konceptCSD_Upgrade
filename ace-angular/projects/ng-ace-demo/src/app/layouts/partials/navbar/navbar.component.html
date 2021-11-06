@@ -7,9 +7,7 @@
         <!-- mobile sidebar toggler button -->
 
         <a class="navbar-brand text-white" role="button">
-            <i class="fa fa-leaf"></i>
-            <span>Koncept</span>
-            <!-- <span>App</span> -->
+            <img src="../../../../assets/image/logo_sticky.png" />
         </a>
         <!-- /.navbar-brand -->
 
@@ -33,7 +31,19 @@
 
         <div class="navbar-nav">
             <ul class="nav">
-                <!-- <li ngbDropdown #notifDropdown="ngbDropdown" class="nav-item dropdown-mega navbar-dropdown">
+                <li ngbDropdown #megaDropdown="ngbDropdown" class="nav-item dropdown-mega navbar-dropdown">
+                    <a NgbDropdownAnchor (click)="megaDropdown.toggle();" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list-alt mr-2 d-lg-none"></i> Mega
+                        <i class="caret fa fa-angle-down d-none d-lg-block"></i>
+                        <i class="caret fa fa-angle-left d-block d-lg-none"></i>
+                    </a>
+
+                    <div ngbDropdownMenu class="dropdown-menu p-0 dropdown-animated bgc-secondary-l4 brc-primary-m3 border-t-0 border-b-2 ace-scrollbar">
+                        <app-navbar-megamenu class="d-none"></app-navbar-megamenu>
+                    </div>
+                </li>
+
+                <li ngbDropdown #notifDropdown="ngbDropdown" class="nav-item dropdown-mega navbar-dropdown">
                     <a NgbDropdownAnchor (click)="notifDropdown.toggle();" class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell text-110 icon-animated-bell mr-lg-2"></i>
 
@@ -47,10 +57,10 @@
                     <div ngbDropdownMenu class="dropdown-menu dropdown-sm dropdown-animated p-0 bgc-white brc-primary-m3 border-b-2 shadow">
                         <app-navbar-notifications></app-navbar-notifications>
                     </div>
-                </li> -->
+                </li>
 
 
-                <!-- <li ngbDropdown #taskDropdown="ngbDropdown" class="nav-item dd-backdrop dropdown-mega navbar-dropdown">
+                <li ngbDropdown #taskDropdown="ngbDropdown" class="nav-item dd-backdrop dropdown-mega navbar-dropdown">
                     <a NgbDropdownAnchor (click)="taskDropdown.toggle();" class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-flask text-110 icon-animated-vertical mr-lg-1"></i>
 
@@ -63,7 +73,7 @@
                     <div ngbDropdownMenu class="dropdown-menu dropdown-xs dropdown-animated animated-1 p-0 bgc-white brc-warning-l1 shadow">
                         <app-navbar-tasks></app-navbar-tasks>
                     </div>
-                </li> -->
+                </li>
 
 
                 <li ngbDropdown #userDropdown="ngbDropdown" class="nav-item order-first order-lg-last navbar-dropdown">

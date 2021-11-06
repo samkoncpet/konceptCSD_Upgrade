@@ -1,0 +1,150 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Add User
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <div class="card-body px-1 px-md-3">
+
+                <form class="mt-lg-3" [formGroup]="adduser" autocomplete="off">
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Name
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="name" type="text" formControlName="name" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.name.touched || submitted) && addnewuserFormControl.name.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.name.touched || submitted) && addnewuserFormControl.name.errors?.required">
+                                Name is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Email ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="email" type="text" formControlName="email" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.email.touched || submitted) && addnewuserFormControl.email.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.email.touched || submitted) && addnewuserFormControl.email.errors?.required">
+                                Email is required
+                            </span>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.email.touched || submitted) && addnewuserFormControl.email.invalid">
+                                Invalid email!
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Password
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="password" type="text" formControlName="password" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.password.touched || submitted) && addnewuserFormControl.password.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.password.touched || submitted) && addnewuserFormControl.password.errors?.required">
+                                Password is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Re type Password
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="repassword" type="text" formControlName="repassword" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.repassword.touched || submitted) && addnewuserFormControl.repassword.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.repassword.touched || submitted) && addnewuserFormControl.repassword.errors?.required">
+                                Re type Password is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Group
+                          </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <select id="group" formControlName="group" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" id="form-field-select-11">
+                                <option value="">&nbsp;</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.group.touched || submitted) && addnewuserFormControl.group.errors?.required">
+                                Group is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Status
+                          </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <select id="status" formControlName="status" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" id="form-field-select-11">
+                                <option value="">&nbsp;</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                              </select>
+                        </div>
+
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.status.touched || submitted) && addnewuserFormControl.status.errors?.required">
+                                Status is required
+                            </span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                        <div class="offset-md-3 col-md-9 text-nowrap">
+                            <button class="btn btn-info btn-bold px-4" type="button" (click)="addnewuser()">
+                          <i class="fa fa-check mr-1"></i>
+                          Submit
+                        </button>
+
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset">
+                          <i class="fa fa-undo mr-1"></i>
+                          Cancel
+                        </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

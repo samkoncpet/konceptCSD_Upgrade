@@ -17,6 +17,7 @@ import { SalesChartComponent } from './sales-chart/sales-chart.component';
 import { TransfersComponent } from './transfers/transfers.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ConversationComponent } from './conversation/conversation.component';
+import { UserlistComponent } from './../manageusers/userlist/userlist.component';
 
 
 
@@ -39,17 +40,12 @@ const routes: Routes = [
     InfoboxLineChartComponent,
     InfoboxPieChartComponent,
     TrafficChartComponent,
-
-
     ProductsComponent,
-
     SalesChartComponent,
-
     TransfersComponent,
-
     TodoListComponent,
-
-    ConversationComponent
+    ConversationComponent,
+    UserlistComponent
   ],
   imports: [
     CommonModule,

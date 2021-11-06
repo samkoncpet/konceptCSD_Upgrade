@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 
 import { MainLayoutComponent } from './layouts/main/main.component';
 import { LoginLayoutComponent } from './layouts/login/login.component';
+import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
 
 
 
@@ -26,7 +27,8 @@ import { LoginLayoutComponent } from './layouts/login/login.component';
   declarations: [
     AppComponent,
     MainLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,

@@ -29,28 +29,26 @@
         </a>
 
         <!-- if item has children -->
-        <!-- <ng-container *ngIf="navItem.hasChildren">
+        <ng-container *ngIf="navItem.hasChildren">
             <a (click)="toggleSubmenu(navItem, navItemSub)" [routerLink]="['/'+navItem.link]" [state]="{skipNavigation: true}" class="nav-link dropdown-toggle" [ngClass]="{'collapsed': !navItem.open}" [attr.aria-expanded]="navItem.open">
                 <i *ngIf="navItem.icon" class="nav-icon {{navItem.icon}}"></i>
-    
+
                 <span class="nav-text" [ngClass]="{'fadeable': navItem.isFirstLevel}">
                     <span>
                         {{navItem.title}}
                     </span>
-    
-                    <span *ngIf="navItem.badge"
-                            class="badge {{navItem['badge-class']}}"
-                            [innerHTML]="navItem.badge" placement="right" ngbTooltip="{{navItem.tooltip}}" tooltipClass="ng-custom-tooltip {{navItem['tooltip-class']}}" container="body">
+
+                <span *ngIf="navItem.badge" class="badge {{navItem['badge-class']}}" [innerHTML]="navItem.badge" placement="right" ngbTooltip="{{navItem.tooltip}}" tooltipClass="ng-custom-tooltip {{navItem['tooltip-class']}}" container="body">
                     </span>
                 </span>
-    
+
                 <b class="caret fa fa-angle-left rt-n90"></b>
             </a>
 
             <div class="submenu collapse" [ngClass]="{'hideable': navItem.isFirstLevel}" [ngbCollapse]="!navItem.open" (shown)="navItem.isToggling=false" (hidden)="navItem.isToggling=false">
-                <app-sidebar-submenu NgAceSubmenu #navItemSub="NgAceSubmenu" class="submenu-inner" [items]="navItem.children"></app-sidebar-submenu>    
+                <app-sidebar-submenu NgAceSubmenu #navItemSub="NgAceSubmenu" class="submenu-inner" [items]="navItem.children"></app-sidebar-submenu>
             </div>
-        </ng-container> -->
+        </ng-container>
 
         <!-- sub arrow -->
         <b class="sub-arrow" *ngIf="navItem.hasChildren || navItem.isFirstLevel"></b>

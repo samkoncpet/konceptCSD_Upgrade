@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MainLayoutComponent } from './layouts/main/main.component';
 import { LoginLayoutComponent } from './layouts/login/login.component';
+import { UserlistComponent } from './pages/manageusers/userlist/userlist.component';
+import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
 
 
 const routes: Routes = [
-  
   {
-    path: 'login',
+    path: '',
     component: LoginLayoutComponent,
     data: {
       title: 'Login'
@@ -45,7 +46,20 @@ const routes: Routes = [
         redirectTo: 'dashboard',
         pathMatch: 'full'
       },
-      
+      {
+        path: 'userlist',
+        component: UserlistComponent,
+        data: {
+          title: 'User List'
+        }
+      },
+      {
+        path: 'addnewuser',
+        component: NewuserComponent,
+        data: {
+          title: 'Add new user'
+        }
+      },
       {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule)
@@ -65,6 +79,7 @@ const routes: Routes = [
         path: 'more',
         loadChildren: () => import('./pages/more/more.module').then((m) => m.MoreModule)
       }
+      
     ]
   }
 ];

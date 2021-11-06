@@ -54,7 +54,6 @@ export class SigninComponent implements OnInit {
     }
     this._ConfigurationService.postWithoutHeader(url, data)
         .subscribe(response => {
-          debugger
           if (response["response"] == 1) {
             this._localstorageService.localstorageSet("userid", response["data"][0].User_ID);
             this._localstorageService.localstorageSet("token", response["sys_message"]);

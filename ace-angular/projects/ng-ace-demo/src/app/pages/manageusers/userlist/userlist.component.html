@@ -1,0 +1,98 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            User list
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <div class="card-body px-1 px-md-3">
+
+                <form autocomplete="off">
+                    <div class="d-flex justify-content-between flex-column flex-sm-row mb-3 px-2 px-sm-0">
+                        <h3 class="text-125 pl-1 mb-3 mb-sm-0 text-secondary-d4">
+                            User list
+                        </h3>
+
+                        <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                            <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
+                            <input type="text" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
+                        </div>
+
+                        <div class="mb-2 mb-sm-0">
+                            <button type="button" (click)="addnewuser()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
+                  <i class="fa fa-plus mr-1"></i>
+                  Add <span class="d-sm-none d-md-inline">New</span> Entry
+                </button>
+                        </div>
+                    </div>
+
+                    <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                        <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                            <tr>
+                                <th class="text-center pr-0">
+                                    <label class="py-0">
+                      <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
+                    </label>
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th class="d-none d-sm-table-cell">
+                                    Status
+                                </th>
+
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="mt-1">
+
+                        </tbody>
+                    </table>
+
+                    <!-- table footer -->
+                    <div class="d-flex pl-4 pr-3 pt-35 border-t-1 brc-secondary-l3 flex-column flex-sm-row mt-n1px">
+                        <div class="text-nowrap align-self-center align-self-sm-start">
+                            <span class="d-inline-block text-grey-d2">
+                  Showing 1 - 10 of 152
+              </span>
+
+                            <select class="ml-3 ace-select no-border angle-down brc-h-blue-m3 w-auto pr-45 text-secondary-d3">
+                  <option value="10">Show 10</option>
+                  <option value="20">Show 20</option>
+                  <option value="50">Show 50</option>
+                </select>
+                        </div>
+
+                        <div class="btn-group ml-sm-auto mt-3 mt-sm-0">
+                            <a href="#" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2">
+                                <i class="fa fa-caret-left mr-1"></i> Prev
+                            </a>
+                            <a href="#" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px">
+                  Next
+                  <i class="fa fa-caret-right ml-1"></i>
+                </a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

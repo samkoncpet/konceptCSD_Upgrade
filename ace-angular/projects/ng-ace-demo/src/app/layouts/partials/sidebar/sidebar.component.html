@@ -12,6 +12,7 @@
 
     <div class="sidebar-section">
         <ng-container *ngTemplateOutlet="sidebarFooter">
+            <!-- sidebar footer is below -->
         </ng-container>
     </div>
 
@@ -21,6 +22,40 @@
 
 <!------------ SIDEBAR HEADER ------------>
 <ng-template #sidebarHeader>
+    <!-- the shortcut buttons -->
+    <div class="sidebar-section-item fadeable-left">
+        <div class="fadeinable sidebar-shortcuts-mini">
+            <!-- show this small buttons when collapsed -->
+            <span class="btn btn-success p-0 opacity-1"></span>
+            <span class="btn btn-info p-0 opacity-1"></span>
+            <span class="btn btn-orange p-0 opacity-1"></span>
+            <span class="btn btn-danger p-0 opacity-1"></span>
+        </div>
+
+        <div class="fadeable">
+            <!-- show this small buttons when not collapsed -->
+            <div class="sub-arrow"></div>
+            <div>
+                <button class="btn px-25 py-2 text-95 btn-success opacity-1">
+            <i class="fa fa-signal f-n-hover"></i>
+          </button>
+
+                <button class="btn px-25 py-2 text-95 btn-info opacity-1">
+            <i class="fa fa-edit f-n-hover"></i>
+          </button>
+
+                <button class="btn px-25 py-2 text-95 btn-orange opacity-1">
+            <i class="fa fa-users f-n-hover"></i>
+          </button>
+
+                <button class="btn px-25 py-2 text-95 btn-danger opacity-1">
+            <i class="fa fa-cogs f-n-hover"></i>
+          </button>
+            </div>
+        </div>
+    </div>
+
+
     <!-- the search box -->
     <div class="sidebar-section-item">
         <i class="fadeinable fa fa-search text-info-m1 mr-n1"></i>
@@ -41,5 +76,40 @@
 
 <!------------ SIDEBAR FOOTER ------------>
 <ng-template #sidebarFooter>
+    <div class="sidebar-section-item fadeable-bottom">
+        <div class="fadeinable">
+            <!-- shows this when collapsed -->
+            <div class="pos-rel">
+                <img alt="Alexa's Photo" src="assets/image/avatar/avatar3.jpg" width="42" class="px-1px radius-round mx-2 border-2 brc-default-m2" />
+                <span class="bgc-success radius-round border-2 brc-white p-1 position-tr mr-1 mt-2px"></span>
+            </div>
+        </div>
 
+        <div class="fadeable hideable w-100 bg-transparent shadow-none border-0">
+            <!-- shows this when full-width -->
+            <div id="sidebar-footer-bg" class="d-flex align-items-center bgc-white shadow-sm mx-2 mt-2px py-2 radius-t-1 border-x-1 border-t-2 brc-primary-m3">
+                <div class="d-flex mr-auto py-1">
+                    <div class="pos-rel">
+                        <img alt="Alexa's Photo" src="assets/image/avatar/avatar3.jpg" width="42" class="px-1px radius-round mx-2 border-2 brc-default-m2" />
+                        <span class="bgc-success radius-round border-2 brc-white p-1 position-tr mr-1 mt-2px"></span>
+                    </div>
+
+                    <div>
+                        <span class="text-blue-d1 font-bolder">Alexa</span>
+                        <div class="text-80 text-grey">
+                            Admin
+                        </div>
+                    </div>
+                </div>
+
+                <a [routerLink]="" class="d-style btn btn-outline-primary btn-h-light-primary btn-a-light-primary border-0 p-2 mr-2px ml-4" title="Settings">
+                    <i class="fa fa-cog text-150 text-blue-d2 f-n-hover"></i>
+                </a>
+
+                <a [routerLink]="['/more/login']" class="d-style btn btn-outline-orange btn-h-light-orange btn-a-light-orange border-0 p-2 mr-1" title="Logout">
+                    <i class="fa fa-sign-out-alt text-150 text-orange-d2 f-n-hover"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </ng-template>
