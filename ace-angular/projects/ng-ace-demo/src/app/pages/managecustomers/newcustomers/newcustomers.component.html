@@ -1,0 +1,425 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Add Customer
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <div class="card-body px-1 px-md-3">
+
+                <form class="mt-lg-3" [formGroup]="addcustomer" autocomplete="off">
+                    <!-- <fieldset>
+                        <legend class="legendtext">Login</legend> -->
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            User ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="userid" formControlName="userid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.userid.touched || submitted) && addcustomerFormControl.userid.errors?.required)}">
+                            <option value="">&nbsp;</option>
+                            <option value="1">User 1</option>
+                            <option value="2">User 2</option>
+                            <option value="3">User 3</option>
+                            <option value="4">User 4</option>
+                            <option value="5">User 5</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.userid.touched || submitted) && (addcustomerFormControl.userid.errors?.required || addcustomerFormControl.userid.invalid)">
+                                {{getErrorMessage('userid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <!-- </fieldset>
+                    <fieldset>
+                        <legend class="legendtext">Personal information</legend> -->
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Subscription
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="subscriptionid" formControlName="subscriptionid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.subscriptionid.touched || submitted) && addcustomerFormControl.subscriptionid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">Subscription 1</option>
+                                <option value="2">Subscription 2</option>
+                                <option value="3">Subscription 3</option>
+                                <option value="4">Subscription 4</option>
+                                <option value="5">Subscription 5</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.subscriptionid.touched || submitted) && (addcustomerFormControl.subscriptionid.errors?.required || addcustomerFormControl.subscriptionid.invalid)">
+                                {{getErrorMessage('subscriptionid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Father Name
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="fathername" type="text" formControlName="fathername" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathername.touched || submitted) && addcustomerFormControl.fathername.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fathername.touched || submitted) && (addcustomerFormControl.fathername.errors?.required || addcustomerFormControl.fathername.invalid)">
+                                {{getErrorMessage('fathername')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Father Mobile No.
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                </div>
+                                <input id="fathermobileno" type="text" formControlName="fathermobileno" class="form-control form-control-lg" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addcustomerFormControl.fathermobileno.touched || submitted) && addcustomerFormControl.fathermobileno.errors?.required)}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fathermobileno.touched || submitted) && (addcustomerFormControl.fathermobileno.errors?.required || addcustomerFormControl.fathermobileno.invalid)">
+                                {{getErrorMessage('fathermobileno')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Father Email ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="fatheremail" type="text" formControlName="fatheremail" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatheremail.touched || submitted) && addcustomerFormControl.fatheremail.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fatheremail.touched || submitted) && (addcustomerFormControl.fatheremail.errors?.required || addcustomerFormControl.fatheremail.invalid)">
+                                {{getErrorMessage('fatheremail')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Mother Name
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="mothername" type="text" formControlName="mothername" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothername.touched || submitted) && addcustomerFormControl.mothername.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.mothername.touched || submitted) && (addcustomerFormControl.mothername.errors?.required || addcustomerFormControl.mothername.invalid)">
+                                {{getErrorMessage('mothername')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Mother Mobile No.
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                </div>
+                                <input id="mothermobileno" type="text" formControlName="mothermobileno" class="form-control form-control-lg" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addcustomerFormControl.mothermobileno.touched || submitted) && addcustomerFormControl.mothermobileno.errors?.required)}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.mothermobileno.touched || submitted) && (addcustomerFormControl.mothermobileno.errors?.required || addcustomerFormControl.mothermobileno.invalid)">
+                                {{getErrorMessage('mothermobileno')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Mother Email ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="motheremail" type="text" formControlName="motheremail" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motheremail.touched || submitted) && addcustomerFormControl.motheremail.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.motheremail.touched || submitted) && (addcustomerFormControl.motheremail.errors?.required || addcustomerFormControl.motheremail.invalid)">
+                                {{getErrorMessage('motheremail')}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Alternate Mobile No.
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                </div>
+                                <input id="alternatemobileno" type="text" formControlName="alternatemobileno" class="form-control form-control-lg" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addcustomerFormControl.alternatemobileno.touched || submitted) && addcustomerFormControl.alternatemobileno.errors?.required)}">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.alternatemobileno.touched || submitted) && (addcustomerFormControl.alternatemobileno.errors?.required || addcustomerFormControl.alternatemobileno.invalid)">
+                                {{getErrorMessage('alternatemobileno')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Alternate Email ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="alternateemail" type="text" formControlName="alternateemail" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.alternateemail.touched || submitted) && addcustomerFormControl.alternateemail.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.alternateemail.touched || submitted) && (addcustomerFormControl.alternateemail.errors?.required || addcustomerFormControl.alternateemail.invalid)">
+                                {{getErrorMessage('alternateemail')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                No. of children
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="noofchildren" type="text" formControlName="noofchildren" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.noofchildren.touched || submitted) && addcustomerFormControl.noofchildren.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.noofchildren.touched || submitted) && (addcustomerFormControl.noofchildren.errors?.required || addcustomerFormControl.noofchildren.invalid)">
+                                {{getErrorMessage('noofchildren')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Education Consultant
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="educationconsultantid" formControlName="educationconsultantid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultantid.touched || submitted) && addcustomerFormControl.educationconsultantid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">Education Consultant 1</option>
+                                <option value="2">Education Consultant 2</option>
+                                <option value="3">Education Consultant 3</option>
+                                <option value="4">Education Consultant 4</option>
+                                <option value="5">Education Consultant 5</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.educationconsultantid.touched || submitted) && (addcustomerFormControl.educationconsultantid.errors?.required || addcustomerFormControl.educationconsultantid.invalid)">
+                                {{getErrorMessage('educationconsultantid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Package
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="packageid" formControlName="packageid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.packageid.touched || submitted) && addcustomerFormControl.packageid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">Package 1</option>
+                                <option value="2">Package 2</option>
+                                <option value="3">Package 3</option>
+                                <option value="4">Package 4</option>
+                                <option value="5">Package 5</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.packageid.touched || submitted) && (addcustomerFormControl.packageid.errors?.required || addcustomerFormControl.packageid.invalid)">
+                                {{getErrorMessage('packageid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Payment Mode
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="paymentmodeid" formControlName="paymentmodeid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.paymentmodeid.touched || submitted) && addcustomerFormControl.paymentmodeid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">Cash</option>
+                                <option value="2">Online</option>
+                                <option value="3">Check</option>
+                                <option value="4">Other</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.paymentmodeid.touched || submitted) && (addcustomerFormControl.paymentmodeid.errors?.required || addcustomerFormControl.paymentmodeid.invalid)">
+                                {{getErrorMessage('paymentmodeid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Address
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <textarea id="address" formControlName="address" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.address.touched || submitted) && addcustomerFormControl.address.errors?.required)}"></textarea>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.address.touched || submitted) && (addcustomerFormControl.address.errors?.required || addcustomerFormControl.address.invalid)">
+                                {{getErrorMessage('address')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Address Other
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <textarea id="addressother" formControlName="addressother" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.addressother.touched || submitted) && addcustomerFormControl.addressother.errors?.required)}"></textarea>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.addressother.touched || submitted) && (addcustomerFormControl.addressother.errors?.required || addcustomerFormControl.addressother.invalid)">
+                                {{getErrorMessage('addressother')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            City
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="city" type="text" formControlName="city" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.city.touched || submitted) && addcustomerFormControl.city.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.city.touched || submitted) && (addcustomerFormControl.city.errors?.required || addcustomerFormControl.city.invalid)">
+                                {{getErrorMessage('city')}}
+                            </span>
+                        </div>
+                    </div>
+                    <!-- </fieldset> -->
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                State ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="stateid" formControlName="stateid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.stateid.touched || submitted) && addcustomerFormControl.stateid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">State 1</option>
+                                <option value="2">State 2</option>
+                                <option value="3">State 3</option>
+                                <option value="4">State 4</option>
+                                <option value="5">State 5</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.stateid.touched || submitted) && (addcustomerFormControl.stateid.errors?.required || addcustomerFormControl.stateid.invalid)">
+                                {{getErrorMessage('stateid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Country ID
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="countryid" formControlName="countryid" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addcustomerFormControl.countryid.touched || submitted) && addcustomerFormControl.countryid.errors?.required)}">
+                                <option value="">&nbsp;</option>
+                                <option value="1">Country 1</option>
+                                <option value="2">Country 2</option>
+                                <option value="3">Country 3</option>
+                                <option value="4">Country 4</option>
+                                <option value="5">Country 5</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.countryid.touched || submitted) && (addcustomerFormControl.countryid.errors?.required || addcustomerFormControl.countryid.invalid)">
+                                {{getErrorMessage('countryid')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Zip Code
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="zipcode" type="text" formControlName="zipcode" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.zipcode.touched || submitted) && addcustomerFormControl.zipcode.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.zipcode.touched || submitted) && (addcustomerFormControl.zipcode.errors?.required || addcustomerFormControl.zipcode.invalid)">
+                                {{getErrorMessage('zipcode')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Important Notes
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <textarea id="importantnotes" formControlName="importantnotes" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.importantnotes.touched || submitted) && addcustomerFormControl.importantnotes.errors?.required)}"></textarea>
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addcustomerFormControl.importantnotes.touched || submitted) && (addcustomerFormControl.importantnotes.errors?.required || addcustomerFormControl.importantnotes.invalid)">
+                                {{getErrorMessage('importantnotes')}}
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                        <div class="offset-md-3 col-md-9 text-nowrap">
+                            <button class="btn btn-info btn-bold px-4" type="button" (click)="addnewcustomer()">
+                          <i class="fa fa-check mr-1"></i>
+                          Submit
+                        </button>
+
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
+                          <i class="fa fa-undo mr-1"></i>
+                          Cancel
+                        </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

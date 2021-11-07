@@ -20,7 +20,7 @@
 
     {
         "id": "managecustomers",
-        "link": "managecustomers",
+        "link": "customerslist",
         "title": "Manage Customers",
         "icon": "fa fa-desktop"
     },

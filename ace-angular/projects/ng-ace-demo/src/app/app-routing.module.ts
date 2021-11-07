@@ -5,6 +5,8 @@ import { MainLayoutComponent } from './layouts/main/main.component';
 import { LoginLayoutComponent } from './layouts/login/login.component';
 import { UserlistComponent } from './pages/manageusers/userlist/userlist.component';
 import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
+import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
+import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newcustomers.component';
 
 
 const routes: Routes = [
@@ -58,6 +60,20 @@ const routes: Routes = [
         component: NewuserComponent,
         data: {
           title: 'Add new user'
+        }
+      },
+      {
+        path: 'customerslist',
+        component: CustomerslistComponent,
+        data: {
+          title: 'Customers list'
+        }
+      },
+      {
+        path: 'addcustomers',
+        component: NewcustomersComponent,
+        data: {
+          title: 'Add Customer'
         }
       },
       {
