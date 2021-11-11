@@ -3,5 +3,5 @@ export const environment = {
   
   environmentName: "production",
   // Koncent Host URL's
-  koncentAPI: 'http://localhost:5000/',
+  koncentAPI: 'http://csdapi.konceptedu.com/',
 };

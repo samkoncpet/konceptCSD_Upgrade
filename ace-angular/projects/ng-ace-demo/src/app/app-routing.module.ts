@@ -93,6 +93,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'addpackage/:id',
+        component: NewpackageComponent,
+        data: {
+          title: 'Add Package'
+        }
+      },
+      {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },

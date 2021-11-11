@@ -15,4 +15,5 @@ export class AppsettingsService {
 
    // Package API
    insertPackageAPI: string = "api/package/insertpackage";
+   updatePackageAPI: string = "api/package/update-package";
 }
