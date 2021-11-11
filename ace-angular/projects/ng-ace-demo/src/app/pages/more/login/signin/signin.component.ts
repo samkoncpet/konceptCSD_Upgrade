@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LocalstorageService } from '../../../../../app/config/localstorage.service';
 import { ConfigurationService } from '../../../../../app/config/configuration.service';
 import { AppsettingsService } from '../../../../../app/config/appsettings.service';
+import { NotificationsService } from '../../../../config/notifications.service';
 
 @Component({
   selector: 'app-demo-signin',
@@ -24,7 +25,8 @@ export class SigninComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
-    private _localstorageService: LocalstorageService) { 
+    private _localstorageService: LocalstorageService,
+    private _notificationsService: NotificationsService) { 
     this._localstorageService.localstorageclear();
   }
 
@@ -40,9 +42,8 @@ export class SigninComponent implements OnInit {
   }
   sigin(){
     this.submitted = true;
-    if (this.signin.valid) {
-      alert('Form Submitted succesfully!!!\n Check the values in browser console.');
-      console.table(this.signin.value);
+    if (!this.signin.valid) {
+      return;
     }
     var url = this._appSettings.koncentAPI;
     var signinAPI = this._appSettings.signinAPI;
@@ -60,6 +61,7 @@ export class SigninComponent implements OnInit {
             this.router.navigateByUrl('/dashboard');
           }
           else {
+            this._notificationsService.info(response["sys_message"], "info!");
             window.localStorage.clear();
           }
         },

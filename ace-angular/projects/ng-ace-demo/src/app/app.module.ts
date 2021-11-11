@@ -22,6 +22,8 @@ import { LoginLayoutComponent } from './layouts/login/login.component';
 import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
 import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newcustomers.component';
 import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
+import { PackagelistComponent } from './pages/managepackage/packagelist/packagelist.component';
+import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage.component';
 
 
 
@@ -32,7 +34,9 @@ import { CustomerslistComponent } from './pages/managecustomers/customerslist/cu
     LoginLayoutComponent,
     NewuserComponent,
     NewcustomersComponent,
-    CustomerslistComponent
+    CustomerslistComponent,
+    PackagelistComponent,
+    NewpackageComponent
   ],
   imports: [
     BrowserModule,

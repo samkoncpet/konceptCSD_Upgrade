@@ -7,6 +7,8 @@ import { UserlistComponent } from './pages/manageusers/userlist/userlist.compone
 import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
 import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
 import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newcustomers.component';
+import { PackagelistComponent } from './pages/managepackage/packagelist/packagelist.component';
+import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage.component';
 
 
 const routes: Routes = [
@@ -74,6 +76,20 @@ const routes: Routes = [
         component: NewcustomersComponent,
         data: {
           title: 'Add Customer'
+        }
+      },
+      {
+        path: 'packagelist',
+        component: PackagelistComponent,
+        data: {
+          title: 'Package list'
+        }
+      },
+      {
+        path: 'addpackage',
+        component: NewpackageComponent,
+        data: {
+          title: 'Add Package'
         }
       },
       {

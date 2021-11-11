@@ -12,4 +12,7 @@ export class AppsettingsService {
   
   // Signin API
   signinAPI: string = "api/authentication/signin";
+
+   // Package API
+   insertPackageAPI: string = "api/package/insertpackage";
 }

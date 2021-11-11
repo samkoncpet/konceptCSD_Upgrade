@@ -34,7 +34,7 @@
 
     {
         "id": "managepackages",
-        "link": "managepackages",
+        "link": "packagelist",
         "title": "Manage Packages",
         "icon": "fa fa-edit"
     },
