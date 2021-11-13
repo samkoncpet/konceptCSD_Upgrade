@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgAceAdminModule } from 'ng-ace-admin';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 
@@ -24,6 +25,9 @@ import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newc
 import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
 import { PackagelistComponent } from './pages/managepackage/packagelist/packagelist.component';
 import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage.component';
+import { UsertypeComponent } from './pages/manageusers/usertype/usertype.component';
+import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.component';
+import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
 
 
 
@@ -36,7 +40,10 @@ import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage
     NewcustomersComponent,
     CustomerslistComponent,
     PackagelistComponent,
-    NewpackageComponent
+    NewpackageComponent,
+    UsertypeComponent,
+    NewgroupComponent,
+    GrouplistComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,8 @@ import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage
     
     MainLayoutModule,
     LoginLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

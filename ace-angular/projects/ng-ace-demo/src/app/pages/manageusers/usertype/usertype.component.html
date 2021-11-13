@@ -1,0 +1,67 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Manage User
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Add/Update User Type
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <div class="card-body px-1 px-md-3">
+                <form class="mt-lg-3" [formGroup]="addusertype" autocomplete="off">
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                User Type
+                          </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="user_type" type="text" formControlName="user_type" class="form-control" [ngClass]="{'border-danger': ((addusertypeFormControl.user_type.touched || submitted) && addusertypeFormControl.user_type.errors?.required)}">
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addusertypeFormControl.user_type.touched || submitted) && (addusertypeFormControl.user_type.errors?.required || addusertypeFormControl.user_type.invalid)">
+                                {{getErrorMessage('user_type')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Is Active
+                          </label>
+                        </div>
+                        <div class="col-sm-6" style="padding-top: 1%;">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="form-control" [ngClass]="{ 'is-invalid': ((addusertypeFormControl.is_active.touched || submitted) && addusertypeFormControl.is_active.errors?.required)}" />
+                        </div>
+                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                            <span class="form-text text-danger" *ngIf="(addusertypeFormControl.is_active.touched || submitted) && (addusertypeFormControl.is_active.errors?.required || addusertypeFormControl.is_active.invalid)">
+                                {{getErrorMessage('is_active')}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                        <div class="offset-md-3 col-md-9 text-nowrap">
+                            <button class="btn btn-info btn-bold px-4" type="button" (click)="!isUpdate ? addnewusertype() : updateusertype()">
+                          <i class="fa fa-check mr-1"></i>
+                          {{btntxt}}
+                        </button>
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()" *ngIf="!isUpdate">
+                          <i class="fa fa-undo mr-1"></i>
+                          Cancel
+                        </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

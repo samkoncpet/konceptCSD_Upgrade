@@ -11,6 +11,7 @@ import Util from '@ace/util';
 })
 export class IntroComponent implements OnInit {
 
+  year: number;
   constructor() { }
 
   @ViewChild('carousel', {static : true}) carousel!: NgbCarousel;
@@ -20,7 +21,8 @@ export class IntroComponent implements OnInit {
   paused = true
 
   ngOnInit(): void {
-    this.carousel.pause()
+    this.carousel.pause();
+    this.year = new Date().getFullYear();
   }
 
   startCarousel(): void {

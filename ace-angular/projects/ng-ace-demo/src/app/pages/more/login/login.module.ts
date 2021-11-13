@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgAceAdminModule } from 'ng-ace-admin';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { LoginComponent } from './login.component';
 import { SigninComponent } from './signin/signin.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule,
     NgAceAdminModule,
+    NgxSpinnerModule,
     
     RouterModule.forChild(routes)
   ],

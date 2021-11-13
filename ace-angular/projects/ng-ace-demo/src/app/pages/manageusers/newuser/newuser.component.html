@@ -11,199 +11,198 @@
 <div class="row mt-3">
     <div class="col-12">
         <div class="card dcard">
-            <div class="card-body px-1 px-md-3">
-
-                <form class="mt-lg-3" [formGroup]="adduser" autocomplete="off">
-                    <!-- <fieldset>
-                        <legend class="legendtext">Login</legend> -->
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
-                            User Name
-                          </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input id="username" type="text" formControlName="username" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.username.touched || submitted) && addnewuserFormControl.username.errors?.required)}">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.username.touched || submitted) && (addnewuserFormControl.username.errors?.required || addnewuserFormControl.username.invalid)">
-                                {{getErrorMessage('username')}}
+            <form [formGroup]="adduser" autocomplete="off">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                User Information
                             </span>
+                        </label>
                         </div>
                     </div>
-                    <!-- </fieldset>
-                    <fieldset>
-                        <legend class="legendtext">Personal information</legend> -->
+                </div>
+                <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            First Name
-                          </label>
+                                Organization
+                              </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="firstname" type="text" formControlName="firstname" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.firstname.touched || submitted) && addnewuserFormControl.firstname.errors?.required)}">
+                        <div class="col-md-4">
+                            <select id="organizationid" formControlName="organizationid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.organizationid.touched || submitted) && addnewuserFormControl.organizationid.errors?.required)}">
+                                <option *ngFor="let data of organizationlist" value={{data.User_ID}}>{{data.FullName}}</option>  
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.organizationid.touched || submitted) && (addnewuserFormControl.organizationid.errors?.required || addnewuserFormControl.organizationid.invalid)">
+                                {{getErrorMessage('organizationid')}}
+                            </span>
                         </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Group
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="groupid" formControlName="groupid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.groupid.touched || submitted) && addnewuserFormControl.groupid.errors?.required)}">
+                                <option *ngFor="let data of grouplist" value={{data.User_Group_ID}}>{{data.User_Group_Name}}</option>  
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.groupid.touched || submitted) && (addnewuserFormControl.groupid.errors?.required || addnewuserFormControl.groupid.invalid)">
+                                {{getErrorMessage('groupid')}}
+                            </span>
+                        </div>
+                        <!-- <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                User Logo
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="file" id="file" accept="image/*" (change)="handleInputChange($event)">
+                        </div> -->
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                First Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="firstname" type="text" formControlName="firstname" class="form-control" placeholder="First Name" [ngClass]="{'border-danger': ((addnewuserFormControl.firstname.touched || submitted) && addnewuserFormControl.firstname.errors?.required)}">
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.firstname.touched || submitted) && (addnewuserFormControl.firstname.errors?.required || addnewuserFormControl.firstname.invalid)">
                                 {{getErrorMessage('firstname')}}
                             </span>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Last Name
-                          </label>
+                                Last Name
+                              </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="lastname" type="text" formControlName="lastname" class="form-control">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.lastname.touched || submitted) && (addnewuserFormControl.lastname.errors?.required || addnewuserFormControl.lastname.invalid)">
-                                {{getErrorMessage('lastname')}}
-                            </span>
+                        <div class="col-md-4">
+                            <input id="lastname" type="text" formControlName="lastname" class="form-control" placeholder="Last Name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Gender
-                          </label>
+                                Gender
+                              </label>
                         </div>
-                        <div class="col-sm-6">
-                            <select id="gender" formControlName="gender" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" [ngClass]="{'border-danger': ((addnewuserFormControl.gender.touched || submitted) && addnewuserFormControl.gender.errors?.required)}">
-                                <option value="">&nbsp;</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
+                        <div class="col-md-4">
+                            <select id="gender" formControlName="gender" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.gender.touched || submitted) && addnewuserFormControl.gender.errors?.required)}">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
                               </select>
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.gender.touched || submitted) && (addnewuserFormControl.gender.errors?.required || addnewuserFormControl.gender.invalid)">
                                 {{getErrorMessage('gender')}}
                             </span>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Email ID
-                          </label>
+                                Email ID
+                              </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="email" type="text" formControlName="email" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.email.touched || submitted) && addnewuserFormControl.email.errors?.required)}">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                        <div class="col-md-4">
+                            <input id="email" type="text" formControlName="email" class="form-control" placeholder="Email ID" [ngClass]="{'border-danger': ((addnewuserFormControl.email.touched || submitted) && addnewuserFormControl.email.errors?.required)}">
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.email.touched || submitted) && (addnewuserFormControl.email.errors?.required || addnewuserFormControl.email.invalid)">
                                 {{getErrorMessage('email')}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Mobile No.
                           </label>
                         </div>
-                        <div class="col-sm-6">
-                            <!-- <input id="mobile" type="text" formControlName="mobile" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.mobile.touched || submitted) && addnewuserFormControl.mobile.errors?.required)}"> -->
+                        <div class="col-md-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                 </div>
-                                <input id="mobile" type="text" formControlName="mobile" class="form-control form-control-lg" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addnewuserFormControl.mobile.touched || submitted) && addnewuserFormControl.mobile.errors?.required)}">
+                                <input id="mobile" type="text" formControlName="mobile" class="form-control form-control-md" placeholder="Mobile No." id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addnewuserFormControl.mobile.touched || submitted) && addnewuserFormControl.mobile.errors?.required)}">
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.mobile.touched || submitted) && (addnewuserFormControl.mobile.errors?.required || addnewuserFormControl.mobile.invalid)">
                                 {{getErrorMessage('mobile')}}
                             </span>
                         </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
                     </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Login Information
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <hr>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            User Name
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="username" type="text" formControlName="username" class="form-control" placeholder="User Name" [ngClass]="{'border-danger': ((addnewuserFormControl.username.touched || submitted) && addnewuserFormControl.username.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.username.touched || submitted) && (addnewuserFormControl.username.errors?.required || addnewuserFormControl.username.invalid)">
+                            {{getErrorMessage('username')}}
+                        </span>
+                        </div>
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                             Password
-                          </label>
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <!-- <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{'border-danger': ((addnewuserFormControl.password.touched || submitted) && addnewuserFormControl.password.errors?.required)}"> -->
+                        <div class="col-md-4">
                             <div class="d-inline-flex align-items-center">
                                 <input id="id-form-field-password-toggle" #inputPassword [attr.type]="isPassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'border-danger': ((addnewuserFormControl.password.touched || submitted) && addnewuserFormControl.password.errors?.required)}">
                                 <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-125 ml-n5 no-underline radius-1 d-style">
                                     <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
                                 </a>
                             </div>
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.password.touched || submitted) && (addnewuserFormControl.password.errors?.required || addnewuserFormControl.password.invalid)">
-                                {{getErrorMessage('password')}}
-                            </span>
+                            {{getErrorMessage('password')}}
+                        </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                             Re type Password
-                          </label>
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="repassword" type="password" formControlName="repassword" class="form-control" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addnewuserFormControl.repassword.touched || submitted) && addnewuserFormControl.repassword.errors?.required)}">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
+                        <div class="col-md-4">
+                            <input id="repassword" type="password" formControlName="repassword" class="form-control" placeholder="Re type Password" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addnewuserFormControl.repassword.touched || submitted) && addnewuserFormControl.repassword.errors?.required)}">
+
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.repassword.touched || submitted) && (addnewuserFormControl.repassword.errors?.required || addnewuserFormControl.repassword.invalid)">
-                                {{getErrorMessage('repassword')}}
-                            </span>
+                            {{getErrorMessage('repassword')}}
+                        </span>
                             <span class="form-text text-danger" *ngIf="!passwordmatch">Password do not match.</span>
                         </div>
-                    </div>
-                    <!-- </fieldset> -->
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Group
-                          </label>
+                            Is Active
+                        </label>
                         </div>
+                        <div class="col-md-4">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addnewuserFormControl.is_active.touched || submitted) && addnewuserFormControl.is_active.errors?.required)}">
 
-                        <div class="col-sm-6">
-                            <select id="group" formControlName="group" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" id="form-field-select-11">
-                                <option value="">&nbsp;</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                              </select>
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.group.touched || submitted) && (addnewuserFormControl.group.errors?.required || addnewuserFormControl.group.invalid)">
-                                {{getErrorMessage('group')}}
-                            </span>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.is_active.touched || submitted) && (addnewuserFormControl.is_active.errors?.required || addnewuserFormControl.is_active.invalid)">
+                            {{getErrorMessage('is_active')}}
+                        </span>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
-                            Status
-                          </label>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <select id="status" formControlName="status" class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" id="form-field-select-11">
-                                <option value="">&nbsp;</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                              </select>
-                        </div>
-
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.status.touched || submitted) && (addnewuserFormControl.status.errors?.required || addnewuserFormControl.status.invalid)">
-                                {{getErrorMessage('status')}}
-                            </span>
-                        </div>
-                    </div>
-
-
-
-
                     <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                         <div class="offset-md-3 col-md-9 text-nowrap">
                             <button class="btn btn-info btn-bold px-4" type="button" (click)="addnewuser()">
@@ -217,10 +216,9 @@
                         </button>
                         </div>
                     </div>
-                </form>
-
-            </div>
-            <!-- /.card-body -->
+                </div>
+                <!-- /.card-body -->
+            </form>
         </div>
         <!-- /.card -->
     </div>

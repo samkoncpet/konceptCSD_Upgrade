@@ -17,6 +17,18 @@
         "title": "Manage Users",
         "icon": "fa fa-cube"
     },
+    {
+        "id": "addnewuser",
+        "parent": "manageusers",
+        "link": "addnewuser",
+        "title": "Add new user"
+    },
+    {
+        "id": "addusertype",
+        "parent": "manageusers",
+        "link": "addusertype",
+        "title": "Add user type"
+    },
 
     {
         "id": "managecustomers",
@@ -41,7 +53,7 @@
 
     {
         "id": "managegroups",
-        "link": "managegroups",
+        "link": "viewgroup",
         "title": "Manage Groups",
         "icon": "far fa-window-restore"
     },

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 import { LocalstorageService } from '../../../../../app/config/localstorage.service';
 import { ConfigurationService } from '../../../../../app/config/configuration.service';
 import { AppsettingsService } from '../../../../../app/config/appsettings.service';
@@ -26,7 +27,8 @@ export class SigninComponent implements OnInit {
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
     private _localstorageService: LocalstorageService,
-    private _notificationsService: NotificationsService) { 
+    private _notificationsService: NotificationsService,
+    private spinner: NgxSpinnerService) { 
     this._localstorageService.localstorageclear();
   }
 
@@ -45,6 +47,8 @@ export class SigninComponent implements OnInit {
     if (!this.signin.valid) {
       return;
     }
+    /** spinner starts on init */
+    this.spinner.show();
     var url = this._appSettings.koncentAPI;
     var signinAPI = this._appSettings.signinAPI;
     url = url + signinAPI;
@@ -64,13 +68,28 @@ export class SigninComponent implements OnInit {
             this._notificationsService.info(response["sys_message"], "info!");
             window.localStorage.clear();
           }
+          /** spinner ends */
+          this.spinner.hide();
         },
           err => {
+            /** spinner ends */
+            this.spinner.hide();
             console.log("status code--->" + err.status)
           });
     
   }
-
+  facebook(){
+    window.location.href="https://www.facebook.com/koncepteducationinc";
+  }
+  twitter(){
+    window.location.href="https://twitter.com/koncepteduinc";
+  }
+  instagram(){
+    window.location.href="https://www.instagram.com/koncepteducationinc";
+  }
+  linkedin(){
+    window.location.href="https://www.linkedin.com/company/koncepteducationinc";
+  }
   get signinFormControl() {
     return this.signin.controls;
   }

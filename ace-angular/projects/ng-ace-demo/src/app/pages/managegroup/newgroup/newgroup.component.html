@@ -4,7 +4,7 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap" *ngIf="!isUpdate">
             <i class="fa fa-angle-double-right text-80"></i>
-            Add Package
+            Add Group
         </small>
         <small class="page-info text-secondary-d2 text-nowrap" *ngIf="isUpdate">
             <i class="fa fa-angle-double-right text-80"></i>
@@ -17,65 +17,65 @@
         <div class="card dcard">
             <div class="card-body px-1 px-md-3">
 
-                <form class="mt-lg-3" [formGroup]="addpackage" autocomplete="off">
+                <form class="mt-lg-3" [formGroup]="addgroup" autocomplete="off">
                     <div class="form-group row">
                         <div class="col-sm-3 col-form-label text-sm-right pr-0">
                             <label for="id-form-field-1" class="mb-0">
-                                Package
+                                Name
                           </label>
                         </div>
                         <div class="col-sm-6">
-                            <input id="package" type="text" formControlName="package" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.package.touched || submitted) && addpackageFormControl.package.errors?.required)}">
+                            <input id="name" type="text" formControlName="name" class="form-control" [ngClass]="{'border-danger': ((addgroupFormControl.name.touched || submitted) && addgroupFormControl.name.errors?.required)}">
                         </div>
                         <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.package.touched || submitted) && (addpackageFormControl.package.errors?.required || addpackageFormControl.package.invalid)">
-                                {{getErrorMessage('package')}}
+                            <span class="form-text text-danger" *ngIf="(addgroupFormControl.name.touched || submitted) && (addgroupFormControl.name.errors?.required || addgroupFormControl.name.invalid)">
+                                {{getErrorMessage('name')}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-3 col-form-label text-sm-right pr-0">
                             <label for="id-form-field-1" class="mb-0">
-                                Price
+                                Description
                           </label>
                         </div>
                         <div class="col-sm-6">
-                            <input id="price" type="text" formControlName="price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.price.touched || submitted) && addpackageFormControl.price.errors?.required)}">
+                            <input id="description" type="text" formControlName="description" class="form-control" [ngClass]="{'border-danger': ((addgroupFormControl.description.touched || submitted) && addgroupFormControl.description.errors?.required)}">
                         </div>
                         <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.price.touched || submitted) && (addpackageFormControl.package.errors?.required || addpackageFormControl.price.invalid)">
-                                {{getErrorMessage('price')}}
+                            <span class="form-text text-danger" *ngIf="(addgroupFormControl.description.touched || submitted) && (addgroupFormControl.description.errors?.required || addgroupFormControl.description.invalid)">
+                                {{getErrorMessage('description')}}
                             </span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-3 col-form-label text-sm-right pr-0">
                             <label for="id-form-field-1" class="mb-0">
-                                Code
+                                Access
                           </label>
                         </div>
                         <div class="col-sm-6">
-                            <input id="code" type="text" formControlName="code" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.code.touched || submitted) && addpackageFormControl.code.errors?.required)}">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Area</th>
+                                        <th>Add</th>
+                                        <th>Update</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of grouplist">
+                                        <th>{{ item.Name }}</th>
+                                        <td><input type="checkbox" id="add" class="form-control" checked="{{ item.Add }}" /></td>
+                                        <td><input type="checkbox" id="update" class="form-control" checked="{{ item.Update }}" /></td>
+                                        <td><input type="checkbox" id="view" class="form-control" checked={{item.View}} /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.code.touched || submitted) && (addpackageFormControl.code.errors?.required || addpackageFormControl.code.invalid)">
-                                {{getErrorMessage('code')}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
-                                Is Active
-                          </label>
-                        </div>
-                        <div class="col-sm-6" style="padding-top: 1%;">
-                            <input type="checkbox" formControlName="is_active" id="is_active" class="form-control" [ngClass]="{ 'is-invalid': ((addpackageFormControl.is_active.touched || submitted) && addpackageFormControl.is_active.errors?.required)}" />
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.is_active.touched || submitted) && (addpackageFormControl.is_active.errors?.required || addpackageFormControl.is_active.invalid)">
-                                {{getErrorMessage('is_active')}}
-                            </span>
+
                         </div>
                     </div>
 

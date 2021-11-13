@@ -7,14 +7,13 @@
 
 <!-- show this in mobile device -->
 <div class="d-lg-none text-secondary-m1 my-4 text-center">
-    <a role="button">
+    <!-- <a role="button">
         <i class="fa fa-leaf text-success-m2 text-200 mb-4"></i>
-    </a>
-    <h1 class="text-170">
-        <span class="text-blue-d1">
-            Koncept <span class="text-80 text-dark-tp3">Application</span>
-        </span>
-    </h1>
+    </a> -->
+    <h2 class="text-primary-d1" style="text-align: center; margin-top: 20%;">
+        <!-- Koncept <span class="text-80 text-dark-l1">Application</span> -->
+        <img src="../../../../../assets/image/logo_sticky.png" />
+    </h2>
 
     Welcome back
 </div>
@@ -69,34 +68,34 @@
 </form>
 
 
-<!-- <div class="form-row">
+<div class="form-row">
     <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 d-flex flex-column align-items-center justify-content-center">
 
         <hr class="brc-default-l2 mt-0 mb-2 w-100" />
 
-        <div class="p-0 px-md-2 text-dark-tp3 my-3">
+        <!-- <div class="p-0 px-md-2 text-dark-tp3 my-3">
             Not a member?
             <a role="button" (click)="gotoTab('signup')" class="text-success-m1 text-600 mx-1">
             Signup now
         </a>
-        </div>
+        </div> 
 
-        <hr class="brc-default-l2 w-100 mb-2" />
+        <hr class="brc-default-l2 w-100 mb-2" /> -->
         <div class="mt-n4 bgc-white-tp2 px-3 py-1 text-secondary-d3 text-90">Or Get Started Using</div>
 
         <div class="my-2">
-            <button type="button" class="btn btn-bgc-white btn-lighter-primary btn-h-primary btn-a-primary border-2 radius-round btn-lg mx-1">
-            <i class="fab fa-facebook-f text-110"></i>
-        </button>
-
-            <button type="button" class="btn btn-bgc-white btn-lighter-info btn-h-info btn-a-info border-2 radius-round btn-lg px-25 mx-1">
-            <i class="fab fa-twitter text-110"></i>
-        </button>
-
-            <button type="button" class="btn btn-bgc-white btn-lighter-red btn-h-red btn-a-red border-2 radius-round btn-lg px-25 mx-1">
-            <i class="fab fa-google text-110"></i>
-        </button>
+            <button type="button" class="btn btn-bgc-white btn-lighter-primary btn-h-primary btn-a-primary border-2 radius-round btn-lg mx-1" (click)="facebook()">
+                <i class="fab fa-facebook-f text-110"></i>
+            </button>
+            <button type="button" class="btn btn-bgc-white btn-lighter-info btn-h-info btn-a-info border-2 radius-round btn-lg px-25 mx-1" (click)="twitter()">
+                <i class="fab fa-twitter text-110"></i>
+            </button>
+            <button type="button" class="btn btn-bgc-white btn-lighter-red btn-h-red btn-a-red border-2 radius-round btn-lg px-25 mx-1" (click)="instagram()">
+                <i class="fab fa-instagram text-110"></i>
+            </button>
+            <button type="button" class="btn btn-bgc-white btn-lighter-primary btn-h-primary btn-a-primary border-2 radius-round btn-lg mx-1" (click)="linkedin()">
+                <i class="fab fa-linkedin text-110"></i>
+            </button>
         </div>
-
     </div>
-</div> -->
+</div>

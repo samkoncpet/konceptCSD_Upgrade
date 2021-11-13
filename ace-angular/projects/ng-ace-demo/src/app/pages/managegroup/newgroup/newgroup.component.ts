@@ -9,16 +9,16 @@ import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
 
 @Component({
-  selector: 'app-newpackage',
-  templateUrl: './newpackage.component.html',
-  styleUrls: ['./newpackage.component.css']
+  selector: 'app-newgroup',
+  templateUrl: './newgroup.component.html',
+  styleUrls: ['./newgroup.component.css']
 })
-export class NewpackageComponent implements OnInit {
+export class NewgroupComponent implements OnInit {
 
   submitted = false;
   isUpdate = false;
   btntxt = "Submit";
-  addpackage: FormGroup;
+  addgroup: FormGroup;
   isPassword = true;
   passwordmatch = true;
   param1: string;
@@ -37,18 +37,35 @@ export class NewpackageComponent implements OnInit {
       }
     }
 
+  checklist:any;
+  checkedList:any;
+    
+  grouplist=[
+    {id:1, Name:"Super Admin", Add:"true",Update:"true", View: true},
+    {id:2, Name:"Customer", Add:"true",Update:"true", View: false},
+    {id:3, Name:"Packages", Add:"true",Update:"true", View: false}
+   ];
+
+   // Get List of Checked Items
+  getCheckedItemList(){
+    this.checkedList  = [];
+    for (var i = 0; i < this.grouplist.length; i++) {
+      if(this.grouplist[i].View)
+      this.grouplist.push(this.checklist[i]);
+    }
+    this.checkedList  = JSON.stringify(this.grouplist);
+  }
+
   ngOnInit(): void {
-    this.addpackage = this._formBuilder.group({
-      package: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
-      price: new FormControl('', [Validators.required, NumericValidator]),
-      code: new FormControl('', Validators.required),
-      is_active: new FormControl(true, Validators.required)
+    this.addgroup = this._formBuilder.group({
+      name: new FormControl('', [Validators.minLength(2), Validators.maxLength(50)]),
+      description: new FormControl('',[Validators.minLength(2), Validators.maxLength(50)])
     });
   }
 
   addnewpackage(){
     this.submitted = true;
-    if (!this.addpackage.valid) {
+    if (!this.addgroup.valid) {
       return;
     }
     
@@ -57,10 +74,8 @@ export class NewpackageComponent implements OnInit {
     url = url + insertPackageAPI;
 
     var data = {
-      Package: this.addpackage.value.package,
-      Price: this.addpackage.value.price,
-      Code: this.addpackage.value.code,
-      Is_Active: this.addpackage.value.is_active
+      Package: this.addgroup.value.name,
+      Price: this.addgroup.value.description
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -79,7 +94,7 @@ export class NewpackageComponent implements OnInit {
 
   updatepackage(){
     this.submitted = true;
-    if (!this.addpackage.valid) {
+    if (!this.addgroup.valid) {
       return;
     }
     
@@ -89,10 +104,8 @@ export class NewpackageComponent implements OnInit {
 
     var data = {
       Package_ID: this.param1,
-      Package: this.addpackage.value.package,
-      Price: this.addpackage.value.price,
-      Code: this.addpackage.value.code,
-      Is_Active: this.addpackage.value.is_active
+      Package: this.addgroup.value.name,
+      Price: this.addgroup.value.description
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -109,16 +122,17 @@ export class NewpackageComponent implements OnInit {
   }
 
   cancel(){
-    this.addpackage.reset();
+    this.addgroup.reset();
   }
 
-  get addpackageFormControl() {
-    return this.addpackage.controls;
+  get addgroupFormControl() {
+    return this.addgroup.controls;
   }
 
   
   getErrorMessage(control: string) {
-      return FormErrorMessage(this.addpackage, control);
+      return FormErrorMessage(this.addgroup, control);
   }
+
 
 }

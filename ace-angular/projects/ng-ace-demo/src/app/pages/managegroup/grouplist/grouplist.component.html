@@ -4,7 +4,7 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            User list
+            View Group
         </small>
     </h1>
 </div>
@@ -16,7 +16,7 @@
                 <form autocomplete="off">
                     <div class="d-flex justify-content-between flex-column flex-sm-row mb-3 px-2 px-sm-0">
                         <h3 class="text-125 pl-1 mb-3 mb-sm-0 text-secondary-d4">
-                            User list
+                            View Group
                         </h3>
 
                         <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="mb-2 mb-sm-0">
-                            <button type="button" (click)="addnewuser()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
+                            <button type="button" (click)="addgroup()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
                   <i class="fa fa-plus mr-1"></i>
                   Add <span class="d-sm-none d-md-inline">New</span> Entry
                 </button>
@@ -40,37 +40,21 @@
                                         <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
                                     </label>
                                 </th>
-                                <th>User Name</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Gender</th>
-                                <th>Email</th>
-                                <th>Mobile No.</th>
-                                <th>Group</th>
-                                <th>Is Active</th>
+                                <th>Name</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
 
-                        <tbody class="mt-1" *ngFor="let data of userlist">
+                        <tbody class="mt-1" *ngFor="let data of grouplist">
                             <td class="text-center pr-0">
-                                <input type="checkbox" id="is_active" class="align-bottom mb-n1 border-2 text-dark-m3" value={{data.User_ID}}>
+                                <input type="checkbox" id="is_active{{data.User_Group_ID}}" value="{{data.User_Group_ID}}" class="align-bottom mb-n1 border-2 text-dark-m3">
                             </td>
-                            <td>{{ data.Username}}</td>
-                            <td>{{ data.FirstName}}</td>
-                            <td>{{ data.LastName}}</td>
-                            <td>{{ data.gender_text}}</td>
-                            <td>{{ data.Email}}</td>
-                            <td>{{ data.MobileNo}}</td>
-                            <td>{{ data.User_Group_Name}}</td>
-                            <td>
-                                {{data.Is_Active}}
-                                <!-- <span *ngIf="data.Is_Active == true" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Status }}</span>
-                                <span *ngIf="data.Is_Active == false" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Status }}</span> -->
-                            </td>
+                            <td>{{data.User_Group_Name}}</td>
+                            <td>{{data.Status}}</td>
                             <td>
                                 <div class="d-none d-lg-flex">
-                                    <a href="/updateuser/{{ data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+                                    <a href="javascript:void(0);" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
 
@@ -89,7 +73,7 @@
                     <div class="d-flex pl-4 pr-3 pt-35 border-t-1 brc-secondary-l3 flex-column flex-sm-row mt-n1px">
                         <div class="text-nowrap align-self-center align-self-sm-start">
                             <span class="d-inline-block text-grey-d2">
-                  Showing 1 - 10 of {{this.userlist.length}}
+                  Showing 1 - 10 of 152
               </span>
 
                             <select class="ml-3 ace-select no-border angle-down brc-h-blue-m3 w-auto pr-45 text-secondary-d3">

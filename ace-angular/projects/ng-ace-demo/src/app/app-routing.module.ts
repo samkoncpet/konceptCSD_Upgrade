@@ -5,10 +5,13 @@ import { MainLayoutComponent } from './layouts/main/main.component';
 import { LoginLayoutComponent } from './layouts/login/login.component';
 import { UserlistComponent } from './pages/manageusers/userlist/userlist.component';
 import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
+import { UsertypeComponent } from './pages/manageusers/usertype/usertype.component';
 import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
 import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newcustomers.component';
 import { PackagelistComponent } from './pages/managepackage/packagelist/packagelist.component';
 import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage.component';
+import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
+import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.component';
 
 
 const routes: Routes = [
@@ -65,6 +68,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'updateuser/:id',
+        component: NewuserComponent,
+        data: {
+          title: 'Update user'
+        }
+      },
+      {
         path: 'customerslist',
         component: CustomerslistComponent,
         data: {
@@ -76,6 +86,13 @@ const routes: Routes = [
         component: NewcustomersComponent,
         data: {
           title: 'Add Customer'
+        }
+      },
+      {
+        path: 'addusertype',
+        component: UsertypeComponent,
+        data: {
+          title: 'Add user type'
         }
       },
       {
@@ -97,6 +114,20 @@ const routes: Routes = [
         component: NewpackageComponent,
         data: {
           title: 'Add Package'
+        }
+      },
+      {
+        path: 'addgroup',
+        component: NewgroupComponent,
+        data: {
+          title: 'Add Group'
+        }
+      },
+      {
+        path: 'viewgroup',
+        component: GrouplistComponent,
+        data: {
+          title: 'Add Group'
         }
       },
       {

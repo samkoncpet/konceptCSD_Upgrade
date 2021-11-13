@@ -9,58 +9,74 @@ import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
 
 @Component({
-  selector: 'app-newpackage',
-  templateUrl: './newpackage.component.html',
-  styleUrls: ['./newpackage.component.css']
+  selector: 'app-usertype',
+  templateUrl: './usertype.component.html',
+  styleUrls: ['./usertype.component.css']
 })
-export class NewpackageComponent implements OnInit {
+export class UsertypeComponent implements OnInit {
 
   submitted = false;
   isUpdate = false;
   btntxt = "Submit";
-  addpackage: FormGroup;
+  addusertype: FormGroup;
   isPassword = true;
   passwordmatch = true;
-  param1: string;
+  public usertypeList: [];
   
   constructor(
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
     private _localstorageService: LocalstorageService,
-    private _notificationsService: NotificationsService,
-    private route: ActivatedRoute) {
-      this.param1 = this.route.snapshot.params.id;
-      if(this.param1!= undefined && this.param1 != ''){
-        this.isUpdate = true;
-        this.btntxt = "Update";
-      }
+    private _notificationsService: NotificationsService) {
     }
 
   ngOnInit(): void {
-    this.addpackage = this._formBuilder.group({
-      package: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
-      price: new FormControl('', [Validators.required, NumericValidator]),
-      code: new FormControl('', Validators.required),
+    this.addusertype = this._formBuilder.group({
+      user_type: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
       is_active: new FormControl(true, Validators.required)
     });
+    //this.getusertype();
   }
 
-  addnewpackage(){
+  getusertype(){
+    var url = this._appSettings.koncentAPI;
+    var getUserTypeAPI = this._appSettings.getUserTypeAPI;
+    url = url + getUserTypeAPI;
+
+    var data = {
+      User_ID: 0,
+      Search: "",
+      User_Type_ID: 0,
+      Is_Active: true
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.usertypeList = response["data"];
+          }
+          else {
+           
+          }
+        },
+          err => {
+            console.log("status code--->" + err.status)
+          });
+  }
+
+  addnewusertype(){
     this.submitted = true;
-    if (!this.addpackage.valid) {
+    if (!this.addusertype.valid) {
       return;
     }
     
     var url = this._appSettings.koncentAPI;
-    var insertPackageAPI = this._appSettings.insertPackageAPI;
-    url = url + insertPackageAPI;
+    var insertUserTypeAPI = this._appSettings.insertUserTypeAPI;
+    url = url + insertUserTypeAPI;
 
     var data = {
-      Package: this.addpackage.value.package,
-      Price: this.addpackage.value.price,
-      Code: this.addpackage.value.code,
-      Is_Active: this.addpackage.value.is_active
+      User_Type: this.addusertype.value.user_type,
+      Is_Active: this.addusertype.value.is_active
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -77,9 +93,9 @@ export class NewpackageComponent implements OnInit {
           });
   }
 
-  updatepackage(){
+  updateusertype(){
     this.submitted = true;
-    if (!this.addpackage.valid) {
+    if (!this.addusertype.valid) {
       return;
     }
     
@@ -88,11 +104,7 @@ export class NewpackageComponent implements OnInit {
     url = url + updatePackageAPI;
 
     var data = {
-      Package_ID: this.param1,
-      Package: this.addpackage.value.package,
-      Price: this.addpackage.value.price,
-      Code: this.addpackage.value.code,
-      Is_Active: this.addpackage.value.is_active
+      Package: this.addusertype.value.package
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -109,16 +121,16 @@ export class NewpackageComponent implements OnInit {
   }
 
   cancel(){
-    this.addpackage.reset();
+    this.addusertype.reset();
   }
 
-  get addpackageFormControl() {
-    return this.addpackage.controls;
+  get addusertypeFormControl() {
+    return this.addusertype.controls;
   }
 
   
   getErrorMessage(control: string) {
-      return FormErrorMessage(this.addpackage, control);
+      return FormErrorMessage(this.addusertype, control);
   }
 
 }
