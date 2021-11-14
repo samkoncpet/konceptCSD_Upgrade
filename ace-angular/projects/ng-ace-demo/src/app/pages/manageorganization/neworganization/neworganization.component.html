@@ -1,0 +1,244 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Add Organization
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <form [formGroup]="addorganization" autocomplete="off">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Organization Account
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Full Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="fullname" type="text" formControlName="fullname" class="form-control" placeholder="Full Name" [ngClass]="{'border-danger': ((addorganizationFormControl.fullname.touched || submitted) && addorganizationFormControl.fullname.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.fullname.touched || submitted) && (addorganizationFormControl.fullname.errors?.required || addorganizationFormControl.fullname.invalid)">
+                                {{getErrorMessage('fullname')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            User Name
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="username" type="text" formControlName="username" class="form-control" placeholder="User Name" [ngClass]="{'border-danger': ((addorganizationFormControl.username.touched || submitted) && addorganizationFormControl.username.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.username.touched || submitted) && (addorganizationFormControl.username.errors?.required || addorganizationFormControl.username.invalid)">
+                            {{getErrorMessage('username')}}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Password
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-inline-flex align-items-center">
+                                <input id="id-form-field-password-toggle" #inputPassword [attr.type]="isPassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'border-danger': ((addorganizationFormControl.password.touched || submitted) && addorganizationFormControl.password.errors?.required)}">
+                                <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-125 ml-n5 no-underline radius-1 d-style">
+                                    <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
+                                </a>
+                            </div>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.password.touched || submitted) && (addorganizationFormControl.password.errors?.required || addorganizationFormControl.password.invalid)">
+                            {{getErrorMessage('password')}}
+                        </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Re type Password
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="repassword" type="password" formControlName="repassword" class="form-control" placeholder="Re type Password" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addorganizationFormControl.repassword.touched || submitted) && addorganizationFormControl.repassword.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.repassword.touched || submitted) && (addorganizationFormControl.repassword.errors?.required || addorganizationFormControl.repassword.invalid)">
+                            {{getErrorMessage('repassword')}}
+                        </span>
+                            <span class="form-text text-danger" *ngIf="!passwordmatch">Password do not match.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Is Active
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addorganizationFormControl.is_active.touched || submitted) && addorganizationFormControl.is_active.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.is_active.touched || submitted) && (addorganizationFormControl.is_active.errors?.required || addorganizationFormControl.is_active.invalid)">
+                            {{getErrorMessage('is_active')}}
+                        </span>
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Organization Contact Details
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                First Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="firstname" type="text" formControlName="firstname" class="form-control" placeholder="First Name" [ngClass]="{'border-danger': ((addorganizationFormControl.firstname.touched || submitted) && addorganizationFormControl.firstname.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.firstname.touched || submitted) && (addorganizationFormControl.firstname.errors?.required || addorganizationFormControl.firstname.invalid)">
+                                {{getErrorMessage('firstname')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Last Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="lastname" type="text" formControlName="lastname" class="form-control" placeholder="Last Name" [ngClass]="{'border-danger': ((addorganizationFormControl.lastname.touched || submitted) && addorganizationFormControl.lastname.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.lastname.touched || submitted) && (addorganizationFormControl.lastname.errors?.required || addorganizationFormControl.lastname.invalid)">
+                                {{getErrorMessage('lastname')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Email ID
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="email" type="text" formControlName="email" class="form-control" placeholder="Email ID" [ngClass]="{'border-danger': ((addorganizationFormControl.email.touched || submitted) && addorganizationFormControl.email.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.email.touched || submitted) && (addorganizationFormControl.email.errors?.required || addorganizationFormControl.email.invalid)">
+                                {{getErrorMessage('email')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Mobile No.
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                </div>
+                                <input id="mobile" type="text" formControlName="mobile" class="form-control form-control-md" placeholder="Mobile No." id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addorganizationFormControl.mobile.touched || submitted) && addorganizationFormControl.mobile.errors?.required)}">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.mobile.touched || submitted) && (addorganizationFormControl.mobile.errors?.required || addorganizationFormControl.mobile.invalid)">
+                                {{getErrorMessage('mobile')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Address
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <textarea id="address" type="text" formControlName="address" class="form-control form-control-md" placeholder="Address" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addorganizationFormControl.address.touched || submitted) && addorganizationFormControl.address.errors?.required)}"></textarea>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.address.touched || submitted) && (addorganizationFormControl.address.errors?.required || addorganizationFormControl.address.invalid)">
+                                {{getErrorMessage('address')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Country
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="countryid" formControlName="countryid" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addorganizationFormControl.countryid.touched || submitted) && addorganizationFormControl.countryid.errors?.required)}">
+                                <option *ngFor="let data of countrylist" value={{data.Country_ID}}>{{data.Country}}</option>  
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.countryid.touched || submitted) && (addorganizationFormControl.countryid.errors?.required || addorganizationFormControl.countryid.invalid)">
+                                {{getErrorMessage('countryid')}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            State
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="stateid" formControlName="stateid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addorganizationFormControl.stateid.touched || submitted) && addorganizationFormControl.stateid.errors?.required)}">
+                                <option *ngFor="let data of statelist" value={{data.State_ID}}>{{data.State}}</option>  
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.stateid.touched || submitted) && (addorganizationFormControl.stateid.errors?.required || addorganizationFormControl.stateid.invalid)">
+                                {{getErrorMessage('stateid')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                City
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="city" type="text" formControlName="city" class="form-control" placeholder="City" [ngClass]="{'border-danger': ((addorganizationFormControl.city.touched || submitted) && addorganizationFormControl.city.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.city.touched || submitted) && (addorganizationFormControl.city.errors?.required || addorganizationFormControl.city.invalid)">
+                                {{getErrorMessage('city')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                        <div class="offset-md-3 col-md-9 text-nowrap">
+                            <button class="btn btn-info btn-bold px-4" type="button" (click)="addneworganization()">
+                          <i class="fa fa-check mr-1"></i>
+                          Submit
+                        </button>
+
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
+                          <i class="fa fa-undo mr-1"></i>
+                          Cancel
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>

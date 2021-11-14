@@ -1,0 +1,14 @@
+.align-items-center {
+    align-items: center !important;
+    width: inherit;
+}
+
+.btn-white {
+    color: #606060;
+    background-color: #fff !important;
+    border-color: #ddd;
+}
+
+.legendtext {
+    font-size: 17px;
+}

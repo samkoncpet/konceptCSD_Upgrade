@@ -28,6 +28,8 @@ import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage
 import { UsertypeComponent } from './pages/manageusers/usertype/usertype.component';
 import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.component';
 import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
+import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
+import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
 
 
 
@@ -43,7 +45,9 @@ import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.comp
     NewpackageComponent,
     UsertypeComponent,
     NewgroupComponent,
-    GrouplistComponent
+    GrouplistComponent,
+    NeworganizationComponent,
+    OrganizationlistComponent
   ],
   imports: [
     BrowserModule,

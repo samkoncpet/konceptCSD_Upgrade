@@ -12,6 +12,8 @@ import { PackagelistComponent } from './pages/managepackage/packagelist/packagel
 import { NewpackageComponent } from './pages/managepackage/newpackage/newpackage.component';
 import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
 import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.component';
+import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
+import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
 
 
 const routes: Routes = [
@@ -128,6 +130,20 @@ const routes: Routes = [
         component: GrouplistComponent,
         data: {
           title: 'Add Group'
+        }
+      },
+      {
+        path: 'listorganization',
+        component: OrganizationlistComponent,
+        data: {
+          title: 'Organization list'
+        }
+      },
+      {
+        path: 'addorganization',
+        component: NeworganizationComponent,
+        data: {
+          title: 'Add Organization'
         }
       },
       {

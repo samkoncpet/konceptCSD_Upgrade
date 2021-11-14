@@ -26,4 +26,6 @@ export class AppsettingsService {
 
     // User API
     insertUpdateUserAPI: string = "api/user/insertupdateuser";
+
+    fetchUserAPI: string = "api/user/fetchuser";
 }

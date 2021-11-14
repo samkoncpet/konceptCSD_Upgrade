@@ -60,6 +60,8 @@ export class SigninComponent implements OnInit {
     this._ConfigurationService.postWithoutHeader(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
+            debugger
+            this._localstorageService.localstorageSet("fullname", response["data"][0].FullName);
             this._localstorageService.localstorageSet("userid", response["data"][0].User_ID);
             this._localstorageService.localstorageSet("token", response["sys_message"]);
             this.router.navigateByUrl('/dashboard');

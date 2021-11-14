@@ -5,13 +5,12 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 
-
 @Component({
-  selector: 'app-userlist',
-  templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.css']
+  selector: 'app-organizationlist',
+  templateUrl: './organizationlist.component.html',
+  styleUrls: ['./organizationlist.component.css']
 })
-export class UserlistComponent implements OnInit {
+export class OrganizationlistComponent implements OnInit {
 
   public userlist = [];
   public userlistlength = 0;
@@ -30,15 +29,12 @@ export class UserlistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchUserAPI = this._appSettings.fetchUserAPI;
-    url = url + fetchUserAPI;
+    var entityMasterAPI = this._appSettings.entityMasterAPI;
+    url = url + entityMasterAPI;
 
     var data = {
-      User_ID: 0,
-      Search: "",
-      User_Type: 0,
-      User_Group_ID: 0,
-      Is_Active: null
+      SQLFROM: "User",
+      SQLBY: "ByOrganization"
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -56,7 +52,8 @@ export class UserlistComponent implements OnInit {
           });
    }
 
-  addnewuser(){
-    this.router.navigateByUrl('/addnewuser');
+   addorganization(){
+    this.router.navigateByUrl('/addorganization');
   }
+
 }

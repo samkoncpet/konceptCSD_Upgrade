@@ -2,7 +2,6 @@
         "type": "caption",
         "title": "MAIN"
     },
-
     {
         "id": "dashboard",
         "link": "dashboard",
@@ -10,12 +9,17 @@
         "icon": "fa fa-tachometer-alt",
         "layout": "dashboard"
     },
-
     {
         "id": "manageusers",
+        "link": "#",
+        "title": "Users",
+        "icon": "fa fa-users"
+    },
+    {
+        "id": "userlist",
+        "parent": "manageusers",
         "link": "userlist",
-        "title": "Manage Users",
-        "icon": "fa fa-cube"
+        "title": "View user list"
     },
     {
         "id": "addnewuser",
@@ -24,40 +28,35 @@
         "title": "Add new user"
     },
     {
-        "id": "addusertype",
-        "parent": "manageusers",
-        "link": "addusertype",
-        "title": "Add user type"
-    },
-
-    {
-        "id": "managecustomers",
-        "link": "customerslist",
-        "title": "Manage Customers",
-        "icon": "fa fa-desktop"
-    },
-
-    {
-        "id": "managefranchies",
-        "link": "managefranchies",
-        "title": "Manage Franchies",
+        "id": "manageorganization",
+        "link": "#",
+        "title": "Organization",
         "icon": "fa fa-table"
     },
-
+    {
+        "id": "listorganization",
+        "parent": "manageorganization",
+        "link": "listorganization",
+        "title": "View Organization"
+    },
+    {
+        "id": "addorganization",
+        "parent": "manageorganization",
+        "link": "addorganization",
+        "title": "Add Organization"
+    },
     {
         "id": "managepackages",
         "link": "packagelist",
-        "title": "Manage Packages",
+        "title": "Packages",
         "icon": "fa fa-edit"
     },
-
     {
         "id": "managegroups",
         "link": "viewgroup",
-        "title": "Manage Groups",
+        "title": "Groups",
         "icon": "far fa-window-restore"
     },
-
     {
         "id": "managecalendar",
         "link": "managecalendar",
@@ -68,7 +67,6 @@
         "tooltip": "2 Urgent Events",
         "tooltip-class": "bgc-danger-d2 brc-danger-d2 text-600 text-white"
     },
-
     {
         "id": "managetutor",
         "link": "managetutor",
