@@ -65,9 +65,8 @@
                                 <td>{{ data.MobileNo}}</td>
                                 <td>{{ data.User_Group_Name}}</td>
                                 <td>
-                                    {{data.Is_Active}}
-                                    <!-- <span *ngIf="data.Is_Active == true" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Status }}</span>
-                                <span *ngIf="data.Is_Active == false" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Status }}</span> -->
+                                    <span *ngIf="data.Is_Active == 'True'" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Status }}</span>
+                                    <span *ngIf="data.Is_Active == 'False'" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Status }}</span>
                                 </td>
                                 <td>
                                     <div class="d-none d-lg-flex ">

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,10 @@ import { LeftSideComponent } from './left-side/left-side.component';
 import { OverviewComponent } from './overview/overview.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ActivityComponent } from './activity/activity.component';
-import { EditComponent } from './edit/edit.component';
+import { EditComponent } from './edit/edit.component';;
+
+import { LocalstorageService } from '../../../config/localstorage.service';
+import { AppsettingsService } from '../../../config/appsettings.service';
 
 
 const routes: Routes = [

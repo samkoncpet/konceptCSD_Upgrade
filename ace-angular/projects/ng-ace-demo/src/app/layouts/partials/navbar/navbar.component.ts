@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../../config/localstorage.service';
+import { AppsettingsService } from '../../../config/appsettings.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,14 +12,19 @@ export class NavbarComponent implements OnInit {
 
   megaOpen!: boolean;
   isNavbarMenuCollapsed = true
-
-  constructor(private router: Router
+  public name = [];
+  public profilepicture: string;
+  constructor(private router: Router,
+    private _appSettings: AppsettingsService,
+    private _localstorageService: LocalstorageService
   ) {
     this.megaOpen = false
   }
 
 
   ngOnInit(): void {
+    this.name = this._localstorageService.localstorageGet("fullname");
+    this.profilepicture = this._appSettings.defaultpicturePath;
   }
 
   toggleNavbarMenu() {

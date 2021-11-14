@@ -1,18 +1,19 @@
-<div class="row mt-2 mt-md-4">
+<div class="row mt-2 mt-md-12">
 
     <!-- the left side profile picture and other info -->
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-6">
         <app-profile-left-side></app-profile-left-side>
-    </div><!-- .col -->
+    </div>
+    <!-- .col -->
 
 
     <!-- the right side profile tabs -->
-    <div class="col-12 col-md-8 mt-3 mt-md-0">
+    <!-- <div class="col-12 col-md-8 mt-3 mt-md-0">
         <div class="card dcard h-100">
             <div class="card-body p-0">
                 <div class="sticky-nav" NgAceSticky #sticky (stuck)="tabStuck($event)">
                     <div class="position-tr w-100 border-t-4 brc-blue-m2 radius-2 d-md-none"></div>
-          
+
                     <ul ngbNav #profileNav="ngbNav" [destroyOnHide]="false" [animation]="false" class="nav nav-tabs-scroll is-scrollable nav-tabs nav-tabs-simple p-1px pl-25 bgc-secondary-l4 border-b-1 brc-dark-l3 radius-t-1" role="tablist">
                         <li [ngbNavItem]="1" class="nav-item mr-2 mr-lg-3">
                             <a ngbNavLink role="button" class="d-style nav-link px-2 py-35 brc-primary-tp1">
@@ -55,14 +56,11 @@
                             </ng-template>
                         </li>
                     </ul>
-                </div><!-- /.sticky-nav-md -->
-
-
+                </div>
                 <div [ngbNavOutlet]="profileNav" NgAceTabSwipe class="px-0 tab-sliding flex-grow-1 border-0">
                 </div>
             </div>
-        </div><!-- /.card -->
+        </div>
 
-    </div>
+    </div> -->
 </div>
-

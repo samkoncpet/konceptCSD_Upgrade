@@ -164,6 +164,10 @@ const routes: Routes = [
       {
         path: 'more',
         loadChildren: () => import('./pages/more/more.module').then((m) => m.MoreModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./pages/more/profile/profile.module').then((m) => m.ProfileModule)
       }
       
     ]

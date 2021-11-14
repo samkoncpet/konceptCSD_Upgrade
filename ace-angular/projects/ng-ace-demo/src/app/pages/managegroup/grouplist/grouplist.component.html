@@ -35,11 +35,7 @@
                     <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
                         <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
                             <tr>
-                                <th class="text-center pr-0">
-                                    <label class="py-0">
-                                        <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
-                                    </label>
-                                </th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th></th>
@@ -47,11 +43,12 @@
                         </thead>
 
                         <tbody class="mt-1" *ngFor="let data of grouplist">
-                            <td class="text-center pr-0">
-                                <input type="checkbox" id="is_active{{data.User_Group_ID}}" value="{{data.User_Group_ID}}" class="align-bottom mb-n1 border-2 text-dark-m3">
-                            </td>
+                            <td>{{ data.Index}}</td>
                             <td>{{data.User_Group_Name}}</td>
-                            <td>{{data.Status}}</td>
+                            <td>
+                                <span *ngIf="data.Is_Active == 'True'" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Is_Active }}</span>
+                                <span *ngIf="data.Is_Active == 'False'" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Is_Active }}</span>
+                            </td>
                             <td>
                                 <div class="d-none d-lg-flex">
                                     <a href="javascript:void(0);" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">

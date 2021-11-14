@@ -28,4 +28,6 @@ export class AppsettingsService {
     insertUpdateUserAPI: string = "api/user/insertupdateuser";
 
     fetchUserAPI: string = "api/user/fetchuser";
+
+    defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }
