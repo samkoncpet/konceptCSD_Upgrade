@@ -32,6 +32,7 @@
                         </div>
                         <div class="col-md-4">
                             <select id="organizationid" formControlName="organizationid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.organizationid.touched || submitted) && addnewuserFormControl.organizationid.errors?.required)}">
+                                <option value="">--Select--</option>
                                 <option *ngFor="let data of organizationlist" value={{data.User_ID}}>{{data.FullName}}</option>  
                               </select>
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.organizationid.touched || submitted) && (addnewuserFormControl.organizationid.errors?.required || addnewuserFormControl.organizationid.invalid)">
@@ -45,6 +46,7 @@
                         </div>
                         <div class="col-md-4">
                             <select id="groupid" formControlName="groupid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.groupid.touched || submitted) && addnewuserFormControl.groupid.errors?.required)}">
+                                <option value="">--Select--</option>
                                 <option *ngFor="let data of grouplist" value={{data.User_Group_ID}}>{{data.User_Group_Name}}</option>  
                               </select>
                             <span class="form-text text-danger" *ngIf="(addnewuserFormControl.groupid.touched || submitted) && (addnewuserFormControl.groupid.errors?.required || addnewuserFormControl.groupid.invalid)">
@@ -167,7 +169,7 @@
                         <div class="col-md-4">
                             <div class="d-inline-flex align-items-center">
                                 <input id="id-form-field-password-toggle" #inputPassword [attr.type]="isPassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'border-danger': ((addnewuserFormControl.password.touched || submitted) && addnewuserFormControl.password.errors?.required)}">
-                                <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-125 ml-n5 no-underline radius-1 d-style">
+                                <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-100 ml-n5 no-underline radius-1 d-style">
                                     <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
                                 </a>
                             </div>

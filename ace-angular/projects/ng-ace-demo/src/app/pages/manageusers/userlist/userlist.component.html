@@ -11,8 +11,66 @@
 <div class="row mt-3">
     <div class="col-12">
         <div class="card dcard">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-toolbar mr-auto no-border">
+                        <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Filter
+                        </span>
+                    </label>
+                    </div>
+                </div>
+            </div>
             <div class="card-body px-1 px-md-3">
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label for="id-form-field-1" class="mb-0">
+                            User Type
+                          </label>
+                    </div>
+                    <div class="col-md-4">
+                        <select id="usertype" formControlName="usertype" #usertype (change)='SearchByUsertype(usertype.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                            <option value="">--Select--</option>
+                            <option value="Organization">Organization</option>
+                            <option value="User">User</option>
+                          </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="id-form-field-1" class="mb-0">
+                            Group
+                          </label>
+                    </div>
+                    <div class="col-md-4">
+                        <select id="groupid" formControlName="groupid" #groupid (change)='SearchByUserGroup(groupid.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let data of grouplist" value={{data.User_Group_ID}}>{{data.User_Group_Name}}</option>  
+                          </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label for="id-form-field-1" class="mb-0">
+                        Is Active
+                    </label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" formControlName="is_active" id="is_active" #is_active (change)='SearchByIsActive(is_active.checked)' class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
+                    </div>
+                    <div class="col-md-2">
 
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn px-4 btn-primary mb-1" (click)="SearchUserList()">
+                            <i class="fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card dcard">
+            <div class="card-body px-1 px-md-3">
                 <form autocomplete="off">
                     <div class="d-flex justify-content-between flex-column flex-sm-row mb-3 px-2 px-sm-0">
                         <h3 class="text-125 pl-1 mb-3 mb-sm-0 text-secondary-d4">
@@ -26,9 +84,9 @@
 
                         <div class="mb-2 mb-sm-0">
                             <button type="button" (click)="addnewuser()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
-                  <i class="fa fa-plus mr-1"></i>
-                  Add <span class="d-sm-none d-md-inline">New</span> Entry
-                </button>
+                                <i class="fa fa-plus mr-1"></i>
+                                Add <span class="d-sm-none d-md-inline">New</span> Entry
+                            </button>
                         </div>
                     </div>
 
@@ -40,15 +98,15 @@
                                         <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
                                     </label>
                                 </th> -->
-                                <th class="d-none d-sm-table-cell">Sr. No.</th>
-                                <th class="d-none d-sm-table-cell">Organization</th>
-                                <th class="d-none d-sm-table-cell">User Name</th>
-                                <th class="d-none d-sm-table-cell">Full Name</th>
-                                <th class="d-none d-sm-table-cell">Email</th>
-                                <th class="d-none d-sm-table-cell">Mobile No.</th>
-                                <th class="d-none d-sm-table-cell">Group</th>
-                                <th class="d-none d-sm-table-cell">Is Active</th>
-                                <th class="d-none d-sm-table-cell"></th>
+                                <th class="d-none d-sm-table-cell col-1">Sr. No.</th>
+                                <th>Organization</th>
+                                <th>User Name</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Mobile No.</th>
+                                <th>Group</th>
+                                <th>Is Active</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -111,11 +169,7 @@
                         </div>
                     </div>
                 </form>
-
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col -->
 </div>

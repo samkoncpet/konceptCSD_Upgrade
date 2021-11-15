@@ -19,8 +19,8 @@ export class NeworganizationComponent implements OnInit {
   addorganization: FormGroup;
   isPassword = true;
   passwordmatch = true;
-  public countrylist = {};
-  public statelist= {};
+  public countrylist = [];
+  public statelist= [];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -33,7 +33,7 @@ export class NeworganizationComponent implements OnInit {
   ngOnInit(): void {
     this.addorganization = this._formBuilder.group({
       fullname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
-      username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(20)]),
+      username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(10)]),
       password: new FormControl('', Validators.required),
       repassword: new FormControl('', Validators.required),
       is_active: new FormControl(true, Validators.required),
@@ -42,7 +42,7 @@ export class NeworganizationComponent implements OnInit {
       email: new FormControl('', [Validators.required, emailValidator]),
       mobile: new FormControl('', [Validators.required, NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
       address: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(20)]),
-      countryid: new FormControl(1, Validators.required),
+      countryid: new FormControl('', Validators.required),
       stateid: new FormControl('', Validators.required),
       city: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
     });
@@ -66,7 +66,7 @@ export class NeworganizationComponent implements OnInit {
             this.countrylist = response["data"];
           }
           else {
-            this.countrylist = {};
+            this.countrylist = [];
           }
           this.spinner.hide();
         },
@@ -93,7 +93,7 @@ export class NeworganizationComponent implements OnInit {
             this.statelist = response["data"];
           }
           else {
-            this.statelist = {};
+            this.statelist =  [];
           }
           this.spinner.hide();
         },
@@ -130,8 +130,8 @@ export class NeworganizationComponent implements OnInit {
       Email: this.addorganization.value.email,
       MobileNo: this.addorganization.value.mobile,
       Address: this.addorganization.value.address,
-      Country_ID: this.addorganization.value.mobile,
-      State_ID: this.addorganization.value.stateid,
+      Country_ID: parseInt(this.addorganization.value.countryid),
+      State_ID: parseInt(this.addorganization.value.stateid),
       City: this.addorganization.value.city,
     }
     this._ConfigurationService.post(url, data)
@@ -158,7 +158,7 @@ export class NeworganizationComponent implements OnInit {
   }
   cancel(){
     this.addorganization.reset();
-    this.statelist = {};
+    this.statelist =  [];
   }
 
   get addorganizationFormControl() {

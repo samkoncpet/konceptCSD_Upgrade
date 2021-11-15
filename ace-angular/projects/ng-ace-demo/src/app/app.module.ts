@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgAceAdminModule } from 'ng-ace-admin';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 
@@ -65,7 +66,8 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
     MainLayoutModule,
     LoginLayoutModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

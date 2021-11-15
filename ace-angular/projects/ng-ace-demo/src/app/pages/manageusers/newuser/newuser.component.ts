@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -20,10 +21,10 @@ export class NewuserComponent implements OnInit {
   isPassword = true;
   passwordmatch = true;
   imageSrc: string = '';
-  public grouplist = {};
-  public organizationlist= {};
+  public grouplist = [];
+  public organizationlist= [];
 
-  constructor(
+  constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
@@ -34,14 +35,14 @@ export class NewuserComponent implements OnInit {
   ngOnInit(): void {
     this.adduser = this._formBuilder.group({
       //userlogo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      groupid: new FormControl(1, Validators.required),
-      organizationid: new FormControl(1, Validators.required),
+      groupid: new FormControl('', Validators.required),
+      organizationid: new FormControl('', Validators.required),
       firstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
       lastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
-      gender: new FormControl('1', Validators.required),
+      gender: new FormControl(1, Validators.required),
       email: new FormControl('', [Validators.required, emailValidator]),
       mobile: new FormControl('', [Validators.required, NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-      username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(20)]),
+      username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(10)]),
       password: new FormControl('', Validators.required),
       repassword: new FormControl('', Validators.required),
       is_active: new FormControl(true, Validators.required),
@@ -88,13 +89,12 @@ export class NewuserComponent implements OnInit {
             this.grouplist = response["data"];
           }
           else {
-            this.grouplist = {};
+            this.grouplist = [];
           }
           this.spinner.hide();
         },
           err => {
             this.spinner.hide();
-            console.log("status code--->" + err.status)
           });
    }
    geOrganization(){
@@ -114,13 +114,12 @@ export class NewuserComponent implements OnInit {
             this.organizationlist = response["data"];
           }
           else {
-            this.organizationlist = {};
+            this.organizationlist = [];
           }
           this.spinner.hide();
         },
           err => {
             this.spinner.hide();
-            console.log("status code--->" + err.status)
           });
    }
 
@@ -157,6 +156,10 @@ export class NewuserComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this._notificationsService.showSuccess("Success", response["data"]["0"].message);
+            setTimeout(() => {
+              /** spinner ends after 3 seconds */
+              this.router.navigateByUrl('/userlist');
+            }, 300);
             this.cancel();
           }
           else {

@@ -6,6 +6,7 @@ import { LocalstorageService } from '../../../../../app/config/localstorage.serv
 import { ConfigurationService } from '../../../../../app/config/configuration.service';
 import { AppsettingsService } from '../../../../../app/config/appsettings.service';
 import { NotificationsService } from '../../../../config/notifications.service';
+import { ShareDataServiceService } from "../../../../config/share-data-service.service";    
 
 @Component({
   selector: 'app-demo-signin',
@@ -28,7 +29,8 @@ export class SigninComponent implements OnInit {
     private _ConfigurationService: ConfigurationService,
     private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
-    private spinner: NgxSpinnerService) { 
+    private spinner: NgxSpinnerService,
+    public shareDataService: ShareDataServiceService) { 
     this._localstorageService.localstorageclear();
   }
 
@@ -61,8 +63,10 @@ export class SigninComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this._localstorageService.localstorageSet("fullname", response["data"][0].FullName);
+            this._localstorageService.localstorageSet("data", JSON.stringify(response["data"][0]));
             this._localstorageService.localstorageSet("userid", response["data"][0].User_ID);
             this._localstorageService.localstorageSet("token", response["sys_message"]);
+            
             this.router.navigateByUrl('/dashboard');
           }
           else {

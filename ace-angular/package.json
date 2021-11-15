@@ -61,6 +61,7 @@
         "ngx-color-picker": "^11.0.0",
         "ngx-dropzone-wrapper": "^10.0.1",
         "ngx-mask": "^11.1.5",
+        "ngx-pagination": "^5.1.1",
         "ngx-spinner": "^11.0.2",
         "ngx-textarea-autosize": "^2.0.3",
         "ngx-treeview": "^10.0.2",
