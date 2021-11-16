@@ -10,9 +10,9 @@
 </div>
 <div class="row mt-3">
     <div class="col-12">
-        <div class="card dcard">
-            <form [formGroup]="addorganization" autocomplete="off">
-                <div class="card">
+        <form [formGroup]="addorganization" autocomplete="off">
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
@@ -103,7 +103,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+            </div><br>
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
@@ -225,7 +227,7 @@
                     </div>
                     <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                         <div class="offset-md-3 col-md-9 text-nowrap">
-                            <button class="btn btn-info btn-bold px-4" type="button" (click)="addneworganization()">
+                            <button class="btn btn-primary btn-bold px-4" type="button" (click)="addneworganization()">
                           <i class="fa fa-check mr-1"></i>
                           Submit
                         </button>
@@ -237,10 +239,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.card-body -->
-            </form>
-        </div>
-        <!-- /.card -->
+            </div>
+        </form>
     </div>
-    <!-- /.col -->
 </div>

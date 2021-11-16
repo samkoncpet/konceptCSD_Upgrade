@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
@@ -28,7 +27,6 @@ export class NewuserComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
-    private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService) {  }
 
@@ -40,7 +38,7 @@ export class NewuserComponent implements OnInit {
       firstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
       lastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
       gender: new FormControl(1, Validators.required),
-      email: new FormControl('', [Validators.required, emailValidator]),
+      email: new FormControl('', [Validators.required, emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
       mobile: new FormControl('', [Validators.required, NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
       username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(10)]),
       password: new FormControl('', Validators.required),

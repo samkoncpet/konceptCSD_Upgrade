@@ -11,7 +11,7 @@
 <div class="row mt-3">
     <div class="col-12">
         <div class="card dcard">
-            <div class="card">
+            <div class="card bgc-primary-d1 text-white">
                 <div class="card-header">
                     <div class="card-toolbar mr-auto no-border">
                         <label class="mb-0">
@@ -24,24 +24,24 @@
             </div>
             <div class="card-body px-1 px-md-3">
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-0 col-form-label">
                         <label for="id-form-field-1" class="mb-0">
                             User Type
                           </label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <select id="usertype" formControlName="usertype" #usertype (change)='SearchByUsertype(usertype.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                             <option value="">--Select--</option>
                             <option value="Organization">Organization</option>
                             <option value="User">User</option>
                           </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-0 col-form-label">
                         <label for="id-form-field-1" class="mb-0">
                             Group
                           </label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <select id="groupid" formControlName="groupid" #groupid (change)='SearchByUserGroup(groupid.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                             <option value="">--Select--</option>
                             <option *ngFor="let data of grouplist" value={{data.User_Group_ID}}>{{data.User_Group_Name}}</option>  
@@ -49,15 +49,28 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-0 col-form-label">
+                        <label for="id-form-field-1" class="mb-0">
+                            Search
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                            <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
+                            <input type="text" #searchtext (change)='SearchByText(searchtext.value)' class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-0 col-form-label">
                         <label for="id-form-field-1" class="mb-0">
                         Is Active
                     </label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <input type="checkbox" formControlName="is_active" id="is_active" #is_active (change)='SearchByIsActive(is_active.checked)' class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
                     </div>
-                    <div class="col-md-2">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2 mb-0 col-form-label">
 
                     </div>
                     <div class="col-md-4">
@@ -65,7 +78,73 @@
                             <i class="fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
                         </button>
                     </div>
+                    <div class="col-md-2 mb-0 col-form-label">
+
+                    </div>
+                    <div class="col-md-4">
+                    </div>
                 </div>
+                <!-- <div class="form-group row">
+                    <table mat-table class="table table-bordered table-grey" [dataSource]="dataSource" matSort (matSortChange)="sortGrievances($event)">
+                        <ng-container matColumnDef="grievance_id">
+                            <th align="center" mat-header-cell *matHeaderCellDef mat-sort-header class="table-heading">
+                                Grievance Id</th>
+                            <td mat-cell *matCellDef="let element" class="table-heading" align="center">
+                                {{element.Grievance_ID}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-heading" align="center">
+                                Status</th>
+                            <td align="center" mat-cell *matCellDef="let element" class="table-data">
+                                <span class="badge bg-success" *ngIf="element.Current_Application_Status == 'RESOLVED'">
+                                {{element.Current_Application_Status}}
+                            </span>
+                                <span class="badge bg-warning" *ngIf="element.Current_Application_Status == 'PENDING'">
+                                {{element.Current_Application_Status}}
+                            </span>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="title">
+                            <th align="center" mat-header-cell *matHeaderCellDef mat-sort-header class="table-heading">Title
+                            </th>
+                            <td align="center" mat-cell *matCellDef="let element" class="table-data">
+                                <a [routerLink]="['/panel/grievance/history-details',element.Grievance_ID]" class="application_title">
+                                {{element.Application_Title | slice:0:50 }}{{ element.Application_Title.length> 20 ?
+                                '....' : '' }}
+                            </a>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="date">
+                            <th align="center" mat-header-cell *matHeaderCellDef mat-sort-header class="table-heading">
+                                Submit Date</th>
+                            <td align="center" mat-cell *matCellDef="let element" class="table-data">{{(element.Created_On | date : 'dd/MM/y')}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="department">
+                            <th align="center" mat-header-cell *matHeaderCellDef mat-sort-header class="table-heading">
+                                Department</th>
+                            <td align="center" mat-cell *matCellDef="let element" class="table-data">
+                                {{(element.Application_Department_Name)}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th align="center" mat-header-cell *matHeaderCellDef class="table-heading">View</th>
+                            <td align="center" mat-cell *matCellDef="let element; let i=index;" class="table-heading">
+                                <ul>
+                                    <li>
+                                        <a class="btn text-secondary btn-sm application_view" [routerLink]="['/panel/grievance/history-details',element.Grievance_ID]">
+                                            <button class="btn btn-primary btn-sm custom-btn">View</button>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+                    </table>
+                    <div *ngIf="dataSource.data.length == 0" class="text-center p-3"><span>No Record found</span></div>
+                    <mat-paginator [length]="tableOptions.total" [pageIndex]="tableOptions.pageIndex" [pageSize]="tableOptions.pageSize" [pageSizeOptions]="[5, 10, 25, 50]" (page)="paginateApplications($event)" showFirstLastButtons></mat-paginator>
+
+                </div> -->
             </div>
         </div>
         <br>
@@ -77,10 +156,7 @@
                             User list
                         </h3>
 
-                        <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
-                            <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
-                            <input type="text" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
-                        </div>
+
 
                         <div class="mb-2 mb-sm-0">
                             <button type="button" (click)="addnewuser()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
@@ -98,13 +174,12 @@
                                         <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
                                     </label>
                                 </th> -->
-                                <th class="d-none d-sm-table-cell col-1">Sr. No.</th>
-                                <th>Organization</th>
+                                <th class="col-1">Sr. No.</th>
+                                <th>Group</th>
                                 <th>User Name</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Mobile No.</th>
-                                <th>Group</th>
                                 <th>Is Active</th>
                                 <th></th>
                             </tr>
@@ -115,13 +190,12 @@
                                 <!-- <td class="text-center pr-0">
                                     <input type="checkbox" id="is_active" class="align-bottom mb-n1 border-2 text-dark-m3" value={{data.User_ID}}>
                                 </td> -->
-                                <td>{{ data.Index}}</td>
-                                <td>{{ data.Organization}}</td>
+                                <td class="col-1">{{ data.Index}}</td>
+                                <td>{{ data.User_Group_Name}}</td>
                                 <td>{{ data.Username}}</td>
                                 <td>{{ data.Full_Name}}</td>
                                 <td>{{ data.Email}}</td>
                                 <td>{{ data.MobileNo}}</td>
-                                <td>{{ data.User_Group_Name}}</td>
                                 <td>
                                     <span *ngIf="data.Is_Active == 'True'" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Status }}</span>
                                     <span *ngIf="data.Is_Active == 'False'" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Status }}</span>
@@ -131,13 +205,12 @@
                                         <a href="/updateuser/{{ data.User_ID}} " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                             <i class="fa fa-pencil-alt "></i>
                                         </a>
-
-                                        <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger ">
+                                        <!-- <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger ">
                                             <i class="fa fa-trash-alt "></i>
                                         </a>
                                         <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-warning btn-a-lighter-warning ">
                                             <i class="fa fa-ellipsis-v mx-1 "></i>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </td>
                             </tr>
