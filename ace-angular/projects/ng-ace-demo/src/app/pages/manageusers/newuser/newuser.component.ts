@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -15,6 +15,8 @@ import { NotificationsService } from '../../../config/notifications.service';
 })
 export class NewuserComponent implements OnInit {
 
+  param1: string;
+  isUpdate = false;
   submitted = false;
   adduser: FormGroup;
   isPassword = true;
@@ -28,13 +30,20 @@ export class NewuserComponent implements OnInit {
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
-    private spinner: NgxSpinnerService) {  }
+    private spinner: NgxSpinnerService,
+    private route: ActivatedRoute) {  
+      this.param1 = this.route.snapshot.params.id;
+      if(this.param1!= undefined && this.param1 != ''){
+        this.isUpdate = true;
+      }
+      //this._notificationsService.showSuccess("Success", "success");
+    }
 
   ngOnInit(): void {
     this.adduser = this._formBuilder.group({
       //userlogo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      groupid: new FormControl('', Validators.required),
       organizationid: new FormControl('', Validators.required),
+      groupid: new FormControl('', Validators.required),
       firstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
       lastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
       gender: new FormControl(1, Validators.required),
@@ -45,12 +54,11 @@ export class NewuserComponent implements OnInit {
       repassword: new FormControl('', Validators.required),
       is_active: new FormControl(true, Validators.required),
     });
-    this.getUserGroup();
     this.geOrganization();
-    // setTimeout(() => {
-    //   /** spinner ends after 5 seconds */
-    //   this.spinner.hide();
-    // }, 1000);
+    this.getUserGroup();
+    if(this.isUpdate){
+      this.getUserDetail();
+    }
   }
 
   // File Upload
@@ -137,18 +145,37 @@ export class NewuserComponent implements OnInit {
     var url = this._appSettings.koncentAPI;
     var insertUpdateUserAPI = this._appSettings.insertUpdateUserAPI;
     url = url + insertUpdateUserAPI;
-    var data = {
-      User_Type: "User",
-      Parent_User_ID: this.adduser.value.organizationid,
-      User_Group_ID: this.adduser.value.groupid,
-      FirstName: this.adduser.value.firstname,
-      LastName: this.adduser.value.lastname,
-      Gender: this.adduser.value.gender,
-      Email: this.adduser.value.email,
-      MobileNo: this.adduser.value.mobile,
-      Username: this.adduser.value.username,
-      Password: this.adduser.value.password,
-      Is_Active: this.adduser.value.is_active
+    var data = {};
+    if(!this.isUpdate){
+      data = {
+        User_Type: "User",
+        Parent_User_ID: this.adduser.value.organizationid,
+        User_Group_ID: this.adduser.value.groupid,
+        FirstName: this.adduser.value.firstname,
+        LastName: this.adduser.value.lastname,
+        Gender: this.adduser.value.gender,
+        Email: this.adduser.value.email,
+        MobileNo: this.adduser.value.mobile,
+        Username: this.adduser.value.username,
+        Password: this.adduser.value.password,
+        Is_Active: this.adduser.value.is_active
+      }
+    }
+    else { 
+      data = {
+        User_ID: this.param1,
+        User_Type: "User",
+        Parent_User_ID: parseInt(this.adduser.value.organizationid),
+        User_Group_ID: parseInt(this.adduser.value.groupid),
+        FirstName: this.adduser.value.firstname,
+        LastName: this.adduser.value.lastname,
+        Gender: parseInt(this.adduser.value.gender),
+        Email: this.adduser.value.email,
+        MobileNo: this.adduser.value.mobile,
+        Username: this.adduser.value.username,
+        Password: this.adduser.value.password,
+        Is_Active: this.adduser.value.is_active === "true" ? true : false
+      }
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -179,7 +206,52 @@ export class NewuserComponent implements OnInit {
   cancel(){
     this.adduser.reset();
   }
+  getUserDetail(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
 
+    var data = {
+      User_ID: this.param1,
+      Search: "",
+      User_Type: "User",
+      User_Group_ID: 0,
+      Is_Active: false
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            console.log(response["data"][0])
+            this.adduser.patchValue({
+              organizationid: response["data"][0].Parent_User_ID,
+              groupid: response["data"][0].User_Group_ID,
+              firstname: response["data"][0].FirstName,
+              lastname: response["data"][0].LastName,
+              gender: response["data"][0].Gender,
+              email: response["data"][0].Email,
+              mobile: response["data"][0].MobileNo,
+              username: response["data"][0].Username,
+              is_active: response["data"][0].Is_Active === "True" ? true : false
+           });
+           this.adduser.get('password').setValidators(null);
+           this.adduser.get('password').clearValidators();
+           this.adduser.get('password').updateValueAndValidity();
+
+           this.adduser.get('repassword').setValidators(null);
+           this.adduser.get('repassword').clearValidators();
+           this.adduser.get('repassword').updateValueAndValidity();
+          }
+          else {
+           
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
+          });
+   }
   get addnewuserFormControl() {
     return this.adduser.controls;
   }

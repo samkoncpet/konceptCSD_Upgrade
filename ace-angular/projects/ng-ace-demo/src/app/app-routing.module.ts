@@ -133,7 +133,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'listorganization',
+        path: 'organizationlist',
         component: OrganizationlistComponent,
         data: {
           title: 'Organization list'
@@ -144,6 +144,20 @@ const routes: Routes = [
         component: NeworganizationComponent,
         data: {
           title: 'Add Organization'
+        }
+      },
+      {
+        path: 'updateorganization/:type/:id',
+        component: NeworganizationComponent,
+        data: {
+          title: 'Update Organization'
+        }
+      },
+      {
+        path: 'vieworganization/:type/:id',
+        component: NeworganizationComponent,
+        data: {
+          title: 'View Organization'
         }
       },
       {

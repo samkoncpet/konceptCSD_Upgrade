@@ -34,9 +34,9 @@
         "icon": "fa fa-table"
     },
     {
-        "id": "listorganization",
+        "id": "organizationlist",
         "parent": "manageorganization",
-        "link": "listorganization",
+        "link": "organizationlist",
         "title": "View Organization"
     },
     {

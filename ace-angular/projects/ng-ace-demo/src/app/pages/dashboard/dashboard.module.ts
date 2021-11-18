@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgAceAdminModule } from 'ng-ace-admin';
+import { MatPaginatorModule} from '@angular/material/paginator'
 
 
 import { DashboardComponent } from './dashboard.component';
@@ -18,6 +21,7 @@ import { TransfersComponent } from './transfers/transfers.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ConversationComponent } from './conversation/conversation.component';
 import { UserlistComponent } from './../manageusers/userlist/userlist.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -52,7 +56,9 @@ const routes: Routes = [
     NgbModule,
 
     NgAceAdminModule,
-  
+    MatPaginatorModule,
+    MatTableModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports: [

@@ -1,15 +1,17 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 
 
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
+import { LocalstorageService } from '../../../config/localstorage.service';
 
 
 @Component({
@@ -23,11 +25,19 @@ export class UserlistComponent implements OnInit {
   public grievanceHistoryList: Array<IGrievanceHistoryListResponse> = {} as Array<IGrievanceHistoryListResponse>;
   public dataSource = new MatTableDataSource<IGrievanceHistoryListResponse>();
   public isProcessing = false;
-
-
+  
+  submitted = false;
+  searchForm: FormGroup;
   public userlist = [];
   public userlistlength = 0;
   public grouplist = [];
+
+  public userAccess = {
+    Create: false,
+    Retrieve: false,
+    Update: false,
+    Delete: false
+  }
 
   Search_User_ID: number = 0; 
   Search_text: string = ""; 
@@ -36,12 +46,20 @@ export class UserlistComponent implements OnInit {
   Search_Is_Active: boolean = null;
   
   constructor(private router: Router,
+    private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
+    private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
+      this.userAccess = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
   }
 
   ngOnInit(): void {
+    this.searchForm = this._formBuilder.group({
+      groupid: new FormControl(''),
+      searchtext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      is_active: new FormControl(true),
+    });
     this.getUserList();
     this.getUserGroup();
   }
@@ -114,10 +132,26 @@ export class UserlistComponent implements OnInit {
           });
    }
 
+   filterUserList(){
+    this.submitted = true;
+    if (!this.searchForm.valid) {
+      return;
+    }
+    this.getUserList();
+   }
+   reset(){
+    this.searchForm.reset();
+   }
   addnewuser(){
     this.router.navigateByUrl('/addnewuser');
   }
-
+  get searchFormControl() {
+    return this.searchForm.controls;
+  }
+  
+  getErrorMessage(control: string) {
+      return FormErrorMessage(this.searchForm, control);
+  }
 
   /////////////////////////////////////////
   public tableColumns: string[] = ['grievance_id', 'status', 'title', 'date', 'department', 'action'];

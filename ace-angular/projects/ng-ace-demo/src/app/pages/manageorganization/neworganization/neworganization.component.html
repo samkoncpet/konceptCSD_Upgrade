@@ -4,12 +4,14 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Add Organization
+            <span *ngIf="!isUpdate && !isView">Add Organization</span>
+            <span *ngIf="isUpdate">Update Organization</span>
+            <span *ngIf="isView">View Organization</span>
         </small>
     </h1>
 </div>
 <div class="row mt-3">
-    <div class="col-12">
+    <div class="col-12" *ngIf="!isView">
         <form [formGroup]="addorganization" autocomplete="off">
             <div class="card dcard">
                 <div class="card bgc-primary-d1 text-white">
@@ -26,7 +28,7 @@
                 <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 Full Name
                               </label>
                         </div>
@@ -37,7 +39,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             User Name
                             </label>
                         </div>
@@ -52,7 +54,7 @@
                     <div class="form-group row">
 
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             Password
                             </label>
                         </div>
@@ -68,7 +70,7 @@
                         </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             Re type Password
                             </label>
                         </div>
@@ -84,7 +86,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             Is Active
                         </label>
                         </div>
@@ -119,7 +121,7 @@
                 <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 First Name
                               </label>
                         </div>
@@ -130,7 +132,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 Last Name
                               </label>
                         </div>
@@ -143,7 +145,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 Email ID
                               </label>
                         </div>
@@ -154,7 +156,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 Mobile No.
                           </label>
                         </div>
@@ -172,7 +174,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 Address
                           </label>
                         </div>
@@ -183,7 +185,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             Country
                         </label>
                         </div>
@@ -200,7 +202,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                             State
                         </label>
                         </div>
@@ -214,7 +216,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
+                            <label for="id-form-field-1" class="mb-0 col-form-label">
                                 City
                           </label>
                         </div>
@@ -229,7 +231,217 @@
                         <div class="offset-md-3 col-md-9 text-nowrap">
                             <button class="btn btn-primary btn-bold px-4" type="button" (click)="addneworganization()">
                           <i class="fa fa-check mr-1"></i>
-                          Submit
+                          <span *ngIf="!isUpdate">Submit</span>
+                          <span *ngIf="isUpdate">Update</span>
+                        </button>
+
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
+                          <i class="fa fa-undo mr-1"></i>
+                          Cancel
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-12" *ngIf="isView">
+        <form [formGroup]="addorganization" autocomplete="off">
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Organization Account
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Full Name&nbsp;:
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Full_Name}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                            User Name&nbsp;:
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Username}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group row">
+
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                            Password
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-inline-flex align-items-center">
+                                <input id="id-form-field-password-toggle" #inputPassword [attr.type]="isPassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'border-danger': ((addorganizationFormControl.password.touched || submitted) && addorganizationFormControl.password.errors?.required)}">
+                                <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-100 ml-n5 no-underline radius-1 d-style">
+                                    <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
+                                </a>
+                            </div>
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.password.touched || submitted) && (addorganizationFormControl.password.errors?.required || addorganizationFormControl.password.invalid)">
+                            {{getErrorMessage('password')}}
+                        </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                            Re type Password
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="repassword" type="password" formControlName="repassword" class="form-control" placeholder="Re type Password" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addorganizationFormControl.repassword.touched || submitted) && addorganizationFormControl.repassword.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addorganizationFormControl.repassword.touched || submitted) && (addorganizationFormControl.repassword.errors?.required || addorganizationFormControl.repassword.invalid)">
+                            {{getErrorMessage('repassword')}}
+                        </span>
+                            <span class="form-text text-danger" *ngIf="!passwordmatch">Password do not match.</span>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Is Active&nbsp;:
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Is_Active}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Organization Contact Details
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                First Name&nbsp;:
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.FirstName}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Last Name&nbsp;:
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.LastName}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Email ID&nbsp;:
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Email}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Mobile No.&nbsp;:
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.MobileNo}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                Address&nbsp;:
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Address}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                            Country&nbsp;:
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.Country}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                            State&nbsp;:
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.State}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-95 text-600 pl-4">
+                                City&nbsp;:
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{organizationDetail.City}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25" *ngIf="!isView">
+                        <div class="offset-md-3 col-md-9 text-nowrap">
+                            <button class="btn btn-primary btn-bold px-4" type="button" (click)="addneworganization()">
+                          <i class="fa fa-check mr-1"></i>
+                          <span *ngIf="!isUpdate">Submit</span>
+                          <span *ngIf="isUpdate">Update</span>
                         </button>
 
                             <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">

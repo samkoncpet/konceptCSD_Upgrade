@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import { MatPaginatorModule} from '@angular/material/paginator'
 
 import { NgAceAdminModule } from 'ng-ace-admin';
 import { NgxSpinnerModule } from "ngx-spinner";
