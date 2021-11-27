@@ -7,7 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
-
+import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
 
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
@@ -31,13 +31,8 @@ export class UserlistComponent implements OnInit {
   public userlist = [];
   public userlistlength = 0;
   public grouplist = [];
-
-  public userAccess = {
-    Create: false,
-    Retrieve: false,
-    Update: false,
-    Delete: false
-  }
+ 
+  public UserAccessModule = new UserAccessModule();
 
   Search_User_ID: number = 0; 
   Search_text: string = ""; 
@@ -51,7 +46,7 @@ export class UserlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
-      this.userAccess = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
+      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
   }
 
   ngOnInit(): void {

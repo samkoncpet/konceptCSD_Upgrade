@@ -8,7 +8,7 @@
         </small>
     </h1>
 
-    <div class="mb-2 mb-sm-0" *ngIf="userAccess.Create">
+    <div class="mb-2 mb-sm-0" *ngIf="UserAccessModule.Is_Create">
         <button type="button" (click)="addorganization()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
         <i class="fa fa-plus mr-1"></i>
         Add <span class="d-sm-none d-md-inline">New</span> Entry
@@ -32,8 +32,8 @@
                 </div>
                 <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
-                        <div class="col-md-2 mb-0 col-form-label">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
                             Search
                         </label>
                         </div>
@@ -43,16 +43,16 @@
                                 <input type="text" formControlName="searchtext" maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
                             </div>
                         </div>
-                        <div class="col-md-2 mb-0 col-form-label">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
                                 Is Active
                             </label>
                         </div>
                         <div class="col-md-2">
                             <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
                         </div>
-                        <div class="col-md-3 mb-0 col-form-label">
-                            <button class="btn px-4 btn-primary mb-1">
+                        <div class="col-md-3 mb-0">
+                            <button class="btn px-4 btn-primary mb-1" (click)="filterUserList()">
                                 <i class="fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Show
                                 </button>
                             <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold mb-1 px-4" type="reset" (click)="reset()">
@@ -77,6 +77,7 @@
                 </div>
             </div>
             <div class="card-body px-1 px-md-3">
+
                 <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
                     <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
                         <tr>
@@ -111,10 +112,10 @@
                             </td>
                             <td>
                                 <div class="d-none d-lg-flex">
-                                    <a *ngIf="userAccess.Create" href="/updateorganization/update/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
+                                    <a *ngIf="UserAccessModule.Is_Update" href="/updateorganization/update/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-pencil-alt "></i>
                                     </a>
-                                    <a *ngIf="userAccess.Retrieve" href="/vieworganization/view/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
+                                    <a *ngIf="UserAccessModule.Is_Retrieve" href="/vieworganization/view/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <!-- <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger ">
@@ -144,10 +145,10 @@
                     </div>
 
                     <div class="btn-group ml-sm-auto mt-3 mt-sm-0 ">
-                        <a href="# " class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2 ">
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2 ">
                             <i class="fa fa-caret-left mr-1 "></i> Prev
                         </a>
-                        <a href="# " class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px ">
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px ">
                   Next
                   <i class="fa fa-caret-right ml-1 "></i>
                 </a>

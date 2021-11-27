@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
@@ -15,124 +16,248 @@ import { NotificationsService } from '../../../config/notifications.service';
 })
 export class NewgroupComponent implements OnInit {
 
-  submitted = false;
+  param1: string;
+  param2: string;
   isUpdate = false;
+  isView = false;
+  submitted = false;
   btntxt = "Submit";
   addgroup: FormGroup;
   isPassword = true;
   passwordmatch = true;
-  param1: string;
-  
-  constructor(
+  grouplist = [];
+
+  constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
     private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
+    private spinner: NgxSpinnerService,
     private route: ActivatedRoute) {
-      this.param1 = this.route.snapshot.params.id;
-      if(this.param1!= undefined && this.param1 != ''){
+      this.param1 = this.route.snapshot.params.type;
+      this.param2 = this.route.snapshot.params.id;
+      if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
         this.isUpdate = true;
-        this.btntxt = "Update";
+      }
+      else if(this.param1 == 'view'){
+        this.isView = true;
+      }
+      else{        
+        this.getUserGroup();
       }
     }
 
   checklist:any;
   checkedList:any;
     
-  grouplist=[
-    {id:1, Name:"Super Admin", Add:"true",Update:"true", View: true},
-    {id:2, Name:"Customer", Add:"true",Update:"true", View: false},
-    {id:3, Name:"Packages", Add:"true",Update:"true", View: false}
-   ];
-
-   // Get List of Checked Items
-  getCheckedItemList(){
-    this.checkedList  = [];
-    for (var i = 0; i < this.grouplist.length; i++) {
-      if(this.grouplist[i].View)
-      this.grouplist.push(this.checklist[i]);
-    }
-    this.checkedList  = JSON.stringify(this.grouplist);
-  }
 
   ngOnInit(): void {
     this.addgroup = this._formBuilder.group({
-      name: new FormControl('', [Validators.minLength(2), Validators.maxLength(50)]),
-      description: new FormControl('',[Validators.minLength(2), Validators.maxLength(50)])
+      User_Group_Name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+      User_Group_Description: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),      
+      is_active: new FormControl(true, Validators.required),
     });
-  }
 
-  addnewpackage(){
+    if(this.isUpdate || this.isView){
+      this.getGroupDetailByID();
+    }
+  }
+  
+
+  getUserGroup(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var entityMasterAPI = this._appSettings.entityMasterAPI;
+    url = url + entityMasterAPI;
+
+    var data = {
+      SQLFROM: "User_Group_Access_Area",
+      SQLBY: "ByUser_Group_Access_Area"
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.grouplist = response["data"];
+            console.log(this.grouplist)
+            this.grouplist.forEach((item :IGroup) => {
+              //creating dynamically form controls
+              this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
+              this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(item.Is_Create);
+        
+              this.addgroup.addControl("Is_Update"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+              this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(item.Is_Update);
+        
+              this.addgroup.addControl("Is_Retrieve"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+              this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(item.Is_Retrieve);
+        
+              this.addgroup.addControl("Is_Delete"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+              this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(item.Is_Delete);
+            })
+          }
+          else {
+            this.grouplist = [];
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
+          });
+   }
+  getFormControlName(typeOfForm: string, id:number):string{
+    return typeOfForm + id;
+  }
+  addnewgroup(){
     this.submitted = true;
     if (!this.addgroup.valid) {
       return;
     }
+    let _IGroupList: IGroup[] = [];
+
+    this.grouplist.forEach((item :IGroup) => {
+      this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(this.addgroup.get(['Is_Create' + item.User_Group_Access_Area_ID]).value ? this.addgroup.get(['Is_Create' + item.User_Group_Access_Area_ID]).value : false), 
+      this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(this.addgroup.get(['Is_Update' + item.User_Group_Access_Area_ID]).value ? this.addgroup.get(['Is_Update' + item.User_Group_Access_Area_ID]).value : false), 
+      this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(this.addgroup.get(['Is_Retrieve' + item.User_Group_Access_Area_ID]).value ? this.addgroup.get(['Is_Retrieve' + item.User_Group_Access_Area_ID]).value : false)
+      this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(this.addgroup.get(['Is_Delete' + item.User_Group_Access_Area_ID]).value ? this.addgroup.get(['Is_Delete' + item.User_Group_Access_Area_ID]).value : false)
+      
+      let _IGroup: IGroup = {
+        User_Group_Access_Area_ID: 0,
+        Is_Create: false,
+        Is_Retrieve: false,
+        Is_Update: false,
+        Is_Delete: false
+      };
+      
+      _IGroup.User_Group_Access_Area_ID = item.User_Group_Access_Area_ID;
+      _IGroup.Is_Create = this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).value;
+      _IGroup.Is_Update = this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).value;
+      _IGroup.Is_Retrieve = this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).value;
+      _IGroup.Is_Delete = this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).value;
+      _IGroupList.push(_IGroup);
+    })
+
+    
     
     var url = this._appSettings.koncentAPI;
-    var insertPackageAPI = this._appSettings.insertPackageAPI;
-    url = url + insertPackageAPI;
+    var insertUpdateusergroup = this._appSettings.insertUpdateusergroup;
+    url = url + insertUpdateusergroup;
 
-    var data = {
-      Package: this.addgroup.value.name,
-      Price: this.addgroup.value.description
+    var data = {};
+    if(!this.isUpdate) {
+      data = {
+        User_Group_Name: this.addgroup.value.User_Group_Name,
+        User_Group_Description: this.addgroup.value.User_Group_Description,
+        Is_Active: this.addgroup.value.is_active,
+        AccessAreaList : _IGroupList
+      }
     }
+    else { 
+      data = {
+        User_Group_ID: parseInt(this.param2),
+        User_Group_Name: this.addgroup.value.User_Group_Name,
+        User_Group_Description: this.addgroup.value.User_Group_Description,
+        Is_Active: getBoolean(this.addgroup.value.is_active),
+        AccessAreaList : _IGroupList
+      }
+    }
+
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
             this.cancel();
-            this._notificationsService.success(response["sys_message"], "Success");
+            this._notificationsService.showSuccess("Success", response["message"]);
+            this.router.navigateByUrl('/viewgroup');
           }
           else {
-            this._notificationsService.info(response["sys_message"], "info!");
+            this._notificationsService.showWarning("warning", response["sys_message"]);
           }
         },
           err => {
             console.log("status code--->" + err.status)
           });
   }
-
-  updatepackage(){
-    this.submitted = true;
-    if (!this.addgroup.valid) {
-      return;
-    }
-    
+  getGroupDetailByID(){
+    /** spinner starts on init */
+    this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var updatePackageAPI = this._appSettings.updatePackageAPI;
-    url = url + updatePackageAPI;
+    var fetchusergroup = this._appSettings.fetchusergroup;
+    url = url + fetchusergroup;
 
     var data = {
-      Package_ID: this.param1,
-      Package: this.addgroup.value.name,
-      Price: this.addgroup.value.description
+      User_Group_ID: this.param2,
+      Search: '',
+      User_Group_Name: '',
+      Is_Predefined: null,
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this._notificationsService.success(response["sys_message"], "Success");
+            this.grouplist = [];
+            this.addgroup.patchValue({
+              User_Group_Name: response["data"][0].User_Group_Name,
+              User_Group_Description: response["data"][0].User_Group_Description,
+              is_active: response["data"][0].Is_Active});
+              this.grouplist = response["data"];
+
+              this.grouplist.forEach((item :IGroup) => {
+                //creating dynamically form controls
+                this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
+                this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Create));
+          
+                this.addgroup.addControl("Is_Update"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+                this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Update));
+          
+                this.addgroup.addControl("Is_Retrieve"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+                this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Retrieve));
+          
+                this.addgroup.addControl("Is_Delete"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
+                this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Delete));
+              });
+          }   
+          if(this.isView){
+            this.addgroup.disable();
           }
-          else {
-            this._notificationsService.info(response["sys_message"], "info!");
-          }
+          this.spinner.hide();
         },
           err => {
-            console.log("status code--->" + err.status)
+            this.spinner.hide();
           });
-  }
-
+   }
   cancel(){
     this.addgroup.reset();
   }
-
   get addgroupFormControl() {
     return this.addgroup.controls;
   }
-
-  
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addgroup, control);
   }
-
-
+}
+function getBoolean(value){
+  switch(value){
+       case "true":         
+        return true;
+       case "True":         
+        return true;
+       case 1:         
+        return true;
+       case "1":         
+        return true;
+       case "on":         
+         return true;
+       case "yes":
+           return true;
+       default: 
+           return false;
+   }
+}
+export interface IGroup
+{
+    User_Group_Access_Area_ID: number,
+    Is_Create: boolean, 
+    Is_Retrieve: boolean, 
+    Is_Update: boolean,
+    Is_Delete: boolean
 }

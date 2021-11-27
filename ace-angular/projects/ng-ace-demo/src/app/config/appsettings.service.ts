@@ -10,24 +10,28 @@ export class AppsettingsService {
   // Koncent Host URL's
   koncentAPI: string = environment.koncentAPI;
   
-  // Signin API
-  signinAPI: string = "api/authentication/signin";
+    // Signin API
+    signinAPI: string = "api/authentication/signin";
 
-   // Entity Master API
-   entityMasterAPI: string = "api/entitymaster/fetchentitymaster";
+    // Entity Master API
+    entityMasterAPI: string = "api/entitymaster/fetchentitymaster";
 
-   // Package API
-   insertPackageAPI: string = "api/package/insertpackage";
-   updatePackageAPI: string = "api/package/update-package";
+    // Package API
+    insertPackageAPI: string = "api/package/insertpackage";
+    updatePackageAPI: string = "api/package/update-package";
 
-   // User Type API
-   insertUserTypeAPI: string = "api/user/insert-user-type";
-   getUserTypeAPI: string = "api/user/fetch-user";
+    // User Type API
+    insertUserTypeAPI: string = "api/user/insert-user-type";
+    getUserTypeAPI: string = "api/user/fetch-user";
 
     // User API
     insertUpdateUserAPI: string = "api/user/insertupdateuser";
-
+  
     fetchUserAPI: string = "api/user/fetchuser";
 
+    // User Group API
+    insertUpdateusergroup: string = "api/user/insertupdateusergroup";
+    fetchusergroup: string = "api/user/fetchusergroup";
+  
     defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }

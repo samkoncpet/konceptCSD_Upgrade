@@ -16,7 +16,9 @@ import { NotificationsService } from '../../../config/notifications.service';
 export class NewuserComponent implements OnInit {
 
   param1: string;
+  param2: string;
   isUpdate = false;
+  isView = false;
   submitted = false;
   adduser: FormGroup;
   isPassword = true;
@@ -24,6 +26,7 @@ export class NewuserComponent implements OnInit {
   imageSrc: string = '';
   public grouplist = [];
   public organizationlist= [];
+  public userdetail= [];
 
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
@@ -31,12 +34,15 @@ export class NewuserComponent implements OnInit {
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) {  
-      this.param1 = this.route.snapshot.params.id;
-      if(this.param1!= undefined && this.param1 != ''){
+    private route: ActivatedRoute) {
+      this.param1 = this.route.snapshot.params.type;
+      this.param2 = this.route.snapshot.params.id;
+      if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
         this.isUpdate = true;
       }
-      //this._notificationsService.showSuccess("Success", "success");
+      else if(this.param1 == 'view'){
+        this.isView = true;
+      }
     }
 
   ngOnInit(): void {
@@ -56,7 +62,7 @@ export class NewuserComponent implements OnInit {
     });
     this.geOrganization();
     this.getUserGroup();
-    if(this.isUpdate){
+    if(this.isUpdate || this.isView){
       this.getUserDetail();
     }
   }
@@ -163,7 +169,7 @@ export class NewuserComponent implements OnInit {
     }
     else { 
       data = {
-        User_ID: this.param1,
+        User_ID: parseInt(this.param2),
         User_Type: "User",
         Parent_User_ID: parseInt(this.adduser.value.organizationid),
         User_Group_ID: parseInt(this.adduser.value.groupid),
@@ -185,7 +191,6 @@ export class NewuserComponent implements OnInit {
               /** spinner ends after 3 seconds */
               this.router.navigateByUrl('/userlist');
             }, 300);
-            this.cancel();
           }
           else {
             this._notificationsService.showWarning("warning", response["sys_message"]);
@@ -214,16 +219,17 @@ export class NewuserComponent implements OnInit {
     url = url + fetchUserAPI;
 
     var data = {
-      User_ID: this.param1,
-      Search: "",
-      User_Type: "User",
-      User_Group_ID: 0,
-      Is_Active: false
+      User_ID: this.param2,
+      Search: '',
+      User_Type: null,
+      User_Group_ID: null,
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            console.log(response["data"][0])
+            this.userdetail = response["data"][0];
+            console.log(this.userdetail)
             this.adduser.patchValue({
               organizationid: response["data"][0].Parent_User_ID,
               groupid: response["data"][0].User_Group_ID,

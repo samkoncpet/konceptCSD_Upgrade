@@ -25,7 +25,8 @@
                         "assets": [
                             "projects/ng-ace-demo/src/favicon.ico",
                             "projects/ng-ace-demo/src/favicon.png",
-                            "projects/ng-ace-demo/src/assets"
+                            "projects/ng-ace-demo/src/assets",
+                            "projects/ng-ace-demo/src/web.config"
                         ],
                         "styles": [
                             "./node_modules/bootstrap/dist/css/bootstrap.min.css",

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { LocalstorageService } from '../../../config/localstorage.service';
+import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
-import { NotificationsService } from '../../../config/notifications.service';
+import { LocalstorageService } from '../../../config/localstorage.service';
 
 @Component({
   selector: 'app-grouplist',
@@ -15,13 +15,15 @@ import { NotificationsService } from '../../../config/notifications.service';
 export class GrouplistComponent implements OnInit {
 
   public grouplist = [];
+    
+  public UserAccessModule = new UserAccessModule();
 
   constructor(private router: Router,
     private _appSettings: AppsettingsService,
-    private _ConfigurationService: ConfigurationService,
     private _localstorageService: LocalstorageService,
-    private _notificationsService: NotificationsService,
+    private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
+      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
   }
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class GrouplistComponent implements OnInit {
         },
           err => {
             this.spinner.hide();
-            console.log("status code--->" + err.status)
           });
    }
   addgroup(){

@@ -7,7 +7,7 @@
             User list
         </small>
     </h1>
-    <div class="mb-2 mb-sm-0" *ngIf="userAccess.Create">
+    <div class="mb-2 mb-sm-0" *ngIf="UserAccessModule.Is_Create">
         <button type="button" (click)="addnewuser()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
         <i class="fa fa-plus mr-1"></i>
         Add <span class="d-sm-none d-md-inline">New</span> Entry
@@ -31,8 +31,8 @@
                 </div>
                 <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
-                        <div class="col-md-2 mb-0 col-form-label">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
                             Search
                         </label>
                         </div>
@@ -42,8 +42,8 @@
                                 <input type="text" formControlName="searchtext" #searchtext (change)='SearchByText(searchtext.value)' maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
                             </div>
                         </div>
-                        <div class="col-md-2 mb-0 col-form-label">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
                                 Group
                             </label>
                         </div>
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-2 mb-0 col-form-label">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
                         Is Active
                     </label>
                         </div>
@@ -183,7 +183,7 @@
                             <td class="col-1">{{ data.Index}}</td>
                             <td>{{ data.User_Group_Name}}</td>
                             <td>{{ data.Username}}</td>
-                            <td>{{ data.Full_Name}}</td>
+                            <td>{{ data.FullName}}</td>
                             <td>{{ data.Email}}</td>
                             <td>{{ data.MobileNo}}</td>
                             <td>
@@ -192,10 +192,10 @@
                             </td>
                             <td>
                                 <div class="d-none d-lg-flex ">
-                                    <a *ngIf="userAccess.Update" href="/updateuser/{{ data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
+                                    <a *ngIf="UserAccessModule.Is_Update" href="/updateuser/update/{{ data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-pencil-alt "></i>
                                     </a>
-                                    <a *ngIf="userAccess.Retrieve" href="javascript:void(0);" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
+                                    <a *ngIf="UserAccessModule.Is_Retrieve" href="/viewuser/view/{{ data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <!-- <a href="javascript:void(0);" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger ">
@@ -225,10 +225,10 @@
                     </div>
 
                     <div class="btn-group ml-sm-auto mt-3 mt-sm-0 ">
-                        <a href="# " class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2 ">
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2 ">
                             <i class="fa fa-caret-left mr-1 "></i> Prev
                         </a>
-                        <a href="# " class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px ">
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px ">
                   Next
                   <i class="fa fa-caret-right ml-1 "></i>
                 </a>

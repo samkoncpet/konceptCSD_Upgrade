@@ -4,14 +4,14 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            <span *ngIf="!isUpdate">Add User</span>
+            <span *ngIf="!isUpdate && !isView">Add User</span>
             <span *ngIf="isUpdate">Update User</span>
+            <span *ngIf="isView">View User</span>
         </small>
     </h1>
 </div>
 <div class="row mt-3">
-    <div class="col-12">
-
+    <div class="col-12" *ngIf="!isView">
         <form [formGroup]="adduser" autocomplete="off">
             <div class="card dcard">
                 <div class="card bgc-primary-d1 text-white">
@@ -42,7 +42,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 Group
                               </label>
                         </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 First Name
                               </label>
                         </div>
@@ -77,7 +77,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 Last Name
                               </label>
                         </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 Gender
                               </label>
                         </div>
@@ -102,7 +102,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 Email ID
                               </label>
                         </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                                 Mobile No.
                           </label>
                         </div>
@@ -151,10 +151,9 @@
                     </div>
                 </div>
                 <div class="card-body px-1 px-md-3">
-                    <hr>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                             User Name
                             </label>
                         </div>
@@ -166,7 +165,7 @@
                         </span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                             Password
                             </label>
                         </div>
@@ -184,7 +183,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                             Re type Password
                             </label>
                         </div>
@@ -197,7 +196,7 @@
                             <span class="form-text text-danger" *ngIf="!passwordmatch">Password do not match.</span>
                         </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0 col-form-label">
+                            <label for="id-form-field-1" class="mb-0">
                             Is Active
                         </label>
                         </div>
@@ -221,6 +220,145 @@
                           <i class="fa fa-undo mr-1"></i>
                           Cancel
                         </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-12" *ngIf="isView">
+        <form [formGroup]="adduser" autocomplete="off">
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                User Information
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Organization
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.Username}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Group
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.User_Group_Name}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                First Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.FirstName}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Last Name
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.LastName}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Gender
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.Gender_Type}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Email ID
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.Email}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                                Mobile No.
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.MobileNo}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Login Information
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                            User Name
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.Username}}
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
+                            Is Active
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="id-form-field-1" class="mb-0">
+                                {{userdetail.Is_Active}}
+                            </label>
                         </div>
                     </div>
                 </div>

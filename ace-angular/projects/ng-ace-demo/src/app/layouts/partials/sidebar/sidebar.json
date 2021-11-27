@@ -53,9 +53,21 @@
     },
     {
         "id": "managegroups",
-        "link": "viewgroup",
+        "link": "#",
         "title": "Groups",
         "icon": "far fa-window-restore"
+    },
+    {
+        "id": "viewgroup",
+        "parent": "managegroups",
+        "link": "viewgroup",
+        "title": "View Groups"
+    },
+    {
+        "id": "addgroup",
+        "parent": "managegroups",
+        "link": "addgroup",
+        "title": "Add Group"
     },
     {
         "id": "managecalendar",

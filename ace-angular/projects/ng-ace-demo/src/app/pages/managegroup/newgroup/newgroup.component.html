@@ -2,101 +2,129 @@
 <div class="page-header pb-2">
     <h1 class="page-title text-primary-d2 text-150">
         Dashboard
-        <small class="page-info text-secondary-d2 text-nowrap" *ngIf="!isUpdate">
+        <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Add Group
-        </small>
-        <small class="page-info text-secondary-d2 text-nowrap" *ngIf="isUpdate">
-            <i class="fa fa-angle-double-right text-80"></i>
-            Update Package
+            <span *ngIf="!isUpdate && !isView">Add Group</span>
+            <span *ngIf="isUpdate">Update Group</span>
+            <span *ngIf="isView">View Group</span>
         </small>
     </h1>
 </div>
 <div class="row mt-3">
     <div class="col-12">
         <div class="card dcard">
-            <div class="card-body px-1 px-md-3">
 
-                <form class="mt-lg-3" [formGroup]="addgroup" autocomplete="off">
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                <span *ngIf="!isUpdate && !isView">Add Group</span>
+                                <span *ngIf="isUpdate">Update Group</span>
+                                <span *ngIf="isView">View Group</span>
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+
+                    <form class="mt-lg-3" [formGroup]="addgroup" autocomplete="off">
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                                <label for="id-form-field-1" class="mb-0">
                                 Name
                           </label>
+                            </div>
+                            <div class="col-sm-6 col-form-label">
+                                <input id="User_Group_Name" type="text" formControlName="User_Group_Name" class="form-control" placeholder="Group Name" [ngClass]="{'border-danger': ((addgroupFormControl.User_Group_Name.touched || submitted) && addgroupFormControl.User_Group_Name.errors?.required)}">
+                                <span class="form-text text-danger" *ngIf="(addgroupFormControl.User_Group_Name.touched || submitted) && (addgroupFormControl.User_Group_Name.errors?.required || addgroupFormControl.User_Group_Name.invalid)">
+                                    {{getErrorMessage('User_Group_Name')}}
+                                </span>
+                            </div>
+                            <div class="col-sm-3 col-form-label"></div>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="name" type="text" formControlName="name" class="form-control" [ngClass]="{'border-danger': ((addgroupFormControl.name.touched || submitted) && addgroupFormControl.name.errors?.required)}">
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                                <label for="id-form-field-1" class="mb-0">
+                                    Description
+                              </label>
+                            </div>
+                            <div class="col-sm-6 col-form-label">
+                                <textarea id="User_Group_Description" type="text" formControlName="User_Group_Description" placeholder="Group Description" class="form-control" [ngClass]="{'border-danger': ((addgroupFormControl.User_Group_Description.touched || submitted) && addgroupFormControl.User_Group_Description.errors?.required)}"></textarea>
+                                <span class="form-text text-danger" *ngIf="(addgroupFormControl.User_Group_Description.touched || submitted) && (addgroupFormControl.User_Group_Description.errors?.required || addgroupFormControl.User_Group_Description.invalid)">
+                                    {{getErrorMessage('User_Group_Description')}}
+                                </span>
+                            </div>
+
+                            <div class="col-sm-3 col-form-label"></div>
                         </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addgroupFormControl.name.touched || submitted) && (addgroupFormControl.name.errors?.required || addgroupFormControl.name.invalid)">
-                                {{getErrorMessage('name')}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
-                                Description
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                                <label for="id-form-field-1" class="mb-0">
+                                Is Active
                           </label>
+                            </div>
+                            <div class="col-sm-6 col-form-label">
+                                <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addgroupFormControl.is_active.touched || submitted) && addgroupFormControl.is_active.errors?.required)}">
+
+                                <span class="form-text text-danger" *ngIf="(addgroupFormControl.is_active.touched || submitted) && (addgroupFormControl.is_active.errors?.required || addgroupFormControl.is_active.invalid)">
+                            {{getErrorMessage('is_active')}}
+                        </span>
+                            </div>
+
+                            <div class="col-sm-3 col-form-label"></div>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="description" type="text" formControlName="description" class="form-control" [ngClass]="{'border-danger': ((addgroupFormControl.description.touched || submitted) && addgroupFormControl.description.errors?.required)}">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addgroupFormControl.description.touched || submitted) && (addgroupFormControl.description.errors?.required || addgroupFormControl.description.invalid)">
-                                {{getErrorMessage('description')}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
-                            <label for="id-form-field-1" class="mb-0">
+                        <div class="form-group row">
+                            <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                                <label for="id-form-field-1" class="mb-0">
                                 Access
                           </label>
+                            </div>
+                            <div class="col-sm-6 col-form-label">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Area</th>
+                                            <th>Add</th>
+                                            <th>Update</th>
+                                            <th>View</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of grouplist">
+                                            <td>{{ item.User_Group_Access_Area }}</td>
+                                            <td><input type="checkbox" id="Is_Create{{item.User_Group_Access_Area_ID}}" [formControlName]="getFormControlName('Is_Create', item.User_Group_Access_Area_ID)" class="form-control" checked={{item.Is_Create}} /></td>
+                                            <td><input type="checkbox" id="Is_Update{{item.User_Group_Access_Area_ID}}" [formControlName]="getFormControlName('Is_Update', item.User_Group_Access_Area_ID)" class="form-control" checked={{item.Is_Update}} /></td>
+                                            <td><input type="checkbox" id="Is_Retrieve{{item.User_Group_Access_Area_ID}}" [formControlName]="getFormControlName('Is_Retrieve', item.User_Group_Access_Area_ID)" class="form-control" checked={{item.Is_Retrieve}}
+                                                /></td>
+                                            <td><input type="checkbox" id="Is_Delete{{item.User_Group_Access_Area_ID}}" [formControlName]="getFormControlName('Is_Delete', item.User_Group_Access_Area_ID)" class="form-control" checked={{item.Is_Delete}} /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-3 col-form-label"></div>
                         </div>
-                        <div class="col-sm-6">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Area</th>
-                                        <th>Add</th>
-                                        <th>Update</th>
-                                        <th>View</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of grouplist">
-                                        <th>{{ item.Name }}</th>
-                                        <td><input type="checkbox" id="add" class="form-control" checked="{{ item.Add }}" /></td>
-                                        <td><input type="checkbox" id="update" class="form-control" checked="{{ item.Update }}" /></td>
-                                        <td><input type="checkbox" id="view" class="form-control" checked={{item.View}} /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
 
-                        </div>
-                    </div>
-
-                    <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
-                        <div class="offset-md-3 col-md-9 text-nowrap">
-                            <button class="btn btn-info btn-bold px-4" type="button" (click)="!isUpdate ? addnewpackage() : updatepackage()">
+                        <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25" [hidden]="isView">
+                            <div class="offset-md-3 col-md-9 text-nowrap">
+                                <button class="btn btn-info btn-bold px-4" type="button" (click)="!isUpdate ? addnewgroup() : addnewgroup()">
                           <i class="fa fa-check mr-1"></i>
-                          {{btntxt}}
+                          <span *ngIf="!isUpdate">Submit</span>
+                          <span *ngIf="isUpdate">Update</span>
                         </button>
-                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()" *ngIf="!isUpdate">
+                                <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()" *ngIf="!isUpdate">
                           <i class="fa fa-undo mr-1"></i>
                           Cancel
                         </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
+                </div>
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col -->
 </div>

@@ -11,7 +11,6 @@ export class ShareDataServiceService {
   constructor() { }
 
   SetValue(data) {    
-    debugger;    
     this.content.next(data);     
   }    
 }

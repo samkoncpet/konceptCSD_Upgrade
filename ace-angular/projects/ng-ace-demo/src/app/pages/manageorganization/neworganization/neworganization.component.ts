@@ -29,7 +29,7 @@ export class NeworganizationComponent implements OnInit {
   public countrylist = [];
   public statelist= [];
 
-  constructor(
+  constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
@@ -61,7 +61,8 @@ export class NeworganizationComponent implements OnInit {
         address: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(20)]),
         countryid: new FormControl('', Validators.required),
         stateid: new FormControl('', Validators.required),
-        city: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
+        state: new FormControl(''),
+        city: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)])
       });
       this.getCountry();
       if(this.isUpdate || this.isView){
@@ -179,7 +180,7 @@ export class NeworganizationComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this._notificationsService.showSuccess("Success", response["data"]["0"].message);
-            this.cancel();
+            this.router.navigateByUrl('/organizationlist');
           }
           else {
             this._notificationsService.showWarning("warning", response["sys_message"]);
@@ -222,22 +223,29 @@ export class NeworganizationComponent implements OnInit {
             this.addorganization.patchValue({
               organizationid: response["data"][0].Parent_User_ID,
               groupid: response["data"][0].User_Group_ID,
-              fullname: response["data"][0].Full_Name,
+              fullname: response["data"][0].FullName,
               firstname: response["data"][0].FirstName,
               lastname: response["data"][0].LastName,
               gender: response["data"][0].Gender,
               email: response["data"][0].Email,
               mobile: response["data"][0].MobileNo,
               username: response["data"][0].Username,
-              is_active: response["data"][0].Is_Active === "True" ? true : false
+              is_active: response["data"][0].Is_Active === "True" ? true : false,
+              countryid: response["data"][0].Country_ID,
+              address: response["data"][0].Address,
+              state: response["data"][0].State,
+              city: response["data"][0].City
            });
-           this.addorganization.get('password').setValidators(null);
-           this.addorganization.get('password').clearValidators();
-           this.addorganization.get('password').updateValueAndValidity();
+           this.geState(this.addorganization.get('countryid').value);
+           this.addorganization.get("stateid").setValue(response["data"][0].State_ID);
 
-           this.addorganization.get('repassword').setValidators(null);
-           this.addorganization.get('repassword').clearValidators();
-           this.addorganization.get('repassword').updateValueAndValidity();
+          //  this.addorganization.get('password').setValidators(null);
+          //  this.addorganization.get('password').clearValidators();
+          //  this.addorganization.get('password').updateValueAndValidity();
+
+          //  this.addorganization.get('repassword').setValidators(null);
+          //  this.addorganization.get('repassword').clearValidators();
+          //  this.addorganization.get('repassword').updateValueAndValidity();
           }
           else {
            

@@ -70,10 +70,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'updateuser/:id',
+        path: 'updateuser/:type/:id',
         component: NewuserComponent,
         data: {
           title: 'Update user'
+        }
+      },
+      {
+        path: 'viewuser/:type/:id',
+        component: NewuserComponent,
+        data: {
+          title: 'View user'
         }
       },
       {
@@ -130,6 +137,20 @@ const routes: Routes = [
         component: GrouplistComponent,
         data: {
           title: 'Add Group'
+        }
+      },
+      {
+        path: 'addgroup/:type/:id',
+        component: NewgroupComponent,
+        data: {
+          title: 'Update Group'
+        }
+      },
+      {
+        path: 'viewgroup/:type/:id',
+        component: NewgroupComponent,
+        data: {
+          title: 'View Group'
         }
       },
       {

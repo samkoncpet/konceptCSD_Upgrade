@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
+import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
+
 
 @Component({
   selector: 'app-organizationlist',
@@ -20,13 +22,8 @@ export class OrganizationlistComponent implements OnInit {
   public userlist = [];
   public userlistlength = 0;
   public grouplist = [];
-
-  public userAccess = {
-    Create: false,
-    Retrieve: false,
-    Update: false,
-    Delete: false
-  }
+    
+  public UserAccessModule = new UserAccessModule();
 
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
@@ -34,7 +31,7 @@ export class OrganizationlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
-      this.userAccess = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
+      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
   }
 
   ngOnInit(): void {
@@ -75,12 +72,15 @@ export class OrganizationlistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var entityMasterAPI = this._appSettings.entityMasterAPI;
-    url = url + entityMasterAPI;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
 
     var data = {
-      SQLFROM: "User",
-      SQLBY: "ByOrganization"
+      User_ID: null,
+      Search: '',
+      User_Type: 'Organization',
+      User_Group_ID: null,
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -94,10 +94,37 @@ export class OrganizationlistComponent implements OnInit {
         },
           err => {
             this.spinner.hide();
-            console.log("status code--->" + err.status)
+          },
+          );
+   }
+   filterUserList(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
+
+    var data = {
+      User_ID: null,
+      Search: this.searchForm.get('searchtext').value,
+      User_Type: 'Organization',
+      User_Group_ID: null,
+      Is_Active: this.searchForm.get('is_active').value
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.userlist = response["data"];
+          }
+          else {
+            this.userlist = [];
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
           });
    }
-
    addorganization(){
     this.router.navigateByUrl('/addorganization');
   }  

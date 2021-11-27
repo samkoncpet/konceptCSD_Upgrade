@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   isNavbarMenuCollapsed = true
   public name = [];
   public profilepicture: string;
+  public _UserAccessModule = new UserAccessModule();
 
   constructor(private router: Router,
     private _appSettings: AppsettingsService,
@@ -22,18 +23,12 @@ export class NavbarComponent implements OnInit {
   ) {
     this.megaOpen = false;
   }
-  public UserAccessModule = {
-    Create: true,
-    Retrieve: true,
-    Update: true,
-    Delete: false
-  }
 
   ngOnInit(): void {
     this.name = this._localstorageService.localstorageGet("fullname");
     this.profilepicture = this._appSettings.defaultpicturePath;
 
-    this._localstorageService.localstorageSet("UserAccess", JSON.stringify(this.UserAccessModule));
+    this._localstorageService.localstorageSet("UserAccess", JSON.stringify(this._UserAccessModule));
   }
 
   toggleNavbarMenu() {
