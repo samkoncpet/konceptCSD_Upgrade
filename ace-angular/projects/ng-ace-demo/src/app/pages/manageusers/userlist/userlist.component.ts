@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/c
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
+import { NgAceModalService } from 'ng-ace-admin';
 
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -20,10 +21,6 @@ import { LocalstorageService } from '../../../config/localstorage.service';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  public grievanceHistoryList: Array<IGrievanceHistoryListResponse> = {} as Array<IGrievanceHistoryListResponse>;
-  public dataSource = new MatTableDataSource<IGrievanceHistoryListResponse>();
   public isProcessing = false;
   
   submitted = false;
@@ -39,13 +36,58 @@ export class UserlistComponent implements OnInit {
   Search_User_Type: string = ""; 
   Search_User_Group_ID: number = 0; 
   Search_Is_Active: boolean = null;
+
+  columnDefs = [
+    // { 
+    //   field: 'checkbox',
+    //   headerName: '',
+    //   checkboxSelection: true,
+    //   headerCheckboxSelection: true,
+    //   // headerCheckboxSelectionFilteredOnly: false,
+    //   width: 52 
+    // },
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
+    { field: 'User_Group_Name', headerName: 'Group', sortable: true, editable: false },
+    { field: 'Username', headerName: 'User Name', sortable: true, editable: false },
+    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
+    { field: 'Email', headerName: 'Email', sortable: true, editable: false },
+    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
+    { field: 'Is_Active', headerName: 'Is Active', sortable: true, editable: false } 
+]
+
+rowData = [
+    // {id:"1",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2017-12-13"},
+    // {id:"2",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2018-02-03"},
+    // {id:"3",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2016-01-17"},
+    // {id:"4",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2015-12-23"},
+    // {id:"5",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2019-08-06"},
+    // {id:"6",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2017-12-14"},
+    // {id:"7",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2016-06-20"},
+    // {id:"8",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2015-11-11"},
+    // {id:"9",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2009-02-10"},
+    // {id:"10",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+    // {id:"11",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+    // {id:"12",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+    // {id:"13",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
+    // {id:"14",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
+    // {id:"15",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+    // {id:"16",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
+    // {id:"17",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+    // {id:"18",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+    // {id:"19",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
+    // {id:"20",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
+    // {id:"21",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
+    // {id:"22",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
+    // {id:"23",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"}
+]
   
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
-    private spinner: NgxSpinnerService) { 
+    private spinner: NgxSpinnerService,
+    public modalService: NgAceModalService) { 
       this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
   }
 
@@ -148,183 +190,117 @@ export class UserlistComponent implements OnInit {
       return FormErrorMessage(this.searchForm, control);
   }
 
-  /////////////////////////////////////////
-  public tableColumns: string[] = ['grievance_id', 'status', 'title', 'date', 'department', 'action'];
-  public tableOptions: TableSortingInterface = {
-    total: 0,
-    pageIndex: 0,
-    previousPageIndex: 0,
-    pageSize: 10,
-    sortOption: {
-      active: 'grievance_id',
-      direction: 'asc'
-    },
-    searchBy: '',
-    searchValue: ''
-  };
+  // Pagination table code
+  private gridApi!: any
 
-  public searchByOptions: { text: string, value: string, type: string }[] = [
-    { text: 'None', value: '', type: '' },
-    { text: 'Grievance Id', value: 'grievance_id', type: 'text' },
-    { text: 'Status', value: 'status', type: 'text' },
-    { text: 'Title', value: 'title', type: 'text' },
-    { text: 'Department', value: 'department', type: 'text' },
-  ];
-  private resetTable(): void {
-    this.grievanceHistoryList = [];
-    this.tableOptions = this.generateTableOptions(this.grievanceHistoryList);
-    this.dataSource = new MatTableDataSource(this.grievanceHistoryList);
+  lastId = 0
+  currentPage: any;
+  totalPages: any;
+  itemPerPage : any = 10
+
+  resizeCallback: any;
+
+  onGridReady(params: any) {
+    this.gridApi = params.api
+
+    this.gridApi.sizeColumnsToFit()
+
+    this.resizeCallback = () => {
+      this.gridApi.sizeColumnsToFit()
+    }
+    window.addEventListener('resize', this.resizeCallback)
+
+    this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
+    this.totalPages = this.gridApi.paginationGetTotalPages()
+
+    this.lastId = this.userlist.length;
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.resizeCallback)
+  }
+
+  updatePerPage() {
+    this.gridApi.paginationSetPageSize(Number(this.itemPerPage))
+  }
+
+  ///////
+
+  gotoFirst() {
+    this.gridApi.paginationGoToFirstPage()
+  }
+
+  gotoPrev() {
+    this.gridApi.paginationGoToPreviousPage()
+  }
+
+  gotoLast() {
+    this.gridApi.paginationGoToLastPage()
+  }
+
+  gotoNext() {
+    this.gridApi.paginationGoToNextPage()
+  }
+
+  gotoPage() {
+    let page = this.currentPage
+    if (page < 1) page = 1
+    if (page > this.totalPages) page = this.totalPages
+
+    this.gridApi.paginationGoToPage(page - 1)
+    this.currentPage = page
   }
 
 
-  private generateTableOptions(data?: any): any {
-    if (data) {
-      const total = data.length > 0 ? data[0].total_count : 0;
-      return {
-        total,
-        pageIndex: (this.tableOptions.searchValue && total <= this.tableOptions.pageSize) ? 0 : this.tableOptions.pageIndex,
-        previousPageIndex: (this.tableOptions.searchValue && total <= this.tableOptions.pageSize) ? 0 : this.tableOptions.previousPageIndex,
-        pageSize: this.tableOptions.pageSize,
-        sortOption: {
-          active: this.tableOptions.sortOption.active,
-          direction: this.tableOptions.sortOption.direction
-        },
-        searchBy: this.tableOptions.searchBy,
-        searchValue: this.tableOptions.searchValue
-      };
+
+  onPaginationChanged() {
+    if (this.gridApi) {
+      this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
+      this.totalPages = this.gridApi.paginationGetTotalPages()
+    }
+  }
+
+
+  //
+
+
+  newRow: any = {}
+
+  addRow() {
+    if (!this.newRow.name) return;
+    let row: any = {...this.newRow}
+
+    row['id'] = ++this.lastId;
+    row.stock = row.stock ? "Yes" : "No"
+    row.sdate = ""
+
+    let selectedRows = this.gridApi.getSelectedNodes()
+    if (selectedRows.length > 0) {
+     this.userlist.splice(selectedRows[0].rowIndex + 1 , 0, row)
     }
     else {
-      return {
-        total: 0,
-        pageIndex: 0,
-        previousPageIndex: 0,
-        pageSize: this.tableOptions.pageSize,
-        sortOption: {
-          active: this.tableOptions.sortOption.active,
-          direction: this.tableOptions.sortOption.direction
-        },
-        searchBy: this.tableOptions.searchBy,
-        searchValue: this.tableOptions.searchValue
-      };
-    }
-  }
-  paginateApplications(event: PageEvent): PageEvent {
-
-    this.tableOptions.pageIndex = event.pageIndex;
-    this.tableOptions.previousPageIndex = event.previousPageIndex ?? 0;
-    this.tableOptions.pageSize = event.pageSize;
-
-    return event;
+      this.userlist.push(row)
+    }    
+    this.gridApi.setRowData(this.userlist)
   }
 
-  sortGrievances(event: any): void {
-    let direction: string;
-    if (this.tableOptions.sortOption.active === event.active) { direction = this.tableOptions.sortOption.direction === 'asc' ? 'desc' : 'asc'; }
-    else { direction = event.direction === 'asc' ? 'desc' : 'asc'; }
 
-    this.tableOptions.sortOption = { active: event.active, direction };
+  removeRows() {
+    let selectedRows = this.gridApi.getSelectedNodes()
+    if (selectedRows.length == 0) return
 
+    let removed = 0
+    selectedRows.forEach((row: any) => {
+      this.userlist.splice(row.rowIndex - removed , 1)
+      removed++
+    })
+
+
+    this.gridApi.setRowData(this.userlist)
   }
 
-  searchGrievances(event: Event, searchBy: string): void {
 
-    this.tableOptions = this.generateTableOptions();
-    this.tableOptions.searchBy = searchBy;
-    this.tableOptions.searchValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  reloadData() {
+    this.gridApi.setRowData(this.userlist)
   }
-
-  clearSearch(): void {
-    this.tableOptions.searchBy = '';
-  }
-
-}
-
-export interface TableSortingInterface {
-  total: number;
-  pageIndex: number;
-  previousPageIndex: number;
-  pageSize: number;
-  sortOption: {
-      active: string;
-      direction: string;
-  };
-  searchBy: string;
-  searchValue: string;
-}
-
-
-export interface TableInterface {
-  total: number;
-  pageIndex: number;
-  previousPageIndex: number;
-  pageSize: number;
-}
-
-export interface IGrievanceHistoryListRequest {
-  page_number: number;
-  page_size: number;
-  sort_by: string;
-  sort_order: string;
-  search_by: string;
-  search_value: string;
-}
-
-export interface IGrievanceHistoryListResponse {
-  Grievance_ID: string;
-  Application_Title: string;
-  Application_Description: string;
-  Application_District: string;
-  Application_Department: string;
-  Citizen_EA_User_ID: string;
-  Citizen_Name: string;
-  Citizen_Email: string;
-  Citizen_Mobile_No: string;
-  Citizen_Address: string;
-  Citizen_District: string;
-  Citizen_District_ID: string;
-  Citizen_Village: string;
-  Citizen_State: string;
-  Citizen_State_ID: string;
-  Citizen_Pincode: string;
-  Citizen_Type: string;
-  Previous_Grievance: string;
-  Otp: string;
-  Is_Otp_Verified: string;
-  Color: string;
-  Overdue_Flag: string;
-  current_sla: string;
-  Sub_Category_ID: string;
-  Created_On: string;
-  Current_Application_Status: string;
-  Current_Assigned_User: string;
-  Assigned_To_User_On: string;
-  Category_ID: string;
-  Application_Department_Name: string;
-  Application_District_Name: string;
-  Flow_Type: string;
-  Nodel_Officer_ID: string;
-  Origin_Officer_ID: string;
-  Origin_Type: string;
-  Request_type: string;
-  System_type: string;
-  Citizen_Village_ID: string;
-  Citizen_Tehsil: string;
-  Citizen_Tehsil_ID: string;
-  Citizen_Municipality: string;
-  Citizen_Municipality_ID: string;
-  submittedby: string;
-  Reapeal_one: string;
-  Reapealone_on: string;
-  Reapeal_two: string;
-  Reapealtwo_on: string;
-  Reappeal_state: string;
-  Location_type: string;
-  Process_Id: string;
-  Current_Stage: string;
-  Previous_Process_Id: string;
-  CPGrievance: string;
-  Grievance_level: string;
-  NFSAGrievanceId: string;
-  Init_Application_District: string;
-  total_count: string;
 }

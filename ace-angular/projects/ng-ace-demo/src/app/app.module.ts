@@ -4,8 +4,10 @@ import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AgGridModule } from 'ag-grid-angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatPaginatorModule} from '@angular/material/paginator'
 
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main/main.component';
 import { LoginLayoutComponent } from './layouts/login/login.component';
 import { NewuserComponent } from './pages/manageusers/newuser/newuser.component';
+import { UserlistComponent } from './pages/manageusers/userlist/userlist.component';
 import { NewcustomersComponent } from './pages/managecustomers/newcustomers/newcustomers.component';
 import { CustomerslistComponent } from './pages/managecustomers/customerslist/customerslist.component';
 import { PackagelistComponent } from './pages/managepackage/packagelist/packagelist.component';
@@ -41,6 +44,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
     MainLayoutComponent,
     LoginLayoutComponent,
     NewuserComponent,
+    UserlistComponent,
     NewcustomersComponent,
     CustomerslistComponent,
     PackagelistComponent,
@@ -52,6 +56,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
     OrganizationlistComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -61,6 +66,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
 
     BrowserAnimationsModule,
     LoadingBarModule,
+    AgGridModule.withComponents([]),
 
     NgAceAdminModule,
     

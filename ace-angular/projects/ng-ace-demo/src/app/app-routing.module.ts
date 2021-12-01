@@ -203,8 +203,11 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('./pages/more/profile/profile.module').then((m) => m.ProfileModule)
+      },
+      {
+        path: 'tables',
+        loadChildren: () => import('./pages/tables/tables.module').then((m) => m.TablesModule)
       }
-      
     ]
   }
 ];

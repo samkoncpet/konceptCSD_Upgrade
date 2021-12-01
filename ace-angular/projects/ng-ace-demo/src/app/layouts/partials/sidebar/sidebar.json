@@ -84,5 +84,30 @@
         "link": "managetutor",
         "title": "Manage Tutor",
         "icon": "far fa-image"
+    },
+    {
+        "id": "tables",
+        "link": "tables",
+        "title": "Tables",
+        "icon": "fa fa-table"
+    },
+
+    {
+        "id": "tables/basic",
+        "parent": "tables",
+        "link": "tables/basic",
+        "title": "Basic Tables"
+    },
+    {
+        "id": "tables/dynamic",
+        "parent": "tables",
+        "link": "tables/dynamic",
+        "title": "Dynamic Table"
+    },
+    {
+        "id": "tables/grid",
+        "parent": "tables",
+        "link": "tables/grid",
+        "title": "Grid"
     }
 ]

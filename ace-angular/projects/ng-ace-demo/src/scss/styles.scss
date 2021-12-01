@@ -1,6 +1,8 @@
 @import "./node_modules/bootstrap/scss/functions";
 @import "./node_modules/bootstrap/scss/variables";
 @import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "./node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
 @import "../ace/scss/ace-features";
 @import "../ace/scss/variables";
 @import "../ace/scss/functions";
@@ -41,3 +43,6 @@ $plugin-jodit: true;
 @import "./ngx-treeview.scss";
 @import "./duallist.scss";
 @import "./jodit.scss";
+.ag-theme-alpine {
+    @include ag-theme-alpine();
+}

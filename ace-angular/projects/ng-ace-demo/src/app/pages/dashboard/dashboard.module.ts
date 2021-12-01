@@ -20,7 +20,6 @@ import { SalesChartComponent } from './sales-chart/sales-chart.component';
 import { TransfersComponent } from './transfers/transfers.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ConversationComponent } from './conversation/conversation.component';
-import { UserlistComponent } from './../manageusers/userlist/userlist.component';
 import { MatTableModule } from '@angular/material/table';
 
 
@@ -48,8 +47,7 @@ const routes: Routes = [
     SalesChartComponent,
     TransfersComponent,
     TodoListComponent,
-    ConversationComponent,
-    UserlistComponent
+    ConversationComponent
   ],
   imports: [
     CommonModule,
