@@ -77,15 +77,87 @@
                 </div>
             </div>
             <div class="card-body px-1 px-md-3">
+                <div [ngbCollapse]="false" #collapse="ngbCollapse">
+                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="organizationlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()"
+                        [paginationPageSize]="itemPerPage" (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
 
-                <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                    <!-- table footer (action buttons, pagination, etc) -->
+                    <div class="bgc-primary-l4 p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px">
+                        <!-- actions -->
+
+
+
+                        <!-- pagination -->
+                        <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
+                            <div>
+                                <a (click)="gotoFirst()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-left w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoPrev()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-left w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div class="d-flex align-items-center mx-2">
+                                Page
+                                <input class="form-control form-control-sm w-5 mx-1" [(ngModel)]="currentPage" (change)="gotoPage()" /> of {{totalPages || 1}}
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div>
+                                <a (click)="gotoNext()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-right w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoLast()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-right w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <div>
+                                <select [(ngModel)]="itemPerPage" (change)="updatePerPage()" class="ml-2 ace-select no-border caret-double text-dark-tp3 bgc-white brc-secondary-l2 brc-h-secondary-m4 radius-1 border-2" style="width: 80px;">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div *ngIf="organizationlist.length > 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    {{(currentPage - 1) * itemPerPage + 1}}
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    {{currentPage * itemPerPage < organizationlist.length ? currentPage * itemPerPage : organizationlist.length}}
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    {{organizationlist.length}}
+                                </span>
+                        </div>
+
+                        <div *ngIf="organizationlist.length == 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    0
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
                     <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
                         <tr>
-                            <!-- <th class="text-center pr-0">
-                                    <label class="py-0">
-                                        <input type="checkbox" class="align-bottom mb-n1 border-2 text-dark-m3">
-                                    </label>
-                                </th> -->
                             <th class="d-none d-sm-table-cell">Sr. No.</th>
                             <th class="d-none d-sm-table-cell">User Name</th>
                             <th class="d-none d-sm-table-cell">Full Name</th>
@@ -98,9 +170,6 @@
 
                     <tbody class="mt-1" *ngFor="let data of userlist">
                         <tr class="bgc-h-yellow-l4 d-style">
-                            <!-- <td class="text-center pr-0">
-                                    <input type="checkbox" id="is_active" class="align-bottom mb-n1 border-2 text-dark-m3" value={{data.User_ID}}>
-                                </td> -->
                             <td>{{ data.Index}}</td>
                             <td>{{ data.Username}}</td>
                             <td>{{ data.FullName}}</td>
@@ -118,19 +187,12 @@
                                     <a *ngIf="UserAccessModule.Is_Retrieve" href="/vieworganization/view/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <!-- <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger ">
-                                        <i class="fa fa-trash-alt "></i>
-                                    </a>
-                                    <a href="javascript:void(0); " class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-warning btn-a-lighter-warning ">
-                                        <i class="fa fa-ellipsis-v mx-1 "></i>
-                                    </a> -->
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
-                <!-- table footer -->
                 <div class="d-flex pl-4 pr-3 pt-35 border-t-1 brc-secondary-l3 flex-column flex-sm-row mt-n1px ">
                     <div class="text-nowrap align-self-center align-self-sm-start ">
                         <span class="d-inline-block text-grey-d2 ">
@@ -153,7 +215,7 @@
                   <i class="fa fa-caret-right ml-1 "></i>
                 </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

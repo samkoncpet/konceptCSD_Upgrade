@@ -13,7 +13,8 @@ import { UserAccessModule } from '../../../shared/models/user-access/user-access
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-
+import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
+import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 
 @Component({
   selector: 'app-userlist',
@@ -52,35 +53,13 @@ export class UserlistComponent implements OnInit {
     { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
     { field: 'Email', headerName: 'Email', sortable: true, editable: false },
     { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
-    { field: 'Is_Active', headerName: 'Is Active', sortable: true, editable: false } 
-]
-
-rowData = [
-    // {id:"1",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2017-12-13"},
-    // {id:"2",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2018-02-03"},
-    // {id:"3",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2016-01-17"},
-    // {id:"4",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2015-12-23"},
-    // {id:"5",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2019-08-06"},
-    // {id:"6",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2017-12-14"},
-    // {id:"7",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2016-06-20"},
-    // {id:"8",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2015-11-11"},
-    // {id:"9",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2009-02-10"},
-    // {id:"10",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-    // {id:"11",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-    // {id:"12",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-    // {id:"13",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"},
-    // {id:"14",name:"Laser Printer",note:"note2",stock:"Yes",ship:"FedEx",sdate:"2007-12-03"},
-    // {id:"15",name:"Play Station",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-    // {id:"16",name:"Mobile Telephone",note:"note",stock:"Yes",ship:"ARAMEX",sdate:"2007-12-03"},
-    // {id:"17",name:"Server",note:"note2",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-    // {id:"18",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-    // {id:"19",name:"Matrix Printer",note:"note3",stock:"No", ship:"FedEx",sdate:"2007-12-03"},
-    // {id:"20",name:"Desktop Computer",note:"note",stock:"Yes",ship:"FedEx", sdate:"2007-12-03"},
-    // {id:"21",name:"Laptop",note:"Long text ",stock:"Yes",ship:"InTime",sdate:"2007-12-03"},
-    // {id:"22",name:"LCD Monitor",note:"note3",stock:"Yes",ship:"TNT",sdate:"2007-12-03"},
-    // {id:"23",name:"Speakers",note:"note",stock:"No",ship:"ARAMEX",sdate:"2007-12-03"}
-]
-  
+    { field: 'Is_Active',headerName: 'Is Active', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+      cellRendererParams: {
+        editRouterLink: '/updateuser/update/',
+        viewRouterLink: '/viewuser/view/'
+      } }
+  ]
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
@@ -251,19 +230,13 @@ rowData = [
     this.currentPage = page
   }
 
-
-
   onPaginationChanged() {
     if (this.gridApi) {
       this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
       this.totalPages = this.gridApi.paginationGetTotalPages()
     }
   }
-
-
   //
-
-
   newRow: any = {}
 
   addRow() {
@@ -284,7 +257,6 @@ rowData = [
     this.gridApi.setRowData(this.userlist)
   }
 
-
   removeRows() {
     let selectedRows = this.gridApi.getSelectedNodes()
     if (selectedRows.length == 0) return
@@ -298,8 +270,7 @@ rowData = [
 
     this.gridApi.setRowData(this.userlist)
   }
-
-
+  
   reloadData() {
     this.gridApi.setRowData(this.userlist)
   }

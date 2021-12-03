@@ -35,6 +35,8 @@ import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.compone
 import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
 import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
 import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
+import { CellCustomComponent } from './common/cell-custom/cell-custom.component';
+import { CellCustomActiveComponent } from './common/cell-custom-active/cell-custom-active.component';
 
 
 
@@ -53,7 +55,9 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
     NewgroupComponent,
     GrouplistComponent,
     NeworganizationComponent,
-    OrganizationlistComponent
+    OrganizationlistComponent,
+    CellCustomComponent,
+    CellCustomActiveComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +70,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
 
     BrowserAnimationsModule,
     LoadingBarModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([AppComponent]),
 
     NgAceAdminModule,
     
@@ -78,6 +82,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
     MatPaginatorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [CellCustomComponent],
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }
