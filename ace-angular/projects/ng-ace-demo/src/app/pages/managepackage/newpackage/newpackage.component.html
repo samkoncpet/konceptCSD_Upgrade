@@ -15,73 +15,124 @@
 <div class="row mt-3">
     <div class="col-12">
         <div class="card dcard">
+            <div class="card bgc-primary-d1 text-white">
+                <div class="card-header">
+                    <div class="card-toolbar mr-auto no-border">
+                        <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Add Package
+                        </span>
+                    </label>
+                    </div>
+                </div>
+            </div>
             <div class="card-body px-1 px-md-3">
-
                 <form class="mt-lg-3" [formGroup]="addpackage" autocomplete="off">
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                                Package
-                          </label>
+                                Package Name
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="package" type="text" formControlName="package" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.package.touched || submitted) && addpackageFormControl.package.errors?.required)}">
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.package.touched || submitted) && (addpackageFormControl.package.errors?.required || addpackageFormControl.package.invalid)">
-                                {{getErrorMessage('package')}}
+                        <div class="col-md-4">
+                            <input id="packagename" type="text" formControlName="packagename" placeholder="Package Name" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packagename.touched || submitted) && addpackageFormControl.packagename.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.packagename.touched || submitted) && (addpackageFormControl.packagename.errors?.required || addpackageFormControl.packagename.invalid)">
+                                {{getErrorMessage('packagename')}}
                             </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Session Visits
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="session" formControlName="session" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.session.touched || submitted) && addpackageFormControl.session.errors?.required)}">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                              </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                                Price
-                          </label>
+                                Session Type
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="price" type="text" formControlName="price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.price.touched || submitted) && addpackageFormControl.price.errors?.required)}">
+                        <div class="col-md-4">
+                            <select id="sessiontype" formControlName="sessiontype" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.sessiontype.touched || submitted) && addpackageFormControl.sessiontype.errors?.required)}">
+                                <option value="0">Weekly</option>
+                                <option value="1">Monthly</option>
+                              </select>
                         </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.price.touched || submitted) && (addpackageFormControl.package.errors?.required || addpackageFormControl.price.invalid)">
-                                {{getErrorMessage('price')}}
-                            </span>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Report
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="report" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.report.touched || submitted) && addpackageFormControl.report.errors?.required)}">
+                                <option value="1">1 Weekly</option>
+                                <option value="2">2 Weekly</option>
+                              </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                                Code
-                          </label>
+                                Hours
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <input id="code" type="text" formControlName="code" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.code.touched || submitted) && addpackageFormControl.code.errors?.required)}">
+                        <div class="col-md-4">
+                            <select id="hours" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.hours.touched || submitted) && addpackageFormControl.hours.errors?.required)}">
+                                <option value="1">1 Hour</option>
+                                <option value="2">2 Hours</option>
+                              </select>
                         </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.code.touched || submitted) && (addpackageFormControl.code.errors?.required || addpackageFormControl.code.invalid)">
-                                {{getErrorMessage('code')}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                        <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                                Is Active
-                          </label>
+                            Is Active
+                        </label>
                         </div>
-                        <div class="col-sm-6" style="padding-top: 1%;">
-                            <input type="checkbox" formControlName="is_active" id="is_active" class="form-control" [ngClass]="{ 'is-invalid': ((addpackageFormControl.is_active.touched || submitted) && addpackageFormControl.is_active.errors?.required)}" />
-                        </div>
-                        <div class="col-sm-3 col-form-label text-sm-left pr-0">
-                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.is_active.touched || submitted) && (addpackageFormControl.is_active.errors?.required || addpackageFormControl.is_active.invalid)">
-                                {{getErrorMessage('is_active')}}
-                            </span>
-                        </div>
-                    </div>
+                        <div class="col-md-4">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addpackageFormControl.is_active.touched || submitted) && addpackageFormControl.is_active.errors?.required)}">
 
+                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.is_active.touched || submitted) && (addpackageFormControl.is_active.errors?.required || addpackageFormControl.is_active.invalid)">
+                            {{getErrorMessage('is_active')}}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Currency
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="currency" formControlName="currency" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.currency.touched || submitted) && addpackageFormControl.currency.errors?.required)}">
+                                <option value="GBP">British Pound Sterling</option>
+                                <option value="EUR">Euro</option>
+                                <option value="INR">Indian Rupee</option>
+                                <option value="USD">US Dollar</option>
+                              </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Package Price
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="packageprice" type="text" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packageprice.touched || submitted) && addpackageFormControl.packageprice.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageprice.touched || submitted) && (addpackageFormControl.packageprice.errors?.required || addpackageFormControl.packageprice.invalid)">
+                                {{getErrorMessage('packageprice')}}
+                            </span>
+                        </div>
+                    </div>
                     <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                         <div class="offset-md-3 col-md-9 text-nowrap">
-                            <button class="btn btn-info btn-bold px-4" type="button" (click)="!isUpdate ? addnewpackage() : updatepackage()">
+                            <button class="btn btn-green btn-bold px-4" type="button" (click)="!isUpdate ? addnewpackage() : updatepackage()">
                           <i class="fa fa-check mr-1"></i>
                           {{btntxt}}
                         </button>

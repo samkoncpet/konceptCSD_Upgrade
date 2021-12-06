@@ -39,10 +39,14 @@ export class NewpackageComponent implements OnInit {
 
   ngOnInit(): void {
     this.addpackage = this._formBuilder.group({
-      package: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
-      price: new FormControl('', [Validators.required, NumericValidator]),
-      code: new FormControl('', Validators.required),
-      is_active: new FormControl(true, Validators.required)
+      packagename: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+      session: new FormControl(0, Validators.required),
+      sessiontype: new FormControl(0, Validators.required),
+      report: new FormControl(1, Validators.required),
+      hours: new FormControl(1, Validators.required),
+      is_active: new FormControl(true),
+      currency: new FormControl("USD", Validators.required),
+      packageprice: new FormControl('', [Validators.required, NumericValidator])
     });
   }
 

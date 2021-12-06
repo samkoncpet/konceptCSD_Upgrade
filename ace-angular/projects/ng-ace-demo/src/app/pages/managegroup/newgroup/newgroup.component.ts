@@ -3,11 +3,13 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@ang
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
+import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/models/user-access/user-access.model';
 
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
+import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
 @Component({
   selector: 'app-newgroup',
@@ -26,6 +28,7 @@ export class NewgroupComponent implements OnInit {
   isPassword = true;
   passwordmatch = true;
   grouplist = [];
+  public CommonAccessModule = new CommonAccessModule();
 
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
@@ -34,7 +37,10 @@ export class NewgroupComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private _commonfunctions: CommonfunctionsService) {
+      
+      this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
       this.param1 = this.route.snapshot.params.type;
       this.param2 = this.route.snapshot.params.id;
       if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
@@ -157,7 +163,7 @@ export class NewgroupComponent implements OnInit {
         User_Group_ID: parseInt(this.param2),
         User_Group_Name: this.addgroup.value.User_Group_Name,
         User_Group_Description: this.addgroup.value.User_Group_Description,
-        Is_Active: getBoolean(this.addgroup.value.is_active),
+        Is_Active: this._commonfunctions.getBoolean(this.addgroup.value.is_active),
         AccessAreaList : _IGroupList
       }
     }
@@ -204,16 +210,16 @@ export class NewgroupComponent implements OnInit {
               this.grouplist.forEach((item :IGroup) => {
                 //creating dynamically form controls
                 this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
-                this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Create));
+                this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Create));
           
                 this.addgroup.addControl("Is_Update"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-                this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Update));
+                this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Update));
           
                 this.addgroup.addControl("Is_Retrieve"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-                this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Retrieve));
+                this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Retrieve));
           
                 this.addgroup.addControl("Is_Delete"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-                this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(getBoolean(item.Is_Delete));
+                this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Delete));
               });
           }   
           if(this.isView){
@@ -234,24 +240,6 @@ export class NewgroupComponent implements OnInit {
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addgroup, control);
   }
-}
-function getBoolean(value){
-  switch(value){
-       case "true":         
-        return true;
-       case "True":         
-        return true;
-       case 1:         
-        return true;
-       case "1":         
-        return true;
-       case "on":         
-         return true;
-       case "yes":
-           return true;
-       default: 
-           return false;
-   }
 }
 export interface IGroup
 {

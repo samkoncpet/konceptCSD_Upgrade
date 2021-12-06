@@ -8,6 +8,8 @@ import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
+import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
+import { ErrorHandlerService } from '../../../common/errorhandler/error-handler.service';
 
 @Component({
   selector: 'app-neworganization',
@@ -36,7 +38,9 @@ export class NeworganizationComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,
+    private _commonfunctions: CommonfunctionsService,
+    private _errorHandlerService: ErrorHandlerService) {
       this.param1 = this.route.snapshot.params.type;
       this.param2 = this.route.snapshot.params.id;
       if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
@@ -53,7 +57,7 @@ export class NeworganizationComponent implements OnInit {
         username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(10)]),
         password: new FormControl('', Validators.required),
         repassword: new FormControl('', Validators.required),
-        is_active: new FormControl(true, Validators.required),
+        is_active: new FormControl(true),
         firstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
         lastname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
         email: new FormControl('', [Validators.required, emailValidator]),
@@ -93,7 +97,7 @@ export class NeworganizationComponent implements OnInit {
         },
           err => {
             this.spinner.hide();
-            console.log("status code--->" + err.status)
+            this._errorHandlerService.handleError(err);
           });
    }
    geState(value:string){
@@ -147,7 +151,7 @@ export class NeworganizationComponent implements OnInit {
         FullName: this.addorganization.value.fullname,
         Username: this.addorganization.value.username,
         Password: this.addorganization.value.password,
-        Is_Active: this.addorganization.value.is_active,
+        Is_Active: this._commonfunctions.getBoolean(this.addorganization.value.is_active),
         FirstName: this.addorganization.value.firstname,
         LastName: this.addorganization.value.lastname,
         Email: this.addorganization.value.email,
@@ -165,7 +169,7 @@ export class NeworganizationComponent implements OnInit {
       FullName: this.addorganization.value.fullname,
       Username: this.addorganization.value.username,
       Password: this.addorganization.value.password,
-      Is_Active: this.addorganization.value.is_active,
+      Is_Active: this._commonfunctions.getBoolean(this.addorganization.value.is_active),
       FirstName: this.addorganization.value.firstname,
       LastName: this.addorganization.value.lastname,
       Email: this.addorganization.value.email,
@@ -214,7 +218,7 @@ export class NeworganizationComponent implements OnInit {
       Search: "",
       User_Type: "Organization",
       User_Group_ID: 0,
-      Is_Active: true
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -239,16 +243,15 @@ export class NeworganizationComponent implements OnInit {
            this.geState(this.addorganization.get('countryid').value);
            this.addorganization.get("stateid").setValue(response["data"][0].State_ID);
 
-          //  this.addorganization.get('password').setValidators(null);
-          //  this.addorganization.get('password').clearValidators();
-          //  this.addorganization.get('password').updateValueAndValidity();
+           this.addorganization.get('username').disable();
+          
+           this.addorganization.get('password').setValidators(null);
+           this.addorganization.get('password').clearValidators();
+           this.addorganization.get('password').updateValueAndValidity();
 
-          //  this.addorganization.get('repassword').setValidators(null);
-          //  this.addorganization.get('repassword').clearValidators();
-          //  this.addorganization.get('repassword').updateValueAndValidity();
-          }
-          else {
-           
+           this.addorganization.get('repassword').setValidators(null);
+           this.addorganization.get('repassword').clearValidators();
+           this.addorganization.get('repassword').updateValueAndValidity();
           }
           this.spinner.hide();
         },

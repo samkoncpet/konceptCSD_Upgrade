@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
-import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
+import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
@@ -25,7 +25,8 @@ export class OrganizationlistComponent implements OnInit {
   public organizationlistlength = 0;
   public grouplist = [];
     
-  public UserAccessModule = new UserAccessModule();
+  public CommonAccessModule = new CommonAccessModule();
+  public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
@@ -33,9 +34,10 @@ export class OrganizationlistComponent implements OnInit {
     { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
     { field: 'Email', headerName: 'Email', sortable: true, editable: false },
     { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
-    { field: 'Is_Active',headerName: 'Is Active', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
     { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
+        type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/updateorganization/update/',
         viewRouterLink: '/vieworganization/view/'
       } }
@@ -47,7 +49,11 @@ export class OrganizationlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
-      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
+      this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
+      
+    if(!this.CommonAccessModule.Is_Retrieve){
+      this._ConfigurationService.logout();
+    }
   }
 
   ngOnInit(): void {
@@ -113,7 +119,7 @@ export class OrganizationlistComponent implements OnInit {
           },
           );
    }
-   filterUserList(){
+   filterOrganizationList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;

@@ -1737,7 +1737,7 @@ a.text-primary-d1:focus {
 }
 
 .bgc-primary-d1 {
-    background-color: #2a80c8 !important;
+    background-color: #169595 !important;
 }
 
 .brc-primary-d1 {
@@ -3013,7 +3013,7 @@ a.text-primary-d1:focus {
 }
 
 .bgc-purple-d1 {
-    background-color: #7167af !important;
+    background-color: #169595 !important;
 }
 
 .brc-purple-d1 {
@@ -9204,7 +9204,8 @@ $my-sidebar-themes: (
 */
 
 .navbar-blue {
-    background-color: #2470bd;
+    /* background-color: #2470bd; */
+    background-color: #169595;
 }
 
 .navbar-blue .navbar-toggler:hover,
@@ -9239,7 +9240,8 @@ $my-sidebar-themes: (
 
 @media (min-width: 992px) {
     .navbar-blue .navbar-intro {
-        background-color: #2166ac;
+        /* background-color: #2166ac; */
+        background-color: #fff;
     }
     .navbar-blue .navbar-nav>.nav>.nav-item {
         border: 0px solid rgba(0, 0, 0, 0.1);

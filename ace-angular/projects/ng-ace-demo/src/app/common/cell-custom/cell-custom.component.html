@@ -1,8 +1,8 @@
 <div class='d-none d-lg-flex'>
-    <a role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
         <i class="fa fa-pencil-alt"></i>
     </a>
-    <a role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+    <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
         <i class="fa fa-eye"></i>
     </a>
     <!-- <a role="button" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-warning btn-a-lighter-warning">

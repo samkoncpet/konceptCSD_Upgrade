@@ -87,6 +87,9 @@ export class ConfigurationService implements HttpInterceptor {
               });
             }
           }
+          else if (response.status === 500) {
+            this.logout();
+          }
           else if (response.status === 401) {
             this.logout();
           }

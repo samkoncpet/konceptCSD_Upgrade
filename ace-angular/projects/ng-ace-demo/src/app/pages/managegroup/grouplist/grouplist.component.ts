@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
+import { CommonAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
@@ -16,31 +17,39 @@ import { CellCustomActiveComponent } from '../../../common/cell-custom-active/ce
 })
 export class GrouplistComponent implements OnInit {
 
+  searchForm: FormGroup;
   public grouplist = [];
     
-  public UserAccessModule = new UserAccessModule();
+  public CommonAccessModule = new CommonAccessModule();
 
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
     { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false },
     { field: 'Is_Predefined_Status', headerName: 'Is Predefined', sortable: true, editable: false },
-    { field: 'Is_Active',headerName: 'Is Active', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
     { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
+        type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/addgroup/update/',
         viewRouterLink: '/viewgroup/view/'
       } }
   ]
 
   constructor(private router: Router,
+    private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService) { 
-      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
+      this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
 
   ngOnInit(): void {
+    this.searchForm = this._formBuilder.group({
+      groupid: new FormControl('', Validators.required),
+      searchtext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      is_active: new FormControl(true, Validators.required),
+    });
     this.getUserGroup();
   }
   getUserGroup(){
@@ -53,6 +62,34 @@ export class GrouplistComponent implements OnInit {
     var data = {
       SQLFROM: "User_Group",
       SQLBY: "ByUser_Group"
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.grouplist = response["data"];
+          }
+          else {
+            this.grouplist = [];
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
+          });
+   }
+   filterGrouplist(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
+
+    var data = {
+      User_ID: null,
+      Search: this.searchForm.get('searchtext').value,
+      User_Type: 'Organization',
+      User_Group_ID: null,
+      Is_Active: this.searchForm.get('is_active').value
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {

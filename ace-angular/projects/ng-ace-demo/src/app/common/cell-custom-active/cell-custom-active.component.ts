@@ -13,10 +13,12 @@ export class CellCustomActiveComponent implements OnInit {
   params: any;
   constructor(private http: HttpClient, private router: Router) {}
   isActive: string = "";
+  isActiveText: string = "";
   agInit(params) {
     this.params = params;
     this.data = params.value;
     this.isActive = this.data; 
+    this.isActiveText = this.data === "True" ? "Active" : "In Active"; 
   }
 
   ngOnInit() {}

@@ -8,7 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
-import { UserAccessModule } from '../../../shared/models/user-access/user-access.model';
+import { CommonAccessModule, UserAccessModule } from '../../../shared/models/user-access/user-access.model';
 
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
@@ -31,6 +31,7 @@ export class UserlistComponent implements OnInit {
   public grouplist = [];
  
   public UserAccessModule = new UserAccessModule();
+  public CommonAccessModule = new CommonAccessModule();
 
   Search_User_ID: number = 0; 
   Search_text: string = ""; 
@@ -53,9 +54,10 @@ export class UserlistComponent implements OnInit {
     { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
     { field: 'Email', headerName: 'Email', sortable: true, editable: false },
     { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
-    { field: 'Is_Active',headerName: 'Is Active', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
     { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
+        type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/updateuser/update/',
         viewRouterLink: '/viewuser/view/'
       } }
@@ -67,7 +69,7 @@ export class UserlistComponent implements OnInit {
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService,
     public modalService: NgAceModalService) { 
-      this.UserAccessModule = JSON.parse(this._localstorageService.localstorageGet("UserAccess"));
+      this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
 
   ngOnInit(): void {

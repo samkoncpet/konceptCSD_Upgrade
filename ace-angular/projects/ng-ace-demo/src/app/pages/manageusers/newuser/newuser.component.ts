@@ -7,6 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
+import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
 @Component({
   selector: 'app-newuser',
@@ -34,7 +35,8 @@ export class NewuserComponent implements OnInit {
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private _commonfunctions: CommonfunctionsService) {
       this.param1 = this.route.snapshot.params.type;
       this.param2 = this.route.snapshot.params.id;
       if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
@@ -58,7 +60,7 @@ export class NewuserComponent implements OnInit {
       username: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(10)]),
       password: new FormControl('', Validators.required),
       repassword: new FormControl('', Validators.required),
-      is_active: new FormControl(true, Validators.required),
+      is_active: new FormControl(true),
     });
     this.geOrganization();
     this.getUserGroup();
@@ -164,7 +166,7 @@ export class NewuserComponent implements OnInit {
         MobileNo: this.adduser.value.mobile,
         Username: this.adduser.value.username,
         Password: this.adduser.value.password,
-        Is_Active: this.adduser.value.is_active
+        Is_Active: this._commonfunctions.getBoolean(this.adduser.value.is_active)
       }
     }
     else { 
@@ -180,7 +182,7 @@ export class NewuserComponent implements OnInit {
         MobileNo: this.adduser.value.mobile,
         Username: this.adduser.value.username,
         Password: this.adduser.value.password,
-        Is_Active: this.adduser.value.is_active === "true" ? true : false
+        Is_Active: this._commonfunctions.getBoolean(this.adduser.value.is_active)
       }
     }
     this._ConfigurationService.post(url, data)
@@ -229,7 +231,6 @@ export class NewuserComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this.userdetail = response["data"][0];
-            console.log(this.userdetail)
             this.adduser.patchValue({
               organizationid: response["data"][0].Parent_User_ID,
               groupid: response["data"][0].User_Group_ID,
@@ -241,6 +242,10 @@ export class NewuserComponent implements OnInit {
               username: response["data"][0].Username,
               is_active: response["data"][0].Is_Active === "True" ? true : false
            });
+
+           
+           this.adduser.get('username').disable();
+
            this.adduser.get('password').setValidators(null);
            this.adduser.get('password').clearValidators();
            this.adduser.get('password').updateValueAndValidity();
