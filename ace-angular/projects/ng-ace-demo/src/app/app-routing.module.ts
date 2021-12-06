@@ -119,10 +119,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'addpackage/:id',
+        path: 'updatepackage/:type/:id',
         component: NewpackageComponent,
         data: {
-          title: 'Add Package'
+          title: 'Update Package'
+        }
+      },
+      {
+        path: 'viewpackage/:type/:id',
+        component: NewpackageComponent,
+        data: {
+          title: 'View Package'
         }
       },
       {

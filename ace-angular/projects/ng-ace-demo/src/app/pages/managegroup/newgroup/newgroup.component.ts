@@ -86,7 +86,6 @@ export class NewgroupComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this.grouplist = response["data"];
-            console.log(this.grouplist)
             this.grouplist.forEach((item :IGroup) => {
               //creating dynamically form controls
               this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
@@ -187,8 +186,8 @@ export class NewgroupComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var fetchusergroupmapping = this._appSettings.fetchusergroupmapping;
+    url = url + fetchusergroupmapping;
 
     var data = {
       User_Group_ID: this.param2,

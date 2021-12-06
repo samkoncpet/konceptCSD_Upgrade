@@ -29,14 +29,12 @@ export class PackagelistComponent implements OnInit {
 
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
-    { field: 'packagename', headerName: 'Package Name', sortable: true, editable: false },
-    { field: 'session', headerName: 'Session', sortable: true, editable: false },
-    { field: 'sessiontype', headerName: 'Session Type', sortable: true, editable: false },
-    { field: 'report', headerName: 'Report', sortable: true, editable: false },
-    { field: 'currency', headerName: 'Currency', sortable: true, editable: false },
-    { field: 'packageprice', headerName: 'Package Price', sortable: true, editable: false },
-    { field: 'is_active', headerName: 'Status', sortable: true, editable: false },
-    { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+    { field: 'Package', headerName: 'Package', sortable: true, editable: false },
+    { field: 'Code', headerName: 'Code', sortable: true, editable: false },
+    { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false },
+    { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false },
+    { field: 'Is_Active', headerName: 'Status', sortable: true,  cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/updatepackage/update/',
@@ -65,15 +63,12 @@ export class PackagelistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchUserAPI = this._appSettings.fetchUserAPI;
-    url = url + fetchUserAPI;
+    var entityMasterAPI = this._appSettings.entityMasterAPI;
+    url = url + entityMasterAPI;
 
     var data = {
-      User_ID: null,
-      Search: '',
-      User_Type: 'Organization',
-      User_Group_ID: null,
-      Is_Active: null
+      SQLFROM: 'Package',
+      SQLBY: 'ByPackage'
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {

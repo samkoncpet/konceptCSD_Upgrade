@@ -211,7 +211,12 @@ export class NewuserComponent implements OnInit {
     }
   }
   cancel(){
-    this.adduser.reset();
+    if(!this.isUpdate) {
+      this.adduser.reset();
+    }
+    else {
+      this.router.navigateByUrl('/userlist');
+    }
   }
   getUserDetail(){
     /** spinner starts on init */
@@ -240,11 +245,13 @@ export class NewuserComponent implements OnInit {
               email: response["data"][0].Email,
               mobile: response["data"][0].MobileNo,
               username: response["data"][0].Username,
-              is_active: response["data"][0].Is_Active === "True" ? true : false
+              is_active: this._commonfunctions.getBoolean(response["data"][0].Is_Active)
            });
 
            
            this.adduser.get('username').disable();
+           this.adduser.get('password').disable();
+           this.adduser.get('repassword').disable();
 
            this.adduser.get('password').setValidators(null);
            this.adduser.get('password').clearValidators();

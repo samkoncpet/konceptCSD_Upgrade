@@ -17,8 +17,8 @@ export class AppsettingsService {
     entityMasterAPI: string = "api/entitymaster/fetchentitymaster";
 
     // Package API
-    insertPackageAPI: string = "api/package/insertpackage";
-    updatePackageAPI: string = "api/package/update-package";
+    insertUpdatetPackageAPI: string = "api/package/insertupdatepackage";
+    fetchpackage: string = "api/package/fetchpackage";
 
     // User Type API
     insertUserTypeAPI: string = "api/user/insert-user-type";
@@ -32,6 +32,7 @@ export class AppsettingsService {
     // User Group API
     insertUpdateusergroup: string = "api/user/insertupdateusergroup";
     fetchusergroup: string = "api/user/fetchusergroup";
+    fetchusergroupmapping: string = "api/user/fetchusergroupmapping";
   
     defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }

@@ -62,7 +62,7 @@ export class NeworganizationComponent implements OnInit {
         lastname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
         email: new FormControl('', [Validators.required, emailValidator]),
         mobile: new FormControl('', [Validators.required, NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-        address: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(20)]),
+        address: new FormControl('', [Validators.required, AlphaNumericValidator, Validators.minLength(2), Validators.maxLength(500)]),
         countryid: new FormControl('', Validators.required),
         stateid: new FormControl('', Validators.required),
         state: new FormControl(''),
@@ -202,9 +202,14 @@ export class NeworganizationComponent implements OnInit {
       this.passwordmatch = false;
     }
   }
-  cancel(){
-    this.addorganization.reset();
-    this.statelist =  [];
+  cancel(){    
+    if(!this.isUpdate) {
+      this.addorganization.reset();
+      this.statelist =  [];
+    }
+    else {
+      this.router.navigateByUrl('/organizationlist');
+    }
   }
   getUserDetail(){
     /** spinner starts on init */
@@ -244,6 +249,8 @@ export class NeworganizationComponent implements OnInit {
            this.addorganization.get("stateid").setValue(response["data"][0].State_ID);
 
            this.addorganization.get('username').disable();
+           this.addorganization.get('password').disable();
+           this.addorganization.get('repassword').disable();
           
            this.addorganization.get('password').setValidators(null);
            this.addorganization.get('password').clearValidators();

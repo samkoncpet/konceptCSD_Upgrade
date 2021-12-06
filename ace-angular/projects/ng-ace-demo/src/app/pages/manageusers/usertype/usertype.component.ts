@@ -100,7 +100,7 @@ export class UsertypeComponent implements OnInit {
     }
     
     var url = this._appSettings.koncentAPI;
-    var updatePackageAPI = this._appSettings.updatePackageAPI;
+    var updatePackageAPI = this._appSettings.insertUpdatetPackageAPI;
     url = url + updatePackageAPI;
 
     var data = {

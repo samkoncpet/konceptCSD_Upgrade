@@ -37,6 +37,7 @@ import { NeworganizationComponent } from './pages/manageorganization/neworganiza
 import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
 import { CellCustomComponent } from './common/cell-custom/cell-custom.component';
 import { CellCustomActiveComponent } from './common/cell-custom-active/cell-custom-active.component';
+import { CellGrouplistComponent } from './common/cell-grouplist/cell-grouplist.component';
 
 
 
@@ -57,7 +58,8 @@ import { CellCustomActiveComponent } from './common/cell-custom-active/cell-cust
     NeworganizationComponent,
     OrganizationlistComponent,
     CellCustomComponent,
-    CellCustomActiveComponent
+    CellCustomActiveComponent,
+    CellGrouplistComponent
   ],
   imports: [
     CommonModule,

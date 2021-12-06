@@ -7,7 +7,7 @@ import { CommonAccessModule } from '../../../shared/models/user-access/user-acce
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
+import { CellGrouplistComponent } from '../../../common/cell-grouplist/cell-grouplist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 
 @Component({
@@ -25,9 +25,9 @@ export class GrouplistComponent implements OnInit {
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
     { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false },
-    { field: 'Is_Predefined_Status', headerName: 'Is Predefined', sortable: true, editable: false },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
-    { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+    { field: 'Predefined_Status', headerName: 'Predefined Status', sortable: true, editable: false },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent},
+    { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/addgroup/update/',
@@ -56,12 +56,15 @@ export class GrouplistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var entityMasterAPI = this._appSettings.entityMasterAPI;
-    url = url + entityMasterAPI;
+    var fetchusergroup = this._appSettings.fetchusergroup;
+    url = url + fetchusergroup;
 
     var data = {
-      SQLFROM: "User_Group",
-      SQLBY: "ByUser_Group"
+      User_ID: 0,
+      Search: "",
+      User_Group_Name: "",
+      Is_Predefined: null,
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
