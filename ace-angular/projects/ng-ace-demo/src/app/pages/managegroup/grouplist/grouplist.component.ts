@@ -9,6 +9,7 @@ import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { CellGrouplistComponent } from '../../../common/cell-grouplist/cell-grouplist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
+import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
 @Component({
   selector: 'app-grouplist',
@@ -40,7 +41,8 @@ export class GrouplistComponent implements OnInit {
     private _appSettings: AppsettingsService,
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
-    private spinner: NgxSpinnerService) { 
+    private spinner: NgxSpinnerService,
+    private _commonfunctionsService: CommonfunctionsService) { 
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
 
@@ -60,9 +62,8 @@ export class GrouplistComponent implements OnInit {
     url = url + fetchusergroup;
 
     var data = {
-      User_ID: 0,
+      User_Group_ID: 0,
       Search: "",
-      User_Group_Name: "",
       Is_Predefined: null,
       Is_Active: null
     }
@@ -84,15 +85,14 @@ export class GrouplistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchUserAPI = this._appSettings.fetchUserAPI;
-    url = url + fetchUserAPI;
+    var fetchusergroup = this._appSettings.fetchusergroup;
+    url = url + fetchusergroup;
 
     var data = {
-      User_ID: null,
+      User_Group_ID: 0,
       Search: this.searchForm.get('searchtext').value,
-      User_Type: 'Organization',
-      User_Group_ID: null,
-      Is_Active: this.searchForm.get('is_active').value
+      Is_Predefined: null,
+      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('is_active').value)
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -112,6 +112,10 @@ export class GrouplistComponent implements OnInit {
     this.router.navigateByUrl('/addgroup');
   }
 
+  reset(){
+    this.searchForm.reset();
+    this.getUserGroup();
+   }
   // Pagination table code
   private gridApi!: any
 

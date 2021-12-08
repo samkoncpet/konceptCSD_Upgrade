@@ -83,7 +83,7 @@ export class NewpackageComponent implements OnInit {
         Session_Reports_Period: this.addpackage.value.Session_Reports_Period,
         Session_Hours: this.addpackage.value.Session_Hours,
         Currency_ID: this.addpackage.value.Currency_ID,
-        Is_Active: this._commonfunctionsService.getBoolean(this.addpackage.value.is_active)
+        Is_Active: this._commonfunctionsService.getBoolean(this.addpackage.value.Is_Active)
     }
     }
     else{
@@ -97,7 +97,7 @@ export class NewpackageComponent implements OnInit {
         Session_Reports_Period: this.addpackage.value.Session_Reports_Period,
         Session_Hours: this.addpackage.value.Session_Hours,
         Currency_ID: this.addpackage.value.Currency_ID,
-        Is_Active: this._commonfunctionsService.getBoolean(this.addpackage.value.is_active)
+        Is_Active: this._commonfunctionsService.getBoolean(this.addpackage.value.Is_Active)
       }
     }
     this._ConfigurationService.post(url, data)
@@ -118,12 +118,13 @@ export class NewpackageComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var entityMasterAPI = this._appSettings.entityMasterAPI;
-    url = url + entityMasterAPI;
+    var fetchpackage = this._appSettings.fetchpackage;
+    url = url + fetchpackage;
 
     var data = {
-      SQLFROM: 'Package',
-      SQLBY: 'ByPackage'
+      Package_ID: parseInt(this.param2),
+      Search: '',
+      Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -131,7 +132,7 @@ export class NewpackageComponent implements OnInit {
             this.packagedetail = response["data"][0];
             this.addpackage.patchValue(this.packagedetail);
             this.addpackage.patchValue({
-              Is_Active: response["data"][0].Is_Active === "True" ? true : false
+              Is_Active: this._commonfunctionsService.getBoolean(response["data"][0].Is_Active)
            });
            if(this.isView){
             this.addpackage.disable();
@@ -147,8 +148,13 @@ export class NewpackageComponent implements OnInit {
           },
           );
    }
-  cancel(){
-    this.addpackage.reset();
+  cancel(){ 
+    if(!this.isUpdate) {
+      this.addpackage.reset();
+    }
+    else {
+      this.router.navigateByUrl('/packagelist');
+    }
   }
 
   get addpackageFormControl() {

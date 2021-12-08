@@ -171,7 +171,7 @@ export class NewgroupComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this.cancel();
-            this._notificationsService.showSuccess("Success", response["message"]);
+            this._notificationsService.showSuccess("Success", response["data"][0].message);
             this.router.navigateByUrl('/viewgroup');
           }
           else {
@@ -190,7 +190,7 @@ export class NewgroupComponent implements OnInit {
     url = url + fetchusergroupmapping;
 
     var data = {
-      User_Group_ID: this.param2,
+      SQLFROM: this.param2,
       Search: '',
       User_Group_Name: '',
       Is_Predefined: null,
@@ -205,7 +205,7 @@ export class NewgroupComponent implements OnInit {
               User_Group_Description: response["data"][0].User_Group_Description,
               is_active: response["data"][0].Is_Active});
               this.grouplist = response["data"];
-
+              console.log(response["data"])
               this.grouplist.forEach((item :IGroup) => {
                 //creating dynamically form controls
                 this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
@@ -230,8 +230,13 @@ export class NewgroupComponent implements OnInit {
             this.spinner.hide();
           });
    }
-  cancel(){
-    this.addgroup.reset();
+  cancel(){    
+    if(!this.isUpdate) {
+      this.addgroup.reset();
+    }
+    else {
+      this.router.navigateByUrl('/viewgroup');
+    }
   }
   get addgroupFormControl() {
     return this.addgroup.controls;
