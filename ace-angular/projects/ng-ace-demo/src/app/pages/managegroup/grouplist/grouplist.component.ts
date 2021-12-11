@@ -24,15 +24,15 @@ export class GrouplistComponent implements OnInit {
   public CommonAccessModule = new CommonAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
-    { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false },
-    { field: 'Predefined_Status', headerName: 'Predefined Status', sortable: true, editable: false },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent},
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
+    { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false, resizable: true },
+    { field: 'Predefined_Status', headerName: 'Predefined Status', sortable: true, editable: false, resizable: true, width: 100 },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent},
     { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/addgroup/update/',
-        viewRouterLink: '/viewgroup/view/'
+        editRouterLink: '/group/update/',
+        viewRouterLink: '/group/view/'
       } }
   ]
 
@@ -77,9 +77,13 @@ export class GrouplistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    filterGrouplist(){
     /** spinner starts on init */
@@ -104,12 +108,16 @@ export class GrouplistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
   addgroup(){
-    this.router.navigateByUrl('/addgroup');
+    this.router.navigateByUrl('/group/add');
   }
 
   reset(){

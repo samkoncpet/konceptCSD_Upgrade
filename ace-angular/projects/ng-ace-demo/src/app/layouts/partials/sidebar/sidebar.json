@@ -18,13 +18,13 @@
     {
         "id": "userlist",
         "parent": "manageusers",
-        "link": "userlist",
-        "title": "View user list"
+        "link": "user/list",
+        "title": "User list"
     },
     {
         "id": "addnewuser",
         "parent": "manageusers",
-        "link": "addnewuser",
+        "link": "user/add",
         "title": "Add new user"
     },
     {
@@ -36,50 +36,68 @@
     {
         "id": "organizationlist",
         "parent": "manageorganization",
-        "link": "organizationlist",
-        "title": "View Organization"
+        "link": "organization/list",
+        "title": "Organization list"
     },
     {
         "id": "addorganization",
         "parent": "manageorganization",
-        "link": "addorganization",
+        "link": "organization/add",
         "title": "Add Organization"
     },
     {
-        "id": "managepackages",
+        "id": "managepackage",
         "link": "#",
         "title": "Packages",
         "icon": "fa fa-edit"
     },
     {
         "id": "packagelist",
-        "parent": "managepackages",
-        "link": "packagelist",
-        "title": "View Packages"
+        "parent": "managepackage",
+        "link": "package/list",
+        "title": "Package list"
     },
     {
         "id": "addpackage",
-        "parent": "managepackages",
-        "link": "addpackage",
+        "parent": "managepackage",
+        "link": "package/add",
         "title": "Add Package"
     },
     {
-        "id": "managegroups",
+        "id": "managegroup",
         "link": "#",
         "title": "Groups",
         "icon": "far fa-window-restore"
     },
     {
         "id": "viewgroup",
-        "parent": "managegroups",
-        "link": "viewgroup",
-        "title": "View Groups"
+        "parent": "managegroup",
+        "link": "group/list",
+        "title": "Group list"
     },
     {
         "id": "addgroup",
-        "parent": "managegroups",
-        "link": "addgroup",
+        "parent": "managegroup",
+        "link": "group/add",
         "title": "Add Group"
+    },
+    {
+        "id": "managecustomers",
+        "link": "#",
+        "title": "Customers",
+        "icon": "fa fa-users"
+    },
+    {
+        "id": "viewcustomers",
+        "parent": "managecustomers",
+        "link": "customer/list",
+        "title": "Customer list"
+    },
+    {
+        "id": "addcustomers",
+        "parent": "managecustomers",
+        "link": "customer/add",
+        "title": "Add Customer"
     },
     {
         "id": "managecalendar",

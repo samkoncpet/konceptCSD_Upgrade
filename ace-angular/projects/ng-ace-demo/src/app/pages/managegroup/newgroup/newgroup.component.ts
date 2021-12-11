@@ -89,16 +89,16 @@ export class NewgroupComponent implements OnInit {
             this.grouplist.forEach((item :IGroup) => {
               //creating dynamically form controls
               this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
-              this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(item.Is_Create);
+              this.addgroup.get("Is_Create"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Create));
         
               this.addgroup.addControl("Is_Update"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-              this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(item.Is_Update);
+              this.addgroup.get("Is_Update"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Update));
         
               this.addgroup.addControl("Is_Retrieve"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-              this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(item.Is_Retrieve);
+              this.addgroup.get("Is_Retrieve"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Retrieve));
         
               this.addgroup.addControl("Is_Delete"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));              
-              this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(item.Is_Delete);
+              this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(this._commonfunctions.getBoolean(item.Is_Delete));
             })
           }
           else {
@@ -127,7 +127,7 @@ export class NewgroupComponent implements OnInit {
       this.addgroup.get("Is_Delete"+item.User_Group_Access_Area_ID).setValue(this.addgroup.get(['Is_Delete' + item.User_Group_Access_Area_ID]).value ? this.addgroup.get(['Is_Delete' + item.User_Group_Access_Area_ID]).value : false)
       
       let _IGroup: IGroup = {
-        User_Group_Access_Area_ID: 0,
+        User_Group_Access_Area_ID: "0",
         Is_Create: false,
         Is_Retrieve: false,
         Is_Update: false,
@@ -172,7 +172,7 @@ export class NewgroupComponent implements OnInit {
           if (response["response"] == 1) {
             this.cancel();
             this._notificationsService.showSuccess("Success", response["data"][0].message);
-            this.router.navigateByUrl('/viewgroup');
+            this.router.navigateByUrl('/group/list');
           }
           else {
             this._notificationsService.showWarning("warning", response["sys_message"]);
@@ -186,11 +186,42 @@ export class NewgroupComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
+    var fetchusergroup = this._appSettings.fetchusergroup;
+    url = url + fetchusergroup;
+
+    var data = {
+      User_Group_ID: this.param2,
+      Search: '',
+      Is_Predefined: null,
+      Is_Active: null
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.addgroup.patchValue({
+              User_Group_Name: response["data"][0].User_Group_Name,
+              User_Group_Description: response["data"][0].User_Group_Description,
+              is_active: response["data"][0].Is_Active});
+              this.getGroupDetailList();
+          }   
+          if(this.isView){
+            this.addgroup.disable();
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
+          });
+   }
+   getGroupDetailList(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
     var fetchusergroupmapping = this._appSettings.fetchusergroupmapping;
     url = url + fetchusergroupmapping;
 
     var data = {
-      SQLFROM: this.param2,
+      User_Group_ID: this.param2,
       Search: '',
       User_Group_Name: '',
       Is_Predefined: null,
@@ -199,13 +230,8 @@ export class NewgroupComponent implements OnInit {
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.grouplist = [];
-            this.addgroup.patchValue({
-              User_Group_Name: response["data"][0].User_Group_Name,
-              User_Group_Description: response["data"][0].User_Group_Description,
-              is_active: response["data"][0].Is_Active});
+              this.grouplist = [];
               this.grouplist = response["data"];
-              console.log(response["data"])
               this.grouplist.forEach((item :IGroup) => {
                 //creating dynamically form controls
                 this.addgroup.addControl("Is_Create"+item.User_Group_Access_Area_ID, this._formBuilder.control(null));
@@ -235,7 +261,7 @@ export class NewgroupComponent implements OnInit {
       this.addgroup.reset();
     }
     else {
-      this.router.navigateByUrl('/viewgroup');
+      this.router.navigateByUrl('/group/list');
     }
   }
   get addgroupFormControl() {
@@ -247,7 +273,7 @@ export class NewgroupComponent implements OnInit {
 }
 export interface IGroup
 {
-    User_Group_Access_Area_ID: number,
+    User_Group_Access_Area_ID: string,
     Is_Create: boolean, 
     Is_Retrieve: boolean, 
     Is_Update: boolean,

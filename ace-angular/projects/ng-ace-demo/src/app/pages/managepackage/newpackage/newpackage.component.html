@@ -59,12 +59,19 @@
                             </label>
                         </div>
                         <div class="col-md-4">
-                            <select id="Currency_ID" formControlName="Currency_ID" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.Currency_ID.touched || submitted) && addpackageFormControl.Currency_ID.errors?.required)}">
+                            <!-- <select id="Currency_ID" formControlName="Currency_ID" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.Currency_ID.touched || submitted) && addpackageFormControl.Currency_ID.errors?.required)}">
                                 <option value="1">British Pound Sterling</option>
                                 <option value="2">Euro</option>
                                 <option value="3">Indian Rupee</option>
                                 <option value="4">US Dollar</option>
+                              </select> -->
+                            <select id="Currency_ID" formControlName="Currency_ID" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.Currency_ID.touched || submitted) && addpackageFormControl.Currency_ID.errors?.required)}">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let data of currencylist" value={{data.Currency_ID}}>{{data.Currency}} ({{data.Symbol}})</option>  
                               </select>
+                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.Currency_ID.touched || submitted) && (addpackageFormControl.Currency_ID.errors?.required || addpackageFormControl.Currency_ID.invalid)">
+                                {{getErrorMessage('Currency_ID')}}
+                            </span>
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">

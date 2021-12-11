@@ -191,7 +191,7 @@ export class NewuserComponent implements OnInit {
             this._notificationsService.showSuccess("Success", response["data"]["0"].message);
             setTimeout(() => {
               /** spinner ends after 3 seconds */
-              this.router.navigateByUrl('/userlist');
+              this.router.navigateByUrl('/user/list');
             }, 300);
           }
           else {
@@ -215,7 +215,7 @@ export class NewuserComponent implements OnInit {
       this.adduser.reset();
     }
     else {
-      this.router.navigateByUrl('/userlist');
+      this.router.navigateByUrl('/user/list');
     }
   }
   getUserDetail(){

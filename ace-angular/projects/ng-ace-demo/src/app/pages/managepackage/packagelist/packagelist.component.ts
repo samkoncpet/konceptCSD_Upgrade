@@ -29,17 +29,17 @@ export class PackagelistComponent implements OnInit {
   public PackagesAccessModule = new PackagesAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
-    { field: 'Package', headerName: 'Package', sortable: true, editable: false },
-    { field: 'Code', headerName: 'Code', sortable: true, editable: false },
-    { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false },
-    { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false },
-    { field: 'Is_Active', headerName: 'Status', sortable: true,  cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
+    { field: 'Package', headerName: 'Package', sortable: true, editable: false, resizable: true },
+    { field: 'Code', headerName: 'Code', sortable: true, editable: false, resizable: true },
+    { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false, resizable: true },
+    { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Is_Active', headerName: 'Status', sortable: true, resizable: true, width: 100,  cellRendererFramework: CellCustomActiveComponent },
     { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/updatepackage/update/',
-        viewRouterLink: '/viewpackage/view/'
+        editRouterLink: '/package/update/',
+        viewRouterLink: '/package/view/'
       } }
   ]
 
@@ -83,10 +83,13 @@ export class PackagelistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          },
-          );
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    filterpackageList(){
     /** spinner starts on init */
@@ -109,12 +112,16 @@ export class PackagelistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    addpackage(){
-    this.router.navigateByUrl('/addpackage');
+    this.router.navigateByUrl('/package/add');
   }  
   reset(){
     this.searchForm.reset();

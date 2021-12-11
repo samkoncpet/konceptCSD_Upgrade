@@ -56,45 +56,38 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'userlist',
+        path: 'user/list',
         component: UserlistComponent,
         data: {
-          title: 'User List'
+          title: 'User list'
         }
       },
       {
-        path: 'addnewuser',
+        path: 'user/add',
         component: NewuserComponent,
         data: {
           title: 'Add new user'
         }
       },
       {
-        path: 'updateuser/:type/:id',
+        path: 'user/:type/:id',
         component: NewuserComponent,
         data: {
-          title: 'Update user'
+          title: 'User'
         }
       },
       {
-        path: 'viewuser/:type/:id',
-        component: NewuserComponent,
-        data: {
-          title: 'View user'
-        }
-      },
-      {
-        path: 'customerslist',
+        path: 'customer/list',
         component: CustomerslistComponent,
         data: {
-          title: 'Customers list'
+          title: 'Customer list'
         }
       },
       {
-        path: 'addcustomers',
+        path: 'customer/add',
         component: NewcustomersComponent,
         data: {
-          title: 'Add Customer'
+          title: 'Customer'
         }
       },
       {
@@ -105,77 +98,63 @@ const routes: Routes = [
         }
       },
       {
-        path: 'packagelist',
+        path: 'package/list',
         component: PackagelistComponent,
         data: {
           title: 'Package list'
         }
       },
       {
-        path: 'addpackage',
+        path: 'package/add',
         component: NewpackageComponent,
         data: {
           title: 'Add Package'
         }
       },
       {
-        path: 'updatepackage/:type/:id',
+        path: 'package/:type/:id',
         component: NewpackageComponent,
         data: {
-          title: 'Update Package'
+          title: 'Package'
         }
       },
       {
-        path: 'viewpackage/:type/:id',
-        component: NewpackageComponent,
-        data: {
-          title: 'View Package'
-        }
-      },
-      {
-        path: 'addgroup',
+        path: 'group/add',
         component: NewgroupComponent,
         data: {
           title: 'Add Group'
         }
       },
       {
-        path: 'viewgroup',
+        path: 'group/list',
         component: GrouplistComponent,
         data: {
-          title: 'Add Group'
+          title: 'Group list'
         }
       },
       {
-        path: 'addgroup/:type/:id',
+        path: 'group/:type/:id',
         component: NewgroupComponent,
         data: {
-          title: 'Update Group'
+          title: 'Group'
         }
       },
       {
-        path: 'viewgroup/:type/:id',
-        component: NewgroupComponent,
-        data: {
-          title: 'View Group'
-        }
-      },
-      {
-        path: 'organizationlist',
+        path: 'organization/list',
         component: OrganizationlistComponent,
         data: {
           title: 'Organization list'
         }
       },
       {
-        path: 'addorganization',
+        path: 'organization/add',
         component: NeworganizationComponent,
         data: {
           title: 'Add Organization'
         }
       },
       {
-        path: 'updateorganization/:type/:id',
+        path: 'organization/:type/:id',
         component: NeworganizationComponent,
         data: {
           title: 'Update Organization'

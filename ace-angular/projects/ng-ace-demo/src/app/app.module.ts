@@ -38,6 +38,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
 import { CellCustomComponent } from './common/cell-custom/cell-custom.component';
 import { CellCustomActiveComponent } from './common/cell-custom-active/cell-custom-active.component';
 import { CellGrouplistComponent } from './common/cell-grouplist/cell-grouplist.component';
+import { PackagehistoryComponent } from './pages/managecustomers/packagehistory/packagehistory.component';
 
 
 
@@ -59,7 +60,8 @@ import { CellGrouplistComponent } from './common/cell-grouplist/cell-grouplist.c
     OrganizationlistComponent,
     CellCustomComponent,
     CellCustomActiveComponent,
-    CellGrouplistComponent
+    CellGrouplistComponent,
+    PackagehistoryComponent
   ],
   imports: [
     CommonModule,

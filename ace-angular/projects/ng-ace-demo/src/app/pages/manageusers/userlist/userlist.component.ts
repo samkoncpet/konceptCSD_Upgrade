@@ -15,6 +15,7 @@ import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
+import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
 @Component({
   selector: 'app-userlist',
@@ -48,18 +49,18 @@ export class UserlistComponent implements OnInit {
     //   // headerCheckboxSelectionFilteredOnly: false,
     //   width: 52 
     // },
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
-    { field: 'User_Group_Name', headerName: 'Group', sortable: true, editable: false },
-    { field: 'Username', headerName: 'User Name', sortable: true, editable: false },
-    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
-    { field: 'Email', headerName: 'Email', sortable: true, editable: false },
-    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
-    { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
+    { field: 'User_Group_Name', headerName: 'Group', sortable: true, editable: false, resizable: true },
+    { field: 'Username', headerName: 'User Name', sortable: true, editable: false, resizable: true },
+    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false, resizable: true },
+    { field: 'Email', headerName: 'Email', sortable: true, editable: false, resizable: true },
+    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/updateuser/update/',
-        viewRouterLink: '/viewuser/view/'
+        editRouterLink: '/user/update/',
+        viewRouterLink: '/user/view/'
       } }
   ]
   constructor(private router: Router,
@@ -68,7 +69,8 @@ export class UserlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService,
-    public modalService: NgAceModalService) { 
+    public modalService: NgAceModalService,
+    public _commonfunctionsService: CommonfunctionsService) { 
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
 
@@ -102,9 +104,13 @@ export class UserlistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    SearchByUsertype(value:string){
     this.Search_User_Type = value;
@@ -131,7 +137,7 @@ export class UserlistComponent implements OnInit {
     var data = {
       User_ID: this.Search_User_ID,
       Search: this.Search_text,
-      User_Type: this.Search_User_Type,
+      User_Type: "user",
       User_Group_ID: this.Search_User_Group_ID,
       Is_Active: this.Search_Is_Active
     }
@@ -145,9 +151,13 @@ export class UserlistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
 
    filterUserList(){
@@ -159,9 +169,10 @@ export class UserlistComponent implements OnInit {
    }
    reset(){
     this.searchForm.reset();
+    this.getUserList();
    }
   addnewuser(){
-    this.router.navigateByUrl('/addnewuser');
+    this.router.navigateByUrl('/user/add');
   }
   get searchFormControl() {
     return this.searchForm.controls;

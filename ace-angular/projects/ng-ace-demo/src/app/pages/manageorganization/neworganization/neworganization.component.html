@@ -18,10 +18,10 @@
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
-                            <span class="align-middle d-block d-sm-inline text-600">
-                                Organization Account
-                            </span>
-                        </label>
+                                <span class="align-middle d-block d-sm-inline text-600">
+                                    Organization Account
+                                </span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Full Name
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input id="fullname" type="text" formControlName="fullname" class="form-control" placeholder="Full Name" [ngClass]="{'border-danger': ((addorganizationFormControl.fullname.touched || submitted) && addorganizationFormControl.fullname.errors?.required)}">
@@ -40,22 +40,22 @@
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            User Name
+                                User Name
                             </label>
                         </div>
                         <div class="col-md-4">
                             <input id="username" type="text" formControlName="username" class="form-control" placeholder="User Name" [ngClass]="{'border-danger': ((addorganizationFormControl.username.touched || submitted) && addorganizationFormControl.username.errors?.required)}">
 
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.username.touched || submitted) && (addorganizationFormControl.username.errors?.required || addorganizationFormControl.username.invalid)">
-                            {{getErrorMessage('username')}}
-                        </span>
+                                {{getErrorMessage('username')}}
+                            </span>
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Password
+                                Password
                             </label>
                         </div>
                         <div class="col-md-4">
@@ -66,20 +66,20 @@
                                 </a>
                             </div>
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.password.touched || submitted) && (addorganizationFormControl.password.errors?.required || addorganizationFormControl.password.invalid)">
-                            {{getErrorMessage('password')}}
-                        </span>
+                                {{getErrorMessage('password')}}
+                            </span>
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Re type Password
+                                Re type Password
                             </label>
                         </div>
                         <div class="col-md-4">
                             <input id="repassword" type="password" formControlName="repassword" class="form-control" placeholder="Re type Password" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addorganizationFormControl.repassword.touched || submitted) && addorganizationFormControl.repassword.errors?.required)}">
 
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.repassword.touched || submitted) && (addorganizationFormControl.repassword.errors?.required || addorganizationFormControl.repassword.invalid)">
-                            {{getErrorMessage('repassword')}}
-                        </span>
+                                {{getErrorMessage('repassword')}}
+                            </span>
                             <span class="form-text text-danger" *ngIf="!passwordmatch">Password do not match.</span>
                         </div>
                     </div>
@@ -87,15 +87,15 @@
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Is Active
-                        </label>
+                                Is Active
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addorganizationFormControl.is_active.touched || submitted) && addorganizationFormControl.is_active.errors?.required)}">
 
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.is_active.touched || submitted) && (addorganizationFormControl.is_active.errors?.required || addorganizationFormControl.is_active.invalid)">
-                            {{getErrorMessage('is_active')}}
-                        </span>
+                                {{getErrorMessage('is_active')}}
+                            </span>
                         </div>
                         <div class="col-md-2">
 
@@ -111,10 +111,10 @@
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
-                            <span class="align-middle d-block d-sm-inline text-600">
-                                Organization Contact Details
-                            </span>
-                        </label>
+                                <span class="align-middle d-block d-sm-inline text-600">
+                                    Organization Contact Details
+                                </span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 First Name
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input id="firstname" type="text" formControlName="firstname" class="form-control" placeholder="First Name" [ngClass]="{'border-danger': ((addorganizationFormControl.firstname.touched || submitted) && addorganizationFormControl.firstname.errors?.required)}">
@@ -134,7 +134,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Last Name
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input id="lastname" type="text" formControlName="lastname" class="form-control" placeholder="Last Name" [ngClass]="{'border-danger': ((addorganizationFormControl.lastname.touched || submitted) && addorganizationFormControl.lastname.errors?.required)}">
@@ -147,7 +147,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Email ID
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input id="email" type="text" formControlName="email" class="form-control" placeholder="Email ID" [ngClass]="{'border-danger': ((addorganizationFormControl.email.touched || submitted) && addorganizationFormControl.email.errors?.required)}">
@@ -158,7 +158,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Mobile No.
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <div class="input-group">
@@ -176,7 +176,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Address
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <textarea id="address" type="text" formControlName="address" class="form-control form-control-md" placeholder="Address" id="form-field-mask-2" inputmode="text" [ngClass]="{'border-danger': ((addorganizationFormControl.address.touched || submitted) && addorganizationFormControl.address.errors?.required)}"></textarea>
@@ -186,14 +186,15 @@
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Country
-                        </label>
+                                Country
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <select id="countryid" formControlName="countryid" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addorganizationFormControl.countryid.touched || submitted) && addorganizationFormControl.countryid.errors?.required)}">
-                               <option value="">--Select--</option>  
-                                <option *ngFor="let data of countrylist" value={{data.Country_ID}}>{{data.Country}}</option>  
-                              </select>
+                                <option value="">--Select--</option>
+                                <option *ngFor="let data of countrylist" value={{data.Country_ID}}>{{data.Country}}
+                                </option>
+                            </select>
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.countryid.touched || submitted) && (addorganizationFormControl.countryid.errors?.required || addorganizationFormControl.countryid.invalid)">
                                 {{getErrorMessage('countryid')}}
                             </span>
@@ -203,14 +204,14 @@
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            State
-                        </label>
+                                State
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <select id="stateid" formControlName="stateid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addorganizationFormControl.stateid.touched || submitted) && addorganizationFormControl.stateid.errors?.required)}">
-                                <option value="">--Select--</option>  
-                                <option *ngFor="let data of statelist" value={{data.State_ID}}>{{data.State}}</option>  
-                              </select>
+                                <option value="">--Select--</option>
+                                <option *ngFor="let data of statelist" value={{data.State_ID}}>{{data.State}}</option>
+                            </select>
                             <span class="form-text text-danger" *ngIf="(addorganizationFormControl.stateid.touched || submitted) && (addorganizationFormControl.stateid.errors?.required || addorganizationFormControl.stateid.invalid)">
                                 {{getErrorMessage('stateid')}}
                             </span>
@@ -218,7 +219,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 City
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <input id="city" type="text" formControlName="city" class="form-control" placeholder="City" [ngClass]="{'border-danger': ((addorganizationFormControl.city.touched || submitted) && addorganizationFormControl.city.errors?.required)}">
@@ -230,15 +231,15 @@
                     <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                         <div class="offset-md-3 col-md-9 text-nowrap">
                             <button class="btn btn-green btn-bold px-4" type="button" (click)="addneworganization()">
-                          <i class="fa fa-check mr-1"></i>
-                          <span *ngIf="!isUpdate">Submit</span>
-                          <span *ngIf="isUpdate">Update</span>
-                        </button>
+                                <i class="fa fa-check mr-1"></i>
+                                <span *ngIf="!isUpdate">Submit</span>
+                                <span *ngIf="isUpdate">Update</span>
+                            </button>
 
                             <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
-                          <i class="fa fa-undo mr-1"></i>
-                          Cancel
-                        </button>
+                                <i class="fa fa-undo mr-1"></i>
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -252,10 +253,10 @@
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
-                            <span class="align-middle d-block d-sm-inline text-600">
-                                Organization Account
-                            </span>
-                        </label>
+                                <span class="align-middle d-block d-sm-inline text-600">
+                                    Organization Account
+                                </span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -264,7 +265,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 Full Name&nbsp;:
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -273,7 +274,7 @@
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
-                            User Name&nbsp;:
+                                User Name&nbsp;:
                             </label>
                         </div>
                         <div class="col-md-4">
@@ -340,10 +341,10 @@
                     <div class="card-header">
                         <div class="card-toolbar mr-auto no-border">
                             <label class="mb-0">
-                            <span class="align-middle d-block d-sm-inline text-600">
-                                Organization Contact Details
-                            </span>
-                        </label>
+                                <span class="align-middle d-block d-sm-inline text-600">
+                                    Organization Contact Details
+                                </span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -352,7 +353,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 First Name&nbsp;:
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -362,7 +363,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 Last Name&nbsp;:
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -374,7 +375,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 Email ID&nbsp;:
-                              </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -384,7 +385,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 Mobile No.&nbsp;:
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -396,7 +397,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 Address&nbsp;:
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -405,8 +406,8 @@
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
-                            Country&nbsp;:
-                        </label>
+                                Country&nbsp;:
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -417,8 +418,8 @@
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
-                            State&nbsp;:
-                        </label>
+                                State&nbsp;:
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -428,7 +429,7 @@
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="text-dark-tp3 opacity-1 text-110 text-600 pl-4">
                                 City&nbsp;:
-                          </label>
+                            </label>
                         </div>
                         <div class="col-md-4">
                             <label for="id-form-field-1" class="mb-0">
@@ -439,15 +440,15 @@
                     <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25" *ngIf="!isView">
                         <div class="offset-md-3 col-md-9 text-nowrap">
                             <button class="btn btn-primary btn-bold px-4" type="button" (click)="addneworganization()">
-                          <i class="fa fa-check mr-1"></i>
-                          <span *ngIf="!isUpdate">Submit</span>
-                          <span *ngIf="isUpdate">Update</span>
-                        </button>
+                                <i class="fa fa-check mr-1"></i>
+                                <span *ngIf="!isUpdate">Submit</span>
+                                <span *ngIf="isUpdate">Update</span>
+                            </button>
 
                             <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
-                          <i class="fa fa-undo mr-1"></i>
-                          Cancel
-                        </button>
+                                <i class="fa fa-undo mr-1"></i>
+                                Cancel
+                            </button>
                         </div>
                     </div>
                 </div>

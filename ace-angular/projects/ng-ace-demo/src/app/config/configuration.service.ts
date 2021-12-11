@@ -94,6 +94,7 @@ export class ConfigurationService implements HttpInterceptor {
             this.logout();
           }
           else if (response.status === 404) {
+            this.logout();
           }
           return throwError(response);
         }),

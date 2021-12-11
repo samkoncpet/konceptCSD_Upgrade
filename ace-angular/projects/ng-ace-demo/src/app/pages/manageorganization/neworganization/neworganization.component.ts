@@ -184,7 +184,7 @@ export class NeworganizationComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this._notificationsService.showSuccess("Success", response["data"]["0"].message);
-            this.router.navigateByUrl('/organizationlist');
+            this.router.navigateByUrl('/organization/list');
           }
           else {
             this._notificationsService.showWarning("warning", response["sys_message"]);
@@ -208,7 +208,7 @@ export class NeworganizationComponent implements OnInit {
       this.statelist =  [];
     }
     else {
-      this.router.navigateByUrl('/organizationlist');
+      this.router.navigateByUrl('/organization/list');
     }
   }
   getUserDetail(){

@@ -1,0 +1,168 @@
+<div class="form-group">
+    <div class="card dcard">
+        <div class="card bgc-primary-d1 text-white">
+            <div class="card-header">
+                <div class="card-toolbar mr-auto no-border">
+                    <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Current Package
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Package Name: 
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Session:
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Price: 
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Hours:
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Session Type: 
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-2">
+                    <label for="id-form-field-1" class="mb-0">
+                        Report:
+                    </label>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="card dcard">
+        <div class="card bgc-primary-d1 text-white">
+            <div class="card-header">
+                <div class="card-toolbar mr-auto no-border">
+                    <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Package History
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div [ngbCollapse]="false" #collapse="ngbCollapse">
+                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="organizationlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()"
+                        [paginationPageSize]="itemPerPage" (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+
+                    <!-- table footer (action buttons, pagination, etc) -->
+                    <div class="bgc-primary-l4 p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px">
+                        <!-- actions -->
+
+
+
+                        <!-- pagination -->
+                        <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
+                            <div>
+                                <a (click)="gotoFirst()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-left w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoPrev()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-left w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div class="d-flex align-items-center mx-2">
+                                Page
+                                <input class="form-control form-control-sm w-5 mx-1" [(ngModel)]="currentPage" (change)="gotoPage()" /> of {{totalPages || 1}}
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div>
+                                <a (click)="gotoNext()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-right w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoLast()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-right w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <div>
+                                <select [(ngModel)]="itemPerPage" (change)="updatePerPage()" class="ml-2 ace-select no-border caret-double text-dark-tp3 bgc-white brc-secondary-l2 brc-h-secondary-m4 radius-1 border-2" style="width: 80px;">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div *ngIf="organizationlist.length > 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    {{(currentPage - 1) * itemPerPage + 1}}
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    {{currentPage * itemPerPage < organizationlist.length ? currentPage * itemPerPage : organizationlist.length}}
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    {{organizationlist.length}}
+                                </span>
+                        </div>
+
+                        <div *ngIf="organizationlist.length == 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    0
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

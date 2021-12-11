@@ -30,17 +30,17 @@ export class OrganizationlistComponent implements OnInit {
   public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, },
-    { field: 'Username', headerName: 'User Name', sortable: true, editable: false },
-    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false },
-    { field: 'Email', headerName: 'Email', sortable: true, editable: false },
-    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false } ,
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, cellRendererFramework: CellCustomActiveComponent },
-    { field: 'User_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
+    { field: 'Username', headerName: 'User Name', sortable: true, editable: false, resizable: true },
+    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false, resizable: true },
+    { field: 'Email', headerName: 'Email', sortable: true, editable: false, resizable: true },
+    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/updateorganization/update/',
-        viewRouterLink: '/vieworganization/view/'
+        editRouterLink: '/organization/update/',
+        viewRouterLink: '/organization/view/'
       } }
   ]
 
@@ -88,9 +88,13 @@ export class OrganizationlistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
   getUserList(){
     /** spinner starts on init */
@@ -116,10 +120,13 @@ export class OrganizationlistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          },
-          );
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    filterOrganizationList(){
     /** spinner starts on init */
@@ -145,12 +152,16 @@ export class OrganizationlistComponent implements OnInit {
           }
           this.spinner.hide();
         },
-          err => {
+        (error) => {
             this.spinner.hide();
-          });
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    addorganization(){
-    this.router.navigateByUrl('/addorganization');
+    this.router.navigateByUrl('/organization/add');
   }  
   reset(){
     this.searchForm.reset();

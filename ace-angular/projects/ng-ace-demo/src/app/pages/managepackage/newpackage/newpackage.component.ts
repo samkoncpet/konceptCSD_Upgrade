@@ -22,6 +22,7 @@ export class NewpackageComponent implements OnInit {
   isUpdate = false;
   isView = false;
   public packagedetail = [];
+  public currencylist = [];
   addpackage: FormGroup;
   isPassword = true;
   passwordmatch = true;
@@ -54,9 +55,10 @@ export class NewpackageComponent implements OnInit {
       Session_Number_Visits: new FormControl(1, Validators.required),
       Session_Reports_Period: new FormControl(1, Validators.required),
       Session_Hours: new FormControl(1, Validators.required),
-      Currency_ID: new FormControl(4, Validators.required),
+      Currency_ID: new FormControl('', Validators.required),
       Is_Active: new FormControl(true),
     });
+    this.getCurrency();
     if(this.isUpdate || this.isView){
       this.getPackageDetail();
     }
@@ -104,7 +106,7 @@ export class NewpackageComponent implements OnInit {
         .subscribe(response => {
           if (response["response"] == 1) {
             this._notificationsService.showSuccess("Success", response["data"]["0"].message);
-            this.router.navigateByUrl('/packagelist');
+            this.router.navigateByUrl('/package/list');
           }
           else {
             this._notificationsService.showWarning("Success", response["data"]["0"].message);
@@ -148,12 +150,38 @@ export class NewpackageComponent implements OnInit {
           },
           );
    }
+   getCurrency(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var entityMasterAPI = this._appSettings.entityMasterAPI;
+    url = url + entityMasterAPI;
+
+    var data = {
+      SQLFROM: "Currency",
+      SQLBY: "ByCurrency"
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.currencylist = response["data"];
+          }
+          else {
+            this.currencylist = [];
+          }
+          this.spinner.hide();
+        },
+          err => {
+            this.spinner.hide();
+          },
+          );
+   }
   cancel(){ 
     if(!this.isUpdate) {
       this.addpackage.reset();
     }
     else {
-      this.router.navigateByUrl('/packagelist');
+      this.router.navigateByUrl('/package/list');
     }
   }
 
