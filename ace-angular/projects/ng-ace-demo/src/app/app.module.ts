@@ -40,8 +40,6 @@ import { CellCustomActiveComponent } from './common/cell-custom-active/cell-cust
 import { CellGrouplistComponent } from './common/cell-grouplist/cell-grouplist.component';
 import { PackagehistoryComponent } from './pages/managecustomers/packagehistory/packagehistory.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

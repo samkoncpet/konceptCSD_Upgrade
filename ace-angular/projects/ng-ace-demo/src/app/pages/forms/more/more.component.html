@@ -1,0 +1,198 @@
+
+    <div class="card acard">
+       <div class="card-body">
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right">
+                   Star Rating
+               </div>
+   
+               <div class="col-sm-9">
+                    <div  class="mt-1">
+                        <a role="button" class="btn mt-n2 btn-sm border-0 btn-outline-light btn-h-outline-danger btn-a-outline-danger" (click)="currentRate = 0">
+                            <i class="fa fa-minus-circle"></i>
+                        </a>
+                        <ngb-rating [(rate)]="currentRate">
+                            <ng-template let-fill="fill" let-index="index">
+                                <span *ngIf="fill === 100" class="pos-rel h-3 d-inline-block text-orange-m1 text-150 {{index % 2 === 0 ? '' : 'fa-flip-horizontal mr-1'}}" style="width: 0.825rem;">
+                                    <i style="pointer-events: none;"  class="fa fa-star-half position-tl"></i>
+                                </span>
+                                <span *ngIf="fill !== 100" class="pos-rel h-3 d-inline-block text-grey-l2 text-150 {{index % 2 === 0 ? '' : 'fa-flip-horizontal mr-1'}}" style="width: 0.825rem;">
+                                    <i style="pointer-events: none;" class="far fa-star-half position-tl"></i>
+                                </span>
+                            </ng-template>
+                        </ngb-rating>
+                    </div>
+   
+                   <hr class="border-dotted" />
+               </div>
+           </div>
+       
+   
+   
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right pr-0 align-self-start pt-0">
+                   <label for="id-typeahead">
+                       Autocomplete
+                       <br />
+                       <span class="text-sm text-grey-m2">Typeahead</span>
+                   </label>
+               </div>
+   
+               <div class="col-sm-9">
+                    <ng-template #rt let-r="result" let-t="term">
+                        <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+                    </ng-template>
+
+                    <div class="d-inline-block pos-rel">
+                        <input id="typeahead-basic" placeholder="States of USA" type="text" class="form-control typeahead scrollable " [(ngModel)]="typeahead" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
+                    </div>
+               </div>
+           </div>
+   
+   
+   
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                   <label for="select-picker-1">
+                       Multi select
+                   </label>
+               </div>
+   
+               <div class="col-sm-4 col-12">
+                    <ng-select class="brc-primary-m3 comma-list" [items]="food" 
+                    placeholder="Nothing selected"
+                    [multiple]="true"
+                    [closeOnSelect]="false"
+                    [clearable]="false"
+                    [searchable]="false"
+                    [markFirst]="false"
+   
+                    [(ngModel)]="selectedFood">
+                            <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm" let-item$="item$">
+                                <div class="my-1px">
+                                    <div class="btn-bgc-white bgc-h-primary-l3 text-dark-m3 m-n3 p-3" [ngClass]="{'text-600': item$.selected}">                                        
+                                        {{item}}
+                                        <i class="far fa-check-square text-orange-d2 float-right text-110" [ngClass]="{'invisible': !item$.selected}"></i>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                            <ng-template ng-label-tmp let-item="item">
+                                <div class="bgc-white">
+                                    <span class="ng-value-label px-1px">
+                                        {{item}}
+                                    </span>
+                                </div>
+                            </ng-template>
+                        </ng-select>
+               </div>
+           </div>
+   
+   
+   
+           <hr class="border-dotted" />
+   
+   
+   
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                   <label for="state">
+                       NgSelect
+                   </label>
+               </div>
+   
+               <div class="col-sm-4 col-12">
+                    <ng-select class="ace-ng-select brc-default-m3 border-0" [items]="states" 
+                    placeholder="Click to Choose..."
+                    [multiple]="true"
+                    [markFirst]="false"
+                    bindLabel="name" 
+                    bindValue="abbr" 
+                    [(ngModel)]="selectedState">
+
+                        <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm" let-item$="item$">
+                            <div class="my-1px">
+                                <div class="btn-bgc-white m-n3 p-3" [ngClass]="{'bgc-h-primary-l3 text-dark-m3': !item$.selected, 'bgc-secondary-l4 text-dark-tp5 font-italic': item$.selected}">
+                                    {{item.name}}
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                            <div class="bgc-secondary radius-2px m-n2px">
+                                <span class="ng-value-label pl-2 text-white">
+                                    {{item.name}}
+                                </span>
+                                <span class="ng-value-icon border-0 text-white bgc-h-black-tp8" (click)="clear(item)" aria-hidden="true">
+                                    <i class="fa fa-times text-sm pr-2px"></i>
+                                </span>
+                            </div>
+                        </ng-template>
+                    </ng-select>
+                    
+                   <hr class="border-dotted" />
+               </div>
+           </div>
+     
+   
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                   <label for="tag-input">
+                       Tag input
+                   </label>
+               </div>
+   
+               <div class="col-sm-4 col-12">
+                     <ng-select class="ace-ng-select brc-primary-m1 tag-input" [items]="tags" 
+                    placeholder="+ Tag"
+                    [multiple]="true"
+                    [markFirst]="false"
+                    [addTag]="true"
+                    [addTagText]="'Add'"
+                    [isOpen]="false"
+                    [clearable]="false"
+                    [(ngModel)]="selectedTag">
+                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                            <div class="bgc-default-d3 radius-2px m-n2px">
+                                <span class="ng-value-label pl-2 text-white">
+                                    {{item}}
+                                </span>
+                                <span class="ng-value-icon border-0 text-white bgc-h-black-tp8" (click)="clear(item)" aria-hidden="true">
+                                    <i class="fa fa-times text-sm pr-2px"></i>
+                                </span>
+                            </div>
+                        </ng-template>
+                    </ng-select>
+               </div>
+           </div>
+   
+       </div>
+    </div>
+   
+   
+   
+    <div class="card acard mt-4">
+       <div class="card-body">
+           <div class="form-group row">
+               <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                   Dual listbox
+               </div>
+   
+               <div class="col-sm-9">
+                   <select multiple="multiple" id="duallist">
+                       <option value="option1">Option 1</option>
+                       <option value="option2">Option 2</option>
+                       <option value="option3" selected="selected">Option 3</option>
+                       <option value="option4">Option 4</option>
+                       <option value="option5">Option 5</option>
+                       <option value="option6" selected="selected">Option 6</option>
+                       <option value="option7">Option 7</option>
+                       <option value="option8">Option 8</option>
+                       <option value="option9">Option 9</option>
+                       <option value="option0">Option 10</option>
+                   </select>
+               </div>
+           </div>
+       </div>
+    </div>
+   

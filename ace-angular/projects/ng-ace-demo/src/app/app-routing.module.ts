@@ -84,7 +84,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'customer/add',
+        path: 'customer/add1',
         component: NewcustomersComponent,
         data: {
           title: 'Customer'
@@ -193,6 +193,14 @@ const routes: Routes = [
       {
         path: 'tables',
         loadChildren: () => import('./pages/tables/tables.module').then((m) => m.TablesModule)
+      },
+      {
+        path: 'forms',
+        loadChildren: () => import('./pages/forms/forms.module').then((m) => m.FormsModule)
+      },
+      {
+        path: 'customer',
+        loadChildren: () => import('./pages/forms/forms.module').then((m) => m.FormsModule)
       }
     ]
   }

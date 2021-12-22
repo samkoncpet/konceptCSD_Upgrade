@@ -1,0 +1,860 @@
+<div class="card acard mt-2 mt-lg-3">
+    <div class="card-header">
+        <h3 class="card-title text-125 text-primary-d2">
+            <i class="far fa-edit text-dark-l3 mr-1"></i>
+            Text inputs
+        </h3>
+    </div>
+
+    <div class="card-body px-3 pb-1">
+        <form class="mt-lg-3" autocomplete="off">
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-1" class="mb-0">
+                        Default field
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control col-sm-8 col-md-6" id="id-form-field-1" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-focus-1" class="mb-0">
+                        Custom border on focus
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control brc-on-focus brc-success-m1 col-sm-8 col-md-6" id="id-form-field-focus-1" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="mb-1 mb-sm-0 col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-2" class="mb-0">
+                        Floating placeholder
+                    </label>
+                </div>
+
+                <div class="col-sm-9 input-floating-label text-blue-d2 brc-blue-m1">
+                    <input placeholder="Some placeholder" type="text" class="form-control form-control-lg col-sm-8 col-md-6 shadow-none" id="id-form-field-2" />
+                    <span class="floating-label text-grey-m3">
+                        Some placeholder
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-3" class="mb-0">                  
+                        Password field
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <input type="password" class="form-control brc-on-focus col-sm-8 col-md-6 d-inline-block" placeholder="Password" id="id-form-field-3" />
+                    <span class="form-text d-inline-block text-95 text-grey ml-sm-2">
+                        Inline help text
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-password-toggle" class="mb-0">
+                        Password toggle
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="d-inline-flex align-items-center">
+                        <input #inputPassword [attr.type]="isPassword ? 'password' : 'text'" class="form-control form-control-lg pr-5" placeholder="Password" value="mypassword" spellcheck="false" id="id-form-field-password-toggle"  />
+                        <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-125 ml-n5 no-underline radius-1 d-style">
+                            <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
+                        </a>
+                    </div>
+                </div>        
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-disable-me" class="mb-0">
+                        Readonly field
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <input [readOnly]="!isDisabled" [disabled]="isDisabled" type="text" class="form-control col-sm-8 col-md-6 d-inline-block"
+                        value="This text field is {{!isDisabled? 'readonly' : 'disabled'}}!" />
+
+                    <label class="mt-1 mt-sm-0 ml-sm-3">
+                        <input type="checkbox" class="mr-1" (change)="isDisabled = !isDisabled" />
+                        Disable it!
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    Relative sizing
+                </div>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control form-control-lg col-md-4 d-inline-block mb-1 mb-md-0" placeholder=".form-control-lg" />
+                    <input type="text" class="form-control col-md-3 d-inline-block mb-1 mb-md-0" placeholder=".form-control" />
+                    <input type="text" class="form-control form-control-sm col-md-2 d-inline-block" placeholder=".form-control-sm" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="id-form-field-5" class="mb-0">
+                        Input with icon
+                    </label>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="d-inline-flex align-items-center mb-1">
+                        <i class="fa fa-leaf text-blue text-125 ml-25 pos-abs"></i>
+                        <input type="text" class="form-control form-control-lg px-475" placeholder="Icons" id="id-form-field-5"  />
+                        <i class="fa fa-leaf text-green text-125 ml-n45"></i>
+                    </div>
+
+                    <div class="d-inline-flex align-items-center ml-sm-0 mb-1">
+                        <i class="fa fa-search text-grey-m1 pos-abs ml-2"></i>
+                        <input type="text" class="form-control pl-425" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label text-sm-right pr-0">
+                    <label for="tooltip-1" class="mb-0">
+                        Tooltip and help popover
+                    </label>
+                </div>
+                <div class="col-sm-9">
+                    <ng-template #inputPopover>
+                        <div NgAcePopover class="brc-primary-m4 shadow">
+                            <div class="arrow arrow2 brc-white"></div>
+                            <div class="arrow brc-primary-m1"></div>
+                            <h3 class="popover-header bgc-primary-l2 border-0 text-115 text-dark-tp3">Title</h3>
+                            <div class="popover-body text-grey-d2 text-105">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>
+                        </div>
+                    </ng-template>
+                    <input ngbTooltip="Tooltip on Hover" tooltipClass="ng-custom-tooltip bgc-success-m1 brc-success-m1 text-dark text-600" type="text" class="form-control col-9 col-md-5 d-inline-block" placeholder="Tooltip on Hover" />
+                    <span class="form-text d-inline-block ml-2">
+                        <button placement="top" [ngbPopover]="inputPopover" type="button" class="btn btn-xs btn-info btn-bold brc-white-tp3 shadow-sm radius-round text-125 px-25">?</button>
+                    </span>
+                </div>
+            </div>
+
+
+
+
+            <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                <div class="offset-md-3 col-md-9 text-nowrap">
+                    <button class="btn btn-info btn-bold px-4" type="button">
+                        <i class="fa fa-check mr-1"></i>
+                        Submit
+                    </button>
+                    
+                    <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset">
+                        <i class="fa fa-undo mr-1"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.card-body -->
+</div><!-- /.card -->
+
+
+
+
+<form autocomplete="off" class="mt-475">
+    <div class="form-group row">
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="card-title text-125">
+                        Text Area
+                    </span>
+                </div>
+
+                <div class="card-body">
+                    <div class="pos-rel">
+                        <textarea class="form-control" (focus)="textarea1_tooltip = true" (blur)="textarea1_tooltip = false" [(ngModel)]="textarea1" [ngModelOptions]="{standalone: true}" [maxlength]="textarea1_max" placeholder="{{textarea1_max}} character limit"></textarea>
+                        <span [ngClass]="{'d-none': !textarea1_tooltip, 'bgc-dark-d3': textarea1.length < textarea1_max, 'bgc-orange-d3': textarea1.length >= textarea1_max }" class="badge text-white position-br mb-n35">{{textarea1.length}} / {{textarea1_max}}</span>
+                    </div>
+
+                    <div class="mt-4 pos-rel">
+                        <textarea class="form-control" (focus)="textarea2_tooltip = true" (blur)="textarea2_tooltip = false" [(ngModel)]="textarea2" [ngModelOptions]="{standalone: true}" [maxlength]="textarea2_max" placeholder="{{textarea2_max}} character limit"></textarea>
+                        <div class="w-100 popover bs-popover-bottom border-2 position-bc" [ngClass]="{'d-none': !textarea2_tooltip, 'brc-primary-m2': textarea2_max != textarea2.length, 'brc-danger-m2': textarea2_max == textarea2.length}" style="top: 100%; bottom: auto;">
+                            <div class="arrow" [ngClass]="{'brc-primary': textarea2_max != textarea2.length, 'brc-danger': textarea2_max == textarea2.length}" style="left:calc(50% - 0.5rem)"></div>
+                            <div class="popover-body"><span class="text-600">
+                                {{textarea2_max - textarea2.length}}</span> characters remaining ...
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <textarea class="form-control mt-2" autosize placeholder="Autosize ...&#10;Automatic textarea height" [rows]="2" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal;"></textarea>
+                </div>
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+
+
+
+        <div class="col-lg-4 mt-3 mt-lg-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="card-title text-125">
+                        Masked Input
+                    </span>
+                </div>
+
+                <div class="card-body">
+                    <label for="form-field-mask-1">
+                        Date
+						<small class="text-success">99/99/9999</small>
+					</label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-lg" mask="00/00/0000" [showMaskTyped] = "true" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="far fa-calendar mr-1"></i>
+                                Go!
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <label for="form-field-mask-2">
+                        Phone
+						<small class="text-brown">(999) 999-9999</small>
+					</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <input type="text" class="form-control form-control-lg" mask="(000) 000-0000" [showMaskTyped] = "true" />
+                    </div>
+
+                    <hr />
+
+                    <label for="form-field-mask-3">
+                        Product Key
+						<small class="text-muted">a*-999-a999</small>
+					</label>
+
+                    <div class="input-group">                        
+                        <input type="text" class="form-control form-control-lg" mask="SA-000-S000" [showMaskTyped] = "true" />
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <label for="form-field-mask-4">
+                        Eye Script
+						<small class="text-success">~9.99 ~9.99 999</small>
+					</label>
+
+                    <div class="input-group input-group-fade">
+                        <input type="text" class="form-control form-control-lg" mask="~0.00 ~0.00 000" [specialCharacters]="[ '~', '.', ' ' ]" [showMaskTyped] = "true" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-default btn-bold" type="button">Verify</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+
+
+
+        <div class="col-lg-4 mt-3 mt-lg-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="card-title text-125">
+                        Select Box
+                    </span>
+                </div>
+                <div class="card-body">
+
+                    <label for="form-field-select-1">
+                        Default
+                    </label>
+
+					<select class="form-control" id="form-field-select-1">
+						<option value="">&nbsp;</option>
+                        <option *ngFor="let state of states" [value]="state.abbr">{{state.name}}</option>
+					</select>
+
+                    <hr class="border-dotted my-4" />
+
+                    <label for="form-field-select-11">
+                        Custom Style
+                    </label>
+
+					<select class="ace-select text-dark-m1 bgc-default-l5 bgc-h-warning-l3 brc-default-m3 brc-h-warning-m1" id="form-field-select-11">
+						<option value="">&nbsp;</option>
+						<option *ngFor="let state of states" [value]="state.abbr">{{state.name}}</option>
+					</select>
+
+               
+					<select class="mt-4 ace-select no-border text-dark-tp2 bgc-grey-l4 bgc-h-success-l3 brc-grey-m4 brc-h-success-m2 radius-round border-1 angle-down" id="form-field-select-22">
+						<option value="">&nbsp;</option>
+                        <option *ngFor="let state of states" [value]="state.abbr">{{state.name}}</option>						  
+					</select>
+
+
+                    <select class="mt-4 ace-select no-border caret-double text-dark-tp3 bgc-success-l3 bgc-h-success-l2 radius-2 border-0" id="form-field-select-33">
+						<option value="">&nbsp;</option>
+                        <option *ngFor="let state of states" [value]="state.abbr">{{state.name}}</option>
+					</select>
+
+
+					<select class="mt-4 ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" id="form-field-select-44">
+                        <option *ngFor="let state of states" [value]="state.abbr">{{state.name}}</option>
+					</select>
+                </div>
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+
+
+
+    <!-- Checkbox and Radio -->
+    <h4 class="text-primary-d1 mt-45 mb-3 text-140">
+		Checkbox &amp; Radio
+		<small class="text-75 text-grey-d1">
+            Custom styles
+        </small>
+	</h4>
+
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="card acard h-100">
+                <div class="card-body">
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" class="mr-2" />
+                            Choice Default
+                        </label>
+                    </div>
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" [indeterminate]="true" class="mr-2 indeterminate" />
+                            Indeterminate
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="radius-round ml-n2 pl-2 pr-1 pt-1 pb-2 bgc-h-success-l1">
+                            <input type="checkbox" class="text-green-m1" id="id-check-success" />
+                        </label>
+                        <label for="id-check-success">Choice Success <small>(with highlight)</small></label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="p-2 ml-n2 bgc-h-orange-l2 radius-1">
+                            <input type="checkbox" class="bgc-danger brc-h-danger-m1 mr-2" />
+                            Choice Danger
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="text-600 text-uppercase text-95 text-secondary">
+                            <input type="checkbox" class="input-lg text-danger-m2 brc-on-checked brc-success-m1 brc-h-success-m1 border-2 mr-15" />
+                            Choice Bold
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" class="align-middle input-sm text-pink mr-25" checked />
+                            <span class="align-middle">Choice Small</span>
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" class="input-lg bgc-blue" checked />
+                            Choice Large
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="checkbox" class="input-xlg text-purple" checked />
+                            And Larger
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="disabled text-grey-m1">
+                            <input type="checkbox" class="input-lg text-purple" checked disabled />
+                            Disabled
+                        </label>
+                    </div>
+
+
+                    <label class="brc-dark-l1 mb-0 d-flex align-items-center">
+                        <input type="checkbox" class="radius-round input-lg text-90 text-center text-green brc-on-checked brc-dark-m3 brc-h-orange-m1" />
+                        <span class="ml-15">
+                            Rounded
+                        </span>
+                    </label>
+                </div><!-- /.card-body -->
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+
+
+        <div class="col-md-6 col-12">
+            <div class="card acard h-100">
+                <div class="card-body">
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="mr-1" />
+                            Option Default
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="text-green-m1" />
+                            Option Success
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="bgc-danger brc-h-danger-m1" />
+                            Option Danger
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="text-600 text-uppercase text-95 text-secondary">
+                            <input type="radio" name="option" class="input-lg text-danger-m2 brc-on-checked brc-success brc-h-success-m1 border-2" />
+                            Option Bold
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="input-sm text-pink mr-2" />
+                            <span class="align-middle">Option Small</span>
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="input-lg bgc-blue" />
+                            Option Large
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label>
+                            <input type="radio" name="option" class="input-xlg text-purple" />
+                            Larger
+                        </label>
+                    </div>
+
+
+                    <div class="mb-1">
+                        <label class="disabled text-grey-m1">
+                            <input type="radio" name="option" class="input-lg text-purple" disabled />
+                            Disabled
+                        </label>
+                    </div>
+                </div><!-- /.card-body -->
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <hr />
+
+    <!-- toggle buttons - on/off switches -->
+    <div class="card acard my-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-3 text-left text-md-right text-115">
+                    On/Off Switches
+                    <div class="text-grey-m1 text-85">Not supported on older browsers</div>
+                </div>
+
+                <div class="col-12 col-md-9">
+                    <input type="checkbox" class="ace-switch" />
+
+                    <input type="checkbox" class="ace-switch " disabled checked />
+
+                    <input type="checkbox" class="ace-switch input-sm" />
+
+                    <input type="checkbox" class="ace-switch input-lg" />
+
+                    <input type="checkbox" class="ace-switch input-lg ace-switch-yesno bgc-purple-d1 text-grey-m2" checked />
+
+                    <input type="checkbox" class="ace-switch input-lg ace-switch-onoff bgc-blue-d2 text-grey-m3 radius-1" />
+
+                    <input type="checkbox" class="ace-switch input-lg ace-switch-bars-h ace-switch-check ace-switch-times text-grey-l2 bgc-orange-d2 radius-2px" checked />
+
+                    <input type="checkbox" class="ace-switch input-lg ace-switch-bars bgc-success-d2" />
+
+                    <input type="checkbox" class="ace-switch input-lg text-grey-l1 brc-primary-d1" />
+
+                    <div class="h-2"></div>
+
+                    <label>
+                        <input type="checkbox" class="ace-switch ace-switch-thin" />
+                    </label>
+
+                    <label>
+                        <input type="checkbox" class="ace-switch ace-switch-thin text-grey-l1 bgc-pink-d1" />
+                    </label>
+
+                    <label class="text-orange-d3 text-600">
+                        <input type="checkbox" class="ace-switch ace-switch-thin text-grey-l1 bgc-warning-d2 mr-1" />
+                        Label
+                    </label>
+                </div>
+            </div><!-- /.row -->
+        </div>
+    </div><!-- /.card -->
+
+    <hr />
+
+    <div class="row mt-475">
+        <!-- Custom file input -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title text-orange-d4">
+                        Custom File Input
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <div>
+                        <input type="file" NgAceFile />
+                    </div>
+
+                    <div class="mt-4">
+                        <input type="file" multiple [NgAceFile]="fileInputOptions" />
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col -->
+
+
+        <!-- Range sliders -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title text-blue-d2">
+                        Range Sliders
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <!-- vertical slider -->
+                            <div #slider1 class="noUi-toggle-tooltip slider-sm slider-tooltip-right slider-tooltip-caret"></div>
+                        </div>
+
+                        <div class="col-10">
+                            <div #slider2 class="noUi-toggle-tooltip mb-5 slider-thin"></div>
+
+                            <div #slider3 class="noUi-toggle-tooltip my-5"></div>
+
+                            <div #slider4 class="noUi-toggle-tooltip slider-sm my-5"></div>
+
+                            <div #slider5 class="noUi-toggle-tooltip my-5 slider-thin"></div>
+
+                            <div class="mt-5 mb-2">
+                                <!-- ngx-slider -->
+                                <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div><!-- /.col -->
+
+
+        <!-- Input spinner -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title text-purple-d3">
+                        Input Spinner
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <ng-number-picker [(value)]="spinner1_value"
+                    [min]="0"
+                    [max]="100"
+                    [step]="0.1"
+                    [pickStartAfter]="500"
+                    [pickTimer]="100"
+                    [buttonsOrientation]="'h'"
+                    [size]="'md'"
+                    [showDownButton]="true"
+                    [showUpButton]="true"
+                    [inputReadOnly]="false"
+                    [mouseWheel]="true"
+                    [arrowKeys]="true"
+                    [placeholder]="'Number'"
+                    [postfix]="'%'"
+                    [customClass]="{'container': '', 'up': 'bgc-success-d2 border-0 text-white w-5 text-center px-0 d-inline-block text-150', 'down': 'bgc-danger border-0 text-white w-5 text-center px-0 d-inline-block text-150', 'prefix': '', 'postfix': 'radius-0'}"></ng-number-picker>
+
+                    <hr />
+
+                    <ng-number-picker #spinner2  [(value)]="spinner2_value"
+                    [min]="0"
+                    [max]="100"
+                    [step]="1"
+                    [pickStartAfter]="500"
+                    [pickTimer]="100"
+                    [buttonsOrientation]="'v'"
+                    [size]="'md'"
+                    [showDownButton]="true"
+                    [showUpButton]="true"
+                    [inputReadOnly]="false"
+                    [mouseWheel]="true"
+                    [arrowKeys]="true"
+                    [placeholder]="'Number'"
+                    [customClass]="{'container': '', 'up': 'btn btn-info btn-up border-0 w-4 px-0 h-50 m-0 radius-0', 'down': 'btn btn-info btn-down border-0 w-4 px-0 h-50 m-0 radius-0', 'prefix': '', 'postfix': ''}"></ng-number-picker>
+
+
+                    <hr />
+
+                    <div class="w-50">
+                        <ng-number-picker #spinner3 [(value)]="spinner3_value" class="bootstrap-touchspin"
+                        [min]="0"
+                        [max]="100"
+                        [step]="1"
+                        [pickStartAfter]="500"
+                        [pickTimer]="100"
+                        [buttonsOrientation]="'v'"
+                        [size]="'md'"
+                        [showDownButton]="true"
+                        [showUpButton]="true"
+                        [inputReadOnly]="false"
+                        [mouseWheel]="true"
+                        [arrowKeys]="true"
+                        [placeholder]="'Number'"
+                        [customClass]="{'container': '', 'up': 'btn btn-blue btn-xs bootstrap-touchspin-up mx-0', 'down': 'btn btn-blue btn-xs bootstrap-touchspin-down mx-0', 'prefix': '', 'postfix': ''}"></ng-number-picker>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+
+
+
+
+    <div class="row mt-475">
+        <!-- Date picker -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="text-primary-d2 text-120">Date/Range Picker</span>
+                </div>
+
+                <div class="card-body">
+                    <!-- Tinydate picker plugin -->
+                    <div class="form-field">
+                        <div class="pos-rel">
+                            <div>
+                                <label>
+                                    Ng Bootstrap Datepicker:
+                                </label>
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" (click)="datepicker1.open()" name="dp" [(ngModel)]="date1" [ngModelOptions]="{standalone: true}" ngbDatepicker #datepicker1="ngbDatepicker">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary calendar" (click)="datepicker1.toggle()" type="button">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label>
+                                    Ngx Bootstrap Daterange picker:
+                                </label>
+                                <input placeholder="Datepicker" type="text" class="form-control" bsDaterangepicker placement="top" [bsConfig]="{'containerClass':'theme-dark-blue'}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr class="border-dotted brc-secondary-m4 my-35" />
+
+                    <!-- Datetime picker plugin -->
+                    <div>
+                        <div class="form-group">
+                            <label for="id_time_el" class="text-secondary-d3">Time picker:</label>
+                            <div class="input-group date" id="id-timepicker">
+                                <timepicker [(ngModel)]="time1" [ngModelOptions]="{standalone: true}"></timepicker>
+                              </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Custom time picker -->                    
+                    <div class="mt-3">
+                        <div class="form-group">
+                            <a role="button" class="btn btn-outline-info border-2"  placement="auto" [ngbPopover]="timepickerPopover" [autoClose]="'outside'" #p="ngbPopover">Time picker inside popover</a>
+
+                            <ng-template #timepickerPopover>
+                                <!-- it's a hidden element, and the html content of it will be shown inside popover -->
+                                <div NgAcePopover class="brc-primary-m3 border-1 radius-1 shadow-sm">
+                                    <div class="arrow brc-primary"></div>
+                                    <h3 class="popover-header bgc-primary-l3 brc-primary-l1 text-dark-tp4 text-600 text-center pb-25">Choose Time</h3>
+                                    <div class="popover-body text-grey-d2 p-4">
+                                        <div class="d-flex">
+                                            <select class="mx-1 pl-3 no-border caret-double ace-select border-2 radius-1 brc-default-l1 brc-h-default-m2 bgc-default-l4 text-secondary-d2 text-600 text-110" style="width: 5rem;">
+                                                <option selected>H</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+
+                                            <span class="text-600 text-150">:</span>
+
+                                            <select class="mx-1 pl-3 no-border caret-double ace-select border-2 radius-1 brc-default-l1 brc-h-default-m2 bgc-default-l4 text-secondary-d2 text-600 text-110" style="width: 5rem;">
+                                                <option selected>M</option>
+                                                <option>00</option>
+                                                <option>05</option>
+                                                <option>10</option>
+                                                <option>15</option>
+                                                <option>20</option>
+                                                <option>25</option>
+                                                <option>30</option>
+                                                <option>35</option>
+                                                <option>40</option>
+                                                <option>45</option>
+                                                <option>50</option>
+                                                <option>55</option>
+                                            </select>
+
+                                            <div class="mx-1 btn-group btn-group-toggle">
+                                                <label ngbButtonLabel role="button" class="btn btn-bold radius-1 px-25 py-2 text-95 btn-light-blue btn-a-light-primary">
+                                                    <input type="checkbox" ngbButton [(ngModel)]="timeToggle" [ngModelOptions]="{standalone: true}" />
+                                                    <span *ngIf="timeToggle">AM</span>
+                                                    <span *ngIf="!timeToggle">PM</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div><!-- /.form-group -->
+                    </div>
+
+                </div><!-- /.card-body -->
+            </div><!-- /.card -->
+        </div><!-- /.col -->
+
+
+        <!-- Color picker -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="text-primary-d2 text-120">
+                        Color Picker
+                    </span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <input class="form-control shadow-none" [(colorPicker)]="color" [style.background]="color" />
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div>
+                        <div id="color-picker-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col -->
+
+
+        <!-- knob -->
+        <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="card h-100">
+                <div class="card-header">
+                    <span class="text-primary-d2 text-120">Knob Input</span>
+                </div>
+
+                <div class="card-body">
+
+                   <div class="row">
+                        <div class="col-6 text-center pos-rel" id="knob1">                            
+                        </div>
+
+                        <div class="col-6 text-center pos-rel" id="knob2">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center pos-rel" id="knob3">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</form>
