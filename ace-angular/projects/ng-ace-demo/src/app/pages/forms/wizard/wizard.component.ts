@@ -34,6 +34,8 @@ export class FormWizardComponent {
   public countrylist = [];
   public statelist= [];
   public gradelist= [];
+  public paymentmodelist = [];
+  public educationconsultantlist = [];
   public studentlist : Array<StudentList> = [];
   currentDate = new Date();
   public subscriptionStartMinDate: string;
@@ -81,7 +83,7 @@ export class FormWizardComponent {
         hours: new FormControl({value: '', disabled: true}),
         report: new FormControl({value: '', disabled: true}),
         sessionstypeperiod: new FormControl({value: '', disabled: true}),
-        modeofpayment: new FormControl('', Validators.required)
+        paymenttypeid: new FormControl('', Validators.required)
       });
       this.addstudent = this._formBuilder.group({
         studentfirstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
@@ -92,6 +94,8 @@ export class FormWizardComponent {
       this.getCountry();
       this.getPackageList();
       this.getGrade();
+      this.getEducationConsultant();
+      this.getPaymentMode();
       this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
       this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     }
@@ -224,6 +228,64 @@ export class FormWizardComponent {
         () => {
           this.spinner.hide();
         });
+     }
+    getPaymentMode(){
+      /** spinner starts on init */
+      this.spinner.show();
+      var url = this._appSettings.koncentAPI;
+      var entityMasterAPI = this._appSettings.entityMasterAPI;
+      url = url + entityMasterAPI;
+  
+      var data = {
+        SQLFROM: "Payment_Type",
+        SQLBY: "ByPayment_Type"
+      }
+      this._ConfigurationService.post(url, data)
+          .subscribe(response => {
+            if (response["response"] == 1) {
+              this.paymentmodelist = response["data"];
+            }
+            else {
+              this.paymentmodelist = [];
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+              this.spinner.hide();
+              this._commonfunctionsService.exactionLog(error.status, error.message);
+          },
+          () => {
+            this.spinner.hide();
+          });
+     }
+    getEducationConsultant(){
+      /** spinner starts on init */
+      this.spinner.show();
+      var url = this._appSettings.koncentAPI;
+      var entityMasterAPI = this._appSettings.entityMasterAPI;
+      url = url + entityMasterAPI;
+  
+      var data = {
+        SQLFROM: "User",
+        SQLBY: "ByEducation_Consultant"
+      }
+      this._ConfigurationService.post(url, data)
+          .subscribe(response => {
+            if (response["response"] == 1) {
+              this.educationconsultantlist = response["data"];
+            }
+            else {
+              this.educationconsultantlist = [];
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+              this.spinner.hide();
+              this._commonfunctionsService.exactionLog(error.status, error.message);
+          },
+          () => {
+            this.spinner.hide();
+          });
      }
     addstudentlist(){
       if (!this.addstudent.valid) {

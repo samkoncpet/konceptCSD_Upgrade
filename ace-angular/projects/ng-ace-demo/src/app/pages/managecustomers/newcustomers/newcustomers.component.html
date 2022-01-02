@@ -4,7 +4,7 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Add Customer
+            Update Customer
         </small>
     </h1>
 </div>
@@ -145,33 +145,18 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="id-form-field-1" class="mb-0">
-                                                        Mode of payment
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <input id="modeofpayment" type="text" formControlName="modeofpayment" placeholder="Mode of payment" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.modeofpayment.touched || submitted) && addcustomerFormControl.modeofpayment.errors?.required)}">
-                                                    <span class="form-text text-danger" *ngIf="(addcustomerFormControl.modeofpayment.touched || submitted) && (addcustomerFormControl.modeofpayment.errors?.required || addcustomerFormControl.modeofpayment.invalid)">
-                                                        {{getErrorMessage('modeofpayment')}}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
                                                         Education Consultant
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="educationconsultant" type="text" formControlName="educationconsultant" placeholder="Education Consultant" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
+                                                    <select id="educationconsultant" formControlName="educationconsultant" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
+                                                        <option value="">--Select--</option>
+                                                        <option *ngFor="let data of educationconsultantlist"
+                                                            value={{data.User_ID}}>{{data.FullName}}</option>
+                                                    </select>
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.educationconsultant.touched || submitted) && (addcustomerFormControl.educationconsultant.errors?.required || addcustomerFormControl.educationconsultant.invalid)">
                                                         {{getErrorMessage('educationconsultant')}}
                                                     </span>
-                                                </div>
-                                                <div class="col-md-2">
-
-                                                </div>
-                                                <div class="col-md-4">
-
                                                 </div>
                                             </div>
                                         </div>
@@ -282,130 +267,6 @@
                                                 <div class="card-toolbar mr-auto no-border">
                                                     <label class="mb-0">
                                                         <span class="align-middle d-block d-sm-inline text-600">
-                                                            Package Detail
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Subscription Date
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <input id="subscriptiondate" type="date" formControlName="subscriptiondate" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.subscriptiondate.touched || submitted) && addcustomerFormControl.subscriptiondate.errors?.required)}">
-                                                    <span class="form-text text-danger" *ngIf="(addcustomerFormControl.subscriptiondate.touched || submitted) && (addcustomerFormControl.subscriptiondate.errors?.required || addcustomerFormControl.subscriptiondate.invalid)">
-                                                        {{getErrorMessage('subscriptiondate')}}
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Subscription End Date
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <input id="subscriptionenddate" type="date" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.subscriptionenddate.touched || submitted) && addcustomerFormControl.subscriptionenddate.errors?.required)}">
-                                                    <span class="form-text text-danger" *ngIf="(addcustomerFormControl.subscriptionenddate.touched || submitted) && (addcustomerFormControl.subscriptionenddate.errors?.required || addcustomerFormControl.subscriptionenddate.invalid)">
-                                                        {{getErrorMessage('subscriptionenddate')}}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Package
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="packageid" formControlName="packageid" (change)="getpackageDetail($event)" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.packageid.touched || submitted) && addcustomerFormControl.packageid.errors?.required)}">
-                                                        <option value="">--Select--</option>
-                                                        <option *ngFor="let data of packagelist"
-                                                            value={{data.Package_ID}}>{{data.Package}}</option>
-                                                    </select>
-                                                    <span class="form-text text-danger" *ngIf="(addcustomerFormControl.packageid.touched || submitted) && (addcustomerFormControl.packageid.errors?.required || addcustomerFormControl.packageid.invalid)">
-                                                        {{getErrorMessage('packageid')}}
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Package Price
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <input id="packageprice" type="text" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.packageprice.touched || submitted) && addcustomerFormControl.packageprice.errors?.required)}">
-                                                    <span class="form-text text-danger" *ngIf="(addcustomerFormControl.packageprice.touched || submitted) && (addcustomerFormControl.packageprice.errors?.required || addcustomerFormControl.packageprice.invalid)">
-                                                        {{getErrorMessage('packageprice')}}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Session Type
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="sessionstypeperiod" formControlName="sessionstypeperiod" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                        <option value="">--Select--</option>
-                                                        <option value="0">Weekly</option>
-                                                        <option value="1">Monthly</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Session Visits
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="sessions" formControlName="sessions" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                        <option value="">--Select--</option>
-                                                        <option value="0">0</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Report
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="report" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                        <option value="">--Select--</option>
-                                                        <option value="1">1 Weekly</option>
-                                                        <option value="2">2 Weekly</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="id-form-field-1" class="mb-0">
-                                                        Hours
-                                                    </label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="hours" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                        <option value="">--Select--</option>
-                                                        <option value="1">1 Hour</option>
-                                                        <option value="2">2 Hours</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="card dcard">
-                                        <div class="card bgc-primary-d1 text-white">
-                                            <div class="card-header">
-                                                <div class="card-toolbar mr-auto no-border">
-                                                    <label class="mb-0">
-                                                        <span class="align-middle d-block d-sm-inline text-600">
                                                             Login Information
                                                         </span>
                                                     </label>
@@ -473,8 +334,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                                <!-- <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                                     <div class="offset-md-3 col-md-9 text-nowrap">
                                         <button class="btn btn-green btn-bold px-4" type="button" (click)="addnewcustomer()">
                                             <i class="fa fa-check mr-1"></i>
@@ -486,7 +346,7 @@
                                             Cancel
                                         </button>
                                     </div>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </ng-template>
@@ -494,10 +354,161 @@
 
                 <li [ngbNavItem]="2" class="nav-item mr-3px">
                     <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
-                        Package History
+                        Subscription Detail
                     </a>
                     <ng-template ngbNavContent>
-                        <app-packagehistory></app-packagehistory>
+
+
+                        <form #form [formGroup]="addpackage">
+                            <div class="form-group">
+                                <div class="card dcard">
+                                    <!-- <div class="card bgc-primary-d1 text-white">
+                                        <div class="card-header">
+                                            <div class="card-toolbar mr-auto no-border">
+                                                <label class="mb-0">
+                                                <span class="align-middle d-block d-sm-inline text-600">
+                                                    Package Detail
+                                                </span>
+                                            </label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Subscription Date <span class="text-danger">*</span>
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptiondate.touched || submitted) && (addpackageFormControl.subscriptiondate.errors?.required || addpackageFormControl.subscriptiondate.invalid)">
+                                                {{getErrorPackageMessage('subscriptiondate')}}
+                                            </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Subscription End Date <span class="text-danger">*</span>
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptionenddate.touched || submitted) && (addpackageFormControl.subscriptionenddate.errors?.required || addpackageFormControl.subscriptionenddate.invalid)">
+                                                {{getErrorPackageMessage('subscriptionenddate')}}
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Package <span class="text-danger">*</span>
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="packageid" formControlName="packageid" (change)="getpackageDetail($event)" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.packageid.touched || submitted) && addpackageFormControl.packageid.errors?.required)}">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let data of packagelist"
+                                                    value={{data.Package_ID}}>{{data.Package}}</option>
+                                            </select>
+                                                <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageid.touched || submitted) && (addpackageFormControl.packageid.errors?.required || addpackageFormControl.packageid.invalid)">
+                                                {{getErrorPackageMessage('packageid')}}
+                                            </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Package Price
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="packageprice" type="text" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packageprice.touched || submitted) && addpackageFormControl.packageprice.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageprice.touched || submitted) && (addpackageFormControl.packageprice.errors?.required || addpackageFormControl.packageprice.invalid)">
+                                                {{getErrorPackageMessage('packageprice')}}
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Session Type
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="sessionstypeperiod" formControlName="sessionstypeperiod" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <option value="">--Select--</option>
+                                                <option value="0">Weekly</option>
+                                                <option value="1">Monthly</option>
+                                            </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Session Visits
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="sessions" formControlName="sessions" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <option value="">--Select--</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Report
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="report" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <option value="">--Select--</option>
+                                                <option value="1">1 Weekly</option>
+                                                <option value="2">2 Weekly</option>
+                                            </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Hours
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="hours" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <option value="">--Select--</option>
+                                                <option value="1">1 Hour</option>
+                                                <option value="2">2 Hours</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                Mode of payment <span class="text-danger">*</span>
+                                            </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="paymenttypeid" formControlName="paymenttypeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.paymenttypeid.touched || submitted) && addpackageFormControl.paymenttypeid.errors?.required)}">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let data of paymentmodelist"
+                                                    value={{data.Payment_Type_ID}}>{{data.Payment_Type}}</option>
+                                            </select>
+                                                <span class="form-text text-danger" *ngIf="(addpackageFormControl.paymenttypeid.touched || submitted) && (addpackageFormControl.paymenttypeid.errors?.required || addpackageFormControl.paymenttypeid.invalid)">
+                                                {{getErrorPackageMessage('paymenttypeid')}}
+                                            </span>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </ng-template>
                 </li>
 
@@ -506,10 +517,104 @@
                         Student Details
                     </a>
                     <ng-template ngbNavContent>
-                        <div class="p-2">
-                            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-                            hoodie helvetica.
-                        </div>
+
+                        <form #form [formGroup]="addstudent">
+                            <div class="card dcard">
+                                <!-- <div class="card bgc-primary-d1 text-white">
+                                    <div class="card-header">
+                                        <div class="card-toolbar mr-auto no-border">
+                                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Add Student
+                            </span>
+                        </label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <label for="id-form-field-1" class="mb-0">
+                            First Name <span class="text-danger">*</span>
+                        </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id="studentfirstname" type="text" formControlName="studentfirstname" maxlength="50" class="form-control" placeholder="First Name" [ngClass]="{'border-danger': ((addstudentFormControl.studentfirstname.touched || submitted) && addstudentFormControl.studentfirstname.errors?.required)}">
+                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.studentfirstname.touched || submitted) && (addstudentFormControl.studentfirstname.errors?.required || addstudentFormControl.studentfirstname.invalid)">
+                            {{getErrorStudentMessage('studentfirstname')}}
+                        </span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="id-form-field-1" class="mb-0">
+                            Last Name <span class="text-danger">*</span>
+                        </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id="studentlastname" type="text" formControlName="studentlastname" maxlength="50" class="form-control" placeholder="Last Name" [ngClass]="{'border-danger': ((addstudentFormControl.studentlastname.touched || submitted) && addstudentFormControl.studentlastname.errors?.required)}">
+                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.studentlastname.touched || submitted) && (addstudentFormControl.studentlastname.errors?.required || addstudentFormControl.studentlastname.invalid)">
+                            {{getErrorStudentMessage('studentlastname')}}
+                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <label for="id-form-field-1" class="mb-0">
+                            Grade <span class="text-danger">*</span>
+                        </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="gradeid" formControlName="gradeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addstudentFormControl.gradeid.touched || submitted) && addstudentFormControl.gradeid.errors?.required)}">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let data of gradelist"
+                                value={{data.Level_ID}}>{{data.Level}}</option>
+                        </select>
+                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.gradeid.touched || submitted) && (addstudentFormControl.gradeid.errors?.required || addstudentFormControl.gradeid.invalid)">
+                            {{getErrorStudentMessage('gradeid')}}
+                        </span>
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-green btn-bold px-4" type="button" (click)="addstudentlist()">
+                            <i class="fa fa-check mr-1"></i>
+                            <span>Update</span>
+                          </button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group col-md-6">
+                                        <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                            <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                                <tr>
+                                                    <th class="d-none d-sm-table-cell">Sr. No.</th>
+                                                    <th class="d-none d-sm-table-cell">First Name</th>
+                                                    <th class="d-none d-sm-table-cell">Last Name</th>
+                                                    <th class="d-none d-sm-table-cell">Grade</th>
+                                                    <th class="d-none d-sm-table-cell">Action</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="mt-1" *ngFor="let data of studentlist">
+                                                <tr class="bgc-h-yellow-l4 d-style">
+                                                    <td>{{ data.id}}</td>
+                                                    <td>{{ data.firstname}}</td>
+                                                    <td>{{ data.lastname}}</td>
+                                                    <td>{{ data.gredeid}}</td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </ng-template>
                 </li>
             </ul>

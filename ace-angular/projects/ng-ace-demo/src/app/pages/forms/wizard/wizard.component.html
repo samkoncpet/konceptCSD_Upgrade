@@ -188,7 +188,11 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="educationconsultant" type="text" formControlName="educationconsultant" placeholder="Education Consultant" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
+                                                <select id="educationconsultant" formControlName="educationconsultant" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
+                                                    <option value="">--Select--</option>
+                                                    <option *ngFor="let data of educationconsultantlist"
+                                                        value={{data.User_ID}}>{{data.FullName}}</option>
+                                                </select>
                                                 <span class="form-text text-danger" *ngIf="(addcustomerFormControl.educationconsultant.touched || submitted) && (addcustomerFormControl.educationconsultant.errors?.required || addcustomerFormControl.educationconsultant.invalid)">
                                                     {{getErrorMessage('educationconsultant')}}
                                                 </span>
@@ -368,7 +372,7 @@
                                     <div class="btn-group mr-2 sw-btn-group" role="group"></div>
                                     <div class="btn-group mr-2 sw-btn-group-extra" role="group">
 
-                                        <button class="btn btn-outline-primary radius-r-1" awNextStep [class.d-none]="wizard.currentStepIndex == 3">
+                                        <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="addcustomer.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
                                             Next <i class="fa fa-arrow-right mr-15"></i>
                                           </button>
                                     </div>
@@ -389,7 +393,7 @@
                             </ng-template>
 
                             <ng-template awWizardStepTitle>
-                                <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Package Detail</span>
+                                <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Subscription Detail</span>
                             </ng-template>
 
                             <div class="border-y-1 brc-grey-l3 my-3 py-4">
@@ -401,7 +405,7 @@
                                                     <div class="card-toolbar mr-auto no-border">
                                                         <label class="mb-0">
                                                             <span class="align-middle d-block d-sm-inline text-600">
-                                                                Package Detail
+                                                                Subscription Detail
                                                             </span>
                                                         </label>
                                                     </div>
@@ -523,9 +527,13 @@
                                                         </label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input id="modeofpayment" type="text" formControlName="modeofpayment" placeholder="Mode of payment" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.modeofpayment.touched || submitted) && addpackageFormControl.modeofpayment.errors?.required)}">
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.modeofpayment.touched || submitted) && (addpackageFormControl.modeofpayment.errors?.required || addpackageFormControl.modeofpayment.invalid)">
-                                                            {{getErrorPackageMessage('modeofpayment')}}
+                                                        <select id="paymenttypeid" formControlName="paymenttypeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.paymenttypeid.touched || submitted) && addpackageFormControl.paymenttypeid.errors?.required)}">
+                                                            <option value="">--Select--</option>
+                                                            <option *ngFor="let data of paymentmodelist"
+                                                                value={{data.Payment_Type_ID}}>{{data.Payment_Type}}</option>
+                                                        </select>
+                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.paymenttypeid.touched || submitted) && (addpackageFormControl.paymenttypeid.errors?.required || addpackageFormControl.paymenttypeid.invalid)">
+                                                            {{getErrorPackageMessage('paymenttypeid')}}
                                                         </span>
                                                     </div>
                                                     <div class="col-md-2">
@@ -546,7 +554,7 @@
                                       <i class="fa fa-arrow-left mr-15"></i> Previous
                                     </button>
 
-                                            <button class="btn btn-outline-primary radius-r-1" awNextStep [class.d-none]="wizard.currentStepIndex == 3">
+                                            <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="addpackage.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
                                       Next <i class="fa fa-arrow-right mr-15"></i>
                                     </button>
                                         </div>

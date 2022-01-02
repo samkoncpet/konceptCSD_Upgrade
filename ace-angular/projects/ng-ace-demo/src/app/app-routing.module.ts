@@ -84,10 +84,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'customer/add1',
+        path: 'customer/update/:id',
         component: NewcustomersComponent,
         data: {
-          title: 'Customer'
+          title: 'Update Customer'
         }
       },
       {
