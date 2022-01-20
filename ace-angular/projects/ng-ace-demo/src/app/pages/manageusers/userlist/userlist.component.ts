@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/c
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-import { NgAceModalService } from 'ng-ace-admin';
 
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -13,7 +12,7 @@ import { CommonAccessModule, UserAccessModule } from '../../../shared/models/use
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
+import { CellCustomUserlistComponent } from '../../../common/cell-custom-userlist/cell-custom-userlist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
@@ -56,11 +55,12 @@ export class UserlistComponent implements OnInit {
     { field: 'Email', headerName: 'Email', sortable: true, editable: false, resizable: true },
     { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false, resizable: true, width: 150 },
     { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent },
-    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomComponent,
+    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomUserlistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/user/update/',
-        viewRouterLink: '/user/view/'
+        viewRouterLink: '/user/view/',
+        pageType: 'user'
       } }
   ]
   constructor(private router: Router,
@@ -69,7 +69,6 @@ export class UserlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService,
-    public modalService: NgAceModalService,
     public _commonfunctionsService: CommonfunctionsService) { 
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
@@ -180,6 +179,10 @@ export class UserlistComponent implements OnInit {
   
   getErrorMessage(control: string) {
       return FormErrorMessage(this.searchForm, control);
+  }
+
+  delete(){
+    alert();
   }
 
   // Pagination table code

@@ -68,6 +68,7 @@ export class SigninComponent implements OnInit {
             this._localstorageService.localstorageSet("token", response["sys_message"]);
             
             this.router.navigateByUrl('/dashboard');
+            //this.getNavigationMenu();
           }
           else {
             this._notificationsService.info(response["sys_message"], "info!");
@@ -83,6 +84,24 @@ export class SigninComponent implements OnInit {
           });
     
   }
+  getNavigationMenu(){
+    var url = this._appSettings.koncentAPI;
+    var getNavigationMenuAPI = this._appSettings.getNavigationMenuAPI;
+    url = url + getNavigationMenuAPI;
+
+    var data = {
+      roleid: "1"
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this._localstorageService.localstorageSet("navigationmenu", response["sys_message"]);
+            this.router.navigateByUrl('/dashboard');
+          }
+        },
+        (error) => {
+        });
+   }
   facebook(){
     window.location.href="https://www.facebook.com/koncepteducationinc";
   }

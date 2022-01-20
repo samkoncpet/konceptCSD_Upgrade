@@ -90,7 +90,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="fathercellno" type="text" formControlName="fathercellno" placeholder="Father's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
+                                                    <input id="fathercellno" type="text" formControlName="fathercellno" minlength="10" maxlength="15" placeholder="Father's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fathercellno.touched || submitted) && (addcustomerFormControl.fathercellno.errors?.required || addcustomerFormControl.fathercellno.invalid)">
                                                         {{getErrorMessage('fathercellno')}}
                                                     </span>
@@ -101,7 +101,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="mothercellno" type="text" formControlName="mothercellno" placeholder="Mother's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
+                                                    <input id="mothercellno" type="text" formControlName="mothercellno" minlength="10" maxlength="15" placeholder="Mother's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.mothercellno.touched || submitted) && (addcustomerFormControl.mothercellno.errors?.required || addcustomerFormControl.mothercellno.invalid)">
                                                         {{getErrorMessage('mothercellno')}}
                                                     </span>
@@ -138,7 +138,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
+                                                    <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.homephone.touched || submitted) && (addcustomerFormControl.homephone.errors?.required || addcustomerFormControl.homephone.invalid)">
                                                         {{getErrorMessage('homephone')}}
                                                     </span>
@@ -602,7 +602,7 @@
                                                     <td>{{ data.gredeid}}</td>
                                                     <td>
                                                         <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
-                                                            <i class="fa fa-edit"></i>
+                                                            <i class="fa fa-pencil-alt"></i>
                                                         </a>
                                                         <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
                                                             <i class="fa fa-trash-alt"></i>

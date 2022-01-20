@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SubmenuDeactivate } from '../../_providers/submenu-deactivate.provider';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -39,13 +38,20 @@ const routes: Routes = [
   {
     path: 'add',
     loadChildren: () => import('./wizard/wizard.module').then((m) => m.FormWizardModule)
+  },
+
+  {
+    path: 'addsession',
+    loadChildren: () => import('./booksession/booksessionwizard.module').then((m) => m.BookSessionWizardModule)
   }
 ]
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule,
 

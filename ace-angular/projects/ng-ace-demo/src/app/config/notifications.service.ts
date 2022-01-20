@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core'; 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { NgAceToasterService } from 'ng-ace-admin';
+import { NgAceToasterService, NgAceModalService } from 'ng-ace-admin';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
-  constructor(private toasterService: NgAceToasterService) { }
+  constructor(private toasterService: NgAceToasterService,
+    private toasterModalService: NgAceModalService) { }
     
   info(message: string, subject?: string): void {
     Swal.fire({
@@ -137,5 +139,35 @@ export class NotificationsService {
       ,
       progress: 'position-bl bgc-black-tp6 py-2px m-1px'
   })
-}
+  } 
+  showSuccessSmallDelay(subject?: string, message?: string) {
+    this.toasterService.show({
+      placement: 'rc',
+  
+      width: 360,
+      delay: 1000,
+    
+      className: 'bgc-green-d2 shadow',
+  
+      headerClass: 'd-none',
+      bodyClass: 'border-0 p-0',
+  
+      body: `
+          <p class='p-3 mb-0 text-center text-white'>
+            <span class='d-inline-block mb-3'>
+              <i class='fa fa-check fa-2x'></i>
+            </span><br />
+  
+            <span class='text-125'>          `
+            +  message +`
+            </span>
+          </p>
+          `
+        ,
+        progress: 'position-bl bgc-black-tp6 py-2px m-1px'
+    })
+    } 
+  toasterModalOpen(content: any, options?: any) {   
+    this.toasterModalService.open(content, options)
+  }
 }

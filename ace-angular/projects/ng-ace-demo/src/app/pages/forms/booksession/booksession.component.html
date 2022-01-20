@@ -1,0 +1,582 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Add Session
+        </small>
+    </h1>
+</div>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body pt-45">
+
+                <div class="mx-n3 mx-sm-auto">
+
+                    <aw-wizard [navBarLayout]="'large-empty-symbols'" class="ace-wizard" #wizard>
+                        <aw-wizard-step>
+                            <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                                <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                                    <div class="text-dark-l2 text-lg pt-3px">1</div>
+                                </div>
+
+                                <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                                    <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                                    <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">1</div>
+                                </div>
+                            </ng-template>
+
+                            <ng-template awWizardStepTitle>
+                                <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Summary</span>
+                            </ng-template>
+
+                            <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                                <form #form [formGroup]="customerinformation">
+                                    <div class="card dcard">
+                                        <div class="card bgc-primary-d1 text-white">
+                                            <div class="card-header">
+                                                <div class="card-toolbar mr-auto no-border">
+                                                    <label class="mb-0">
+                                                <span class="align-middle d-block d-sm-inline text-600">
+                                                    Customer Information
+                                                </span>
+                                            </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Customer ID
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="customerid" type="text" formControlName="customerid" placeholder="Customer ID" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.customerid.touched || submitted) && customerinformationFormControl.customerid.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.customerid.touched || submitted) && (customerinformationFormControl.customerid.errors?.required || customerinformationFormControl.customerid.invalid)">
+                                                    {{getErrorMessage('customerid')}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Father's First Name
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="fatherfirstrname" type="text" formControlName="fatherfirstrname" placeholder="Father's First Name" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.fatherfirstrname.touched || submitted) && customerinformationFormControl.fatherfirstrname.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.fatherfirstrname.touched || submitted) && (customerinformationFormControl.fatherfirstrname.errors?.required || customerinformationFormControl.fatherfirstrname.invalid)">
+                                                    {{getErrorMessage('fatherfirstrname')}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Father's Last Name
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="fatherlastname" type="text" formControlName="fatherlastname" placeholder="Father's Last Name" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.fatherlastname.touched || submitted) && customerinformationFormControl.fatherlastname.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.fatherlastname.touched || submitted) && (customerinformationFormControl.fatherlastname.errors?.required || customerinformationFormControl.fatherlastname.invalid)">
+                                                    {{getErrorMessage('fatherlastname')}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Mother's First Name
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="motherfirstname" type="text" formControlName="motherfirstname" placeholder="Mother's First Name" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.motherfirstname.touched || submitted) && customerinformationFormControl.motherfirstname.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.motherfirstname.touched || submitted) && (customerinformationFormControl.motherfirstname.errors?.required || customerinformationFormControl.motherfirstname.invalid)">
+                                                    {{getErrorMessage('motherfirstname')}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Mother's Last Name
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="motherlastname" type="text" formControlName="motherlastname" placeholder="Mother's Last Name" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.motherlastname.touched || submitted) && customerinformationFormControl.motherlastname.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.motherlastname.touched || submitted) && (customerinformationFormControl.motherlastname.errors?.required || customerinformationFormControl.motherlastname.invalid)">
+                                                    {{getErrorMessage('motherlastname')}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Mother's Cell No.
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="mothercellno" type="text" formControlName="mothercellno" placeholder="Mother's Cell No." minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.mothercellno.touched || submitted) && customerinformationFormControl.mothercellno.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.mothercellno.touched || submitted) && (customerinformationFormControl.mothercellno.errors?.required || customerinformationFormControl.mothercellno.invalid)">
+                                                    {{getErrorMessage('mothercellno')}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Home Phone
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.homephone.touched || submitted) && customerinformationFormControl.homephone.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.homephone.touched || submitted) && (customerinformationFormControl.homephone.errors?.required || customerinformationFormControl.homephone.invalid)">
+                                                    {{getErrorMessage('homephone')}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Father's Cell No.
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="fathercellno" type="text" formControlName="fathercellno" placeholder="Father's Cell No." minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((customerinformationFormControl.fathercellno.touched || submitted) && customerinformationFormControl.fathercellno.errors?.required)}">
+                                                <span class="form-text text-danger" *ngIf="(customerinformationFormControl.fathercellno.touched || submitted) && (customerinformationFormControl.fathercellno.errors?.required || customerinformationFormControl.fathercellno.invalid)">
+                                                    {{getErrorMessage('fathercellno')}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form #form [formGroup]="addpackage">
+                                    <div class="card dcard">
+                                        <div class="card bgc-primary-d1 text-white">
+                                            <div class="card-header">
+                                                <div class="card-toolbar mr-auto no-border">
+                                                    <label class="mb-0">
+                                                            <span class="align-middle d-block d-sm-inline text-600">
+                                                                Package Information
+                                                            </span>
+                                                        </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Subscription Start
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="subscriptiondate" type="text" formControlName="subscriptiondate" placeholder="Subscription Date" class="form-control">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                    Subscription End
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input id="subscriptionenddate" type="text" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form #form [formGroup]="addstudent">
+                                    <div class="card dcard">
+                                        <div class="card bgc-primary-d1 text-white">
+                                            <div class="card-header">
+                                                <div class="card-toolbar mr-auto no-border">
+                                                    <label class="mb-0">
+                                                            <span class="align-middle d-block d-sm-inline text-600">
+                                                                Student Information
+                                                            </span>
+                                                        </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                                <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                                    <tr>
+                                                        <th class="d-none d-sm-table-cell">Sr. No.</th>
+                                                        <th class="d-none d-sm-table-cell">First Name</th>
+                                                        <th class="d-none d-sm-table-cell">Last Name</th>
+                                                        <th class="d-none d-sm-table-cell">Grade</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="mt-1">
+                                                    <tr class="bgc-h-yellow-l4 d-style">
+                                                        <td>1</td>
+                                                        <td>Rahul</td>
+                                                        <td>Kumar</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr class="bgc-h-yellow-l4 d-style">
+                                                        <td>2</td>
+                                                        <td>Jaya</td>
+                                                        <td>Bahadur</td>
+                                                        <td>6</td>
+                                                    </tr>
+                                                </tbody>
+                                                <!-- <tbody class="mt-1" *ngFor="let data of studentlist">
+                                                    <tr class="bgc-h-yellow-l4 d-style">
+                                                        <td>{{ data.Customer_Child_ID}}</td>
+                                                        <td>{{ data.FirstName}}</td>
+                                                        <td>{{ data.LastName}}</td>
+                                                        <td>{{ data.Level_ID}}</td>
+                                                    </tr>
+                                                </tbody> -->
+                                            </table>
+                                        </div><br>
+                                        <div class="form-group row">
+                                            <div class="col-md-3">
+                                                Total Tutor Visit:
+                                            </div>
+                                            <div class="col-md-3">
+                                                45
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3">
+                                                Total Tutor Completed:
+                                            </div>
+                                            <div class="col-md-3">
+                                                10
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3">
+                                                Total Tutor Pending:
+                                            </div>
+                                            <div class="col-md-3">
+                                                35
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                                <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
+                                    <div class="btn-group mr-2 sw-btn-group" role="group"></div>
+                                    <div class="btn-group mr-2 sw-btn-group-extra" role="group">
+                                        <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="customerinformation.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
+                                            Next <i class="fa fa-arrow-right mr-15"></i>
+                                          </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </aw-wizard-step>
+
+                        <aw-wizard-step>
+                            <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                                <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                                    <div class="text-dark-l2 text-lg pt-3px">2</div>
+                                </div>
+
+                                <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                                    <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                                    <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">2</div>
+                                </div>
+                            </ng-template>
+
+                            <ng-template awWizardStepTitle>
+                                <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Customer Service Remarks</span>
+                            </ng-template>
+
+                            <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                                <form #form [formGroup]="customerserviceremarks">
+                                    <div class="form-group">
+                                        <div class="card dcard">
+                                            <div class="card bgc-primary-d1 text-white">
+                                                <div class="card-header">
+                                                    <div class="card-toolbar mr-auto no-border">
+                                                        <label class="mb-0">
+                                                            <span class="align-middle d-block d-sm-inline text-600">
+                                                                Subscription Detail
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group row">
+                                                    <div class="col-md-2">
+                                                        <label for="id-form-field-1" class="mb-0">
+                                                            Next Call Date <span class="text-danger">*</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group date" id="id-timepicker">
+                                                            <input id="nextcalldate" type="date" formControlName="nextcalldate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Next Call Date" class="form-control" [ngClass]="{'border-danger': ((customerserviceremarksFormControl.nextcalldate.touched || submitted) && customerserviceremarksFormControl.nextcalldate.errors?.required)}">
+                                                            <div class="input-group-addon input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <i class="far fa-clock"></i>
+                                                                </div>
+                                                            </div>
+                                                            <span class="form-text text-danger" *ngIf="(customerserviceremarksFormControl.nextcalldate.touched || submitted) && (customerserviceremarksFormControl.nextcalldate.errors?.required || customerserviceremarksFormControl.nextcalldate.invalid)">
+                                                            {{getErrorCustomerServicerMessage('nextcalldate')}}
+                                                        </span></div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="id-form-field-1" class="mb-0">
+                                                            Next TV <span class="text-danger">*</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="input-group date" id="id-timepicker">
+                                                            <input id="nextdate" type="date" min="{{subscriptionEndMinDate}}" formControlName="nextdate" placeholder="Next Date" class="form-control" [ngClass]="{'border-danger': ((customerserviceremarksFormControl.nextdate.touched || submitted) && customerserviceremarksFormControl.nextdate.errors?.required)}">
+                                                            <div class="input-group-addon input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <i class="far fa-clock"></i>
+                                                                </div>
+                                                            </div>
+                                                            <span class="form-text text-danger" *ngIf="(customerserviceremarksFormControl.nextdate.touched || submitted) && (customerserviceremarksFormControl.nextdate.errors?.required || customerserviceremarksFormControl.nextdate.invalid)">
+                                                            {{getErrorCustomerServicerMessage('nextdate')}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-2">
+                                                        <label for="id-form-field-1" class="mb-0">
+                                                            Enter Remarks
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <textarea id="remarks" type="text" formControlName="remarks" placeholder="Remarks" class="form-control" [ngClass]="{'border-danger': ((customerserviceremarksFormControl.remarks.touched || submitted) && customerserviceremarksFormControl.remarks.errors?.required)}"></textarea>
+                                                        <span class="form-text text-danger" *ngIf="(customerserviceremarksFormControl.remarks.touched || submitted) && (customerserviceremarksFormControl.remarks.errors?.required || customerserviceremarksFormControl.remarks.invalid)">
+                                                            {{getErrorCustomerServicerMessage('remarks')}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button class="btn btn-green btn-bold px-4" type="button" (click)="addremark()">
+                                                            <span>Add</span>
+                                                          </button>
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <label for="id-form-field-1" class="mb-0">
+                                                        Remarks History
+                                                    </label><br><br>
+                                                        <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                                            <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                                                <tr>
+                                                                    <th class="d-none d-sm-table-cell">ID</th>
+                                                                    <th class="d-none d-sm-table-cell">Added By</th>
+                                                                    <th class="d-none d-sm-table-cell">Date Time</th>
+                                                                    <th class="d-none d-sm-table-cell">Remarks</th>
+                                                                    <th class="d-none d-sm-table-cell">Next Call Date</th>
+                                                                    <th class="d-none d-sm-table-cell">Next TV</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody class="mt-1" *ngFor="let data of studentlist">
+                                                                <tr class="bgc-h-yellow-l4 d-style">
+                                                                    <td>{{ data.Customer_Child_ID}}</td>
+                                                                    <td>{{ data.FirstName}}</td>
+                                                                    <td>{{ data.LastName}}</td>
+                                                                    <td>{{ data.Level_ID}}</td>
+                                                                    <td>{{ data.Level_ID}}</td>
+                                                                    <td>{{ data.Level_ID}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
+                                        <div class="btn-group mr-2 sw-btn-group" role="group"></div>
+                                        <div class="btn-group mr-2 sw-btn-group-extra" role="group">
+                                            <button class="btn btn-outline-secondary radius-l-1 mr-2px" (click)="wizard.goToPreviousStep()" [disabled]="wizard.currentStepIndex == 0">
+                                      <i class="fa fa-arrow-left mr-15"></i> Previous
+                                    </button>
+
+                                            <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="addpackage.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
+                                      Next <i class="fa fa-arrow-right mr-15"></i>
+                                    </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </aw-wizard-step>
+
+                        <aw-wizard-step>
+                            <ng-template awWizardStepSymbol let-wizardStep="wizardStep">
+                                <div *ngIf="!wizardStep.completed && !wizardStep.selected" [NgAceClass]='{"+2": "brc-secondary-m4", "-2": "brc-primary", "+4": "brc-secondary-m4", "-4": "brc-primary"}'>
+                                    <div class="text-dark-l2 text-lg pt-3px">3</div>
+                                </div>
+
+                                <div *ngIf="wizardStep.completed || wizardStep.selected" class="dh-zoom-3" [NgAceClass]='{"+2": "brc-primary", "-2": "brc-secondary-m4", "+4": "brc-primary", "-4": "brc-secondary-m4"}'>
+                                    <i *ngIf="wizardStep.completed && !wizardStep.editing" class="fa fa-check text-success-m1 pt-3 text-125"></i>
+                                    <div *ngIf="wizardStep.selected || wizardStep.editing" class="text-dark-l2 text-lg pt-3px">3</div>
+                                </div>
+                            </ng-template>
+
+                            <ng-template awWizardStepTitle>
+                                <span class="text-capitalize letter-spacing text-400 text-md text-dark-m3">Booking</span>
+                            </ng-template>
+
+                            <div class="border-y-1 brc-grey-l3 my-3 py-4">
+                                <div class="page-header border-0 mb-3">
+                                    <h1 class="page-title text-primary-d2 text-150">
+                                        Fullcalendar
+                                        <small class="page-info text-secondary-d4">
+                                            <i class="fa fa-angle-double-right text-80 opacity-1"></i>
+                                            with draggable &amp; editable events 
+                                        </small>
+                                    </h1>
+                                </div>
+
+
+                                <!-- message to be displayed on touch devices -->
+                                <div *ngIf="touchDevice" class="alert bgc-white border-l-4 brc-purple-m1 shadow-sm" role="alert">
+                                    Touch a date slot and hold down to add a new event
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-12 col-md-9" id='calendar-container'>
+                                        <div class="card acard">
+                                            <div class="card-body p-lg-4">
+                                                <div class="text-blue-d1">
+                                                    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12 col-md-3 mt-3 mt-md-4" #externalEvents>
+                                        <div class="bgc-secondary-l4 border-1 brc-secondary-l2 shadow-sm p-35 radius-1">
+                                            <p class="text-120 text-primary-d2">
+                                                Draggable Events
+                                            </p>
+
+                                            <p *ngIf="!touchDevice" class="alert bgc-white border-none border-l-4 brc-purple-m1">
+                                                Drag and drop the following events or click on a date slot to add a new event
+                                            </p>
+
+                                            <div>
+                                                <div class='fc-event badge bgc-blue-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-blue-d1 text-white text-95">
+                                                    My Event 1
+                                                </div>
+                                                <div class='fc-event badge bgc-green-d2 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-green-d2 text-white text-95">
+                                                    My Event 2
+                                                </div>
+                                                <div class='fc-event badge bgc-red-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-red-d1 text-white text-95">
+                                                    My Event 3
+                                                </div>
+                                                <div class='fc-event badge bgc-purple-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-purple-d1 text-white text-95">
+                                                    My Event 4
+                                                </div>
+                                                <div class='fc-event badge bgc-orange-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-orange-d1 text-white text-95">
+                                                    My Event 5
+                                                </div>
+                                            </div>
+
+                                            <label class="mt-2">
+                                          <input type="checkbox" [(ngModel)]="dropRemove" [ngModelOptions]="{standalone: true}" class="mr-1" />
+                                          Remove after drop
+                                        </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <ng-template #newEventModal let-modal>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-primary-d3">
+                                            New Event Title:
+                                        </h5>
+
+                                        <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <input ngbAutofocus type="text" class="form-control" [(ngModel)]="newEventTitle" [ngModelOptions]="{standalone: true}" />
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary px-4" (click)="modal.close()">
+                                            Cancel
+                                        </button>
+
+                                        <button type="button" class="btn btn-primary" (click)="modal.close('save')">
+                                            OK
+                                        </button>
+                                    </div>
+                                </ng-template>
+
+
+                                <ng-template #editEventModal let-modal>
+                                    <div ngbAutofocus class="modal-header">
+                                        <h5 class="modal-title text-primary-d3">
+                                            Edit Event:
+                                        </h5>
+
+                                        <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="input-group">
+                                            <div class="input-groupp-repend align-self-center mr-2">
+                                                Title
+                                            </div>
+                                            <input class="form-control" type="text" [(ngModel)]="editingEventTitle" [ngModelOptions]="{standalone: true}" />
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-sm btn-success btn-bold" (click)="modal.close('save')">
+                                                    <i class="fa fa-check mr-2px"></i> Save
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger btn-bold ml-2px" (click)="modal.close('delete')">
+                                                    <i class="far fa-trash-alt text-120"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </aw-wizard-step>
+                    </aw-wizard>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- .card -->
+
+    </div>
+</div>

@@ -35,10 +35,14 @@ import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.compone
 import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.component';
 import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
 import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
-import { CellCustomComponent } from './common/cell-custom/cell-custom.component';
 import { CellCustomActiveComponent } from './common/cell-custom-active/cell-custom-active.component';
 import { CellGrouplistComponent } from './common/cell-grouplist/cell-grouplist.component';
 import { PackagehistoryComponent } from './pages/managecustomers/packagehistory/packagehistory.component';
+import { CellCustomUserlistComponent } from './common/cell-custom-userlist/cell-custom-userlist.component';
+import { CellCustomPackagelistComponent } from './common/cell-custom-packagelist/cell-custom-packagelist.component';
+import { CellCustomOrganizationlistComponent } from './common/cell-custom-organizationlist/cell-custom-organizationlist.component';
+import { NewsessionComponent } from './pages/managesession/newsession/newsession.component';
+import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
 
 @NgModule({
   declarations: [
@@ -56,10 +60,14 @@ import { PackagehistoryComponent } from './pages/managecustomers/packagehistory/
     GrouplistComponent,
     NeworganizationComponent,
     OrganizationlistComponent,
-    CellCustomComponent,
     CellCustomActiveComponent,
     CellGrouplistComponent,
-    PackagehistoryComponent
+    PackagehistoryComponent,
+    CellCustomUserlistComponent,
+    CellCustomPackagelistComponent,
+    CellCustomOrganizationlistComponent,
+    NewsessionComponent,
+    SessionlistComponent
   ],
   imports: [
     CommonModule,
@@ -84,7 +92,6 @@ import { PackagehistoryComponent } from './pages/managecustomers/packagehistory/
     MatPaginatorModule
   ],
   providers: [],
-  entryComponents: [CellCustomComponent],
   bootstrap: [AppComponent,]
 })
 export class AppModule { }

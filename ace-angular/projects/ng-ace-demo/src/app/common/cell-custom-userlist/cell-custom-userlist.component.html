@@ -1,19 +1,19 @@
 <!-- <div class='d-none d-lg-flex'>
-    <a *ngIf="CommonAccessModule.Is_Update && !this.Is_Predefined" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
         <i class="fa fa-pencil-alt"></i>
     </a>
     <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
         <i class="fa fa-eye"></i>
     </a>
 </div> -->
-<div ref="eLabel" class="ag-header-cell-label actions" role="presentation" unselectable="on">
-    <a *ngIf="CommonAccessModule.Is_Update && !this.Is_Predefined" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+<div ref="eLabel" class="ag-header-cell-label actions" role="presentation" unselectable="on" id="grid">
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
         <i class="fa fa-pencil-alt"></i>
     </a>
     <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
         <i class="fa fa-eye"></i>
     </a>
-    <a *ngIf="CommonAccessModule.Is_Retrieve && !this.Is_Predefined" role="button" (click)='open(dangerModal, { "backdropClass": "bgc-white", "contentClass": "bgc-transparent brc-danger-m2 shadow" })' class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+    <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" (click)='open(dangerModal, { "backdropClass": "bgc-white", "contentClass": "bgc-transparent brc-danger-m2 shadow" })' class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
         <i class="fas fa-trash-alt text-danger-m1"></i>
     </a>
     <ng-template #dangerModal let-modal id="custom-modal">

@@ -10,16 +10,30 @@ import { NgAceAdminModule } from 'ng-ace-admin';
 
 import { NgxMaskModule } from 'ngx-mask';
 
-import { FormWizardComponent } from './wizard.component';
+import { BooksessionComponent } from './booksession.component';
 
-import { ValidationComponent } from './validation-form/validation.component';
+/* Full Calendar */
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+import bootstrapTheme  from '@fullcalendar/bootstrap';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin,
+  bootstrapTheme
+]);
 
 const routes: Routes = [
   {
     path: '',
-    component: FormWizardComponent,
+    component: BooksessionComponent,
     data : {
-      title: 'Customer'
+      title: 'Session'
     }
   }
 ];
@@ -27,8 +41,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    FormWizardComponent,
-    ValidationComponent
+    BooksessionComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +51,7 @@ const routes: Routes = [
     NgAceAdminModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+    FullCalendarModule,
 
     ArchwizardModule,
 
@@ -47,4 +61,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class FormWizardModule { }
+export class BookSessionWizardModule { }

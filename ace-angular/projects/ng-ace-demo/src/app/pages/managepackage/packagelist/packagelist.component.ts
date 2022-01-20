@@ -8,7 +8,7 @@ import { CommonAccessModule, PackagesAccessModule } from '../../../shared/models
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
+import { CellCustomPackagelistComponent } from '../../../common/cell-custom-packagelist/cell-custom-packagelist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
@@ -35,11 +35,12 @@ export class PackagelistComponent implements OnInit {
     { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false, resizable: true },
     { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false, resizable: true, width: 150 },
     { field: 'Is_Active', headerName: 'Status', sortable: true, resizable: true, width: 100,  cellRendererFramework: CellCustomActiveComponent },
-    { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomComponent,
+    { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomPackagelistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/package/update/',
-        viewRouterLink: '/package/view/'
+        viewRouterLink: '/package/view/',
+        pageType: 'package'
       } }
   ]
 

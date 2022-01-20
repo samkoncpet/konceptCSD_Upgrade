@@ -77,7 +77,7 @@
                                         <div class="form-group row">
                                             <div class="col-md-2">
                                                 <label for="id-form-field-1" class="mb-0">
-                                                    Father's First Name <span class="text-danger">*</span>
+                                                    Father's First Name
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
@@ -101,7 +101,7 @@
                                         <div class="form-group row">
                                             <div class="col-md-2">
                                                 <label for="id-form-field-1" class="mb-0">
-                                                    Mother's First Name <span class="text-danger">*</span>
+                                                    Mother's First Name
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
@@ -129,7 +129,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="fathercellno" type="text" formControlName="fathercellno" placeholder="Father's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
+                                                <input id="fathercellno" type="text" formControlName="fathercellno" placeholder="Father's Cell No." minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fathercellno.touched || submitted) && (addcustomerFormControl.fathercellno.errors?.required || addcustomerFormControl.fathercellno.invalid)">
                                                     {{getErrorMessage('fathercellno')}}
                                                 </span>
@@ -140,7 +140,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="mothercellno" type="text" formControlName="mothercellno" placeholder="Mother's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
+                                                <input id="mothercellno" type="text" formControlName="mothercellno" placeholder="Mother's Cell No." minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addcustomerFormControl.mothercellno.touched || submitted) && (addcustomerFormControl.mothercellno.errors?.required || addcustomerFormControl.mothercellno.invalid)">
                                                     {{getErrorMessage('mothercellno')}}
                                                 </span>
@@ -177,7 +177,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
+                                                <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addcustomerFormControl.homephone.touched || submitted) && (addcustomerFormControl.homephone.errors?.required || addcustomerFormControl.homephone.invalid)">
                                                     {{getErrorMessage('homephone')}}
                                                 </span>
@@ -228,7 +228,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <label for="id-form-field-1" class="mb-0">
-                                                        Address 2 <span class="text-danger">*</span>
+                                                        Address 2
                                                     </label>
                                             </div>
                                             <div class="col-md-4">
@@ -419,10 +419,16 @@
                                                         </label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptiondate.touched || submitted) && (addpackageFormControl.subscriptiondate.errors?.required || addpackageFormControl.subscriptiondate.invalid)">
+                                                        <div class="input-group date" id="id-timepicker">
+                                                            <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
+                                                            <div class="input-group-addon input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <i class="far fa-clock"></i>
+                                                                </div>
+                                                            </div>
+                                                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptiondate.touched || submitted) && (addpackageFormControl.subscriptiondate.errors?.required || addpackageFormControl.subscriptiondate.invalid)">
                                                             {{getErrorPackageMessage('subscriptiondate')}}
-                                                        </span>
+                                                        </span></div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="id-form-field-1" class="mb-0">
@@ -430,10 +436,17 @@
                                                         </label>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptionenddate.touched || submitted) && (addpackageFormControl.subscriptionenddate.errors?.required || addpackageFormControl.subscriptionenddate.invalid)">
+                                                        <div class="input-group date" id="id-timepicker">
+                                                            <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
+                                                            <div class="input-group-addon input-group-append">
+                                                                <div class="input-group-text">
+                                                                    <i class="far fa-clock"></i>
+                                                                </div>
+                                                            </div>
+                                                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptionenddate.touched || submitted) && (addpackageFormControl.subscriptionenddate.errors?.required || addpackageFormControl.subscriptionenddate.invalid)">
                                                             {{getErrorPackageMessage('subscriptionenddate')}}
-                                                        </span>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -658,12 +671,15 @@
 
                                                     <tbody class="mt-1" *ngFor="let data of studentlist">
                                                         <tr class="bgc-h-yellow-l4 d-style">
-                                                            <td>{{ data.id}}</td>
-                                                            <td>{{ data.firstname}}</td>
-                                                            <td>{{ data.lastname}}</td>
-                                                            <td>{{ data.gredeid}}</td>
+                                                            <td>{{ data.Customer_Child_ID}}</td>
+                                                            <td>{{ data.FirstName}}</td>
+                                                            <td>{{ data.LastName}}</td>
+                                                            <td>{{ data.Level_ID}}</td>
                                                             <td>
-                                                                <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                                <a href="javascript:void(0)" (click)="editStudent(data.Customer_Child_ID)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                                    <i class="fa fa-pencil-alt"></i>
+                                                                </a>
+                                                                <a href="javascript:void(0)" (click)="deleteStudent(data.Customer_Child_ID)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
                                                                     <i class="fa fa-trash-alt"></i>
                                                                 </a>
                                                             </td>
@@ -681,7 +697,7 @@
                                       <i class="fa fa-arrow-left mr-15"></i> Previous
                                     </button>
 
-                                            <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="addstudent.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
+                                            <button class="btn btn-outline-primary radius-r-1" (click)="submit()" awNextStep [disabled]="studentlist.length <= 0" [class.d-none]="wizard.currentStepIndex == 3">
                                       Submit <i class="fa fa-arrow-right mr-15"></i>
                                     </button>
                                         </div>

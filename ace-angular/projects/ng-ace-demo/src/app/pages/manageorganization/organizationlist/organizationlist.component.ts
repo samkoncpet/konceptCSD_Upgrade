@@ -8,7 +8,7 @@ import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/mo
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomComponent } from '../../../common/cell-custom/cell-custom.component';
+import { CellCustomOrganizationlistComponent } from '../../../common/cell-custom-organizationlist/cell-custom-organizationlist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
@@ -36,11 +36,12 @@ export class OrganizationlistComponent implements OnInit {
     { field: 'Email', headerName: 'Email', sortable: true, editable: false, resizable: true },
     { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false, resizable: true, width: 150 },
     { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent },
-    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomComponent,
+    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomOrganizationlistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/organization/update/',
-        viewRouterLink: '/organization/view/'
+        viewRouterLink: '/organization/view/',
+        pageType: 'organization'
       } }
   ]
 

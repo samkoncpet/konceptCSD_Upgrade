@@ -20,6 +20,7 @@ export class CustomerslistComponent implements OnInit {
 
   searchForm: FormGroup;
   public customerlist = [];
+  public userlist = [];
     
   public CommonAccessModule = new CommonAccessModule();
 
@@ -36,8 +37,9 @@ export class CustomerslistComponent implements OnInit {
     { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/group/update/',
-        viewRouterLink: '/group/view/'
+        editRouterLink: '/customer/update/',
+        viewRouterLink: '/customer/view/',
+        pageType: 'customer'
       } }
   ]
 
@@ -53,32 +55,36 @@ export class CustomerslistComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
-      groupid: new FormControl('', Validators.required),
-      searchtext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
-      is_active: new FormControl(true, Validators.required),
+      User_ID: new FormControl(''),
+      Customer_ID: new FormControl(0),
+      Search: new FormControl('', [Validators.minLength(2), Validators.maxLength(50)]),
+      State_ID: new FormControl(0),
+      Is_Active: new FormControl(true, Validators.required),
     });
-    //this.getUserGroup();
+    this.getUserList();
+    this.filterCustomerList();
   }
-  getUserGroup(){
+  getUserList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
 
     var data = {
+      User_ID: 0,
+      Search: '',
+      User_Type: "user",
       User_Group_ID: 0,
-      Search: "",
-      Is_Predefined: null,
-      Is_Active: null
+      Is_Active: true
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.customerlist = response["data"];
+            this.userlist = response["data"];
           }
           else {
-            this.customerlist = [];
+            this.userlist = [];
           }
           this.spinner.hide();
         },
@@ -90,18 +96,19 @@ export class CustomerslistComponent implements OnInit {
           this.spinner.hide();
         });
    }
-   filterGrouplist(){
+   filterCustomerList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var fetchcustomerAPI = this._appSettings.fetchcustomerAPI;
+    url = url + fetchcustomerAPI;
 
     var data = {
-      User_Group_ID: 0,
-      Search: this.searchForm.get('searchtext').value,
-      Is_Predefined: null,
-      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('is_active').value)
+      User_ID: this.searchForm.get('User_ID').value,
+      Customer_ID: this.searchForm.get('Customer_ID').value,
+      Search: this.searchForm.get('Search').value,
+      State_ID: this.searchForm.get('State_ID').value,
+      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('Is_Active').value)
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
@@ -128,7 +135,7 @@ export class CustomerslistComponent implements OnInit {
 
   reset(){
     this.searchForm.reset();
-    this.getUserGroup();
+    this.filterCustomerList();
    }
   // Pagination table code
   private gridApi!: any

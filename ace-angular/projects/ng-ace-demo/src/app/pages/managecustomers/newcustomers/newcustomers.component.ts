@@ -312,8 +312,8 @@ export class NewcustomersComponent implements OnInit {
    editStudent(id: number){
     var data = this.studentlist.find(x => x.id == id);
     if(data != null){
-      this.addstudent.controls.studentfirstname.setValue(data["firstname"]);
-      this.addstudent.controls.studentlastname.setValue(data["lastname"]);
+      this.addstudent.controls.studentfirstname.setValue(data["studentfirstname"]);
+      this.addstudent.controls.studentlastname.setValue(data["studentlastname"]);
       this.addstudent.controls.gradeid.setValue(data["gredeid"])
     }
    }

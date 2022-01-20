@@ -24,7 +24,83 @@
 </div>
 <div class="row mt-3">
     <div class="col-12">
-
+        <div class="card dcard">
+            <form [formGroup]="searchForm" autocomplete="off">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Filter
+                        </span>
+                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-3 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                User ID
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="groupid" formControlName="User_ID" #User_ID class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let data of userlist" value={{data.User_ID}}>{{data.User_Group_Name}}</option>  
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Customer ID
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" formControlName="Customer_ID" maxlength="20" class="form-control" placeholder="User ID">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                            Search
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                                <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
+                                <input type="text" formControlName="searchtext" maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                State ID
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" formControlName="State_ID" maxlength="20" class="form-control" placeholder="State ID">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Is Active
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
+                        </div>
+                        <div class="col-md-3 mb-0">
+                            <button class="btn px-4 btn-green mb-1" (click)="filterCustomerList()">
+                                <i class="fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Show
+                                </button>
+                            <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold mb-1 px-4" type="reset" (click)="reset()">
+                                Reset
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <br>
         <div class="card dcard">
             <div class="card bgc-primary-d1 text-white">

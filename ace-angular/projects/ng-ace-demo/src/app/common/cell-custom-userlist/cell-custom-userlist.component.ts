@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -6,24 +6,21 @@ import { NgAceModalService } from 'ng-ace-admin';
 
 import { CommonAccessModule, UserAccessModule, OrganizationAccessModule, CustomersAccessModule, PackagesAccessModule, SettingsAccessModule } from '../../shared/models/user-access/user-access.model';
 import { LocalstorageService } from '../../config/localstorage.service';
-import { CommonfunctionsService } from '../functions/commonfunctions.service';
 import { ConfigurationService } from '../../config/configuration.service';
 import { AppsettingsService } from '../../config/appsettings.service';
 import { NgAceToasterService } from 'ng-ace-admin';
 import { NotificationsService } from '../../config/notifications.service';
-import { GrouplistComponent } from '../../pages/managegroup/grouplist/grouplist.component';
+import { UserlistComponent } from '../../pages/manageusers/userlist/userlist.component';
 
 @Component({
-  selector: 'app-cell-grouplist',
-  templateUrl: './cell-grouplist.component.html',
-  styleUrls: ['./cell-grouplist.component.css']
+  selector: 'app-cell-custom-userlist',
+  templateUrl: './cell-custom-userlist.component.html',
+  styleUrls: ['./cell-custom-userlist.component.css']
 })
-export class CellGrouplistComponent implements OnInit {
+export class CellCustomUserlistComponent implements OnInit {
   data: any;
   params: any;
   id: string = "";
-  Is_Predefined: boolean;
-  
 
   public CommonAccessModule = new CommonAccessModule();
   public UserAccessModule = new UserAccessModule();
@@ -33,19 +30,19 @@ export class CellGrouplistComponent implements OnInit {
   public SettingsAccessModule = new SettingsAccessModule();
 
   constructor(private http: HttpClient, private router: Router,    
+    private _localstorageService: LocalstorageService,
+    private toasterService: NgAceToasterService,
     private spinner: NgxSpinnerService,
-    private _commonfunctionsService: CommonfunctionsService,
     private _appSettings: AppsettingsService,
     public _modalService: NgAceModalService,
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
-    public _grouplistComponent: GrouplistComponent) {    
+    public _userlistComponent: UserlistComponent) {    
   }
   agInit(params) {
     this.params = params;
     this.data = params.value;
     this.id = this.data; 
-    this.Is_Predefined = this._commonfunctionsService.getBoolean(params.data.Is_Predefined);
   }
   ngOnInit() {
     this.getAccessModel();
@@ -65,7 +62,6 @@ export class CellGrouplistComponent implements OnInit {
     let rowData = this.params.value;
     this.id = rowData;
   }
-  
 
   open(content: any, options?: any) { 
     this._notificationsService.toasterModalOpen(content, options)
@@ -73,23 +69,25 @@ export class CellGrouplistComponent implements OnInit {
 
   delete(){
     let pageType = this.params.pageType;
-    if(pageType === 'group') {
-    /** spinner starts on init */
+    if(pageType === 'user') {
+      /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var deleteUserGroupAPI = this._appSettings.deleteUserGroupAPI;
-    url = url + deleteUserGroupAPI;
+    var deleteUserAPI = this._appSettings.deleteUserAPI;
+    url = url + deleteUserAPI;
     
-    var datagroup = {
-      User_Group_ID : this.params.value,
-      Is_Deleted: true
+    var datauser = {
+        User_ID: this.params.value,
+        Is_Deleted: true
     }
-    this._ConfigurationService.post(url, datagroup)
-        .subscribe(response => { 
-          if (response["response"] == 1) {   
-            this._grouplistComponent.getUserGroup();
-            document.getElementById('close').click();          
-            this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
+    this._ConfigurationService.post(url, datauser)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+          this._userlistComponent.getUserList();          
+          document.getElementById('close').click();          
+          document.getElementById('grid').click();        
+          debugger
+          this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
           }
           this.spinner.hide();
         },
@@ -99,6 +97,6 @@ export class CellGrouplistComponent implements OnInit {
         () => {
           this.spinner.hide();
         });
-    } 
+    }
   }
 }

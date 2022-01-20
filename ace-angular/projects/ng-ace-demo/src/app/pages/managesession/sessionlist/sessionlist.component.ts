@@ -1,40 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { CommonAccessModule } from '../../../shared/models/user-access/user-access.model';
+import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
+import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellGrouplistComponent } from '../../../common/cell-grouplist/cell-grouplist.component';
+import { CellCustomOrganizationlistComponent } from '../../../common/cell-custom-organizationlist/cell-custom-organizationlist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
-@Component({
-  selector: 'app-grouplist',
-  templateUrl: './grouplist.component.html',
-  styleUrls: ['./grouplist.component.css']
-})
-export class GrouplistComponent implements OnInit {
 
+
+@Component({
+  selector: 'app-sessionlist',
+  templateUrl: './sessionlist.component.html',
+  styleUrls: ['./sessionlist.component.css']
+})
+export class SessionlistComponent implements OnInit {
+
+  submitted = false;
   searchForm: FormGroup;
+  public packagelist = [];
+  public organizationlist = [];
+  public organizationlistlength = 0;
   public grouplist = [];
     
   public CommonAccessModule = new CommonAccessModule();
+  public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false, resizable: true },
-    { field: 'Predefined_Status', headerName: 'Predefined Status', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent},
-    { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
-      cellRendererParams: {
-        type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/group/update/',
-        viewRouterLink: '/group/view/',
-        pageType: 'group'
-      } }
+    { field: 'Username', headerName: 'Customer ID', sortable: true, editable: false, resizable: true },
+    { field: 'FullName', headerName: 'First Name', sortable: true, editable: false, resizable: true },
+    { field: 'Email', headerName: 'Last name', sortable: true, editable: false, resizable: true },
+    { field: 'MobileNo', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'MobileNo', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'MobileNo', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Is_Active',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 }
   ]
 
   constructor(private router: Router,
@@ -45,36 +50,42 @@ export class GrouplistComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private _commonfunctionsService: CommonfunctionsService) { 
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
+      
+    if(!this.CommonAccessModule.Is_Retrieve){
+      this._ConfigurationService.logout();
+    }
   }
 
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
-      groupid: new FormControl('', Validators.required),
-      searchtext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
-      is_active: new FormControl(true, Validators.required),
+      customerid: new FormControl('', Validators.required),
+      packageid: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      iscancelrequest: new FormControl(true, Validators.required),
+      firstname: new FormControl('', Validators.required),
+      nexttv: new FormControl('', Validators.required)
     });
-    this.getUserGroup();
+    this.getPackageList();
   }
-  getUserGroup(){
+
+  getPackageList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var fetchpackage = this._appSettings.fetchpackage;
+    url = url + fetchpackage;
 
     var data = {
-      User_Group_ID: 0,
-      Search: "",
-      Is_Predefined: null,
+      Package_ID: 0,
+      Search: '',
       Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.grouplist = response["data"];
+            this.packagelist = response["data"];
           }
           else {
-            this.grouplist = [];
+            this.packagelist = [];
           }
           this.spinner.hide();
         },
@@ -86,45 +97,20 @@ export class GrouplistComponent implements OnInit {
           this.spinner.hide();
         });
    }
-   filterGrouplist(){
-    /** spinner starts on init */
-    this.spinner.show();
-    var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
-
-    var data = {
-      User_Group_ID: 0,
-      Search: this.searchForm.get('searchtext').value,
-      Is_Predefined: null,
-      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('is_active').value)
-    }
-    this._ConfigurationService.post(url, data)
-        .subscribe(response => {
-          if (response["response"] == 1) {
-            this.grouplist = response["data"];
-          }
-          else {
-            this.grouplist = [];
-          }
-          this.spinner.hide();
-        },
-        (error) => {
-            this.spinner.hide();
-            this._commonfunctionsService.exactionLog(error.status, error.message);
-        },
-        () => {
-          this.spinner.hide();
-        });
-   }
-  addgroup(){
-    this.router.navigateByUrl('/group/add');
-  }
-
+   addsession(){
+    this.router.navigateByUrl('/session/add');
+  }  
   reset(){
     this.searchForm.reset();
-    this.getUserGroup();
    }
+  get searchFormControl() {
+    return this.searchForm.controls;
+  }
+  
+  getErrorMessage(control: string) {
+      return FormErrorMessage(this.searchForm, control);
+  }
+
   // Pagination table code
   private gridApi!: any
 
@@ -148,7 +134,7 @@ export class GrouplistComponent implements OnInit {
     this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
     this.totalPages = this.gridApi.paginationGetTotalPages()
 
-    this.lastId = this.grouplist.length;
+    this.lastId = this.organizationlist.length;
   }
 
   ngOnDestroy() {
@@ -205,12 +191,12 @@ export class GrouplistComponent implements OnInit {
 
     let selectedRows = this.gridApi.getSelectedNodes()
     if (selectedRows.length > 0) {
-     this.grouplist.splice(selectedRows[0].rowIndex + 1 , 0, row)
+     this.organizationlist.splice(selectedRows[0].rowIndex + 1 , 0, row)
     }
     else {
-      this.grouplist.push(row)
+      this.organizationlist.push(row)
     }    
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.organizationlist)
   }
 
   removeRows() {
@@ -219,15 +205,16 @@ export class GrouplistComponent implements OnInit {
 
     let removed = 0
     selectedRows.forEach((row: any) => {
-      this.grouplist.splice(row.rowIndex - removed , 1)
+      this.organizationlist.splice(row.rowIndex - removed , 1)
       removed++
     })
 
 
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.organizationlist)
   }
   
   reloadData() {
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.organizationlist)
   }
+
 }

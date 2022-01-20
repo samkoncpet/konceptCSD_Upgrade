@@ -6406,7 +6406,7 @@ a.text-primary-d1:focus {
     justify-content: center;
     position: relative;
     transition: background-color 0.15s;
-    color: #fff;
+    color: #169595;
     padding: 0;
 }
 
@@ -6418,7 +6418,7 @@ a.text-primary-d1:focus {
 
 .btn-burger:hover,
 .btn-burger:focus {
-    color: #fff;
+    color: #169595;
     background-color: rgba(255, 255, 255, 0.15);
 }
 

@@ -1,0 +1,198 @@
+<!-- page header and toolbox -->
+<div class="d-flex justify-content-between flex-column flex-sm-row mb-3 px-2 px-sm-0">
+    <h1 class="text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            Book Session
+        </small>
+    </h1>
+
+    <div class="mb-2 mb-sm-0">
+        <button (click)="addsession()" class="btn btn-green radius-1 d-inline-flex align-items-center radius-round py-3px btn-bold border-r-0">
+            <span class="bgc-black-tp9 h-5 px-25 pt-2 my-n1 ml-2 border-l-2 brc-inherit">
+                 <i class="fa fa-plus text-120 mt-3px"></i>
+             </span>
+             <span class="px-4">
+                 Add Session
+             </span>
+           </button>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card dcard">
+            <form [formGroup]="searchForm" autocomplete="off">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Filter
+                        </span>
+                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Customer ID
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                                <input type="text" formControlName="customerid" maxlength="20" class="form-control" placeholder="Customer ID">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Package
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="packageid" formControlName="packageid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let data of packagelist"
+                                    value={{data.Package_ID}}>{{data.Package}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Show Cancel Request
+                            </label>
+                            <input type="checkbox" class="form-control" formControlName="iscancelrequest">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                           First Name
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                                <input type="text" formControlName="firstname" maxlength="20" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Next TV
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group date" id="id-timepicker">
+                                <input type="date" formControlName="nexttv" #selectField class="form-control" placeholder="Next TV">
+                                <div class="input-group-addon input-group-append">
+                                    <div class="input-group-text">
+                                        <i class="far fa-clock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn px-4 btn-green mb-1">
+                                <i class=" fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="card dcard">
+            <div class="card bgc-primary-d1 text-white">
+                <div class="card-header">
+                    <div class="card-toolbar mr-auto no-border">
+                        <label class="mb-0">
+                        <span class="align-middle d-block d-sm-inline text-600">
+                            Book session list
+                        </span>
+                    </label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body px-1 px-md-3">
+                <div [ngbCollapse]="false" #collapse="ngbCollapse">
+                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="organizationlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()"
+                        [paginationPageSize]="itemPerPage" (gridReady)="onGridReady($event)">
+                    </ag-grid-angular>
+
+                    <!-- table footer (action buttons, pagination, etc) -->
+                    <div class="bgc-primary-l4 p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px">
+                        <!-- actions -->
+
+
+
+                        <!-- pagination -->
+                        <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
+                            <div>
+                                <a (click)="gotoFirst()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-left w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoPrev()" role="button" [ngClass]="{'disabled': currentPage == 1 || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-left w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div class="d-flex align-items-center mx-2">
+                                Page
+                                <input class="form-control form-control-sm w-5 mx-1" [(ngModel)]="currentPage" (change)="gotoPage()" /> of {{totalPages || 1}}
+                            </div>
+
+                            <span class="text-sm text-secondary-l2 px-1">|</span>
+
+                            <div>
+                                <a (click)="gotoNext()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-right w-2 text-90 mx-2px"></i>
+                                </a>
+                                <a (click)="gotoLast()" role="button" [ngClass]="{'disabled': currentPage == totalPages || totalPages == 1}" class="btn btn-lighter-lightgrey btn-h-outline-primary btn-a-outline-primary bgc-white radius-round px-2 mx-2px">
+                                    <i class="fa fa-angle-double-right w-2 text-90 mx-2px"></i>
+                                </a>
+                            </div>
+
+                            <div>
+                                <select [(ngModel)]="itemPerPage" (change)="updatePerPage()" class="ml-2 ace-select no-border caret-double text-dark-tp3 bgc-white brc-secondary-l2 brc-h-secondary-m4 radius-1 border-2" style="width: 80px;">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div *ngIf="organizationlist.length > 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    {{(currentPage - 1) * itemPerPage + 1}}
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    {{currentPage * itemPerPage < organizationlist.length ? currentPage * itemPerPage : organizationlist.length}}
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    {{organizationlist.length}}
+                                </span>
+                        </div>
+
+                        <div *ngIf="organizationlist.length == 0">
+                            Showing
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span> -
+                            <span class="w-2 d-inline-block text-center mr-1">
+                                    0
+                                </span> of
+                            <span class="w-2 d-inline-block text-center">
+                                    0
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

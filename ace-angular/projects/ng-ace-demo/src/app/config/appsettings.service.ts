@@ -15,24 +15,31 @@ export class AppsettingsService {
 
     // Entity Master API
     entityMasterAPI: string = "api/entitymaster/fetchentitymaster";
+    getNavigationMenuAPI: string = "api/entitymaster/fetchNavigationMenu";
 
     // Package API
     insertUpdatetPackageAPI: string = "api/package/insertupdatepackage";
     fetchpackage: string = "api/package/fetchpackage";
+    deletePackageAPI: string = "api/package/deletepackage";
 
     // User Type API
     insertUserTypeAPI: string = "api/user/insert-user-type";
     getUserTypeAPI: string = "api/user/fetch-user";
 
     // User API
-    insertUpdateUserAPI: string = "api/user/insertupdateuser";
-  
+    insertUpdateUserAPI: string = "api/user/insertupdateuser";  
     fetchUserAPI: string = "api/user/fetchuser";
+    deleteUserAPI: string = "api/user/deleteuser";
 
     // User Group API
     insertUpdateusergroup: string = "api/user/insertupdateusergroup";
     fetchusergroup: string = "api/user/fetchusergroup";
     fetchusergroupmapping: string = "api/user/fetchusergroupmapping";
+    deleteUserGroupAPI: string = "api/user/Deleteusergroup";
+
+    // Customer API
+    insertcustomerAPI: string = "api/customer/insertcustomer";
+    fetchcustomerAPI: string = "api/customer/fetchcustomer";
   
     defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }

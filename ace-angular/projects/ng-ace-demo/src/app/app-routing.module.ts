@@ -14,6 +14,8 @@ import { GrouplistComponent } from './pages/managegroup/grouplist/grouplist.comp
 import { NewgroupComponent } from './pages/managegroup/newgroup/newgroup.component';
 import { OrganizationlistComponent } from './pages/manageorganization/organizationlist/organizationlist.component';
 import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
+import { NewsessionComponent } from './pages/managesession/newsession/newsession.component';
+import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
 
 
 const routes: Routes = [
@@ -168,6 +170,20 @@ const routes: Routes = [
         }
       },
       {
+        path: 'session/list',
+        component: SessionlistComponent,
+        data: {
+          title: 'Session list'
+        }
+      },
+      // {
+      //   path: 'session/add',
+      //   component: NewsessionComponent,
+      //   data: {
+      //     title: 'Add Session'
+      //   }
+      // },
+      {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
@@ -200,6 +216,10 @@ const routes: Routes = [
       },
       {
         path: 'customer',
+        loadChildren: () => import('./pages/forms/forms.module').then((m) => m.FormsModule)
+      },
+      {
+        path: 'session',
         loadChildren: () => import('./pages/forms/forms.module').then((m) => m.FormsModule)
       }
     ]
