@@ -7,7 +7,7 @@ import { CommonAccessModule } from '../../../shared/models/user-access/user-acce
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellGrouplistComponent } from '../../../common/cell-grouplist/cell-grouplist.component';
+import { CellCustomCustomerslistComponent } from '../../../common/cell-custom-customerslist/cell-custom-customerslist.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
@@ -25,22 +25,25 @@ export class CustomerslistComponent implements OnInit {
   public CommonAccessModule = new CommonAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Father_First_Name', headerName: 'Father First Name', sortable: true, editable: false, resizable: true },
-    { field: 'Mother_First_Name', headerName: 'Mother First Name', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Father_Cell_No', headerName: 'Father Cell No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Mother_Cell_No', headerName: 'Mother Cell No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Father_Email', headerName: 'Father Email', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Country', headerName: 'Country', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'State', headerName: 'State', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent},
-    { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
+    { field: 'Index', headerName: 'Sr.No.', sortable: true, width: 150 },
+    { field: 'PONO', headerName: 'PONO', sortable: true, resizable: true, width: 150 },
+    { field: 'Father_FullName', headerName: 'Father Full Name', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Father_Email', headerName: 'Father Email', sortable: true, editable: false, resizable: true, width: 150 }, 
+    { field: 'Father_MobileNo', headerName: 'Father Mobile No', sortable: true, editable: false, resizable: true, width: 150 },    
+    { field: 'Mother_FullName', headerName: 'Mother Full Name', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Mother_Email', headerName: 'Mother Email', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Mother_MobileNo', headerName: 'Mother Mobile No', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Country', headerName: 'Country', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'State', headerName: 'State', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Address', headerName: 'Address', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 150, cellRendererFramework: CellCustomActiveComponent},
+    { field: 'Customer_ID', headerName: 'Actions', cellRendererFramework: CellCustomCustomerslistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/customer/update/',
         viewRouterLink: '/customer/view/',
         pageType: 'customer'
-      } }
+      }, resizable: true }
   ]
 
   constructor(private router: Router,
@@ -72,11 +75,12 @@ export class CustomerslistComponent implements OnInit {
     url = url + fetchUserAPI;
 
     var data = {
-      User_ID: 0,
+      Customer_ID: 0,
       Search: '',
-      User_Type: "user",
-      User_Group_ID: 0,
-      Is_Active: true
+      Organization_User_ID: 0,
+      State_ID: 0,
+      Package_ID: 0,
+      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('Is_Active').value)
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {

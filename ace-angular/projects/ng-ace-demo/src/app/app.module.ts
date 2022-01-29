@@ -43,6 +43,7 @@ import { CellCustomPackagelistComponent } from './common/cell-custom-packagelist
 import { CellCustomOrganizationlistComponent } from './common/cell-custom-organizationlist/cell-custom-organizationlist.component';
 import { NewsessionComponent } from './pages/managesession/newsession/newsession.component';
 import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
+import { CellCustomCustomerslistComponent } from './common/cell-custom-customerslist/cell-custom-customerslist.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SessionlistComponent } from './pages/managesession/sessionlist/sessionl
     CellCustomPackagelistComponent,
     CellCustomOrganizationlistComponent,
     NewsessionComponent,
-    SessionlistComponent
+    SessionlistComponent,
+    CellCustomCustomerslistComponent
   ],
   imports: [
     CommonModule,

@@ -650,9 +650,13 @@
                                                 <div class="col-md-2">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <button class="btn btn-green btn-bold px-4" type="button" (click)="addstudentlist()">
+                                                    <button *ngIf="!updateStudent" class="btn btn-green btn-bold px-4" type="button" (click)="addstudentlist()">
                                                         <i class="fa fa-check mr-1"></i>
                                                         <span>Add</span>
+                                                      </button>
+                                                    <button *ngIf="updateStudent" class="btn btn-green btn-bold px-4" type="button" (click)="updatestudentDetail()">
+                                                        <i class="fa fa-check mr-1"></i>
+                                                        <span>Update</span>
                                                       </button>
                                                 </div>
                                             </div>

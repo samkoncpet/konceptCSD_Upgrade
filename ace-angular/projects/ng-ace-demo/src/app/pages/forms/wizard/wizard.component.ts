@@ -40,6 +40,8 @@ export class FormWizardComponent {
   public subscriptionStartMinDate: string;
   public subscriptionEndMinDate: string;
   pipe = new DatePipe('en-US');
+  public updateStudent = false;
+  public updateStudentID : number;
 
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
@@ -321,7 +323,20 @@ export class FormWizardComponent {
         this.addstudent.controls.studentfirstname.setValue(data["FirstName"]);
         this.addstudent.controls.studentlastname.setValue(data["LastName"]);
         this.addstudent.controls.gradeid.setValue(data["Level_ID"])
+        this.updateStudent = true;
+        this.updateStudentID = id;
       }
+     }
+     updatestudentDetail(){
+        var data = this.studentlist.find(x => x.Customer_Child_ID == this.updateStudentID);
+        if(data)
+        {
+          data.FirstName = this.addstudent.value.studentfirstname;
+          data.LastName = this.addstudent.value.studentlastname;
+          data.Level_ID = this.addstudent.value.gradeid;
+        } 
+        this.addstudent.reset();
+        this.updateStudent = false;
      }
     onPasswordChange(){
       if (this.addcustomer.get("password").value == this.addcustomer.get("repassword").value) {

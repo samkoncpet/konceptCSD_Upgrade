@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { DatePipe } from '@angular/common';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
@@ -18,12 +19,18 @@ import { PackagehistoryComponent } from '../packagehistory/packagehistory.compon
 })
 export class NewcustomersComponent implements OnInit {
 
+  param1: string;
+  param2: string;
+  isUpdate = false;
+  isView = false;
+
   submitted = false;
   addcustomer: FormGroup;
   addpackage: FormGroup;
   addstudent: FormGroup;
   isPassword = true;
-  passwordmatch = true;
+  passwordmatch = true;  
+  public customerdetail = [];
   public packagelist = [];
   public countrylist = [];
   public statelist= [];
@@ -48,9 +55,21 @@ export class NewcustomersComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private spinner: NgxSpinnerService,
     private _notificationsService: NotificationsService,
+    private _route: ActivatedRoute,
     private _commonfunctionsService: CommonfunctionsService) {  }
 
   ngOnInit(): void {
+    this.param1 = this._route.snapshot.params.type;
+    this.param2 = this._route.snapshot.params.id;
+    if(this.param1 == 'update' && this.param2 != undefined && this.param2 != ''){
+      this.isUpdate = true;
+      this.getCustomerDetail();
+    }
+    else if(this.param1 == 'view'){
+      this.isView = true;
+      this.getCustomerDetail();
+    }
+
     this.addcustomer = this._formBuilder.group({
       fatherfirstrname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
       fatherlastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
@@ -101,6 +120,58 @@ export class NewcustomersComponent implements OnInit {
     this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
   }
 
+  getCustomerDetail(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchcustomerAPI = this._appSettings.fetchcustomerAPI;
+    url = url + fetchcustomerAPI;
+
+    var data = {
+      Customer_ID: this.param2,
+      Search: '',
+      Organization_User_ID: 0,
+      State_ID: 0,
+      Package_ID: 0
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.customerdetail = response["data"];
+            console.log(this.customerdetail);            
+            this.addcustomer.patchValue({
+              fatherfirstrname: response["data"][0].Father_FirstName,
+              fatherlastname: response["data"][0].Father_LastName,              
+              motherfirstname: response["data"][0].Mother_FirstName,
+              motherlastname: response["data"][0].Mother_LastName,
+              fathercellno: response["data"][0].Father_MobileNo,
+              mothercellno: response["data"][0].Mother_MobileNo,
+              fatheremail: response["data"][0].Father_Email,   
+              motheremail: response["data"][0].Mother_Email,
+              homephone: response["data"][0].Alt_PhoneNo,
+              educationconsultant: response["data"][0].Education_Consultant_ID,
+              address1: response["data"][0].Address,
+              address2: response["data"][0].Address_Other,
+              countryid: response["data"][0].Country_ID,
+              stateid: response["data"][0].State_ID,
+              city: response["data"][0].City,
+              postalcode: response["data"][0].Zip_Code
+            });
+            this.geState(response["data"][0].Country_ID);
+          }
+          else {
+            this.customerdetail = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
+  }
   getPackageList(){
     /** spinner starts on init */
     this.spinner.show();

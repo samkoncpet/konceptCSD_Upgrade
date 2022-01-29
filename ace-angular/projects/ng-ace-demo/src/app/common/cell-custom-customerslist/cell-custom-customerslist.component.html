@@ -1,0 +1,50 @@
+<!-- <div class='d-none d-lg-flex'>
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+        <i class="fa fa-pencil-alt"></i>
+    </a>
+    <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+        <i class="fa fa-eye"></i>
+    </a>
+</div> -->
+<div ref="eLabel" class="ag-header-cell-label actions" role="presentation" unselectable="on" id="grid">
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+        <i class="fa fa-pencil-alt"></i>
+    </a>
+    <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" [routerLink]="params.viewRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+        <i class="fa fa-eye"></i>
+    </a>
+    <a *ngIf="CommonAccessModule.Is_Retrieve" role="button" (click)='open(dangerModal, { "backdropClass": "bgc-white", "contentClass": "bgc-transparent brc-danger-m2 shadow" })' class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+        <i class="fas fa-trash-alt text-danger-m1"></i>
+    </a>
+    <ng-template #dangerModal let-modal id="custom-modal">
+        <div ngbAutofocus class="modal-header py-2 bgc-danger-tp1 border-0  radius-t-1">
+            <h5 class="modal-title text-white-tp1 text-110 pl-2 font-bolder" id="dangerModalLabel">
+                WARNING!
+            </h5>
+
+            <button type="button" #closebutton data-dismiss="modal" class="close position-tr btn btn-xs btn-outline-white btn-h-yellow btn-a-yellow mt-1px mr-1px btn-brc-tp" (click)="modal.close()" aria-label="Close">
+            <span aria-hidden="true" class="text-150">&times;</span>
+          </button>
+        </div>
+
+
+        <div class="modal-body bgc-white-tp2 p-md-4 pl-md-5">
+            <div class="d-flex align-items-top mr-2 mr-md-5">
+                <i class="fas fa-exclamation-triangle fa-2x text-orange-d2 float-rigt mr-4 mt-1"></i>
+                <div class="text-secondary-d2 text-105">
+                    Are you sure you want to delete the record?
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer bgc-white-tp2 border-0">
+            <button type="button" id="close" class="btn px-4 btn-light-grey" (click)="modal.close()">
+              No
+            </button>
+
+            <button type="button" class="btn px-4 btn-danger" id="closeModal" (click)="delete()">
+              Yes
+            </button>
+        </div>
+    </ng-template>
+</div>
