@@ -10,14 +10,14 @@ import { ConfigurationService } from '../../config/configuration.service';
 import { AppsettingsService } from '../../config/appsettings.service';
 import { NgAceToasterService } from 'ng-ace-admin';
 import { NotificationsService } from '../../config/notifications.service';
-import { UserlistComponent } from '../../pages/manageusers/userlist/userlist.component';
+import { CustomerslistComponent } from '../../pages/managecustomers/customerslist/customerslist.component';
 
 @Component({
-  selector: 'app-cell-custom-userlist',
-  templateUrl: './cell-custom-userlist.component.html',
-  styleUrls: ['./cell-custom-userlist.component.css']
+  selector: 'app-cell-custom-customerslist-modal',
+  templateUrl: './cell-custom-customerslist-modal.component.html',
+  styleUrls: ['./cell-custom-customerslist-modal.component.css']
 })
-export class CellCustomUserlistComponent implements OnInit {
+export class CellCustomCustomerslistModalComponent implements OnInit {
   data: any;
   params: any;
   id: string = "";
@@ -37,7 +37,7 @@ export class CellCustomUserlistComponent implements OnInit {
     public _modalService: NgAceModalService,
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
-    public _userlistComponent: UserlistComponent) {    
+    private _customerslistComponent: CustomerslistComponent) {    
   }
   agInit(params) {
     this.params = params;
@@ -45,11 +45,7 @@ export class CellCustomUserlistComponent implements OnInit {
     this.id = this.data; 
   }
   ngOnInit() {
-    this.getAccessModel();
-  }
-
-  getAccessModel(){
-    this.CommonAccessModule = JSON.parse(this.params.type);
+    
   }
 
   editRow() {
@@ -65,38 +61,5 @@ export class CellCustomUserlistComponent implements OnInit {
 
   open(content: any, options?: any) { 
     this._notificationsService.toasterModalOpen(content, options)
-  }
-
-  delete(){
-    let pageType = this.params.pageType;
-    if(pageType === 'user') {
-      /** spinner starts on init */
-    this.spinner.show();
-    var url = this._appSettings.koncentAPI;
-    var deleteUserAPI = this._appSettings.deleteUserAPI;
-    url = url + deleteUserAPI;
-    
-    var datauser = {
-        User_ID: this.params.value,
-        Is_Deleted: true
-    }
-    this._ConfigurationService.post(url, datauser)
-        .subscribe(response => { 
-          debugger 
-          if (response["response"] == 1) {
-            this._userlistComponent.getUserList();   
-            this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
-          }       
-          document.getElementById('close').click();          
-          document.getElementById('grid').click(); 
-          this.spinner.hide();
-        },
-        (error) => {
-            this.spinner.hide();
-        },
-        () => {
-          this.spinner.hide();
-        });
-    }
   }
 }

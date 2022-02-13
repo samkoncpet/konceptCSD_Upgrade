@@ -16,6 +16,7 @@ import { OrganizationlistComponent } from './pages/manageorganization/organizati
 import { NeworganizationComponent } from './pages/manageorganization/neworganization/neworganization.component';
 import { NewsessionComponent } from './pages/managesession/newsession/newsession.component';
 import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
+import { ManagerequestComponent } from './pages/managerequest/newrequest/managerequest.component';
 
 
 const routes: Routes = [
@@ -183,6 +184,13 @@ const routes: Routes = [
       //     title: 'Add Session'
       //   }
       // },
+      {
+        path: 'request/addrequest',
+        component: ManagerequestComponent,
+        data: {
+          title: 'New Request'
+        }
+      },
       {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule)

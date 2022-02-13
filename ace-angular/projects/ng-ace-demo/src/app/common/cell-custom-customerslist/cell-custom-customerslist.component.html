@@ -7,6 +7,9 @@
     </a>
 </div> -->
 <div ref="eLabel" class="ag-header-cell-label actions" role="presentation" unselectable="on" id="grid">
+    <a role="button" (click)='openView(exampleModal2, id, { "backdropClass": "bgc-grey-tp4", "blur": true, "contentClass": "border-0 shadow radius-1" })' class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+        <i class="fa fa-clipboard"></i>
+    </a>
     <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
         <i class="fa fa-pencil-alt"></i>
     </a>
@@ -44,6 +47,131 @@
 
             <button type="button" class="btn px-4 btn-danger" id="closeModal" (click)="delete()">
               Yes
+            </button>
+        </div>
+    </ng-template>
+
+    <!-- Blurred background/backdrop -->
+    <ng-template #exampleModal2 let-modal>
+        <div ngbAutofocus class="modal-header">
+            <h5 class="modal-title text-primary-d2" id="exampleModal2Label">
+                PO NO. {{this.userDetail.PONO}}
+            </h5>
+            <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body modal-scroll">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Father Full Name:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Father_FullName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Father Email:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Father_Email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Father Mobile No:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Father_MobileNo}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Mother Full Name:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Mother_FullName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Mother Email:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Mother_Email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Mother Mobile No:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Mother_MobileNo}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Gender:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Gender_Status}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Address:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Address}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Address Other:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Address_Other}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Country:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Country}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>State:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.State}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Zip Code:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Zip_Code}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Alternate PhoneNo:</label>
+                </div>
+                <div class="col-md-6">
+                    {{this.userDetail.Alt_PhoneNo}}
+                </div>
+            </div>
+            <!-- <strong>Note:</strong> Applying <span class="bgc-yellow-m2">blur</span> effect may interfere with positioning of some elements such as `position: fixed` elements, etc! -->
+        </div>
+
+        <div class="modal-footer bgc-default-l5">
+            <button type="button" class="btn btn-lighter-grey px-4" (click)="modal.close()">
+                Close
             </button>
         </div>
     </ng-template>

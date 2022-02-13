@@ -8,6 +8,7 @@ import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
 import { CellCustomCustomerslistComponent } from '../../../common/cell-custom-customerslist/cell-custom-customerslist.component';
+import { CellCustomCustomerslistModalComponent } from '../../../common/cell-custom-customerslist-modal/cell-custom-customerslist-modal.component';
 import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
@@ -25,25 +26,32 @@ export class CustomerslistComponent implements OnInit {
   public CommonAccessModule = new CommonAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr.No.', sortable: true, width: 150 },
-    { field: 'PONO', headerName: 'PONO', sortable: true, resizable: true, width: 150 },
-    { field: 'Father_FullName', headerName: 'Father Full Name', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Father_Email', headerName: 'Father Email', sortable: true, editable: false, resizable: true, width: 150 }, 
-    { field: 'Father_MobileNo', headerName: 'Father Mobile No', sortable: true, editable: false, resizable: true, width: 150 },    
-    { field: 'Mother_FullName', headerName: 'Mother Full Name', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Mother_Email', headerName: 'Mother Email', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Mother_MobileNo', headerName: 'Mother Mobile No', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Country', headerName: 'Country', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'State', headerName: 'State', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Address', headerName: 'Address', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 150, cellRendererFramework: CellCustomActiveComponent},
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, wrapText: true, resizable: true, maxWidth: 80, minWidth: 80, },
+    { field: 'PONO', headerName: 'PONO', sortable: true, wrapText: true, resizable: true, maxWidth: 150, minWidth: 150, },
+    { field: 'Father_FullName', headerName: 'Father Full Name', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 150, minWidth: 150, },
+    { field: 'Father_Email', headerName: 'Father Email', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 150, minWidth: 150, },
+    { field: 'Father_MobileNo', headerName: 'Father Mobile No', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 150, minWidth: 150, },
+    { field: 'Mother_FullName', headerName: 'Mother Full Name', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 150, minWidth: 150, },
+    // { field: 'Mother_Email', headerName: 'Mother Email', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 200, minWidth: 200, },
+    // { field: 'Mother_MobileNo', headerName: 'Mother Mobile No', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 200, minWidth: 200, },
+    // { field: 'Country', headerName: 'Country', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 200, minWidth: 200, },
+    // { field: 'State', headerName: 'State', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 200, minWidth: 200, },
+    // { field: 'Address', headerName: 'Address', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true, maxWidth: 200, minWidth: 200, },
+    { field: 'Is_Active',headerName: 'Status', autoSizeColumns:false, sortable: true, wrapText: true, editable: false, resizable: true,  cellRendererFramework: CellCustomActiveComponent, maxWidth: 150, minWidth: 150, },
+    // { field: 'Customer_ID', headerName: 'View', cellRendererFramework: CellCustomCustomerslistModalComponent,
+    //   cellRendererParams: {
+    //     type: JSON.stringify(this.CommonAccessModule),
+    //     editRouterLink: '/customer/update/',
+    //     viewRouterLink: '/customer/view/',
+    //     pageType: 'customer'
+    //   }, resizable: true, maxWidth: 200, minWidth: 200, },
     { field: 'Customer_ID', headerName: 'Actions', cellRendererFramework: CellCustomCustomerslistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/customer/update/',
         viewRouterLink: '/customer/view/',
         pageType: 'customer'
-      }, resizable: true }
+      }, resizable: true, maxWidth: 200, minWidth: 200, },
   ]
 
   constructor(private router: Router,

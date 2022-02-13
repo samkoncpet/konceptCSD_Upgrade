@@ -30,19 +30,19 @@ export class OrganizationlistComponent implements OnInit {
   public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Username', headerName: 'User Name', sortable: true, editable: false, resizable: true },
-    { field: 'FullName', headerName: 'Full Name', sortable: true, editable: false, resizable: true },
-    { field: 'Email', headerName: 'Email', sortable: true, editable: false, resizable: true },
-    { field: 'MobileNo', headerName: 'Mobile No.', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 80, minWidth: 80, },
+    { field: 'Username', headerName: 'User Name', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'FullName', headerName: 'Full Name', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'Email', headerName: 'Email', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'MobileNo', headerName: 'Mobile No.', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent, maxWidth: 100, minWidth: 100, },
     { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomOrganizationlistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/organization/update/',
         viewRouterLink: '/organization/view/',
         pageType: 'organization'
-      } }
+      }, maxWidth: 200, minWidth: 200, },
   ]
 
   constructor(private router: Router,

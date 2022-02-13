@@ -10,7 +10,7 @@ import { ConfigurationService } from '../../config/configuration.service';
 import { AppsettingsService } from '../../config/appsettings.service';
 import { NgAceToasterService } from 'ng-ace-admin';
 import { NotificationsService } from '../../config/notifications.service';
-//import { OrganizationlistComponent } from '../../pages/manageorganization/organizationlist/organizationlist.component';
+import { CustomerslistComponent } from '../../pages/managecustomers/customerslist/customerslist.component';
 
 @Component({
   selector: 'app-cell-custom-customerslist',
@@ -21,6 +21,7 @@ export class CellCustomCustomerslistComponent implements OnInit {
   data: any;
   params: any;
   id: string = "";
+  public userDetail = [];
 
   public CommonAccessModule = new CommonAccessModule();
   public UserAccessModule = new UserAccessModule();
@@ -36,7 +37,8 @@ export class CellCustomCustomerslistComponent implements OnInit {
     private _appSettings: AppsettingsService,
     public _modalService: NgAceModalService,
     private _ConfigurationService: ConfigurationService,
-    private _notificationsService: NotificationsService) {    
+    private _notificationsService: NotificationsService,
+    private _customerslistComponent: CustomerslistComponent) {    
   }
   agInit(params) {
     this.params = params;
@@ -66,6 +68,40 @@ export class CellCustomCustomerslistComponent implements OnInit {
     this._notificationsService.toasterModalOpen(content, options)
   }
 
+  openView(content: any, id?: any, options?: any) { 
+    this._modalService.open(content, options)
+    this.getUserDetail(id);
+  }
+
+  getUserDetail(id?: any){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchcustomerAPI = this._appSettings.fetchcustomerAPI;
+    url = url + fetchcustomerAPI;
+
+    var data = {
+      User_ID: '',
+      Customer_ID: id,
+      Search: ''
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.userDetail = response["data"][0];
+          }
+          else {
+            this.userDetail = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+        },
+        () => {
+          this.spinner.hide();
+        });
+   }
   delete(){
     let pageType = this.params.pageType;
     if(pageType === 'organization') {
@@ -82,11 +118,11 @@ export class CellCustomCustomerslistComponent implements OnInit {
     this._ConfigurationService.post(url, datauser)
         .subscribe(response => {
           if (response["response"] == 1) {
-            //this._organizationlistComponent.getUserList();          
-            document.getElementById('close').click();          
-            document.getElementById('grid').click();    
+            this._customerslistComponent.getUserList();  
             this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
-          }
+          }        
+          document.getElementById('close').click();          
+          document.getElementById('grid').click();    
           this.spinner.hide();
         },
         (error) => {

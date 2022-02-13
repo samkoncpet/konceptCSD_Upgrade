@@ -83,11 +83,11 @@ export class CellCustomPackagelistComponent implements OnInit {
     this._ConfigurationService.post(url, datauser)
         .subscribe(response => {
           if (response["response"] == 1) {
-          this._packagelistComponent.getPackageList();          
+            this._packagelistComponent.getPackageList(); 
+            this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
+          }         
           document.getElementById('close').click();          
           document.getElementById('grid').click(); 
-          this._notificationsService.showSuccessSmallDelay("Success", response["data"][0]["message"]);
-          }
           this.spinner.hide();
         },
         (error) => {

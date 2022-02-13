@@ -1,0 +1,30 @@
+<div ref="eLabel" class="ag-header-cell-label actions" role="presentation" unselectable="on" id="grid">
+    <a *ngIf="CommonAccessModule.Is_Update" role="button" [routerLink]="params.editRouterLink + id" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
+        <i class="fa fa-clipboard"></i>
+    </a>
+    <!-- Blurred background/backdrop -->
+    <ng-template #exampleModal2 let-modal>
+        <div ngbAutofocus class="modal-header">
+            <h5 class="modal-title text-primary-d2" id="exampleModal2Label">
+                Modal title
+            </h5>
+            <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+
+        <div class="modal-body modal-scroll">
+            <strong>Note:</strong> Applying <span class="bgc-yellow-m2">blur</span> effect may interfere with positioning of some elements such as `position: fixed` elements, etc!
+        </div>
+
+        <div class="modal-footer bgc-default-l5">
+            <button type="button" class="btn btn-primary">
+        Save changes
+      </button>
+
+            <button type="button" class="btn btn-lighter-grey px-4" (click)="modal.close()">
+        Close
+      </button>
+        </div>
+    </ng-template>
+</div>

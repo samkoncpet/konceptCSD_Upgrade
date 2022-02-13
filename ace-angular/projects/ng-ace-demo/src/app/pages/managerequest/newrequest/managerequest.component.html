@@ -1,0 +1,168 @@
+<!-- page header and toolbox -->
+<div class="page-header pb-2">
+    <h1 class="page-title text-primary-d2 text-150">
+        Dashboard
+        <small class="page-info text-secondary-d2 text-nowrap">
+            <i class="fa fa-angle-double-right text-80"></i>
+            <span *ngIf="!isUpdate && !isView">Add Request</span>
+            <span *ngIf="isUpdate">Update Request</span>
+            <span *ngIf="isView">View Request</span>
+        </small>
+    </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-12" *ngIf="!isView">
+        <form [formGroup]="addRequest" autocomplete="off">
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Request Detail
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Subject
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="Subject" type="text" formControlName="Subject" maxlength="20" class="form-control" placeholder="Subject" [ngClass]="{'border-danger': ((addnewuserFormControl.Subject.touched || submitted) && addnewuserFormControl.Subject.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.Subject.touched || submitted) && (addnewuserFormControl.Subject.errors?.required || addnewuserFormControl.Subject.invalid)">
+                                {{getErrorMessage('Subject')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Request Type
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="RequestType" formControlName="RequestType" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.RequestType.touched || submitted) && addnewuserFormControl.RequestType.errors?.required)}">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.RequestType.touched || submitted) && (addnewuserFormControl.RequestType.errors?.required || addnewuserFormControl.RequestType.invalid)">
+                                {{getErrorMessage('RequestType')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Description
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="Description" type="text" formControlName="Description" maxlength="20" class="form-control" placeholder="Description" [ngClass]="{'border-danger': ((addnewuserFormControl.Description.touched || submitted) && addnewuserFormControl.Description.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.Description.touched || submitted) && (addnewuserFormControl.Description.errors?.required || addnewuserFormControl.Description.invalid)">
+                                {{getErrorMessage('Description')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Created By
+                              </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="CreatedBy" type="text" formControlName="Created By" class="form-control" maxlength="50" placeholder="CreatedBy" [ngClass]="{'border-danger': ((addnewuserFormControl.CreatedBy.touched || submitted) && addnewuserFormControl.CreatedBy.errors?.required)}">
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.CreatedBy.touched || submitted) && (addnewuserFormControl.CreatedBy.errors?.required || addnewuserFormControl.CreatedBy.invalid)">
+                                {{getErrorMessage('CreatedBy')}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Related Customer
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="RelatedCustomer" formControlName="RelatedCustomer" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addnewuserFormControl.RelatedCustomer.touched || submitted) && addnewuserFormControl.RelatedCustomer.errors?.required)}">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                              </select>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.RelatedCustomer.touched || submitted) && (addnewuserFormControl.RelatedCustomer.errors?.required || addnewuserFormControl.RelatedCustomer.invalid)">
+                                {{getErrorMessage('RelatedCustomer')}}
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                            Is Active
+                        </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addnewuserFormControl.is_active.touched || submitted) && addnewuserFormControl.is_active.errors?.required)}">
+
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.is_active.touched || submitted) && (addnewuserFormControl.is_active.errors?.required || addnewuserFormControl.is_active.invalid)">
+                            {{getErrorMessage('is_active')}}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="card-body px-1 px-md-3">
+                        <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                            <div class="offset-md-3 col-md-9 text-nowrap">
+                                <button class="btn btn-green btn-bold px-4" type="button" (click)="addnewuser()">
+                              <i class="fa fa-check mr-1"></i>
+                              <span *ngIf="!isUpdate">Submit</span>
+                              <span *ngIf="isUpdate">Update</span>
+                            </button>
+
+                                <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
+                              <i class="fa fa-undo mr-1"></i>
+                              Cancel
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card dcard">
+                <div class="card bgc-primary-d1 text-white">
+                    <div class="card-header">
+                        <div class="card-toolbar mr-auto no-border">
+                            <label class="mb-0">
+                            <span class="align-middle d-block d-sm-inline text-600">
+                                Description History
+                            </span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-1 px-md-3">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="id-form-field-1" class="mb-0">
+                                Add
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <textarea id="DescriptionHistory" type="text" formControlName="DescriptionHistory" maxlength="10" class="form-control" placeholder="Description History" [ngClass]="{'border-danger': ((addnewuserFormControl.DescriptionHistory.touched || submitted) && addnewuserFormControl.DescriptionHistory.errors?.required)}">
+                            </textarea>
+                            <span class="form-text text-danger" *ngIf="(addnewuserFormControl.DescriptionHistory.touched || submitted) && (addnewuserFormControl.DescriptionHistory.errors?.required || addnewuserFormControl.DescriptionHistory.invalid)">
+                            {{getErrorMessage('DescriptionHistory')}}
+                        </span>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-green btn-bold px-4" type="button">
+                                <i class="fa fa-check mr-1"></i>
+                                <span >Update</span>
+                              </button>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

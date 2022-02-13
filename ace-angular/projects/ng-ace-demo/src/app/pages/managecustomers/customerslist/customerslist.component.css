@@ -1,3 +1,12 @@
 .w-2 {
     width: 20px;
 }
+
+.ag-row {
+    white-space: nowrap;
+}
+
+.modal-dialog {
+    max-width: 50%;
+    margin: 1.75rem auto;
+}

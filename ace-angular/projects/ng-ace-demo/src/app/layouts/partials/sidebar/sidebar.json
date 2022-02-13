@@ -118,6 +118,18 @@
         "title": "Add Session"
     },
     {
+        "id": "managerequest",
+        "link": "#",
+        "title": "Request",
+        "icon": "fa fa-edit"
+    },
+    {
+        "id": "newrequest",
+        "parent": "managerequest",
+        "link": "request/addrequest",
+        "title": "New Request"
+    },
+    {
         "id": "managecalendar",
         "link": "managecalendar",
         "title": "Calendar",
