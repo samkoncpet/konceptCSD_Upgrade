@@ -1,40 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { CommonAccessModule } from '../../../shared/models/user-access/user-access.model';
+import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
+import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/models/user-access/user-access.model';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellGrouplistComponent } from '../../../common/cell-grouplist/cell-grouplist.component';
-import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
 
-@Component({
-  selector: 'app-grouplist',
-  templateUrl: './grouplist.component.html',
-  styleUrls: ['./grouplist.component.css']
-})
-export class GrouplistComponent implements OnInit {
 
+@Component({
+  selector: 'app-requestlist',
+  templateUrl: './requestlist.component.html',
+  styleUrls: ['./requestlist.component.css']
+})
+export class RequestlistComponent implements OnInit {
+
+  submitted = false;
   searchForm: FormGroup;
+  public requestlist = [];
   public grouplist = [];
     
   public CommonAccessModule = new CommonAccessModule();
+  public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 100, minWidth: 100, },
-    { field: 'User_Group_Name', headerName: 'Group Name', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 200, minWidth: 200, },
-    { field: 'Predefined_Status', headerName: 'Predefined Status', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 200, minWidth: 200, },
-    { field: 'Is_Active',headerName: 'Status', sortable: true, editable: false, resizable: true, width: 100, cellRendererFramework: CellCustomActiveComponent, maxWidth: 200, minWidth: 200, },
-    { field: 'User_Group_ID', headerName: 'Actions', cellRendererFramework: CellGrouplistComponent,
-      cellRendererParams: {
-        type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/group/update/',
-        viewRouterLink: '/group/view/',
-        pageType: 'group'
-      }, maxWidth: 200, minWidth: 200, }
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 80, minWidth: 80, },
+    { field: 'Subject', headerName: 'Subject', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'CustomerPO', headerName: 'Customer-PO', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'Status', headerName: 'Status', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
+    { field: 'CreatedBy', headerName: 'Created By', autoSizeColumns:false, sortable: true, wrapText: true, autoHeight: true, editable: false, resizable: true, width: 150, maxWidth: 200, minWidth: 200, },
   ]
 
   constructor(private router: Router,
@@ -45,36 +42,72 @@ export class GrouplistComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private _commonfunctionsService: CommonfunctionsService) { 
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
+      
+    if(!this.CommonAccessModule.Is_Retrieve){
+      this._ConfigurationService.logout();
+    }
   }
 
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
-      groupid: new FormControl('', Validators.required),
-      searchtext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
-      is_active: new FormControl(true, Validators.required),
+      Customertext: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      Subject: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      CreatedBy: new FormControl('1', [Validators.minLength(2), Validators.maxLength(20)]),
+      IsActive: new FormControl(true, Validators.required),
     });
     this.getUserGroup();
+    //this.getRequestList();
   }
   getUserGroup(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var entityMasterAPI = this._appSettings.entityMasterAPI;
+    url = url + entityMasterAPI;
 
     var data = {
-      User_Group_ID: 0,
-      Search: "",
-      Is_Predefined: null,
+      SQLFROM: "User_Group",
+      SQLBY: "ByUser_Group"
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.grouplist = response["data"];
+          }
+          else {
+            this.grouplist = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
+   }
+  getRequestList(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
+
+    var data = {
+      User_ID: null,
+      Search: '',
+      User_Type: 'Organization',
+      User_Group_ID: null,
       Is_Active: null
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.grouplist = response["data"];
+            this.requestlist = response["data"];
           }
           else {
-            this.grouplist = [];
+            this.requestlist = [];
           }
           this.spinner.hide();
         },
@@ -86,26 +119,27 @@ export class GrouplistComponent implements OnInit {
           this.spinner.hide();
         });
    }
-   filterGrouplist(){
+   filterRequestList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchusergroup = this._appSettings.fetchusergroup;
-    url = url + fetchusergroup;
+    var fetchUserAPI = this._appSettings.fetchUserAPI;
+    url = url + fetchUserAPI;
 
     var data = {
-      User_Group_ID: 0,
-      Search: this.searchForm.get('searchtext').value,
-      Is_Predefined: null,
-      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('is_active').value)
+      User_ID: null,
+      Search: this.searchForm.get('Customertext').value,
+      User_Type: 'Organization',
+      User_Group_ID: null,
+      Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('IsActive').value)
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.grouplist = response["data"];
+            //this.requestlist = response["data"];
           }
           else {
-            this.grouplist = [];
+            //this.requestlist = [];
           }
           this.spinner.hide();
         },
@@ -117,14 +151,21 @@ export class GrouplistComponent implements OnInit {
           this.spinner.hide();
         });
    }
-  addgroup(){
-    this.router.navigateByUrl('/group/add');
-  }
-
+   addRequest(){
+    this.router.navigateByUrl('/request/add');
+  }  
   reset(){
     this.searchForm.reset();
-    this.getUserGroup();
+    this.filterRequestList();
    }
+  get searchFormControl() {
+    return this.searchForm.controls;
+  }
+  
+  getErrorMessage(control: string) {
+      return FormErrorMessage(this.searchForm, control);
+  }
+
   // Pagination table code
   private gridApi!: any
 
@@ -148,7 +189,7 @@ export class GrouplistComponent implements OnInit {
     this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
     this.totalPages = this.gridApi.paginationGetTotalPages()
 
-    this.lastId = this.grouplist.length;
+    this.lastId = this.requestlist.length;
   }
 
   ngOnDestroy() {
@@ -205,12 +246,12 @@ export class GrouplistComponent implements OnInit {
 
     let selectedRows = this.gridApi.getSelectedNodes()
     if (selectedRows.length > 0) {
-     this.grouplist.splice(selectedRows[0].rowIndex + 1 , 0, row)
+     this.requestlist.splice(selectedRows[0].rowIndex + 1 , 0, row)
     }
     else {
-      this.grouplist.push(row)
+      this.requestlist.push(row)
     }    
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.requestlist)
   }
 
   removeRows() {
@@ -219,15 +260,15 @@ export class GrouplistComponent implements OnInit {
 
     let removed = 0
     selectedRows.forEach((row: any) => {
-      this.grouplist.splice(row.rowIndex - removed , 1)
+      this.requestlist.splice(row.rowIndex - removed , 1)
       removed++
     })
 
 
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.requestlist)
   }
   
   reloadData() {
-    this.gridApi.setRowData(this.grouplist)
+    this.gridApi.setRowData(this.requestlist)
   }
 }

@@ -353,7 +353,7 @@
                 </li>
 
                 <li [ngbNavItem]="2" class="nav-item mr-3px">
-                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' (click)="getSubscriptionDetail()" class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
                         Subscription Detail
                     </a>
                     <ng-template ngbNavContent>
@@ -502,7 +502,10 @@
 
                                             </div>
                                             <div class="col-md-4">
-
+                                                <button class="btn btn-green btn-bold px-4" type="button" (click)="updateSubscriptionDetails()">
+                                                    <i class="fa fa-check mr-1"></i>
+                                                    <span *ngIf="isUpdate">Update</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -513,24 +516,13 @@
                 </li>
 
                 <li [ngbNavItem]="3" class="nav-item mr-3px">
-                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}'  (click)="getStudentDetail()" class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
                         Student Details
                     </a>
                     <ng-template ngbNavContent>
 
                         <form #form [formGroup]="addstudent">
                             <div class="card dcard">
-                                <!-- <div class="card bgc-primary-d1 text-white">
-                                    <div class="card-header">
-                                        <div class="card-toolbar mr-auto no-border">
-                                            <label class="mb-0">
-                            <span class="align-middle d-block d-sm-inline text-600">
-                                Add Student
-                            </span>
-                        </label>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <div class="col-md-2">
@@ -582,7 +574,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-8">
                                         <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
                                             <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
                                                 <tr>
@@ -597,9 +589,9 @@
                                             <tbody class="mt-1" *ngFor="let data of studentlist">
                                                 <tr class="bgc-h-yellow-l4 d-style">
                                                     <td>{{ data.id}}</td>
-                                                    <td>{{ data.firstname}}</td>
-                                                    <td>{{ data.lastname}}</td>
-                                                    <td>{{ data.gredeid}}</td>
+                                                    <td>{{ data.FirstName}}</td>
+                                                    <td>{{ data.LastName}}</td>
+                                                    <td>{{ data.Level_ID}}</td>
                                                     <td>
                                                         <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
                                                             <i class="fa fa-pencil-alt"></i>
@@ -611,6 +603,14 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12 d-flex justify-content-end">
+                                            <button class="btn btn-green btn-bold px-4" type="button" (click)="updateStudentDetails()">
+                                                <i class="fa fa-check mr-1"></i>
+                                                <span *ngIf="isUpdate">Update Student</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

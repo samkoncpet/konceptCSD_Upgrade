@@ -17,6 +17,7 @@ import { NeworganizationComponent } from './pages/manageorganization/neworganiza
 import { NewsessionComponent } from './pages/managesession/newsession/newsession.component';
 import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
 import { ManagerequestComponent } from './pages/managerequest/newrequest/managerequest.component';
+import { RequestlistComponent } from './pages/managerequest/requestlist/requestlist.component';
 
 
 const routes: Routes = [
@@ -177,15 +178,22 @@ const routes: Routes = [
           title: 'Session list'
         }
       },
-      // {
-      //   path: 'session/add',
-      //   component: NewsessionComponent,
-      //   data: {
-      //     title: 'Add Session'
-      //   }
-      // },
       {
-        path: 'request/addrequest',
+        path: 'session/add',
+        component: NewsessionComponent,
+        data: {
+          title: 'Add Session'
+        }
+      },
+      {
+        path: 'request/list',
+        component: RequestlistComponent,
+        data: {
+          title: 'Request list'
+        }
+      },
+      {
+        path: 'request/add',
         component: ManagerequestComponent,
         data: {
           title: 'New Request'

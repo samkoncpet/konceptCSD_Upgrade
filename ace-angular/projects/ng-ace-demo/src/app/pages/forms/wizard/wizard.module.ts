@@ -13,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FormWizardComponent } from './wizard.component';
 
 import { ValidationComponent } from './validation-form/validation.component';
+import { FormBookSessionWizardComponent } from './../booksessionwizard/booksessionwizard.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,13 @@ const routes: Routes = [
     data : {
       title: 'Customer'
     }
+  },
+  {
+    path: 'session',
+    component: FormBookSessionWizardComponent,
+    data : {
+      title: 'Session'
+    }
   }
 ];
 
@@ -28,7 +36,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     FormWizardComponent,
-    ValidationComponent
+    ValidationComponent,
+    FormBookSessionWizardComponent
   ],
   imports: [
     CommonModule,

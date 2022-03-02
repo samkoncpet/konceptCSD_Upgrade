@@ -112,9 +112,9 @@
         "title": "Session list"
     },
     {
-        "id": "addcustomers",
+        "id": "addsession",
         "parent": "managesession",
-        "link": "session/addsession",
+        "link": "session/add/session",
         "title": "Add Session"
     },
     {
@@ -124,9 +124,15 @@
         "icon": "fa fa-edit"
     },
     {
+        "id": "viewrequest",
+        "parent": "managerequest",
+        "link": "request/list",
+        "title": "Request List"
+    },
+    {
         "id": "newrequest",
         "parent": "managerequest",
-        "link": "request/addrequest",
+        "link": "request/add",
         "title": "New Request"
     },
     {

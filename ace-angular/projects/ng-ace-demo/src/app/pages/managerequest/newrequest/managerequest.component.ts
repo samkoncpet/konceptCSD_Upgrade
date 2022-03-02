@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
 
+import { LocalstorageService } from '../../../config/localstorage.service';
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
@@ -21,17 +22,16 @@ export class ManagerequestComponent implements OnInit {
   isView = false;
   submitted = false;
   addRequest: FormGroup;
-  isPassword = true;
-  passwordmatch = true;
-  imageSrc: string = '';
   public grouplist = [];
   public organizationlist= [];
   public userdetail= [];
+  public descriptionHistorylist : Array<DescriptionHistoryList> = [];
 
   constructor(private router: Router,
     private _formBuilder: FormBuilder,
     private _appSettings: AppsettingsService,
     private _ConfigurationService: ConfigurationService,
+    private _localstorageService: LocalstorageService,
     private _notificationsService: NotificationsService,
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
@@ -48,99 +48,25 @@ export class ManagerequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.addRequest = this._formBuilder.group({
-      Subject: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
-      RequestType: new FormControl('', Validators.required),
-      Description: new FormControl('', Validators.required),
-      CreatedBy: new FormControl('', [Validators.minLength(2), Validators.maxLength(50)]),
-      RelatedCustomer: new FormControl('', Validators.required),
-      DescriptionHistory: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(20)]),
-      is_active: new FormControl(true),
+      Subject: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+      RequestType: new FormControl('1', Validators.required),
+      Description: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(500)]),
+      CreatedBy: new FormControl({ value: '', disabled: true}, [Validators.minLength(2), Validators.maxLength(50)]),
+      RelatedCustomer: new FormControl('1', Validators.required),
+      DescriptionHistory: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(500)]),      
+      File: new FormControl('', Validators.required),
+      IsActive: new FormControl(true),
     });
-    this.geOrganization();
-    this.getUserGroup();
+    this.addRequest.controls.CreatedBy.setValue(this._localstorageService.localstorageGet("fullname"));
     if(this.isUpdate || this.isView){
-      this.getUserDetail();
     }
   }
-
-  // File Upload
-  handleInputChange(e) {
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    var pattern = /image-*/;
-    var reader = new FileReader();
-    if (!file.type.match(pattern)) {      
-      this._notificationsService.info("invalid format!", "info");
-      return;
-    }
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  _handleReaderLoaded(e) {
-    let reader = e.target;
-    this.imageSrc = reader.result;
-  }
-
-   getUserGroup(){
-    /** spinner starts on init */
-    this.spinner.show();
-    var url = this._appSettings.koncentAPI;
-    var entityMasterAPI = this._appSettings.entityMasterAPI;
-    url = url + entityMasterAPI;
-
-    var data = {
-      SQLFROM: "User_Group",
-      SQLBY: "ByUser_Group"
-    }
-    this._ConfigurationService.post(url, data)
-        .subscribe(response => {
-          if (response["response"] == 1) {
-            this.grouplist = response["data"];
-          }
-          else {
-            this.grouplist = [];
-          }
-          this.spinner.hide();
-        },
-          err => {
-            this.spinner.hide();
-          });
-   }
-   geOrganization(){
-    /** spinner starts on init */
-    this.spinner.show();
-    var url = this._appSettings.koncentAPI;
-    var entityMasterAPI = this._appSettings.entityMasterAPI;
-    url = url + entityMasterAPI;
-
-    var data = {
-      SQLFROM: "User",
-      SQLBY: "ByOrganization"
-    }
-    this._ConfigurationService.post(url, data)
-        .subscribe(response => {
-          if (response["response"] == 1) {
-            this.organizationlist = response["data"];
-          }
-          else {
-            this.organizationlist = [];
-          }
-          this.spinner.hide();
-        },
-          err => {
-            this.spinner.hide();
-          });
-   }
 
   addnewuser(){
     this.submitted = true;
     if (!this.addRequest.valid) {
       return;
     }
-
-    if (this.addRequest.get("password").value != this.addRequest.get("repassword").value) {
-      this.passwordmatch = false;
-    }
-
     /** spinner starts on init */
     this.spinner.show();
 
@@ -195,13 +121,6 @@ export class ManagerequestComponent implements OnInit {
             this.spinner.hide();
           });
   }
-  onPasswordChange(){
-    if (this.addRequest.get("password").value == this.addRequest.get("repassword").value) {
-      this.passwordmatch = true;
-    } else {
-      this.passwordmatch = false;
-    }
-  }
   cancel(){
     if(!this.isUpdate) {
       this.addRequest.reset();
@@ -210,59 +129,17 @@ export class ManagerequestComponent implements OnInit {
       this.router.navigateByUrl('/user/list');
     }
   }
-  getUserDetail(){
-    /** spinner starts on init */
-    this.spinner.show();
-    var url = this._appSettings.koncentAPI;
-    var fetchUserAPI = this._appSettings.fetchUserAPI;
-    url = url + fetchUserAPI;
-
-    var data = {
-      User_ID: this.param2,
-      Search: '',
-      User_Type: null,
-      User_Group_ID: null,
-      Is_Active: null
-    }
-    this._ConfigurationService.post(url, data)
-        .subscribe(response => {
-          if (response["response"] == 1) {
-            this.userdetail = response["data"][0];
-            this.addRequest.patchValue({
-              organizationid: response["data"][0].Parent_User_ID,
-              groupid: response["data"][0].User_Group_ID,
-              firstname: response["data"][0].FirstName,
-              lastname: response["data"][0].LastName,
-              gender: response["data"][0].Gender,
-              email: response["data"][0].Email,
-              mobile: response["data"][0].MobileNo,
-              username: response["data"][0].Username,
-              is_active: this._commonfunctions.getBoolean(response["data"][0].Is_Active)
-           });
-
-           
-           this.addRequest.get('username').disable();
-           this.addRequest.get('password').disable();
-           this.addRequest.get('repassword').disable();
-
-           this.addRequest.get('password').setValidators(null);
-           this.addRequest.get('password').clearValidators();
-           this.addRequest.get('password').updateValueAndValidity();
-
-           this.addRequest.get('repassword').setValidators(null);
-           this.addRequest.get('repassword').clearValidators();
-           this.addRequest.get('repassword').updateValueAndValidity();
-          }
-          else {
-           
-          }
-          this.spinner.hide();
-        },
-          err => {
-            this.spinner.hide();
-          });
+   
+  addDescription(){
+    let descObj = new DescriptionHistoryList();
+    descObj.HistoryID = this.descriptionHistorylist.length + 1;
+    descObj.AddedBy = this._localstorageService.localstorageGet("fullname");
+    descObj.CreatedOn = new Date();
+    descObj.DescriptionHistory = this.addRequest.value.DescriptionHistory;
+    this.descriptionHistorylist.push(descObj);
+    this.addRequest.controls.DescriptionHistory.setValue('');
    }
-  get addnewuserFormControl() {
+  get addRequestFormControl() {
     return this.addRequest.controls;
   }
 
@@ -270,4 +147,11 @@ export class ManagerequestComponent implements OnInit {
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addRequest, control);
   }
+}
+export class DescriptionHistoryList
+{
+  HistoryID: number
+  AddedBy: string
+  CreatedOn: Date
+  DescriptionHistory: string
 }

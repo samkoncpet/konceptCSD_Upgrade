@@ -47,6 +47,7 @@ export class NewcustomersComponent implements OnInit {
   nav4active = 1;
   nav10active = 1;
   nav11active = 1;
+  updateStudentID: number = 0;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -137,8 +138,7 @@ export class NewcustomersComponent implements OnInit {
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.customerdetail = response["data"];
-            console.log(this.customerdetail);            
+            this.customerdetail = response["data"];    
             this.addcustomer.patchValue({
               fatherfirstrname: response["data"][0].Father_FirstName,
               fatherlastname: response["data"][0].Father_LastName,              
@@ -372,20 +372,43 @@ export class NewcustomersComponent implements OnInit {
     this._notificationsService.success("Session Expired!", "Success");
   }  
   addstudentlist(){
-    let stuObj = new StudentList();
-    stuObj.id = this.studentlist.length + 1;
-    stuObj.firstname = this.addstudent.value.studentfirstname;
-    stuObj.lastname = this.addstudent.value.studentlastname;
-    stuObj.gredeid = this.addstudent.value.gradeid;
-    this.studentlist.push(stuObj);
-    this.addstudent.reset();
+    if(this.param1 == 'update' || this.updateStudentID > 0) {      
+      if((this.addstudent.value.studentfirstname == '' || this.addstudent.value.studentfirstname == undefined)
+      && (this.addstudent.value.studentlastname == '' || this.addstudent.value.studentlastname == undefined)
+      && (this.addstudent.value.gradeid == '' || this.addstudent.value.gradeid == undefined)){     
+        this.submitted = true; 
+        if (!this.addstudent.valid) {
+          return;
+        }
+      }
+      else{
+        var data = this.studentlist.find(x => x.id == this.updateStudentID);
+        if(data != null){
+          var index = this.studentlist.indexOf(data);
+          this.studentlist[index].FirstName = this.addstudent.value.studentfirstname;
+          this.studentlist[index].LastName = this.addstudent.value.studentlastname;
+          this.studentlist[index].Level_ID = this.addstudent.value.gradeid;
+          this.addstudent.reset();
+        };
+      }
+    }
+    else{
+      let stuObj = new StudentList();
+      stuObj.id = this.studentlist.length + 1;
+      stuObj.FirstName = this.addstudent.value.studentfirstname;
+      stuObj.LastName = this.addstudent.value.studentlastname;
+      stuObj.Level_ID = this.addstudent.value.gradeid;
+      this.studentlist.push(stuObj);
+      this.addstudent.reset();
+    }
    }
    editStudent(id: number){
     var data = this.studentlist.find(x => x.id == id);
     if(data != null){
-      this.addstudent.controls.studentfirstname.setValue(data["studentfirstname"]);
-      this.addstudent.controls.studentlastname.setValue(data["studentlastname"]);
-      this.addstudent.controls.gradeid.setValue(data["gredeid"])
+      this.addstudent.controls.studentfirstname.setValue(data["FirstName"]);
+      this.addstudent.controls.studentlastname.setValue(data["LastName"]);
+      this.addstudent.controls.gradeid.setValue(data["Level_ID"]);
+      this.updateStudentID = id;
     }
    }
   deleteStudent(id: number){
@@ -401,7 +424,162 @@ export class NewcustomersComponent implements OnInit {
   cancel(){
     this.addcustomer.reset();
   }
+  getSubscriptionDetail(){
+    /** spinner starts on init */
+   this.spinner.show();
+   var url = this._appSettings.koncentAPI;
+   var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
+   url = url + fetchsubscriptionAPI;
 
+   var data = {
+    Customer_ID: this.param2
+   }
+   this._ConfigurationService.post(url, data)
+       .subscribe(response => {
+         if (response["response"] == 1) {
+           this.addpackage.patchValue({
+            subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
+            subscriptionenddate: this.pipe.transform(response["data"][0].Last_Renewal_Date, 'yyyy-MM-dd').toString(),
+            packageid: response["data"][0].Package_ID,
+            paymenttypeid: response["data"][0].Package_ID,
+          });
+          this.getpackageDetailByID(response["data"][0].Package_ID);
+         }
+         else {
+           this.gradelist = [];
+         }
+         this.spinner.hide();
+       },
+       (error) => {
+           this.spinner.hide();
+           this._commonfunctionsService.exactionLog(error.status, error.message);
+       },
+       () => {
+         this.spinner.hide();
+       });
+  }
+  getpackageDetailByID(id: string){
+    var data = this.packagelist.find(x => x.Package_ID == id);
+    if(data != null){
+      this.addpackage.controls.sessions.setValue(data["Session_Type_Period"]);
+      this.addpackage.controls.hours.setValue(data["Session_Hours"]);
+      this.addpackage.controls.report.setValue(data["Session_Reports_Period"]);
+      this.addpackage.controls.sessionstypeperiod.setValue(data["Session_Type_Period"]);
+      this.addpackage.controls.packageprice.setValue(data["Package_Price"]);
+    }
+    else{
+      this.addpackage.controls.sessions.setValue('');
+      this.addpackage.controls.hours.setValue('');
+      this.addpackage.controls.report.setValue('');
+      this.addpackage.controls.sessionstypeperiod.setValue('');
+      this.addpackage.controls.packageprice.setValue('');
+      this.addpackage.controls.subscriptiondate.setValue('');
+      this.addpackage.controls.subscriptionenddate.setValue('');
+    }
+   }
+  getStudentDetail(){
+    /** spinner starts on init */
+   this.spinner.show();
+   this.studentlist = [];
+   var url = this._appSettings.koncentAPI;
+   var fetchcustomerchildAPI = this._appSettings.fetchcustomerchildAPI;
+   url = url + fetchcustomerchildAPI;
+
+   var data = {
+    Customer_ID: this.param2
+   }
+   this._ConfigurationService.post(url, data)
+       .subscribe(response => {
+         if (response["response"] == 1) {
+            for(var i = 0 ; i < response["data"].length; i++){
+              let stuObj = new StudentList();
+              stuObj.id = response["data"][i].Index;
+              stuObj.FirstName = response["data"][i].FirstName;
+              stuObj.LastName = response["data"][i].LastName;
+              stuObj.Level_ID = parseInt(response["data"][i].Level_ID);
+              stuObj.Customer_Child_ID = parseInt(response["data"][i].Customer_Child_ID);
+              stuObj.Customer_ID = parseInt(response["data"][i].Customer_ID);
+              this.studentlist.push(stuObj);
+            }
+         }
+         else {
+           this.gradelist = [];
+         }
+         this.spinner.hide();
+       },
+       (error) => {
+           this.spinner.hide();
+           this._commonfunctionsService.exactionLog(error.status, error.message);
+       },
+       () => {
+         this.spinner.hide();
+       });
+  }
+  updateSubscriptionDetails(){
+    /** spinner starts on init */
+   this.spinner.show();
+   this.studentlist = [];
+   var url = this._appSettings.koncentAPI;
+   var updatecustomersubscriptionAPI = this._appSettings.updatecustomersubscriptionAPI;
+   url = url + updatecustomersubscriptionAPI;
+
+   var data = {
+    CustomerSubscriptionUpdateList: [{
+      Customer_ID: parseInt(this.param2),
+      Subscription_ID: 1,
+      Package_ID: parseInt(this.addpackage.value.packageid),
+      Start_Date: this.addpackage.value.subscriptiondate,
+      Cancellation_Date: this.addpackage.value.subscriptionenddate,
+      Payment_Type_ID: parseInt(this.addpackage.value.paymenttypeid)
+    }]
+   }
+   this._ConfigurationService.post(url, data)
+       .subscribe(response => {
+         if (response["response"] == 1) {
+            this._notificationsService.success(response["data"][0].message, "success")
+         }
+         else {
+           this.gradelist = [];
+         }
+         this.spinner.hide();
+       },
+       (error) => {
+           this.spinner.hide();
+           this._commonfunctionsService.exactionLog(error.status, error.message);
+       },
+       () => {
+         this.spinner.hide();
+       });
+  }
+  updateStudentDetails(){
+    /** spinner starts on init */
+   this.spinner.show();
+   var url = this._appSettings.koncentAPI;
+   var updatecustomerchildAPI = this._appSettings.updatecustomerchildAPI;
+   url = url + updatecustomerchildAPI;
+  debugger
+   var data = {
+    CustomerChildUpdateList: this.studentlist
+   }
+   this._ConfigurationService.post(url, data)
+       .subscribe(response => {
+        debugger
+         if (response["response"] == 1) {
+          this._notificationsService.success(response["data"][0].message, "success")
+         }
+         else {
+           this.gradelist = [];
+         }
+         this.spinner.hide();
+       },
+       (error) => {
+           this.spinner.hide();
+           this._commonfunctionsService.exactionLog(error.status, error.message);
+       },
+       () => {
+         this.spinner.hide();
+       });
+  }
   subscriptionEndDateFilter(date: Date){
     this.subscriptionEndMinDate = this.pipe.transform(date, 'yyyy-MM-dd').toString();
   }
@@ -431,7 +609,10 @@ export class NewcustomersComponent implements OnInit {
 export class StudentList
 {
   id: number
-  firstname: string
-  lastname: string
-  gredeid: number
+  Customer_ID: number
+  Customer_Child_ID: number
+  FirstName: string
+  LastName: string
+  Gender: number
+  Level_ID: number
 }

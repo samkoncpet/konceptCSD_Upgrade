@@ -41,8 +41,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'addsession',
-    loadChildren: () => import('./booksession/booksessionwizard.module').then((m) => m.BookSessionWizardModule)
+    path: 'add',
+    loadChildren: () => import('./wizard/wizard.module').then((m) => m.FormWizardModule)
   }
 ]
 

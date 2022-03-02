@@ -1,23 +1,24 @@
 <!-- page header and toolbox -->
-<div class="page-header pb-2">
-    <h1 class="page-title text-primary-d2 text-150">
+<div class="d-flex justify-content-between flex-column flex-sm-row mb-3 px-2 px-sm-0">
+    <h1 class="text-primary-d2 text-150">
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Customer list
+            Request list
         </small>
     </h1>
-    <div class="mb-2 mb-sm-0" *ngIf="CommonAccessModule.Is_Create">
-        <!-- <button type="button" (click)="addgroup()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
+
+    <div class="mb-2 mb-sm-0" *ngIf="OrganizationAccessModule.Is_Create">
+        <!-- <button type="button" (click)="addorganization()" class="btn btn-blue px-3 d-block w-100 text-95 radius-round border-2 brc-black-tp10">
         <i class="fa fa-plus mr-1"></i>
         Add <span class="d-sm-none d-md-inline">New</span> Entry
         </button> -->
-        <button (click)="addnewcustomer()" class="btn btn-green radius-1 d-inline-flex align-items-center radius-round py-3px btn-bold border-r-0">
+        <button (click)="addRequest()" class="btn btn-green radius-1 d-inline-flex align-items-center radius-round py-3px btn-bold border-r-0">
             <span class="bgc-black-tp9 h-5 px-25 pt-2 my-n1 ml-2 border-l-2 brc-inherit">
                  <i class="fa fa-plus text-120 mt-3px"></i>
              </span>
              <span class="px-4">
-                 Add Customer
+                 Add Request
              </span>
            </button>
     </div>
@@ -39,40 +40,52 @@
                 </div>
                 <div class="card-body px-1 px-md-3">
                     <div class="form-group row">
-                        <div class="col-md-3 mb-0">
+                        <div class="col-md-2 mb-0">
                             <label for="id-form-field-1" class="mb-0">
-                                User ID
+                                Customer
                         </label>
                         </div>
-                        <div class="col-md-3 mb-0">
-                            <select id="groupid" formControlName="User_ID" #User_ID class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                <option value="">--Select--</option>
-                                <option *ngFor="let data of userlist" value={{data.User_ID}}>{{data.User_Group_Name}}</option>  
-                            </select>
-                        </div>
-                        <div class="col-md-3 mb-0">
-                            <label for="id-form-field-1" class="mb-0">
-                            Search
-                        </label>
-                        </div>
-                        <div class="col-md-3 mb-0">
+                        <div class="col-md-3">
                             <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
                                 <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
-                                <input type="text" formControlName="Search" maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Search ...">
+                                <input type="text" formControlName="Customertext" maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Customer ...">
+                            </div>
+                        </div>
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Subject
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
+                                <i class="fa fa-search position-lc ml-25 text-primary-m1"></i>
+                                <input type="text" formControlName="Subject" maxlength="20" class="form-control w-100 pl-45 radius-1 brc-primary-m4" placeholder="Subject ...">
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-3 mb-0">
+                        <div class="col-md-2 mb-0">
+                            <label for="id-form-field-1" class="mb-0">
+                                Created By
+                        </label>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="CreatedBy" formControlName="CreatedBy" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                <option value="1">Created By 1</option>
+                                <option value="2">Created By 2</option>
+                                <option value="3">Created By 3</option>
+                              </select>
+                        </div>
+                        <div class="col-md-2 mb-0">
                             <label for="id-form-field-1" class="mb-0">
                                 Is Active
                             </label>
                         </div>
-                        <div class="col-md-3 mb-0">
-                            <input type="checkbox" formControlName="Is_Active" id="Is_Active" class="mb-3 input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
+                        <div class="col-md-2">
+                            <input type="checkbox" formControlName="IsActive" id="IsActive" class="mb-3 input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
                         </div>
                         <div class="col-md-3 mb-0">
-                            <button class="btn px-4 btn-green mb-1" (click)="filterCustomerList()">
+                            <button class="btn px-4 btn-green mb-1" (click)="filterRequestList()">
                                 <i class="fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Show
                                 </button>
                             <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold mb-1 px-4" type="reset" (click)="reset()">
@@ -90,7 +103,7 @@
                     <div class="card-toolbar mr-auto no-border">
                         <label class="mb-0">
                         <span class="align-middle d-block d-sm-inline text-600">
-                            Customer list
+                            Request list
                         </span>
                     </label>
                     </div>
@@ -98,13 +111,15 @@
             </div>
             <div class="card-body px-1 px-md-3">
                 <div [ngbCollapse]="false" #collapse="ngbCollapse">
-                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="customerlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()" [paginationPageSize]="itemPerPage"
+                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="requestlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()" [paginationPageSize]="itemPerPage"
                         (gridReady)="onGridReady($event)">
                     </ag-grid-angular>
 
                     <!-- table footer (action buttons, pagination, etc) -->
                     <div class="bgc-primary-l4 p-3 border-b-1 brc-default-l2 d-flex flex-column flex-lg-row justify-content-between align-items-center mt-n1px">
                         <!-- actions -->
+
+
 
                         <!-- pagination -->
                         <div class="d-flex mw-100 flex-nowrap text-nowrap align-items-center nav-tabs-scroll is-scrollable my-3 my-lg-0">
@@ -146,20 +161,20 @@
                         </div>
 
 
-                        <div *ngIf="customerlist.length > 0">
+                        <div *ngIf="requestlist.length > 0">
                             Showing
                             <span class="w-2 d-inline-block text-center">
                                     {{(currentPage - 1) * itemPerPage + 1}}
                                 </span> -
                             <span class="w-2 d-inline-block text-center mr-1">
-                                    {{currentPage * itemPerPage < customerlist.length ? currentPage * itemPerPage : customerlist.length}}
+                                    {{currentPage * itemPerPage < requestlist.length ? currentPage * itemPerPage : requestlist.length}}
                                 </span> of
                             <span class="w-2 d-inline-block text-center">
-                                    {{customerlist.length}}
+                                    {{requestlist.length}}
                                 </span>
                         </div>
 
-                        <div *ngIf="customerlist.length == 0">
+                        <div *ngIf="requestlist.length == 0">
                             Showing
                             <span class="w-2 d-inline-block text-center">
                                     0
@@ -173,67 +188,68 @@
                         </div>
                     </div>
                 </div>
-                <!-- <form autocomplete="off">
-                    <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
-                        <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
-                            <tr>
-                                <th>Sr. No.</th>
-                                <th>Name</th>
-                                <th>Is Predefined</th>
-                                <th>Is Active</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                <!-- <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                    <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                        <tr>
+                            <th class="d-none d-sm-table-cell">Sr. No.</th>
+                            <th class="d-none d-sm-table-cell">User Name</th>
+                            <th class="d-none d-sm-table-cell">Full Name</th>
+                            <th class="d-none d-sm-table-cell">Email</th>
+                            <th class="d-none d-sm-table-cell">Mobile No.</th>
+                            <th class="d-none d-sm-table-cell">Is Active</th>
+                            <th class="d-none d-sm-table-cell"></th>
+                        </tr>
+                    </thead>
 
-                        <tbody class="mt-1" *ngFor="let data of grouplist">
+                    <tbody class="mt-1" *ngFor="let data of userlist">
+                        <tr class="bgc-h-yellow-l4 d-style">
                             <td>{{ data.Index}}</td>
-                            <td>{{data.User_Group_Name}}</td>
-                            <td>{{data.Is_Predefined_Status}}</td>
+                            <td>{{ data.Username}}</td>
+                            <td>{{ data.FullName}}</td>
+                            <td>{{ data.Email}}</td>
+                            <td>{{ data.MobileNo}}</td>
                             <td>
                                 <span *ngIf="data.Is_Active == 'True'" class="badge badge-sm bgc-green-d1 text-white pb-1 px-25">{{ data.Is_Active }}</span>
                                 <span *ngIf="data.Is_Active == 'False'" class="badge badge-sm bgc-red-d1 text-white pb-1 px-25">{{ data.Is_Active }}</span>
                             </td>
                             <td>
                                 <div class="d-none d-lg-flex">
-                                    <a *ngIf="UserAccessModule.Is_Update && data.Is_Predefined != 'True'" href="/addgroup/update/{{data.User_Group_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success">
-                                        <i class="fa fa-pencil-alt"></i>
+                                    <a *ngIf="UserAccessModule.Is_Update" href="/updateorganization/update/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
+                                        <i class="fa fa-pencil-alt "></i>
                                     </a>
-                                    <a *ngIf="UserAccessModule.Is_Retrieve" href="/viewgroup/view/{{data.User_Group_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                    <a *ngIf="UserAccessModule.Is_Retrieve" href="/vieworganization/view/{{data.User_ID}}" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-success btn-a-lighter-success ">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </div>
                             </td>
-                        </tbody>
-                    </table>
-                    <div class="d-flex pl-4 pr-3 pt-35 border-t-1 brc-secondary-l3 flex-column flex-sm-row mt-n1px">
-                        <div class="text-nowrap align-self-center align-self-sm-start">
-                            <span class="d-inline-block text-grey-d2">
-                  Showing 1 - 10 of {{this.grouplist.length}}
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex pl-4 pr-3 pt-35 border-t-1 brc-secondary-l3 flex-column flex-sm-row mt-n1px ">
+                    <div class="text-nowrap align-self-center align-self-sm-start ">
+                        <span class="d-inline-block text-grey-d2 ">
+                  Showing 1 - 10 of {{this.userlist.length}}
               </span>
 
-                            <select class="ml-3 ace-select no-border angle-down brc-h-blue-m3 w-auto pr-45 text-secondary-d3">
-                  <option value="10">Show 10</option>
-                  <option value="20">Show 20</option>
-                  <option value="50">Show 50</option>
+                        <select class="ml-3 ace-select no-border angle-down brc-h-blue-m3 w-auto pr-45 text-secondary-d3 ">
+                  <option value="10 ">Show 10</option>
+                  <option value="20 ">Show 20</option>
+                  <option value="50 ">Show 50</option>
                 </select>
-                        </div>
-
-                        <div class="btn-group ml-sm-auto mt-3 mt-sm-0">
-                            <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2">
-                                <i class="fa fa-caret-left mr-1"></i> Prev
-                            </a>
-                            <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px">
-                  Next
-                  <i class="fa fa-caret-right ml-1"></i>
-                </a>
-                        </div>
                     </div>
-                </form> -->
 
+                    <div class="btn-group ml-sm-auto mt-3 mt-sm-0 ">
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-l-1 px-3 border-2 ">
+                            <i class="fa fa-caret-left mr-1 "></i> Prev
+                        </a>
+                        <a href="javascript:void(0);" class="btn btn-lighter-default btn-bgc-white btn-a-secondary radius-r-1 px-3 border-2 ml-n2px ">
+                  Next
+                  <i class="fa fa-caret-right ml-1 "></i>
+                </a>
+                    </div>
+                </div> -->
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col -->
 </div>

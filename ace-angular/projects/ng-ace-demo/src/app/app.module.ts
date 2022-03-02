@@ -45,6 +45,7 @@ import { NewsessionComponent } from './pages/managesession/newsession/newsession
 import { SessionlistComponent } from './pages/managesession/sessionlist/sessionlist.component';
 import { CellCustomCustomerslistComponent } from './common/cell-custom-customerslist/cell-custom-customerslist.component';
 import { ManagerequestComponent } from './pages/managerequest/newrequest/managerequest.component';
+import { RequestlistComponent } from './pages/managerequest/requestlist/requestlist.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ManagerequestComponent } from './pages/managerequest/newrequest/manager
     NewsessionComponent,
     SessionlistComponent,
     CellCustomCustomerslistComponent,
-    ManagerequestComponent
+    ManagerequestComponent,
+    RequestlistComponent
   ],
   imports: [
     CommonModule,

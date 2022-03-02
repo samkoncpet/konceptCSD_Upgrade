@@ -29,19 +29,19 @@ export class PackagelistComponent implements OnInit {
   public PackagesAccessModule = new PackagesAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Package', headerName: 'Package', sortable: true, editable: false, resizable: true },
-    { field: 'Code', headerName: 'Code', sortable: true, editable: false, resizable: true },
-    { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false, resizable: true },
-    { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Is_Active', headerName: 'Status', sortable: true, resizable: true, width: 100,  cellRendererFramework: CellCustomActiveComponent },
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 100, minWidth: 100, },
+    { field: 'Package', headerName: 'Package', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 200, minWidth: 200, },
+    { field: 'Code', headerName: 'Code', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 200, minWidth: 200, },
+    { field: 'Package_Price', headerName: 'Package Price', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 150, minWidth: 150, },
+    { field: 'Session_Hours', headerName: 'Session Hours', sortable: true, editable: false, resizable: true, width: 100, maxWidth: 150, minWidth: 150, },
+    { field: 'Is_Active', headerName: 'Status', sortable: true, resizable: true, width: 100,  cellRendererFramework: CellCustomActiveComponent, maxWidth: 150, minWidth: 150 },
     { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomPackagelistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
         editRouterLink: '/package/update/',
         viewRouterLink: '/package/view/',
         pageType: 'package'
-      } }
+      }, maxWidth: 200, minWidth: 200 }
   ]
 
   constructor(private router: Router,
