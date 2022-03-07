@@ -4,7 +4,8 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Update Customer
+            <span *ngIf="isUpdate">Update Customer</span>
+            <span *ngIf="isView">View Customer</span>
         </small>
     </h1>
 </div>
@@ -208,7 +209,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="countryid" formControlName="countryid" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.countryid.touched || submitted) && addcustomerFormControl.countryid.errors?.required)}">
+                                                    <select id="countryid" formControlName="countryid" [disabled]="isView" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.countryid.touched || submitted) && addcustomerFormControl.countryid.errors?.required)}">
                                                         <option value="">--Select--</option>
                                                         <option *ngFor="let data of countrylist"
                                                             value={{data.Country_ID}}>{{data.Country}}</option>
@@ -260,7 +261,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="card dcard">
                                         <div class="card bgc-primary-d1 text-white">
                                             <div class="card-header">
@@ -333,20 +334,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
+                                </div> -->
+                                <div *ngIf="isUpdate" class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
                                     <div class="offset-md-3 col-md-9 text-nowrap">
-                                        <button class="btn btn-green btn-bold px-4" type="button" (click)="addnewcustomer()">
+                                        <button class="btn btn-green btn-bold px-4" type="button" (click)="updatecustomer()">
                                             <i class="fa fa-check mr-1"></i>
-                                            Submit
-                                        </button>
-
-                                        <button class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset" (click)="cancel()">
-                                            <i class="fa fa-undo mr-1"></i>
-                                            Cancel
+                                            Update
                                         </button>
                                     </div>
-                                </div> -->
+                                </div>
                             </form>
                         </div>
                     </ng-template>
@@ -502,7 +498,7 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                <button class="btn btn-green btn-bold px-4" type="button" (click)="updateSubscriptionDetails()">
+                                                <button *ngIf="isUpdate" class="btn btn-green btn-bold px-4" type="button" (click)="updateSubscriptionDetails()">
                                                     <i class="fa fa-check mr-1"></i>
                                                     <span *ngIf="isUpdate">Update</span>
                                                 </button>
@@ -524,7 +520,7 @@
                         <form #form [formGroup]="addstudent">
                             <div class="card dcard">
                                 <div class="card-body">
-                                    <div class="form-group row">
+                                    <div *ngIf="isUpdate" class="form-group row">
                                         <div class="col-md-2">
                                             <label for="id-form-field-1" class="mb-0">
                             First Name <span class="text-danger">*</span>
@@ -548,7 +544,7 @@
                         </span>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div *ngIf="isUpdate" class="form-group row">
                                         <div class="col-md-2">
                                             <label for="id-form-field-1" class="mb-0">
                             Grade <span class="text-danger">*</span>
@@ -582,7 +578,7 @@
                                                     <th class="d-none d-sm-table-cell">First Name</th>
                                                     <th class="d-none d-sm-table-cell">Last Name</th>
                                                     <th class="d-none d-sm-table-cell">Grade</th>
-                                                    <th class="d-none d-sm-table-cell">Action</th>
+                                                    <th class="d-none d-sm-table-cell" *ngIf="isUpdate">Action</th>
                                                 </tr>
                                             </thead>
 
@@ -592,7 +588,7 @@
                                                     <td>{{ data.FirstName}}</td>
                                                     <td>{{ data.LastName}}</td>
                                                     <td>{{ data.Level_ID}}</td>
-                                                    <td>
+                                                    <td *ngIf="isUpdate">
                                                         <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
                                                             <i class="fa fa-pencil-alt"></i>
                                                         </a>
@@ -606,7 +602,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 d-flex justify-content-end">
-                                            <button class="btn btn-green btn-bold px-4" type="button" (click)="updateStudentDetails()">
+                                            <button *ngIf="isUpdate" class="btn btn-green btn-bold px-4" type="button" (click)="updateStudentDetails()">
                                                 <i class="fa fa-check mr-1"></i>
                                                 <span *ngIf="isUpdate">Update Student</span>
                                             </button>

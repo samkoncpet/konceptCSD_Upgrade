@@ -81,19 +81,19 @@ export class NewcustomersComponent implements OnInit {
       fatheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),      
       motheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
       homephone: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-      modeofpayment: new FormControl('', Validators.required),
+      // modeofpayment: new FormControl('', Validators.required),
       educationconsultant: new FormControl('', Validators.required),
       address1: new FormControl('', Validators.required),
       address2: new FormControl('', Validators.required),
-      subscriptiondate: new FormControl('', Validators.required),
-      subscriptionenddate: new FormControl('', Validators.required),
+      // subscriptiondate: new FormControl('', Validators.required),
+      // subscriptionenddate: new FormControl('', Validators.required),
       countryid: new FormControl('', Validators.required),
       stateid: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       postalcode: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
-      repassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
+      // username: new FormControl('', Validators.required),
+      // password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
+      // repassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
       is_active: new FormControl(true),
     });    
     this.addpackage = this._formBuilder.group({
@@ -158,6 +158,9 @@ export class NewcustomersComponent implements OnInit {
               postalcode: response["data"][0].Zip_Code
             });
             this.geState(response["data"][0].Country_ID);
+            if(this.param1 == 'view'){
+              this.addpackage.value.packageid.countryid;
+            }
           }
           else {
             this.customerdetail = [];
@@ -360,16 +363,63 @@ export class NewcustomersComponent implements OnInit {
            this.spinner.hide();
          });
     }
-  addnewcustomer(){
+  updatecustomer(){
     this.submitted = true;
-    if (this.addcustomer.get("password").value != this.addcustomer.get("repassword").value) {
-      this.passwordmatch = false;
-    }
+    // if (this.addcustomer.get("password").value != this.addcustomer.get("repassword").value) {
+    //   this.passwordmatch = false;
+    // }
 
     if (!this.addcustomer.valid) {
       return;
     }
-    this._notificationsService.success("Session Expired!", "Success");
+
+    /** spinner starts on init */
+   this.spinner.show();
+   this.studentlist = [];
+   var url = this._appSettings.koncentAPI;
+   var updatecustomerAPI = this._appSettings.updatecustomerAPI;
+   url = url + updatecustomerAPI;
+
+   var data = {
+    CustomerInfoUpdateList: [{
+      Customer_ID: parseInt(this.param2),
+      Father_FirstName: this.addcustomer.value.fatherfirstrname,
+      Father_LastName: this.addcustomer.value.fatherlastname,
+      Father_Email: this.addcustomer.value.fatheremail,
+      Father_MobileNo: this.addcustomer.value.fathercellno,
+      Mother_FirstName: this.addcustomer.value.motherfirstname,
+      Mother_LastName: this.addcustomer.value.motherlastname,
+      Mother_Email: this.addcustomer.value.motheremail,
+      Mother_MobileNo: this.addcustomer.value.mothercellno,
+      Alt_PhoneNo: this.addcustomer.value.homephone,
+      Address: this.addcustomer.value.address1,
+      Address_Other: this.addcustomer.value.address2,
+      Country_ID: this.addcustomer.value.countryid,
+      State_ID: this.addcustomer.value.stateid,
+      City: this.addcustomer.value.city,
+      Zip_Code: this.addcustomer.value.postalcode,
+      Education_Consultant_ID: this.addcustomer.value.educationconsultant,
+      mportant_Notes: '',
+      Is_Active: this._commonfunctionsService.getBoolean(this.addcustomer.value.is_active),
+    }]
+   }
+   this._ConfigurationService.post(url, data)
+       .subscribe(response => {
+         if (response["response"] == 1) {
+            this._notificationsService.success(response["data"][0].message, "success")
+         }
+         else {
+           this.gradelist = [];
+         }
+         this.spinner.hide();
+       },
+       (error) => {
+           this.spinner.hide();
+           this._commonfunctionsService.exactionLog(error.status, error.message);
+       },
+       () => {
+         this.spinner.hide();
+       });
   }  
   addstudentlist(){
     if(this.param1 == 'update' || this.updateStudentID > 0) {      
@@ -557,15 +607,14 @@ export class NewcustomersComponent implements OnInit {
    var url = this._appSettings.koncentAPI;
    var updatecustomerchildAPI = this._appSettings.updatecustomerchildAPI;
    url = url + updatecustomerchildAPI;
-  debugger
+  
    var data = {
     CustomerChildUpdateList: this.studentlist
    }
    this._ConfigurationService.post(url, data)
        .subscribe(response => {
-        debugger
          if (response["response"] == 1) {
-          this._notificationsService.success(response["data"][0].message, "success")
+          this._notificationsService.success("Customer New Child Details has been added successfully.", "success")
          }
          else {
            this.gradelist = [];

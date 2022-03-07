@@ -116,10 +116,11 @@ export class CustomerslistComponent implements OnInit {
     url = url + fetchcustomerAPI;
 
     var data = {
-      User_ID: this.searchForm.get('User_ID').value,
-      Customer_ID: this.searchForm.get('Customer_ID').value,
+      Organization_User_ID: this.searchForm.get('User_ID').value,
+      Customer_ID: this.searchForm.get('User_ID').value,
       Search: this.searchForm.get('Search').value,
-      State_ID: this.searchForm.get('State_ID').value,
+      State_ID: 0,
+      Package_ID: 0,
       Is_Active: this._commonfunctionsService.getBoolean(this.searchForm.get('Is_Active').value)
     }
     this._ConfigurationService.post(url, data)
