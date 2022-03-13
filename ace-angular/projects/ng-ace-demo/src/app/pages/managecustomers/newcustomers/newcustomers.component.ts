@@ -23,6 +23,8 @@ export class NewcustomersComponent implements OnInit {
   param2: string;
   isUpdate = false;
   isView = false;
+  isSubscriptionDetail = false;
+  isStudentDetail = false;
 
   submitted = false;
   addcustomer: FormGroup;
@@ -160,6 +162,11 @@ export class NewcustomersComponent implements OnInit {
             this.geState(response["data"][0].Country_ID);
             if(this.param1 == 'view'){
               this.addpackage.value.packageid.countryid;
+              
+              this.addcustomer.controls['educationconsultant'].disable();
+              this.addcustomer.controls['countryid'].disable();
+              this.addcustomer.controls['stateid'].disable();          
+              this.addpackage.controls['packageid'].disable();
             }
           }
           else {
@@ -422,34 +429,39 @@ export class NewcustomersComponent implements OnInit {
        });
   }  
   addstudentlist(){
-    if(this.param1 == 'update' || this.updateStudentID > 0) {      
-      if((this.addstudent.value.studentfirstname == '' || this.addstudent.value.studentfirstname == undefined)
-      && (this.addstudent.value.studentlastname == '' || this.addstudent.value.studentlastname == undefined)
-      && (this.addstudent.value.gradeid == '' || this.addstudent.value.gradeid == undefined)){     
-        this.submitted = true; 
-        if (!this.addstudent.valid) {
-          return;
+    if(this.studentlist.length >= 5){
+        if(this.param1 == 'update' || this.updateStudentID > 0) {      
+          if((this.addstudent.value.studentfirstname == '' || this.addstudent.value.studentfirstname == undefined)
+          && (this.addstudent.value.studentlastname == '' || this.addstudent.value.studentlastname == undefined)
+          && (this.addstudent.value.gradeid == '' || this.addstudent.value.gradeid == undefined)){     
+            this.submitted = true; 
+            if (!this.addstudent.valid) {
+              return;
+            }
+          }
+          else{
+            var data = this.studentlist.find(x => x.id == this.updateStudentID);
+            if(data != null){
+              var index = this.studentlist.indexOf(data);
+              this.studentlist[index].FirstName = this.addstudent.value.studentfirstname;
+              this.studentlist[index].LastName = this.addstudent.value.studentlastname;
+              this.studentlist[index].Level_ID = this.addstudent.value.gradeid;
+              this.addstudent.reset();
+            };
+          }
         }
-      }
       else{
-        var data = this.studentlist.find(x => x.id == this.updateStudentID);
-        if(data != null){
-          var index = this.studentlist.indexOf(data);
-          this.studentlist[index].FirstName = this.addstudent.value.studentfirstname;
-          this.studentlist[index].LastName = this.addstudent.value.studentlastname;
-          this.studentlist[index].Level_ID = this.addstudent.value.gradeid;
-          this.addstudent.reset();
-        };
+        let stuObj = new StudentList();
+        stuObj.id = this.studentlist.length + 1;
+        stuObj.FirstName = this.addstudent.value.studentfirstname;
+        stuObj.LastName = this.addstudent.value.studentlastname;
+        stuObj.Level_ID = this.addstudent.value.gradeid;
+        this.studentlist.push(stuObj);
+        this.addstudent.reset();
       }
     }
-    else{
-      let stuObj = new StudentList();
-      stuObj.id = this.studentlist.length + 1;
-      stuObj.FirstName = this.addstudent.value.studentfirstname;
-      stuObj.LastName = this.addstudent.value.studentlastname;
-      stuObj.Level_ID = this.addstudent.value.gradeid;
-      this.studentlist.push(stuObj);
-      this.addstudent.reset();
+    else {
+      this._notificationsService.info("You can add only less then 6 students!","info")
     }
    }
    editStudent(id: number){
@@ -463,6 +475,32 @@ export class NewcustomersComponent implements OnInit {
    }
   deleteStudent(id: number){
     this.studentlist.splice(id - 1, 1);
+    if(this.param1 == 'update'){
+      /** spinner starts on init */
+     this.spinner.show();
+     var url = this._appSettings.koncentAPI;
+     var deletecustomerchildAPI = this._appSettings.deletecustomerchildAPI;
+     url = url + deletecustomerchildAPI;
+
+     var data = {
+      Customer_Child_ID: id
+      }
+      this._ConfigurationService.post(url, data)
+      .subscribe(response => {
+        if (response["response"] == 1) {
+            this._notificationsService.success(response["data"][0].message, "success");
+            this.getStudentDetail();
+        }
+        this.spinner.hide();
+      },
+      (error) => {
+          this.spinner.hide();
+          this._commonfunctionsService.exactionLog(error.status, error.message);
+      },
+      () => {
+        this.spinner.hide();
+      });
+    }    
    }
   onPasswordChange(){
     if (this.addcustomer.get("password").value == this.addcustomer.get("repassword").value) {
@@ -474,39 +512,42 @@ export class NewcustomersComponent implements OnInit {
   cancel(){
     this.addcustomer.reset();
   }
-  getSubscriptionDetail(){
-    /** spinner starts on init */
-   this.spinner.show();
-   var url = this._appSettings.koncentAPI;
-   var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
-   url = url + fetchsubscriptionAPI;
-
-   var data = {
-    Customer_ID: this.param2
-   }
-   this._ConfigurationService.post(url, data)
-       .subscribe(response => {
-         if (response["response"] == 1) {
-           this.addpackage.patchValue({
-            subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
-            subscriptionenddate: this.pipe.transform(response["data"][0].Last_Renewal_Date, 'yyyy-MM-dd').toString(),
-            packageid: response["data"][0].Package_ID,
-            paymenttypeid: response["data"][0].Package_ID,
+  getSubscriptionDetail(){    
+    if(!this.isSubscriptionDetail){
+      /** spinner starts on init */
+      this.spinner.show();
+      var url = this._appSettings.koncentAPI;
+      var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
+      url = url + fetchsubscriptionAPI;
+    
+      var data = {
+      Customer_ID: this.param2
+      }
+      this._ConfigurationService.post(url, data)
+          .subscribe(response => {
+            if (response["response"] == 1) {
+              this.isSubscriptionDetail = true;
+              this.addpackage.patchValue({
+              subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
+              subscriptionenddate: this.pipe.transform(response["data"][0].Last_Renewal_Date, 'yyyy-MM-dd').toString(),
+              packageid: response["data"][0].Package_ID,
+              paymenttypeid: response["data"][0].Package_ID,
+            });
+            this.getpackageDetailByID(response["data"][0].Package_ID);
+            }
+            else {
+              this.gradelist = [];
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+              this.spinner.hide();
+              this._commonfunctionsService.exactionLog(error.status, error.message);
+          },
+          () => {
+            this.spinner.hide();
           });
-          this.getpackageDetailByID(response["data"][0].Package_ID);
-         }
-         else {
-           this.gradelist = [];
-         }
-         this.spinner.hide();
-       },
-       (error) => {
-           this.spinner.hide();
-           this._commonfunctionsService.exactionLog(error.status, error.message);
-       },
-       () => {
-         this.spinner.hide();
-       });
+    }
   }
   getpackageDetailByID(id: string){
     var data = this.packagelist.find(x => x.Package_ID == id);
@@ -528,42 +569,44 @@ export class NewcustomersComponent implements OnInit {
     }
    }
   getStudentDetail(){
-    /** spinner starts on init */
-   this.spinner.show();
-   this.studentlist = [];
-   var url = this._appSettings.koncentAPI;
-   var fetchcustomerchildAPI = this._appSettings.fetchcustomerchildAPI;
-   url = url + fetchcustomerchildAPI;
-
-   var data = {
-    Customer_ID: this.param2
-   }
-   this._ConfigurationService.post(url, data)
-       .subscribe(response => {
-         if (response["response"] == 1) {
-            for(var i = 0 ; i < response["data"].length; i++){
-              let stuObj = new StudentList();
-              stuObj.id = response["data"][i].Index;
-              stuObj.FirstName = response["data"][i].FirstName;
-              stuObj.LastName = response["data"][i].LastName;
-              stuObj.Level_ID = parseInt(response["data"][i].Level_ID);
-              stuObj.Customer_Child_ID = parseInt(response["data"][i].Customer_Child_ID);
-              stuObj.Customer_ID = parseInt(response["data"][i].Customer_ID);
-              this.studentlist.push(stuObj);
+      /** spinner starts on init */
+      this.spinner.show();
+      this.studentlist = [];
+      var url = this._appSettings.koncentAPI;
+      var fetchcustomerchildAPI = this._appSettings.fetchcustomerchildAPI;
+      url = url + fetchcustomerchildAPI;
+  
+      var data = {
+      Customer_ID: this.param2
+      }
+      this._ConfigurationService.post(url, data)
+          .subscribe(response => {
+            if (response["response"] == 1) {
+              this.isStudentDetail = true;
+              for(var i = 0 ; i < response["data"].length; i++){
+                let stuObj = new StudentList();
+                stuObj.id = response["data"][i].Index;
+                stuObj.FirstName = response["data"][i].FirstName;
+                stuObj.LastName = response["data"][i].LastName;
+                stuObj.Level_ID = parseInt(response["data"][i].Level_ID);
+                stuObj.Customer_Child_ID = parseInt(response["data"][i].Customer_Child_ID);
+                stuObj.Customer_ID = parseInt(response["data"][i].Customer_ID);
+                this.studentlist.push(stuObj);
+              }
             }
-         }
-         else {
-           this.gradelist = [];
-         }
-         this.spinner.hide();
-       },
-       (error) => {
-           this.spinner.hide();
-           this._commonfunctionsService.exactionLog(error.status, error.message);
-       },
-       () => {
-         this.spinner.hide();
-       });
+            else {
+              this.gradelist = [];
+            }
+            this.spinner.hide();
+          },
+          (error) => {
+              this.spinner.hide();
+              this._commonfunctionsService.exactionLog(error.status, error.message);
+          },
+          () => {
+            this.spinner.hide();
+          });
+
   }
   updateSubscriptionDetails(){
     /** spinner starts on init */
@@ -586,7 +629,7 @@ export class NewcustomersComponent implements OnInit {
    this._ConfigurationService.post(url, data)
        .subscribe(response => {
          if (response["response"] == 1) {
-            this._notificationsService.success(response["data"][0].message, "success")
+            this._notificationsService.success(response["data"][0].message, "success");
          }
          else {
            this.gradelist = [];

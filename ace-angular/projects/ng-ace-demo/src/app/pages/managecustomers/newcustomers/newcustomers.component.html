@@ -43,7 +43,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="fatherfirstrname" type="text" formControlName="fatherfirstrname" placeholder="Father's First Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatherfirstrname.touched || submitted) && addcustomerFormControl.fatherfirstrname.errors?.required)}">
+                                                    <input id="fatherfirstrname" type="text" [readonly]="isView" formControlName="fatherfirstrname" placeholder="Father's First Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatherfirstrname.touched || submitted) && addcustomerFormControl.fatherfirstrname.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fatherfirstrname.touched || submitted) && (addcustomerFormControl.fatherfirstrname.errors?.required || addcustomerFormControl.fatherfirstrname.invalid)">
                                                         {{getErrorMessage('fatherfirstrname')}}
                                                     </span>
@@ -54,7 +54,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="fatherlastname" type="text" formControlName="fatherlastname" placeholder="Father's Last Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatherlastname.touched || submitted) && addcustomerFormControl.fatherlastname.errors?.required)}">
+                                                    <input id="fatherlastname" type="text" [readonly]="isView" formControlName="fatherlastname" placeholder="Father's Last Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatherlastname.touched || submitted) && addcustomerFormControl.fatherlastname.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fatherlastname.touched || submitted) && (addcustomerFormControl.fatherlastname.errors?.required || addcustomerFormControl.fatherlastname.invalid)">
                                                         {{getErrorMessage('fatherlastname')}}
                                                     </span>
@@ -67,7 +67,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="motherfirstname" type="text" formControlName="motherfirstname" placeholder="Mother's First Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motherfirstname.touched || submitted) && addcustomerFormControl.motherfirstname.errors?.required)}">
+                                                    <input id="motherfirstname" type="text" [readonly]="isView" formControlName="motherfirstname" placeholder="Mother's First Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motherfirstname.touched || submitted) && addcustomerFormControl.motherfirstname.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.motherfirstname.touched || submitted) && (addcustomerFormControl.motherfirstname.errors?.required || addcustomerFormControl.motherfirstname.invalid)">
                                                         {{getErrorMessage('motherfirstname')}}
                                                     </span>
@@ -78,7 +78,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="motherlastname" type="text" formControlName="motherlastname" placeholder="Mother's Last Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motherlastname.touched || submitted) && addcustomerFormControl.motherlastname.errors?.required)}">
+                                                    <input id="motherlastname" type="text" [readonly]="isView" formControlName="motherlastname" placeholder="Mother's Last Name" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motherlastname.touched || submitted) && addcustomerFormControl.motherlastname.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.motherlastname.touched || submitted) && (addcustomerFormControl.motherlastname.errors?.required || addcustomerFormControl.motherlastname.invalid)">
                                                         {{getErrorMessage('motherlastname')}}
                                                     </span>
@@ -91,7 +91,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="fathercellno" type="text" formControlName="fathercellno" minlength="10" maxlength="15" placeholder="Father's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
+                                                    <input id="fathercellno" type="text" [readonly]="isView" formControlName="fathercellno" minlength="10" maxlength="15" placeholder="Father's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fathercellno.touched || submitted) && addcustomerFormControl.fathercellno.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fathercellno.touched || submitted) && (addcustomerFormControl.fathercellno.errors?.required || addcustomerFormControl.fathercellno.invalid)">
                                                         {{getErrorMessage('fathercellno')}}
                                                     </span>
@@ -102,7 +102,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="mothercellno" type="text" formControlName="mothercellno" minlength="10" maxlength="15" placeholder="Mother's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
+                                                    <input id="mothercellno" type="text" [readonly]="isView" formControlName="mothercellno" minlength="10" maxlength="15" placeholder="Mother's Cell No." class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.mothercellno.touched || submitted) && addcustomerFormControl.mothercellno.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.mothercellno.touched || submitted) && (addcustomerFormControl.mothercellno.errors?.required || addcustomerFormControl.mothercellno.invalid)">
                                                         {{getErrorMessage('mothercellno')}}
                                                     </span>
@@ -115,7 +115,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="fatheremail" type="text" formControlName="fatheremail" placeholder="Father's Email" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatheremail.touched || submitted) && addcustomerFormControl.fatheremail.errors?.required)}">
+                                                    <input id="fatheremail" type="text" [readonly]="isView" formControlName="fatheremail" placeholder="Father's Email" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.fatheremail.touched || submitted) && addcustomerFormControl.fatheremail.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.fatheremail.touched || submitted) && (addcustomerFormControl.fatheremail.errors?.required || addcustomerFormControl.fatheremail.invalid)">
                                                         {{getErrorMessage('fatheremail')}}
                                                     </span>
@@ -126,7 +126,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="motheremail" type="text" formControlName="motheremail" placeholder="Mother's Email" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motheremail.touched || submitted) && addcustomerFormControl.motheremail.errors?.required)}">
+                                                    <input id="motheremail" type="text" [readonly]="isView" formControlName="motheremail" placeholder="Mother's Email" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.motheremail.touched || submitted) && addcustomerFormControl.motheremail.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.motheremail.touched || submitted) && (addcustomerFormControl.motheremail.errors?.required || addcustomerFormControl.motheremail.invalid)">
                                                         {{getErrorMessage('motheremail')}}
                                                     </span>
@@ -139,7 +139,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="homephone" type="text" formControlName="homephone" placeholder="Home Phone" minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
+                                                    <input id="homephone" type="text" [readonly]="isView" formControlName="homephone" placeholder="Home Phone" minlength="10" maxlength="15" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.homephone.touched || submitted) && addcustomerFormControl.homephone.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.homephone.touched || submitted) && (addcustomerFormControl.homephone.errors?.required || addcustomerFormControl.homephone.invalid)">
                                                         {{getErrorMessage('homephone')}}
                                                     </span>
@@ -150,7 +150,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="educationconsultant" formControlName="educationconsultant" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
+                                                    <select id="educationconsultant" [readonly]="isView" formControlName="educationconsultant" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
                                                         <option value="">--Select--</option>
                                                         <option *ngFor="let data of educationconsultantlist"
                                                             value={{data.User_ID}}>{{data.FullName}}</option>
@@ -185,7 +185,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <textarea id="address1" type="text" formControlName="address1" placeholder="Address 1" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.address1.touched || submitted) && addcustomerFormControl.address1.errors?.required)}"></textarea>
+                                                    <textarea id="address1" type="text" [readonly]="isView" formControlName="address1" placeholder="Address 1" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.address1.touched || submitted) && addcustomerFormControl.address1.errors?.required)}"></textarea>
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.address1.touched || submitted) && (addcustomerFormControl.address1.errors?.required || addcustomerFormControl.address1.invalid)">
                                                         {{getErrorMessage('address1')}}
                                                     </span>
@@ -196,7 +196,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <textarea id="address2" type="text" formControlName="address2" placeholder="Address 2" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.address2.touched || submitted) && addcustomerFormControl.address2.errors?.required)}"></textarea>
+                                                    <textarea id="address2" type="text" [readonly]="isView" formControlName="address2" placeholder="Address 2" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.address2.touched || submitted) && addcustomerFormControl.address2.errors?.required)}"></textarea>
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.address2.touched || submitted) && (addcustomerFormControl.address2.errors?.required || addcustomerFormControl.address2.invalid)">
                                                         {{getErrorMessage('address2')}}
                                                     </span>
@@ -209,7 +209,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="countryid" formControlName="countryid" [disabled]="isView" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.countryid.touched || submitted) && addcustomerFormControl.countryid.errors?.required)}">
+                                                    <select id="countryid" [readonly]="isView" formControlName="countryid" [disabled]="isView" #mySelect (change)='geState(mySelect.value)' class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.countryid.touched || submitted) && addcustomerFormControl.countryid.errors?.required)}">
                                                         <option value="">--Select--</option>
                                                         <option *ngFor="let data of countrylist"
                                                             value={{data.Country_ID}}>{{data.Country}}</option>
@@ -224,7 +224,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="stateid" formControlName="stateid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.stateid.touched || submitted) && addcustomerFormControl.stateid.errors?.required)}">
+                                                    <select id="stateid" [readonly]="isView" formControlName="stateid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.stateid.touched || submitted) && addcustomerFormControl.stateid.errors?.required)}">
                                                         <option value="">--Select--</option>
                                                         <option *ngFor="let data of statelist" value={{data.State_ID}}>
                                                             {{data.State}}</option>
@@ -241,7 +241,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="city" type="text" formControlName="city" placeholder="City" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.city.touched || submitted) && addcustomerFormControl.city.errors?.required)}">
+                                                    <input id="city" type="text" [readonly]="isView" formControlName="city" placeholder="City" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.city.touched || submitted) && addcustomerFormControl.city.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.city.touched || submitted) && (addcustomerFormControl.city.errors?.required || addcustomerFormControl.city.invalid)">
                                                         {{getErrorMessage('city')}}
                                                     </span>
@@ -252,7 +252,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input id="postalcode" type="text" formControlName="postalcode" placeholder="Postal Code" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.postalcode.touched || submitted) && addcustomerFormControl.postalcode.errors?.required)}">
+                                                    <input id="postalcode" type="text" [readonly]="isView" formControlName="postalcode" placeholder="Postal Code" class="form-control" [ngClass]="{'border-danger': ((addcustomerFormControl.postalcode.touched || submitted) && addcustomerFormControl.postalcode.errors?.required)}">
                                                     <span class="form-text text-danger" *ngIf="(addcustomerFormControl.postalcode.touched || submitted) && (addcustomerFormControl.postalcode.errors?.required || addcustomerFormControl.postalcode.invalid)">
                                                         {{getErrorMessage('postalcode')}}
                                                     </span>
@@ -377,7 +377,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
+                                                <input id="subscriptiondate" type="date" [readonly]="isView" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptiondate.touched || submitted) && (addpackageFormControl.subscriptiondate.errors?.required || addpackageFormControl.subscriptiondate.invalid)">
                                                 {{getErrorPackageMessage('subscriptiondate')}}
                                             </span>
@@ -388,7 +388,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
+                                                <input id="subscriptionenddate" type="date" [readonly]="isView" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptionenddate.touched || submitted) && (addpackageFormControl.subscriptionenddate.errors?.required || addpackageFormControl.subscriptionenddate.invalid)">
                                                 {{getErrorPackageMessage('subscriptionenddate')}}
                                             </span>
@@ -401,7 +401,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="packageid" formControlName="packageid" (change)="getpackageDetail($event)" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.packageid.touched || submitted) && addpackageFormControl.packageid.errors?.required)}">
+                                                <select id="packageid" formControlName="packageid" [readonly]="isView" (change)="getpackageDetail($event)" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.packageid.touched || submitted) && addpackageFormControl.packageid.errors?.required)}">
                                                 <option value="">--Select--</option>
                                                 <option *ngFor="let data of packagelist"
                                                     value={{data.Package_ID}}>{{data.Package}}</option>
@@ -416,7 +416,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <input id="packageprice" type="text" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packageprice.touched || submitted) && addpackageFormControl.packageprice.errors?.required)}">
+                                                <input id="packageprice" type="text" [readonly]="isView" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packageprice.touched || submitted) && addpackageFormControl.packageprice.errors?.required)}">
                                                 <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageprice.touched || submitted) && (addpackageFormControl.packageprice.errors?.required || addpackageFormControl.packageprice.invalid)">
                                                 {{getErrorPackageMessage('packageprice')}}
                                             </span>
@@ -429,7 +429,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="sessionstypeperiod" formControlName="sessionstypeperiod" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <select id="sessionstypeperiod" [readonly]="isView" formControlName="sessionstypeperiod" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                                                 <option value="">--Select--</option>
                                                 <option value="0">Weekly</option>
                                                 <option value="1">Monthly</option>
@@ -441,7 +441,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="sessions" formControlName="sessions" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <select id="sessions" [readonly]="isView" formControlName="sessions" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                                                 <option value="">--Select--</option>
                                                 <option value="0">0</option>
                                                 <option value="1">1</option>
@@ -458,7 +458,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="report" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <select id="report" [readonly]="isView" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                                                 <option value="">--Select--</option>
                                                 <option value="1">1 Weekly</option>
                                                 <option value="2">2 Weekly</option>
@@ -470,7 +470,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="hours" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
+                                                <select id="hours" [readonly]="isView" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
                                                 <option value="">--Select--</option>
                                                 <option value="1">1 Hour</option>
                                                 <option value="2">2 Hours</option>
@@ -485,7 +485,7 @@
                                             </label>
                                             </div>
                                             <div class="col-md-4">
-                                                <select id="paymenttypeid" formControlName="paymenttypeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.paymenttypeid.touched || submitted) && addpackageFormControl.paymenttypeid.errors?.required)}">
+                                                <select id="paymenttypeid" [readonly]="isView" formControlName="paymenttypeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.paymenttypeid.touched || submitted) && addpackageFormControl.paymenttypeid.errors?.required)}">
                                                 <option value="">--Select--</option>
                                                 <option *ngFor="let data of paymentmodelist"
                                                     value={{data.Payment_Type_ID}}>{{data.Payment_Type}}</option>

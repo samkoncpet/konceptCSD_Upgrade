@@ -116,8 +116,8 @@ export class CustomerslistComponent implements OnInit {
     url = url + fetchcustomerAPI;
 
     var data = {
-      Organization_User_ID: this.searchForm.get('User_ID').value,
-      Customer_ID: this.searchForm.get('User_ID').value,
+      Organization_User_ID: 0,
+      Customer_ID: 0,
       Search: this.searchForm.get('Search').value,
       State_ID: 0,
       Package_ID: 0,

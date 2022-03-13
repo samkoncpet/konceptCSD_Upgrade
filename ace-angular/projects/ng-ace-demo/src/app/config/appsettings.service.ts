@@ -45,6 +45,7 @@ export class AppsettingsService {
     updatecustomersubscriptionAPI: string = "api/customer/updatecustomersubscription";
     updatecustomerchildAPI: string = "api/customer/updatecustomerchild";
     updatecustomerAPI: string = "api/customer/updatecustomer";
+    deletecustomerchildAPI: string = "api/customer/deletecustomerchild";
   
     defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }
