@@ -32,17 +32,20 @@ export class NewcustomersComponent implements OnInit {
   addstudent: FormGroup;
   isPassword = true;
   passwordmatch = true;  
-  public customerdetail = [];
-  public packagelist = [];
-  public countrylist = [];
-  public statelist= [];
-  public gradelist= [];
-  public educationconsultantlist = [];
-  public paymentmodelist = [];
-  public studentlist : Array<StudentList> = [];
+  private customerdetail = [];
+  private packagelist = [];
+  private countrylist = [];
+  private statelist= [];
+  private gradelist= [];
+  private educationconsultantlist = [];
+  private paymentmodelist = [];
+  private getScriptionDetail = [];
+  private studentlist : Array<StudentList> = [];
   currentDate = new Date();
-  public subscriptionStartMinDate: string;
-  public subscriptionEndMinDate: string;
+  Start_Date = new Date();
+  Last_Renewal_Date = new Date();
+  private subscriptionStartMinDate: string;
+  private subscriptionEndMinDate: string;
   pipe = new DatePipe('en-US');
 
   nav2active = 1;
@@ -429,7 +432,7 @@ export class NewcustomersComponent implements OnInit {
        });
   }  
   addstudentlist(){
-    if(this.studentlist.length >= 5){
+    if(this.studentlist.length <= 5){
         if(this.param1 == 'update' || this.updateStudentID > 0) {      
           if((this.addstudent.value.studentfirstname == '' || this.addstudent.value.studentfirstname == undefined)
           && (this.addstudent.value.studentlastname == '' || this.addstudent.value.studentlastname == undefined)
@@ -446,8 +449,21 @@ export class NewcustomersComponent implements OnInit {
               this.studentlist[index].FirstName = this.addstudent.value.studentfirstname;
               this.studentlist[index].LastName = this.addstudent.value.studentlastname;
               this.studentlist[index].Level_ID = this.addstudent.value.gradeid;
+              this.studentlist[index].Customer_ID = parseInt(this.param2);
               this.addstudent.reset();
-            };
+              this.addstudent.value.gradeid = "0";
+            }
+            else{
+              let stuObj = new StudentList();
+              stuObj.id = this.studentlist.length + 1;
+              stuObj.FirstName = this.addstudent.value.studentfirstname;
+              stuObj.LastName = this.addstudent.value.studentlastname;
+              stuObj.Level_ID = this.addstudent.value.gradeid;
+              stuObj.Customer_ID = parseInt(this.param2);
+              this.studentlist.push(stuObj);
+              this.addstudent.reset();
+              this.addstudent.value.gradeid = "0";
+            }
           }
         }
       else{
@@ -456,12 +472,14 @@ export class NewcustomersComponent implements OnInit {
         stuObj.FirstName = this.addstudent.value.studentfirstname;
         stuObj.LastName = this.addstudent.value.studentlastname;
         stuObj.Level_ID = this.addstudent.value.gradeid;
+        stuObj.Customer_ID = parseInt(this.param2);
         this.studentlist.push(stuObj);
         this.addstudent.reset();
+        this.addstudent.value.gradeid = "0";
       }
     }
     else {
-      this._notificationsService.info("You can add only less then 6 students!","info")
+      this._notificationsService.info("Cannot add more than 5 students per customer!","info")
     }
    }
    editStudent(id: number){
@@ -474,6 +492,9 @@ export class NewcustomersComponent implements OnInit {
     }
    }
   deleteStudent(id: number){
+    debugger
+    var Customer_Child_ID = this.studentlist.find(x => x.id == id).Customer_Child_ID;
+
     this.studentlist.splice(id - 1, 1);
     if(this.param1 == 'update'){
       /** spinner starts on init */
@@ -481,15 +502,15 @@ export class NewcustomersComponent implements OnInit {
      var url = this._appSettings.koncentAPI;
      var deletecustomerchildAPI = this._appSettings.deletecustomerchildAPI;
      url = url + deletecustomerchildAPI;
+     
 
      var data = {
-      Customer_Child_ID: id
+      Customer_Child_ID: Customer_Child_ID
       }
       this._ConfigurationService.post(url, data)
       .subscribe(response => {
         if (response["response"] == 1) {
             this._notificationsService.success(response["data"][0].message, "success");
-            this.getStudentDetail();
         }
         this.spinner.hide();
       },
@@ -528,12 +549,13 @@ export class NewcustomersComponent implements OnInit {
             if (response["response"] == 1) {
               this.isSubscriptionDetail = true;
               this.addpackage.patchValue({
-              subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
-              subscriptionenddate: this.pipe.transform(response["data"][0].Last_Renewal_Date, 'yyyy-MM-dd').toString(),
-              packageid: response["data"][0].Package_ID,
-              paymenttypeid: response["data"][0].Package_ID,
-            });
-            this.getpackageDetailByID(response["data"][0].Package_ID);
+                subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
+                subscriptionenddate: this.pipe.transform(response["data"][0].Cancellation_Date, 'yyyy-MM-dd').toString(),
+                packageid: response["data"][0].Package_ID,
+                paymenttypeid: response["data"][0].Payment_Type_ID,
+              });
+              this.getScriptionDetail = response["data"][0];
+              this.getpackageDetailByID(response["data"][0].Package_ID);
             }
             else {
               this.gradelist = [];
@@ -594,9 +616,6 @@ export class NewcustomersComponent implements OnInit {
                 this.studentlist.push(stuObj);
               }
             }
-            else {
-              this.gradelist = [];
-            }
             this.spinner.hide();
           },
           (error) => {
@@ -619,7 +638,7 @@ export class NewcustomersComponent implements OnInit {
    var data = {
     CustomerSubscriptionUpdateList: [{
       Customer_ID: parseInt(this.param2),
-      Subscription_ID: 1,
+      Subscription_ID: this.getScriptionDetail["Subscription_ID"],
       Package_ID: parseInt(this.addpackage.value.packageid),
       Start_Date: this.addpackage.value.subscriptiondate,
       Cancellation_Date: this.addpackage.value.subscriptionenddate,
