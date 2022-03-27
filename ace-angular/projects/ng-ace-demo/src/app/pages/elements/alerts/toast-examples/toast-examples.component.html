@@ -1,0 +1,97 @@
+<div class="card acard">
+    <div class="card-header border-0">
+      <h4 class="card-title">
+        Toast notifications
+      </h4>
+    </div>
+
+    <div class="card-body">
+      <ngb-alert [dismissible]='false' class="alert bgc-secondary-l3 text-dark-m1 border-none border-l-4 brc-green radius-0 py-3 text-105 d-inline-block">
+        You can easily modify the following examples to make custom toasts!
+      </ngb-alert>
+
+      <p>
+        <button (click)="showDefault()" type="button" class="btn px-4 btn-light-default btn-h-default btn-a-default btn-text-black mb-1">
+          Simple Toast
+        </button>
+
+        <button (click)="showInfo()" type="button" class="btn px-4 btn-light-info btn-h-info btn-a-info mb-1">
+          Info
+        </button>
+
+        <button (click)="showWarning()" type="button" class="btn px-4 btn-light-warning btn-h-warning btn-a-warning mb-1">
+          Warning
+        </button>
+      </p>
+
+      <p>
+        <button (click)="showSuccess()" type="button" class="btn px-4 btn-light-success btn-h-success btn-a-success mb-1">
+          Success with Progress
+        </button>
+
+        <button (click)="showSuccess2()" type="button" class="btn px-4 btn-light-success btn-h-success btn-a-success mb-1">
+          Reverse Progress
+        </button>
+      </p>
+
+      <p>
+        <button (click)="showError()" type="button" class="btn px-4 btn-light-danger btn-h-danger btn-a-danger mb-1">
+          Error on Botton Right
+        </button>
+
+        <button (click)="showCenter()" type="button" class="btn px-4 btn-light-primary btn-h-primary btn-a-primary mb-1">
+          Center
+        </button>
+
+        <button (click)="showDark()" type="button" class="btn px-4 btn-light-light btn-h-dark btn-a-dark mb-1">
+          Dark on Top Left
+        </button>
+      </p>
+
+      <p>
+        <button (click)="showSticky()" type="button" class="btn px-4 btn-light-green btn-a-green btn-h-green mb-1">
+          Sticky
+        </button>
+
+        <button (click)="removeAll()" type="button" class="btn px-4 btn-light-pink mb-1">
+          Remove All
+        </button>
+      </p>
+
+      <p>
+        <button (click)="showByTemplate(toastTemplate)" type="button" class="btn px-4 btn-info mb-1">
+          Toast from Template
+          <!-- template #toastTemplate is below -->
+        </button>
+      </p>
+
+
+      <ng-template #toastTemplate>
+        <!-- `.toast-icon` and `.toast-main` are just optional classes for readability -->
+        <div class="d-flex m-n1 text-white">
+          <div class="position-tl w-100 h-100 bgc-black-tp8"></div>
+          <div class="toast-icon mt-2 pos-rel">
+            <i class="fas fa-exclamation-triangle fa-3x text-yellow-l5 mx-3"></i>
+          </div>
+
+          <div class="pos-rel">
+            <div class="toast-header bg-transparent border-0 text-120 text-white font-bolder pl-0">
+              <div class="toast-title">
+                Notification By TemplateRef
+              </div>
+              <a role="button" class="close-btn btn btn-outline-white border-0 btn-bgc-tp btn-xs px-2 py-0 text-150 position-tr mt-n1 mr-n1">
+                &times;
+              </a>
+            </div>
+
+            <div class="toast-main">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur <span class="text-600">adipiscing elit.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+</div>

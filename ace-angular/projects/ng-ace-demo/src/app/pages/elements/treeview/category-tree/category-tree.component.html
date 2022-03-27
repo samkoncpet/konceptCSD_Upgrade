@@ -1,0 +1,79 @@
+<div class="card bcard h-auto border-0">
+    <div class="card-header bgc-default-d3">
+      <h3 class="card-title text-130 text-white">
+        Choose Categories
+      </h3>
+
+      <div #categoryToolbarEl class="card-toolbar no-border">
+      </div>
+    </div>
+
+    <div #categoryTreeEl class="card-body bgc-white border-1 border-t-0 brc-default-m2">
+
+      <ngx-treeview [items]="items" [config]="config" [headerTemplate]="categoryHeaderTemplate" [itemTemplate]="categoryItemTemplate">
+      </ngx-treeview>
+
+    </div>
+  </div>
+
+
+<ng-template #categoryItemTemplate let-item="item" let-onCollapseExpand="onCollapseExpand"
+  let-onCheckedChange="onCheckedChange">
+  <div class="form-inline row-item bgc-h-warning-l3 radius-3px px-15 mb-2px" [ngClass]="{'bgc-blue-l3':item.checked && !item.children, 'is-parent-label': item.children}">
+    <!-- the plus/minus icon to expand/collapse -->
+    <i *ngIf="item.children" (click)="onCollapseExpand()" [attr.aria-hidden]="item.collapsed" [ngSwitch]="item.collapsed" role="button">
+      <i *ngSwitchCase="true" class="far fa-plus-square w-1 mr-3 text-grey-l1 text-110"></i>
+      <i *ngSwitchCase="false" class="far fa-minus-square w-1 mr-3 text-default-d2 text-110"></i>
+    </i>
+    
+    <!-- node with children -->
+    <div *ngIf="item.children" class="form-check flex-grow-1 justify-content-start pl-0 w-auto" (click)="onCollapseExpand()">
+      <label class="form-check-label d-block flex-grow-1 py-1 font-italic text-secondary-d3">
+        {{item.text}}
+      </label>
+    </div>
+
+
+    <!-- node without children -->
+    <div *ngIf="!item.children" class="form-check flex-grow-1 justify-content-start py-1 pl-0 w-auto" role="button" (click)="item.checked = !item.checked; onCheckedChange()">
+      <input type="checkbox" class="form-check-input bgc-orange mr-2 ml-1" [(ngModel)]="item.checked" (ngModelChange)="onCheckedChange()"
+        [disabled]="item.disabled" [indeterminate]="item.indeterminate" />
+      <label class="form-check-label text-grey-d2 text-95">
+        {{item.text}}
+      </label>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #categoryHeaderTemplate let-config="config" let-item="item" let-onCollapseExpand="onCollapseExpand"
+  let-onCheckedChange="onCheckedChange" let-onFilterTextChange="onFilterTextChange">
+  <div *ngIf="config.hasFilter" class="row row-filter">
+    <div class="col-12">
+      <input class="form-control" type="text" placeholder="Search ..." [(ngModel)]="filterText"
+        (ngModelChange)="onFilterTextChange($event)" />
+    </div>
+  </div>
+  <div *ngIf="true">
+    <div *ngIf="config.hasAllCheckBox || config.hasCollapseExpand" class="row row-all">
+      <div class="col-12">
+        <div class="form-check form-check-inline" *ngIf="config.hasAllCheckBox">
+          <input type="checkbox" class="form-check-input text-info" [(ngModel)]="item.checked" (ngModelChange)="onCheckedChange()"
+            [indeterminate]="item.indeterminate" />
+          <label class="form-check-label" (click)="item.checked = !item.checked; onCheckedChange()">
+            Select All
+          </label>
+        </div>
+        <label *ngIf="config.hasCollapseExpand" class="float-right form-check-label btn btn-xs btn-white btn-h-outline-white btn-a-outline-white btn-brc-tp px-2" (click)="onCollapseExpand()">
+          <span [ngSwitch]="item.collapsed">
+            <span *ngSwitchCase="true">
+              Expand All
+            </span>
+            <span *ngSwitchCase="false">
+              Collapse All
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-template>

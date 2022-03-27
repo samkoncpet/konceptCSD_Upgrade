@@ -1,0 +1,117 @@
+<div class="row mt-4">
+    <div class="col-12 col-lg-6">
+  
+      <div class="card acard">
+        <div class="card-header pb-2 border-0">
+          <h3 class="card-title">
+            Tooltips
+          </h3>
+        </div>
+  
+        <div class="card-body">
+            <p>
+              <button type="button" class="btn px-4 btn-default my-1" placement="auto" ngbTooltip="Default Tooltip">
+                Default tooltip
+              </button>
+  
+              <ng-template #topTooltip><span class="text-600 text-105">Tooltip on top</span></ng-template>
+              <button type="button" class="btn px- btn-secondary my-1" placement="top" [ngbTooltip]="topTooltip" tooltipClass="ng-custom-tooltip brc-secondary-d3 bgc-secondary-d3">
+                Tooltip on top
+              </button>
+
+              <ng-template #dangerTooltip><span class="p-1 d-inline-block text-600 text-105">Tooltip on bottom</span></ng-template>
+              <button type="button" class="btn px- btn-danger my-1" placement="bottom"  [ngbTooltip]="dangerTooltip" tooltipClass="ng-custom-tooltip brc-danger-d3 bgc-danger-d3 text-white">
+                Tooltip on bottom
+              </button>
+            </p>
+  
+            <p>
+              <ng-template #successTooltip><span class="text-600 text-105">Tooltip on right</span></ng-template>
+              <button type="button" class="btn px- btn-light-default btn-bold my-1" placement="right" [ngbTooltip]="successTooltip" tooltipClass="ng-custom-tooltip brc-success-d3 bgc-success-d3 text-dark-tp3">
+                Tooltip on right
+              </button>
+        
+              <ng-template #yellowTooltip><span class="text-600 text-105">Tooltip on right</span></ng-template>
+              <button type="button" class="btn px-4 btn-dark my-1" placement="left" [ngbTooltip]="yellowTooltip" tooltipClass="ng-custom-tooltip brc-yellow-d1 bgc-yellow-d1 text-dark-tp2">
+                Tooltip on left
+              </button>
+            </p>
+  
+            <p>
+              <ng-template #outlineTooltip><div class="shadow border-2 radius-2 brc-purple-d2 bgc-purple-l4 tooltip-inner text-dark-tp1 text-110 text-600 px-2 pb-15 m-n1">Tooltip on bottom</div></ng-template>
+              <button type="button" class="btn px-4 btn-outline-primary btn-bold my-1" placement="auto" [ngbTooltip]="outlineTooltip" tooltipClass="ng-custom-tooltip brc-purple-d2 bgc-transparent">
+                 Outline Tooltip
+              </button>
+            </p>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+  
+    <div class="col-12 col-lg-6">
+      <div class="card acard mt-3 mt-lg-0">
+        <div class="card-header pb-2 border-0">
+          <h3 class="card-title">
+              Popovers
+          </h3>
+        </div>
+  
+        <div class="card-body">
+          <p>
+            <button class="btn px-4 btn-dark my-1" placement="top" popoverTitle="Title" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+              Default popover
+            </button>
+  
+            <ng-template #customPopover1>
+              <div NgAcePopover class="brc-primary-m3 border-b-2">
+                <div class="arrow arrow2 brc-primary-l2"></div>
+                <div class="arrow brc-primary-m1"></div>
+                <h3 class="popover-header bgc-primary-l2 border-0 text-110 text-dark-tp3 text-600">Title</h3>
+                <div class="popover-body text-grey-d3 text-105">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>
+              </div>
+            </ng-template>
+            <button class="btn px-4 btn-primary my-1" placement="bottom" [ngbPopover]="customPopover1">
+              Popover on bottom
+            </button>
+          </p>
+  
+          <p>
+            <ng-template #customPopover2>
+              <div NgAcePopover class="brc-success-m3">
+                <div class="arrow brc-success"></div>
+                <h3 class="popover-header border-0 bgc-success-m2 text-dark-tp4 text-600">Title</h3>
+                <div class="popover-body text-grey-d2 text-110">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>
+              </div>
+            </ng-template>
+            <button class="btn px-4 btn-success my-1" placement="right" [ngbPopover]="customPopover2">
+              Popover on right
+            </button>
+  
+            <ng-template #customPopover3>
+              <div NgAcePopover class="bgc-white brc-purple-m3 border-2">
+                <div class="arrow brc-purple"></div>
+                <div class="popover-body text-grey-d2 text-110">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>
+              </div>
+            </ng-template>
+            <button class="btn px-4 btn-purple my-1" placement="left" [ngbPopover]="customPopover3">
+              Popover on left
+            </button>
+  
+            <ng-template #customPopover4>
+              <div NgAcePopover class="bgc-brown-d3 border-0">
+                <div class="arrow arrow2 brc-brown-d3"></div>
+                <div class="popover-body text-white text-110 text-600">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div>
+              </div>
+            </ng-template>
+            <button id="popover-5" class="btn px-4 btn-yellow my-1"  placement="auto" [ngbPopover]="customPopover4">
+              Auto Placement
+            </button>
+          </p>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  

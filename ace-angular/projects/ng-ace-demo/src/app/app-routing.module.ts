@@ -179,7 +179,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'session/add',
+        path: 'session/add/:id',
         component: NewsessionComponent,
         data: {
           title: 'Add Session'

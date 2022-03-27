@@ -1,0 +1,70 @@
+<div class="acard card mt-3">
+    <div class="card-header border-0">
+      <h4 class="card-title">
+        SweetAlert2
+      </h4>
+    </div>
+
+    <div class="card-body">
+      <p>
+        <button (click)="exampleSwal1.fire()" type="button" class="btn px-4 btn-primary mb-1">
+          Example 1
+        </button>
+
+        <button (click)="exampleSwal2.fire()" type="button" class="btn px-4 btn-secondary mb-1">
+          Example 2
+        </button>
+      </p>
+
+      <div>
+        <swal
+        #exampleSwal1
+        title="Are you sure?"
+        text="You won't be able to revert this!"
+        type="warning"
+        [showCancelButton]="true"
+        [scrollbarPadding]="false"
+        confirmButtonText="Yes, do it!"
+        cancelButtonText="No, cancel!"
+        [reverseButtons]="true"
+        [focusCancel]="true"
+        [customClass]="{'confirmButton': 'btn btn-green mx-2 px-3',  'cancelButton': 'btn btn-red mx-2 px-3'}"
+        [buttonsStyling]="false"
+        (confirm)="exampleSwal1Confirm.fire()"
+        (dismiss)="exampleSwal1Cancel.fire()">
+        </swal>
+        
+        <swal
+        #exampleSwal1Confirm
+        title="Deleted!"
+        icon="success"
+        text="Operation completed successfully."
+        [customClass]="{'confirmButton': 'btn btn-info px-5'}"
+        [buttonsStyling]="false"
+        type="success">
+        </swal>
+
+        <swal
+        #exampleSwal1Cancel
+        title="Cancelled!"
+        icon="error"
+        text="Cancelled successfully."
+        [customClass]="{'confirmButton': 'btn btn-secondary px-5'}"
+        [buttonsStyling]="false"
+        type="error">
+        </swal>
+
+        <swal
+        #exampleSwal2
+        position="top-end"
+        [scrollbarPadding]="false"
+        type="info"
+        title="Your work has been saved"
+        [showConfirmButton]="false"
+        [timer]=2000>
+        </swal>
+
+      
+      </div>
+    </div>
+  </div>

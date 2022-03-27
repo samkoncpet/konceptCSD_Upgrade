@@ -40,6 +40,7 @@ export class NewcustomersComponent implements OnInit {
   private educationconsultantlist = [];
   private paymentmodelist = [];
   private getScriptionDetail = [];
+  private packagehistory = [];
   private studentlist : Array<StudentList> = [];
   currentDate = new Date();
   Start_Date = new Date();
@@ -110,7 +111,8 @@ export class NewcustomersComponent implements OnInit {
       hours: new FormControl({value: '', disabled: true}),
       report: new FormControl({value: '', disabled: true}),
       sessionstypeperiod: new FormControl({value: '', disabled: true}),
-      paymenttypeid: new FormControl('', Validators.required)
+      paymenttypeid: new FormControl('', Validators.required),
+      is_active: new FormControl(true),
     });    
     this.addstudent = this._formBuilder.group({
       studentfirstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
@@ -492,8 +494,8 @@ export class NewcustomersComponent implements OnInit {
     }
    }
   deleteStudent(id: number){
-    debugger
     var Customer_Child_ID = this.studentlist.find(x => x.id == id).Customer_Child_ID;
+    var Customer_ID = this.studentlist.find(x => x.id == id).Customer_ID;
 
     this.studentlist.splice(id - 1, 1);
     if(this.param1 == 'update'){
@@ -505,7 +507,8 @@ export class NewcustomersComponent implements OnInit {
      
 
      var data = {
-      Customer_Child_ID: Customer_Child_ID
+        Customer_Child_ID: Customer_Child_ID,
+        Customer_ID: Customer_ID
       }
       this._ConfigurationService.post(url, data)
       .subscribe(response => {
@@ -542,7 +545,8 @@ export class NewcustomersComponent implements OnInit {
       url = url + fetchsubscriptionAPI;
     
       var data = {
-      Customer_ID: this.param2
+      Customer_ID: this.param2,
+      Is_Active: true
       }
       this._ConfigurationService.post(url, data)
           .subscribe(response => {
@@ -570,6 +574,36 @@ export class NewcustomersComponent implements OnInit {
             this.spinner.hide();
           });
     }
+    this.getPackageHistory();
+  }
+  getPackageHistory(){    
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
+    url = url + fetchsubscriptionAPI;
+  
+    var data = {
+      Customer_ID: this.param2,
+      Is_Active: false
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.packagehistory = response["data"];
+          }
+          else {
+            this.packagehistory = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
   }
   getpackageDetailByID(id: string){
     var data = this.packagelist.find(x => x.Package_ID == id);
@@ -642,7 +676,8 @@ export class NewcustomersComponent implements OnInit {
       Package_ID: parseInt(this.addpackage.value.packageid),
       Start_Date: this.addpackage.value.subscriptiondate,
       Cancellation_Date: this.addpackage.value.subscriptionenddate,
-      Payment_Type_ID: parseInt(this.addpackage.value.paymenttypeid)
+      Payment_Type_ID: parseInt(this.addpackage.value.paymenttypeid),
+      Is_Active: this._commonfunctionsService.getBoolean(this.addpackage.value.is_active),
     }]
    }
    this._ConfigurationService.post(url, data)
@@ -669,7 +704,7 @@ export class NewcustomersComponent implements OnInit {
    var url = this._appSettings.koncentAPI;
    var updatecustomerchildAPI = this._appSettings.updatecustomerchildAPI;
    url = url + updatecustomerchildAPI;
-  
+
    var data = {
     CustomerChildUpdateList: this.studentlist
    }
