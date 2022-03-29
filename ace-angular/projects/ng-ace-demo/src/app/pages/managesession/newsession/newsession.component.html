@@ -203,14 +203,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="mt-5 border-t-1 bgc-secondary-l4 brc-secondary-l2 py-35 mx-n25">
-                                     <div class="offset-md-3 col-md-9 text-nowrap">
-                                        <button class="btn btn-green btn-bold px-4" type="button" (click)="updatecustomer()">
-                                            <i class="fa fa-check mr-1"></i>
-                                            Update
-                                        </button>
-                                    </div>
-                                </div> -->
                             </form>
                             <div class="form-group">
                                 <div class="card dcard">
@@ -298,17 +290,6 @@
                             <form #form [formGroup]="addcustomerserviceremarks">
                                 <div class="form-group">
                                     <div class="card dcard">
-                                        <!-- <div class="card bgc-primary-d1 text-white">
-                                            <div class="card-header">
-                                                <div class="card-toolbar mr-auto no-border">
-                                                    <label class="mb-0">
-                                                        <span class="align-middle d-block d-sm-inline text-600">
-                                                            Subscription Detail
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                         <div class="card-body">
                                             <div class="form-group row">
                                                 <div class="col-md-2">
@@ -405,105 +386,344 @@
                 </li>
 
                 <li [ngbNavItem]="3" class="nav-item mr-3px">
-                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}'  (click)="getStudentDetail()" class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
-                        Student Details
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}'  (click)="getBookingTabDetails()" class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
+                        Booking
                     </a>
                     <ng-template ngbNavContent>
-
                         <form #form [formGroup]="addstudent">
                             <div class="card dcard">
                                 <div class="card-body">
-                                    <div *ngIf="isUpdate" class="form-group row">
-                                        <div class="col-md-2">
-                                            <label for="id-form-field-1" class="mb-0">
-                            First Name <span class="text-danger">*</span>
-                        </label>
+                                    <div *ngIf="touchDevice" class="alert bgc-white border-l-4 brc-purple-m1 shadow-sm" role="alert">
+                                        Touch a date slot and hold down to add a new event
+                                      </div>
+                                      
+                                      
+                                      
+                                      <div class="row">
+                                        <div class="col-12 col-md-9" id='calendar-container'>
+                                          <div class="card acard">
+                                            <div class="card-body p-lg-4">
+                                              <div class="text-blue-d1">
+                                                  <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <input id="studentfirstname" type="text" formControlName="studentfirstname" maxlength="50" class="form-control" placeholder="First Name" [ngClass]="{'border-danger': ((addstudentFormControl.studentfirstname.touched || submitted) && addstudentFormControl.studentfirstname.errors?.required)}">
-                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.studentfirstname.touched || submitted) && (addstudentFormControl.studentfirstname.errors?.required || addstudentFormControl.studentfirstname.invalid)">
-                            {{getErrorStudentMessage('studentfirstname')}}
-                        </span>
+                                      
+                                      
+                                        <div class="col-12 col-md-3 mt-3 mt-md-4" #externalEvents>
+                                          <div class="bgc-secondary-l4 border-1 brc-secondary-l2 shadow-sm p-35 radius-1">
+                                              <p class="text-120 text-primary-d2">
+                                                  Draggable Events
+                                              </p>
+                                      
+                                              <p *ngIf="!touchDevice" class="alert bgc-white border-none border-l-4 brc-purple-m1">
+                                                Drag and drop the following events or click on a date slot to add a new event
+                                              </p>
+                                      
+                                              <div>
+                                                <div class='fc-event badge bgc-blue-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-blue-d1 text-white text-95">
+                                                  My Event 1
+                                                </div>
+                                                <div class='fc-event badge bgc-green-d2 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-green-d2 text-white text-95">
+                                                  My Event 2
+                                                </div>
+                                                <div class='fc-event badge bgc-red-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-red-d1 text-white text-95">
+                                                  My Event 3
+                                                </div>
+                                                <div class='fc-event badge bgc-purple-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-purple-d1 text-white text-95">
+                                                  My Event 4
+                                                </div>
+                                                <div class='fc-event badge bgc-orange-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-orange-d1 text-white text-95">
+                                                  My Event 5
+                                                </div>
+                                              </div>
+                                      
+                                              <label class="mt-2">
+                                                <input type="checkbox" [(ngModel)]="dropRemove" [ngModelOptions]="{standalone: true}" class="mr-1" />
+                                                Remove after drop
+                                              </label>
+                                          </div>
+                                      
                                         </div>
-                                        <div class="col-md-2">
-                                            <label for="id-form-field-1" class="mb-0">
-                            Last Name <span class="text-danger">*</span>
-                        </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input id="studentlastname" type="text" formControlName="studentlastname" maxlength="50" class="form-control" placeholder="Last Name" [ngClass]="{'border-danger': ((addstudentFormControl.studentlastname.touched || submitted) && addstudentFormControl.studentlastname.errors?.required)}">
-                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.studentlastname.touched || submitted) && (addstudentFormControl.studentlastname.errors?.required || addstudentFormControl.studentlastname.invalid)">
-                            {{getErrorStudentMessage('studentlastname')}}
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div *ngIf="isUpdate" class="form-group row">
-                                        <div class="col-md-2">
-                                            <label for="id-form-field-1" class="mb-0">
-                            Grade <span class="text-danger">*</span>
-                        </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select id="gradeid" formControlName="gradeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addstudentFormControl.gradeid.touched || submitted) && addstudentFormControl.gradeid.errors?.required)}">
-                            <option value="">--Select--</option>
-                            <option *ngFor="let data of gradelist"
-                                value={{data.Level_ID}}>{{data.Level}}</option>
-                        </select>
-                                            <span class="form-text text-danger" *ngIf="(addstudentFormControl.gradeid.touched || submitted) && (addstudentFormControl.gradeid.errors?.required || addstudentFormControl.gradeid.invalid)">
-                            {{getErrorStudentMessage('gradeid')}}
-                        </span>
-                                        </div>
-                                        <div class="col-md-2">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button class="btn btn-green btn-bold px-4" type="button" (click)="addstudentlist()">
-                            <i class="fa fa-check mr-1"></i>
-                            <span>Submit</span>
-                          </button>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group col-md-8">
-                                        <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
-                                            <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
-                                                <tr>
-                                                    <th class="d-none d-sm-table-cell">Sr. No.</th>
-                                                    <th class="d-none d-sm-table-cell">First Name</th>
-                                                    <th class="d-none d-sm-table-cell">Last Name</th>
-                                                    <th class="d-none d-sm-table-cell">Grade</th>
-                                                    <th class="d-none d-sm-table-cell" *ngIf="isUpdate">Action</th>
-                                                </tr>
-                                            </thead>
+                                      </div>
+                                      
+                                      
+                                      
+                                      
+                                      <ng-template #newEventModal let-modal>
+                                          <div class="modal-header">
+                                              <h5 class="modal-title text-primary-d3">
+                                                  New Event Title:
+                                              </h5>
+                                      
+                                              <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                      
+                                          <div class="modal-body">
+                                              <input ngbAutofocus type="text" class="form-control" [(ngModel)]="newEventTitle" [ngModelOptions]="{standalone: true}" />
+                                          </div>
+                                      
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary px-4" (click)="modal.close()">
+                                                  Cancel
+                                              </button>
+                                      
+                                              <button type="button" class="btn btn-primary" (click)="modal.close('save')">
+                                                  OK
+                                              </button>
+                                          </div>
+                                      </ng-template>
+                                      
+                                      
+                                      <ng-template #editEventModal let-modal>
+                                          <div ngbAutofocus class="modal-header">
+                                              <h5 class="modal-title text-primary-d3">
+                                                  Edit Event:
+                                              </h5>
+                                      
+                                              <button type="button" class="close" (click)="modal.close()" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                      
+                                          <div class="modal-body">
+                                              <div class="input-group">
+                                                  <div class="input-groupp-repend align-self-center mr-2">
+                                                      Title
+                                                  </div>
+                                                  <input class="form-control" type="text" [(ngModel)]="editingEventTitle" [ngModelOptions]="{standalone: true}" />
+                                                  <div class="input-group-append">
+                                                      <button type="submit" class="btn btn-sm btn-success btn-bold" (click)="modal.close('save')">
+                                                          <i class="fa fa-check mr-2px"></i> Save
+                                                      </button>
+                                                      <button type="button" class="btn btn-sm btn-outline-danger btn-bold ml-2px" (click)="modal.close('delete')">
+                                                          <i class="far fa-trash-alt text-120"></i>
+                                                      </button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </ng-template>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-template>
+                </li>
 
-                                            <tbody class="mt-1" *ngFor="let data of studentlist">
-                                                <tr class="bgc-h-yellow-l4 d-style">
-                                                    <td>{{ data.id}}</td>
-                                                    <td>{{ data.FirstName}}</td>
-                                                    <td>{{ data.LastName}}</td>
-                                                    <td>{{ data.Level_ID}}</td>
-                                                    <td *ngIf="isUpdate">
-                                                        <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
-                                                            <i class="fa fa-pencil-alt"></i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
-                                                            <i class="fa fa-trash-alt"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                <li [ngbNavItem]="4" class="nav-item mr-3px">
+                    <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
+                        Requests
+                    </a>
+                    <ng-template ngbNavContent>
+                        <div class="p-2">
+                            <form class="mt-lg-3" [formGroup]="addrequest" autocomplete="off">
+                                <div class="form-group">
+                                    <div class="card dcard">
+                                        <div class="card bgc-primary-d1 text-white">
+                                            <div class="card-header">
+                                                <div class="card-toolbar mr-auto no-border">
+                                                    <label class="mb-0">
+                                                        <span class="align-middle d-block d-sm-inline text-600">
+                                                            Create Request
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subject
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input id="subject" type="text" formControlName="subject" placeholder="Subject" class="form-control" [ngClass]="{'border-danger': ((addrequestFormControl.subject.touched || submitted) && addrequestFormControl.subject.errors?.required)}">
+                                                    <span class="form-text text-danger" *ngIf="(addrequestFormControl.subject.touched || submitted) && (addrequestFormControl.subject.errors?.required || addrequestFormControl.subject.invalid)">
+                                                        {{getErrorRequestMessage('subject')}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Status
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="status" formControlName="status" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addrequestFormControl.status.touched || submitted) && addrequestFormControl.status.errors?.required)}">
+                                                        <option value="">--Select--</option>
+                                                        <option value="P">Pending</option>
+                                                        <option value="C">Completed</option>                                                      
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subject
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <textarea id="description" type="text" formControlName="description" placeholder="Description" class="form-control" [ngClass]="{'border-danger': ((addrequestFormControl.description.touched || submitted) && addrequestFormControl.description.errors?.required)}"></textarea>
+                                                    <span class="form-text text-danger" *ngIf="(addrequestFormControl.description.touched || submitted) && (addrequestFormControl.description.errors?.required || addrequestFormControl.description.invalid)">
+                                                        {{getErrorRequestMessage('description')}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Request Type
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="requestType" formControlName="requestType" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addrequestFormControl.requestType.touched || submitted) && addrequestFormControl.requestType.errors?.required)}">
+                                                        <option value="">--Select--</option>
+                                                        <option value="1">Completed By Teacher</option>
+                                                        <option value="2">Completed By Customer</option>                                                      
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Upload File
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input id="document" type="file" NgAceFile formControlName="document"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="offset-md-3 col-md-9 text-nowrap">
+                                                        <button class="btn btn-green btn-bold px-4" type="button">
+                                                            <i class="fa fa-check mr-1"></i>
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-12 d-flex justify-content-end">
-                                            <button *ngIf="isUpdate" class="btn btn-green btn-bold px-4" type="button" (click)="updateStudentDetails()">
-                                                <i class="fa fa-check mr-1"></i>
-                                                <span *ngIf="isUpdate">Update</span>
-                                            </button>
+                                </div>
+                            </form>
+                            <form class="mt-lg-3" [formGroup]="addpackage" autocomplete="off">
+                                <div class="form-group">
+                                    <div class="card dcard">
+                                        <div class="card bgc-primary-d1 text-white">
+                                            <div class="card-header">
+                                                <div class="card-toolbar mr-auto no-border">
+                                                    <label class="mb-0">
+                                                        <span class="align-middle d-block d-sm-inline text-600">
+                                                            Package Information
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subscription Start
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <span>
+                                                        {{getScriptionDetail.Start_Date | date : 'dd-MMM-yyyy'}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subscription End
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <span>
+                                                        {{getScriptionDetail.Cancellation_Date | date : 'dd-MMM-yyyy'}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="form-group">
+                                <div class="card dcard">
+                                    <div class="card bgc-primary-d1 text-white">
+                                        <div class="card-header">
+                                            <div class="card-toolbar mr-auto no-border">
+                                                <label class="mb-0">
+                                                    <span class="align-middle d-block d-sm-inline text-600">
+                                                        Student Information
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group col-md-7">
+                                            <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                                <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                                    <tr>
+                                                        <th class="d-none d-sm-table-cell">Sr. No.</th>
+                                                        <th class="d-none d-sm-table-cell">First Name</th>
+                                                        <th class="d-none d-sm-table-cell">Last Name</th>
+                                                        <th class="d-none d-sm-table-cell">Grade</th>
+                                                        <th class="d-none d-sm-table-cell" *ngIf="isUpdate">Action</th>
+                                                    </tr>
+                                                </thead>
+    
+                                                <tbody class="mt-1" *ngFor="let data of studentlist">
+                                                    <tr class="bgc-h-yellow-l4 d-style">
+                                                        <td>{{ data.id}}</td>
+                                                        <td>{{ data.FirstName}}</td>
+                                                        <td>{{ data.LastName}}</td>
+                                                        <td>{{ data.Level_ID}}</td>
+                                                        <td *ngIf="isUpdate">
+                                                            <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                                <i class="fa fa-pencil-alt"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
+                                                                <i class="fa fa-trash-alt"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                Total Tutor Visit: 
+                                                </div>
+                                                <div class="col-md-6">
+                                                
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                Total Visit Completed: 
+                                                </div>
+                                                <div class="col-md-6">
+                                                
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                Total Visit Pending: 
+                                                </div>
+                                                <div class="col-md-6">
+                                                
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </ng-template>
                 </li>
             </ul>

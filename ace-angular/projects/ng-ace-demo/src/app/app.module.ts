@@ -46,6 +46,22 @@ import { SessionlistComponent } from './pages/managesession/sessionlist/sessionl
 import { CellCustomCustomerslistComponent } from './common/cell-custom-customerslist/cell-custom-customerslist.component';
 import { ManagerequestComponent } from './pages/managerequest/newrequest/managerequest.component';
 import { RequestlistComponent } from './pages/managerequest/requestlist/requestlist.component';
+import { CellCustomSessionlistComponent } from './common/cell-custom-sessionlist/cell-custom-sessionlist.component';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+import bootstrapTheme  from '@fullcalendar/bootstrap';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin,
+  bootstrapTheme
+]);
 
 @NgModule({
   declarations: [
@@ -73,7 +89,8 @@ import { RequestlistComponent } from './pages/managerequest/requestlist/requestl
     SessionlistComponent,
     CellCustomCustomerslistComponent,
     ManagerequestComponent,
-    RequestlistComponent
+    RequestlistComponent,
+    CellCustomSessionlistComponent
   ],
   imports: [
     CommonModule,
@@ -95,7 +112,8 @@ import { RequestlistComponent } from './pages/managerequest/requestlist/requestl
     ReactiveFormsModule,
     NgxSpinnerModule,
     NgxPaginationModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent,]

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { ValidationService, FormErrorMessage, AlphaValidator, emailValidator, NumericValidator, AlphaNumericValidator } from '../../../config/validation.service';
+import { FormErrorMessage, AlphaValidator, emailValidator, NumericValidator } from '../../../config/validation.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { NotificationsService } from '../../../config/notifications.service';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
+import { CalendarComponent } from '../../../pages/calendar/calendar.component';
 
 @Component({
   selector: 'app-newsession',
@@ -19,29 +20,20 @@ import { CommonfunctionsService } from '../../../common/functions/commonfunction
 export class NewsessionComponent implements OnInit {
 
   param1: string;
-  isSubscriptionDetail = false;
-  isStudentDetail = false;
-
+  isView = true;
   submitted = false;
   addsummary: FormGroup;
   addpackage: FormGroup;
   addcustomerserviceremarks: FormGroup;
   addstudent: FormGroup;
+  addrequest: FormGroup;
   isPassword = true;
   passwordmatch = true;  
-  private customerdetail = [];
   private packagelist = [];
-  private countrylist = [];
-  private statelist= [];
-  private gradelist= [];
-  private educationconsultantlist = [];
-  private paymentmodelist = [];
   private getScriptionDetail = [];
   private packagehistory = [];
   private studentlist : Array<StudentList> = [];
   currentDate = new Date();
-  Start_Date = new Date();
-  Last_Renewal_Date = new Date();
   private subscriptionStartMinDate: string;
   private subscriptionEndMinDate: string;
   pipe = new DatePipe('en-US');
@@ -102,10 +94,14 @@ export class NewsessionComponent implements OnInit {
       studentfirstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
       studentlastname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
       gradeid: new FormControl('', Validators.required)
-    });
-    this.getGrade();
-    this.getEducationConsultant();
-    this.getPaymentMode();    
+    });    
+    this.addrequest = this._formBuilder.group({
+      subject: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+      status: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(250)]),
+      requestType: new FormControl('', Validators.required),
+      document: new FormControl('', Validators.required),
+    }); 
     this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
   }
@@ -126,8 +122,7 @@ export class NewsessionComponent implements OnInit {
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
-          if (response["response"] == 1) {
-            this.customerdetail = response["data"];    
+          if (response["response"] == 1) {   
             this.addsummary.patchValue({
               fatherfirstrname: response["data"][0].Father_FirstName,
               fatherlastname: response["data"][0].Father_LastName,              
@@ -137,13 +132,9 @@ export class NewsessionComponent implements OnInit {
               mothercellno: response["data"][0].Mother_MobileNo,
               fatheremail: response["data"][0].Father_Email,   
               motheremail: response["data"][0].Mother_Email,
-              homephone: response["data"][0].Alt_PhoneNo,
-              educationconsultant: response["data"][0].Education_Consultant_ID
+              homephone: response["data"][0].Alt_PhoneNo
             });
             this.getSubscriptionDetail();
-          }
-          else {
-            this.customerdetail = [];
           }
           this.spinner.hide();
         },
@@ -204,93 +195,6 @@ export class NewsessionComponent implements OnInit {
       this.addpackage.controls.subscriptionenddate.setValue('');
     }
    }
-   getGrade(){
-   /** spinner starts on init */
-   this.spinner.show();
-   var url = this._appSettings.koncentAPI;
-   var entityMasterAPI = this._appSettings.entityMasterAPI;
-   url = url + entityMasterAPI;
-
-   var data = {
-     SQLFROM: "Customer_Child_Level",
-     SQLBY: "ByCustomer_Child_Level"
-   }
-   this._ConfigurationService.post(url, data)
-       .subscribe(response => {
-         if (response["response"] == 1) {
-           this.gradelist = response["data"];
-         }
-         else {
-           this.gradelist = [];
-         }
-         this.spinner.hide();
-       },
-       (error) => {
-           this.spinner.hide();
-           this._commonfunctionsService.exactionLog(error.status, error.message);
-       },
-       () => {
-         this.spinner.hide();
-       });
-    }
-   getPaymentMode(){
-     /** spinner starts on init */
-     this.spinner.show();
-     var url = this._appSettings.koncentAPI;
-     var entityMasterAPI = this._appSettings.entityMasterAPI;
-     url = url + entityMasterAPI;
- 
-     var data = {
-       SQLFROM: "Payment_Type",
-       SQLBY: "ByPayment_Type"
-     }
-     this._ConfigurationService.post(url, data)
-         .subscribe(response => {
-           if (response["response"] == 1) {
-             this.paymentmodelist = response["data"];
-           }
-           else {
-             this.paymentmodelist = [];
-           }
-           this.spinner.hide();
-         },
-         (error) => {
-             this.spinner.hide();
-             this._commonfunctionsService.exactionLog(error.status, error.message);
-         },
-         () => {
-           this.spinner.hide();
-         });
-    }
-   getEducationConsultant(){
-     /** spinner starts on init */
-     this.spinner.show();
-     var url = this._appSettings.koncentAPI;
-     var entityMasterAPI = this._appSettings.entityMasterAPI;
-     url = url + entityMasterAPI;
- 
-     var data = {
-       SQLFROM: "User",
-       SQLBY: "ByEducation_Consultant"
-     }
-     this._ConfigurationService.post(url, data)
-         .subscribe(response => {
-           if (response["response"] == 1) {
-             this.educationconsultantlist = response["data"];
-           }
-           else {
-             this.educationconsultantlist = [];
-           }
-           this.spinner.hide();
-         },
-         (error) => {
-             this.spinner.hide();
-             this._commonfunctionsService.exactionLog(error.status, error.message);
-         },
-         () => {
-           this.spinner.hide();
-         });
-    }
   updatecustomer(){
     this.submitted = true;
     // if (this.addcustomer.get("password").value != this.addcustomer.get("repassword").value) {
@@ -326,9 +230,6 @@ export class NewsessionComponent implements OnInit {
        .subscribe(response => {
          if (response["response"] == 1) {
             this._notificationsService.success(response["data"][0].message, "success")
-         }
-         else {
-           this.gradelist = [];
          }
          this.spinner.hide();
        },
@@ -464,9 +365,6 @@ export class NewsessionComponent implements OnInit {
         this.getpackageDetailByID(response["data"][0].Package_ID);
         this.getStudentDetail();
       }
-      else {
-        this.gradelist = [];
-      }
       this.spinner.hide();
     },
     (error) => {
@@ -545,7 +443,6 @@ export class NewsessionComponent implements OnInit {
       }
       this._ConfigurationService.post(url, data)
           .subscribe(response => {
-            debugger
             if (response["response"] == 1) {
               for(var i = 0 ; i < response["data"].length; i++){
                 let stuObj = new StudentList();
@@ -567,6 +464,9 @@ export class NewsessionComponent implements OnInit {
           () => {
             this.spinner.hide();
           });
+
+  }
+  getBookingTabDetails(){
 
   }
   updateSubscriptionDetails(){
@@ -593,9 +493,6 @@ export class NewsessionComponent implements OnInit {
          if (response["response"] == 1) {
             this._notificationsService.success(response["data"][0].message, "success");
          }
-         else {
-           this.gradelist = [];
-         }
          this.spinner.hide();
        },
        (error) => {
@@ -620,9 +517,6 @@ export class NewsessionComponent implements OnInit {
        .subscribe(response => {
          if (response["response"] == 1) {
           this._notificationsService.success("Customer New Child Details has been added successfully.", "success")
-         }
-         else {
-           this.gradelist = [];
          }
          this.spinner.hide();
        },
@@ -652,6 +546,10 @@ export class NewsessionComponent implements OnInit {
   get addstudentFormControl() {
     return this.addstudent.controls;
   }
+
+  get addrequestFormControl() {
+    return this.addrequest.controls;
+  }
   
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addsummary, control);
@@ -665,7 +563,9 @@ export class NewsessionComponent implements OnInit {
   getErrorStudentMessage(control: string) {
     return FormErrorMessage(this.addstudent, control);
   }
-
+  getErrorRequestMessage(control: string) {
+    return FormErrorMessage(this.addrequest, control);
+  }
 }
 
 export class StudentList

@@ -38,61 +38,25 @@
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Customer ID
+                            Search
                         </label>
                         </div>
                         <div class="col-md-3">
                             <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
-                                <input type="text" formControlName="customerid" maxlength="20" class="form-control" placeholder="Customer ID">
+                                <input type="text" formControlName="search" minlength="2" maxlength="50" class="form-control" placeholder="Search">
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                                Package
-                            </label>
-                        </div>
-                        <div class="col-md-3">
-                            <select id="packageid" formControlName="packageid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                <option value="">--Select--</option>
-                                <option *ngFor="let data of packagelist"
-                                    value={{data.Package_ID}}>{{data.Package}}</option>
-                            </select>
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
                                 Show Cancel Request
                             </label>
+                        </div>
+                        <div class="col-md-1">
+                            
                             <input type="checkbox" class="form-control" formControlName="iscancelrequest">
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                           First Name
-                        </label>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
-                                <input type="text" formControlName="firstname" maxlength="20" class="form-control" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                                Next TV
-                            </label>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="input-group date" id="id-timepicker">
-                                <input type="date" formControlName="nexttv" #selectField class="form-control" placeholder="Next TV">
-                                <div class="input-group-addon input-group-append">
-                                    <div class="input-group-text">
-                                        <i class="far fa-clock"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn px-4 btn-green mb-1">
+                        <div class="col-md-4">
+                            <button class="btn px-4 btn-green mb-1" (click)="search()">
                                 <i class=" fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
                             </button>
                         </div>
@@ -107,7 +71,7 @@
                     <div class="card-toolbar mr-auto no-border">
                         <label class="mb-0">
                         <span class="align-middle d-block d-sm-inline text-600">
-                            Book session list
+                            Due session list
                         </span>
                     </label>
                     </div>
