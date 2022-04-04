@@ -23,7 +23,6 @@ export class NewcustomersComponent implements OnInit {
   param2: string;
   isUpdate = false;
   isView = false;
-  isSubscriptionDetail = false;
   isStudentDetail = false;
 
   submitted = false;
@@ -31,7 +30,7 @@ export class NewcustomersComponent implements OnInit {
   addpackage: FormGroup;
   addstudent: FormGroup;
   isPassword = true;
-  passwordmatch = true;  
+  passwordmatch = true;
   private customerdetail = [];
   private packagelist = [];
   private countrylist = [];
@@ -84,13 +83,13 @@ export class NewcustomersComponent implements OnInit {
       motherlastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
       fathercellno: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
       mothercellno: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-      fatheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),      
+      fatheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
       motheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
       homephone: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
       // modeofpayment: new FormControl('', Validators.required),
       educationconsultant: new FormControl('', Validators.required),
       address1: new FormControl('', Validators.required),
-      address2: new FormControl('', Validators.required),
+      address2: new FormControl(''),
       // subscriptiondate: new FormControl('', Validators.required),
       // subscriptionenddate: new FormControl('', Validators.required),
       countryid: new FormControl('', Validators.required),
@@ -98,10 +97,10 @@ export class NewcustomersComponent implements OnInit {
       city: new FormControl('', Validators.required),
       postalcode: new FormControl('', Validators.required),
       // username: new FormControl('', Validators.required),
-      // password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
-      // repassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
+      // password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),
+      // repassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),
       is_active: new FormControl(true),
-    });    
+    });
     this.addpackage = this._formBuilder.group({
       subscriptiondate: new FormControl('', Validators.required),
       subscriptionenddate: new FormControl('', Validators.required),
@@ -113,7 +112,7 @@ export class NewcustomersComponent implements OnInit {
       sessionstypeperiod: new FormControl({value: '', disabled: true}),
       paymenttypeid: new FormControl('', Validators.required),
       is_active: new FormControl(true),
-    });    
+    });
     this.addstudent = this._formBuilder.group({
       studentfirstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
       studentlastname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
@@ -123,7 +122,7 @@ export class NewcustomersComponent implements OnInit {
     this.getPackageList();
     this.getGrade();
     this.getEducationConsultant();
-    this.getPaymentMode();    
+    this.getPaymentMode();
     this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
   }
@@ -145,15 +144,15 @@ export class NewcustomersComponent implements OnInit {
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.customerdetail = response["data"];    
+            this.customerdetail = response["data"];
             this.addcustomer.patchValue({
               fatherfirstrname: response["data"][0].Father_FirstName,
-              fatherlastname: response["data"][0].Father_LastName,              
+              fatherlastname: response["data"][0].Father_LastName,
               motherfirstname: response["data"][0].Mother_FirstName,
               motherlastname: response["data"][0].Mother_LastName,
               fathercellno: response["data"][0].Father_MobileNo,
               mothercellno: response["data"][0].Mother_MobileNo,
-              fatheremail: response["data"][0].Father_Email,   
+              fatheremail: response["data"][0].Father_Email,
               motheremail: response["data"][0].Mother_Email,
               homephone: response["data"][0].Alt_PhoneNo,
               educationconsultant: response["data"][0].Education_Consultant_ID,
@@ -162,15 +161,16 @@ export class NewcustomersComponent implements OnInit {
               countryid: response["data"][0].Country_ID,
               stateid: response["data"][0].State_ID,
               city: response["data"][0].City,
-              postalcode: response["data"][0].Zip_Code
+              postalcode: response["data"][0].Zip_Code,
+              is_active: this._commonfunctionsService.getBoolean(response["data"][0].Is_Active)
             });
             this.geState(response["data"][0].Country_ID);
             if(this.param1 == 'view'){
               this.addpackage.value.packageid.countryid;
-              
+
               this.addcustomer.controls['educationconsultant'].disable();
               this.addcustomer.controls['countryid'].disable();
-              this.addcustomer.controls['stateid'].disable();          
+              this.addcustomer.controls['stateid'].disable();
               this.addpackage.controls['packageid'].disable();
             }
           }
@@ -323,7 +323,7 @@ export class NewcustomersComponent implements OnInit {
      var url = this._appSettings.koncentAPI;
      var entityMasterAPI = this._appSettings.entityMasterAPI;
      url = url + entityMasterAPI;
- 
+
      var data = {
        SQLFROM: "Payment_Type",
        SQLBY: "ByPayment_Type"
@@ -352,7 +352,7 @@ export class NewcustomersComponent implements OnInit {
      var url = this._appSettings.koncentAPI;
      var entityMasterAPI = this._appSettings.entityMasterAPI;
      url = url + entityMasterAPI;
- 
+
      var data = {
        SQLFROM: "User",
        SQLBY: "ByEducation_Consultant"
@@ -432,14 +432,14 @@ export class NewcustomersComponent implements OnInit {
        () => {
          this.spinner.hide();
        });
-  }  
+  }
   addstudentlist(){
     if(this.studentlist.length <= 5){
-        if(this.param1 == 'update' || this.updateStudentID > 0) {      
+        if(this.param1 == 'update' || this.updateStudentID > 0) {
           if((this.addstudent.value.studentfirstname == '' || this.addstudent.value.studentfirstname == undefined)
           && (this.addstudent.value.studentlastname == '' || this.addstudent.value.studentlastname == undefined)
-          && (this.addstudent.value.gradeid == '' || this.addstudent.value.gradeid == undefined)){     
-            this.submitted = true; 
+          && (this.addstudent.value.gradeid == '' || this.addstudent.value.gradeid == undefined)){
+            this.submitted = true;
             if (!this.addstudent.valid) {
               return;
             }
@@ -504,7 +504,7 @@ export class NewcustomersComponent implements OnInit {
      var url = this._appSettings.koncentAPI;
      var deletecustomerchildAPI = this._appSettings.deletecustomerchildAPI;
      url = url + deletecustomerchildAPI;
-     
+
 
      var data = {
         Customer_Child_ID: Customer_Child_ID,
@@ -524,7 +524,7 @@ export class NewcustomersComponent implements OnInit {
       () => {
         this.spinner.hide();
       });
-    }    
+    }
    }
   onPasswordChange(){
     if (this.addcustomer.get("password").value == this.addcustomer.get("repassword").value) {
@@ -536,53 +536,50 @@ export class NewcustomersComponent implements OnInit {
   cancel(){
     this.addcustomer.reset();
   }
-  getSubscriptionDetail(){    
-    if(!this.isSubscriptionDetail){
-      /** spinner starts on init */
-      this.spinner.show();
-      var url = this._appSettings.koncentAPI;
-      var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
-      url = url + fetchsubscriptionAPI;
-    
-      var data = {
-      Customer_ID: this.param2,
-      Is_Active: true
-      }
-      this._ConfigurationService.post(url, data)
-          .subscribe(response => {
-            if (response["response"] == 1) {
-              this.isSubscriptionDetail = true;
-              this.addpackage.patchValue({
-                subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
-                subscriptionenddate: this.pipe.transform(response["data"][0].Cancellation_Date, 'yyyy-MM-dd').toString(),
-                packageid: response["data"][0].Package_ID,
-                paymenttypeid: response["data"][0].Payment_Type_ID,
-              });
-              this.getScriptionDetail = response["data"][0];
-              this.getpackageDetailByID(response["data"][0].Package_ID);
-            }
-            else {
-              this.gradelist = [];
-            }
-            this.spinner.hide();
-          },
-          (error) => {
-              this.spinner.hide();
-              this._commonfunctionsService.exactionLog(error.status, error.message);
-          },
-          () => {
-            this.spinner.hide();
-          });
-    }
-    this.getPackageHistory();
-  }
-  getPackageHistory(){    
+  getSubscriptionDetail(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
     var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
     url = url + fetchsubscriptionAPI;
-  
+
+    var data = {
+    Customer_ID: this.param2,
+    Is_Active: true
+    }
+    this._ConfigurationService.post(url, data)
+    .subscribe(response => {
+      if (response["response"] == 1) {
+        this.getScriptionDetail = response["data"][0];
+        this.getpackageDetailByID(response["data"][0].Package_ID);
+        this.addpackage.patchValue({
+          subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
+          subscriptionenddate: this.pipe.transform(response["data"][0].Cancellation_Date, 'yyyy-MM-dd').toString(),
+          packageid: response["data"][0].Package_ID,
+          paymenttypeid: response["data"][0].Payment_Type_ID,
+        });
+      }
+      else {
+        this.gradelist = [];
+      }
+      this.spinner.hide();
+    },
+    (error) => {
+        this.spinner.hide();
+        this._commonfunctionsService.exactionLog(error.status, error.message);
+    },
+    () => {
+      this.spinner.hide();
+    });
+    this.getPackageHistory();
+  }
+  getPackageHistory(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
+    url = url + fetchsubscriptionAPI;
+
     var data = {
       Customer_ID: this.param2,
       Is_Active: false
@@ -631,7 +628,7 @@ export class NewcustomersComponent implements OnInit {
       var url = this._appSettings.koncentAPI;
       var fetchcustomerchildAPI = this._appSettings.fetchcustomerchildAPI;
       url = url + fetchcustomerchildAPI;
-  
+
       var data = {
       Customer_ID: this.param2
       }
@@ -711,7 +708,7 @@ export class NewcustomersComponent implements OnInit {
    this._ConfigurationService.post(url, data)
        .subscribe(response => {
          if (response["response"] == 1) {
-          this._notificationsService.success("Customer New Child Details has been added successfully.", "success")
+          this._notificationsService.success(response["data"][0].message, "success")
          }
          else {
            this.gradelist = [];
@@ -739,7 +736,7 @@ export class NewcustomersComponent implements OnInit {
   get addstudentFormControl() {
     return this.addstudent.controls;
   }
-  
+
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addcustomer, control);
   }

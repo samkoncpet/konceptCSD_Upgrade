@@ -21,7 +21,6 @@ import { CalendarComponent } from './calendar.component';
 
 
 FullCalendarModule.registerPlugins([
-  dayGridPlugin,
   timeGridPlugin,
   listPlugin,
   interactionPlugin,

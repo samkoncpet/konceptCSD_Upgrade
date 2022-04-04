@@ -172,10 +172,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'session/duesessions',
+        path: 'session/list',
         component: SessionlistComponent,
         data: {
-          title: 'Due Sessions'
+          title: 'Session list'
         }
       },
       {

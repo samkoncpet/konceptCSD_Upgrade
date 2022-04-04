@@ -7,7 +7,7 @@ export const environment = {
   
   environmentName: "development",
   // Koncent Host URL's
-  koncentAPI: 'http://csdapi.konceptedu.com/',
+  koncentAPI: 'http://localhost:27879/',
 };
 
 /*

@@ -22,15 +22,15 @@ import { CommonfunctionsService } from '../../../common/functions/commonfunction
 export class FormBookSessionWizardComponent {
   @ViewChild(WizardComponent)
   public wizard: WizardComponent;
+  param1: string;
   submitted = false;
   addcustomer: FormGroup;
   addpackage: FormGroup;
   addstudent: FormGroup;
   isPassword = true;
   passwordmatch = true;
+  public customerdetail = [];
   public packagelist = [];
-  public countrylist = [];
-  public statelist= [];
   public gradelist= [];
   public paymentmodelist = [];
   public educationconsultantlist = [];
@@ -50,41 +50,30 @@ export class FormBookSessionWizardComponent {
     private _localstorageService: LocalstorageService,
     private spinner: NgxSpinnerService,
     private _notificationsService: NotificationsService,
-    private _commonfunctionsService: CommonfunctionsService) { }
+    private _commonfunctionsService: CommonfunctionsService,
+    private _route: ActivatedRoute) { }
 
     ngOnInit(): void {
+      this.param1 = this._route.snapshot.params.id;
+      if(this.param1 != undefined && this.param1 != ''){
+        this.getCustomerDetail();
+        this.getSubscriptionDetail();
+      }
       this.addcustomer = this._formBuilder.group({
-        fatherfirstrname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
-        fatherlastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
-        motherfirstname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
-        motherlastname: new FormControl('', [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
-        fathercellno: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-        mothercellno: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-        fatheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),      
-        motheremail: new FormControl('', [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
-        homephone: new FormControl('', [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
-        // educationconsultant: new FormControl('', Validators.required),
-        subscriptiondate: new FormControl(''),
-        subscriptionenddate: new FormControl(''),
-        // countryid: new FormControl('', Validators.required),
-        // stateid: new FormControl('', Validators.required),
-        // city: new FormControl('', Validators.required),
-        // postalcode: new FormControl('', Validators.required),
-        // username: new FormControl('', Validators.required),
-        // password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
-        // repassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]),      
+        fatherfirstrname: new FormControl({value: '', disabled: true}, [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+        fatherlastname: new FormControl({value: '', disabled: true}, [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+        motherfirstname: new FormControl({value: '', disabled: true}, [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+        motherlastname: new FormControl({value: '', disabled: true}, [AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
+        fathercellno: new FormControl({value: '', disabled: true}, [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
+        mothercellno: new FormControl({value: '', disabled: true}, [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),
+        fatheremail: new FormControl({value: '', disabled: true}, [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),      
+        motheremail: new FormControl({value: '', disabled: true}, [emailValidator, Validators.minLength(10), Validators.maxLength(50)]),
+        homephone: new FormControl({value: '', disabled: true}, [NumericValidator, Validators.minLength(10), Validators.maxLength(15)]),  
         is_active: new FormControl(true),
       });
       this.addpackage = this._formBuilder.group({
-        subscriptiondate: new FormControl('', Validators.required),
-        subscriptionenddate: new FormControl('', Validators.required),
-        packageid: new FormControl('', Validators.required),
-        packageprice: new FormControl({value: '', disabled: true}),
-        sessions: new FormControl({value: '', disabled: true}),
-        hours: new FormControl({value: '', disabled: true}),
-        report: new FormControl({value: '', disabled: true}),
-        sessionstypeperiod: new FormControl({value: '', disabled: true}),
-        paymenttypeid: new FormControl('', Validators.required)
+        subscriptiondate: new FormControl({value: '', disabled: true}, Validators.required),
+        subscriptionenddate: new FormControl({value: '', disabled: true}, Validators.required)
       });
       this.addstudent = this._formBuilder.group({
         studentfirstname: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(50)]),
@@ -92,33 +81,44 @@ export class FormBookSessionWizardComponent {
         gradeid: new FormControl('', Validators.required)
       });
       //this.addcustomer.markAllAsTouched();
-      this.getCountry();
-      this.getPackageList();
       this.getGrade();
       this.getEducationConsultant();
       this.getPaymentMode();
       this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
       this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     }
-    getPackageList(){
+    getCustomerDetail(){
       /** spinner starts on init */
       this.spinner.show();
       var url = this._appSettings.koncentAPI;
-      var fetchpackage = this._appSettings.fetchpackage;
-      url = url + fetchpackage;
+      var fetchcustomerAPI = this._appSettings.fetchcustomerAPI;
+      url = url + fetchcustomerAPI;
   
       var data = {
-        Package_ID: 0,
+        Customer_ID: this.param1,
         Search: '',
-        Is_Active: null
+        Organization_User_ID: 0,
+        State_ID: 0,
+        Package_ID: 0
       }
       this._ConfigurationService.post(url, data)
           .subscribe(response => {
             if (response["response"] == 1) {
-              this.packagelist = response["data"];
+              this.customerdetail = response["data"];    
+              this.addcustomer.patchValue({
+                fatherfirstrname: response["data"][0].Father_FirstName,
+                fatherlastname: response["data"][0].Father_LastName,              
+                motherfirstname: response["data"][0].Mother_FirstName,
+                motherlastname: response["data"][0].Mother_LastName,
+                fathercellno: response["data"][0].Father_MobileNo,
+                mothercellno: response["data"][0].Mother_MobileNo,
+                fatheremail: response["data"][0].Father_Email,   
+                motheremail: response["data"][0].Mother_Email,
+                homephone: response["data"][0].Alt_PhoneNo
+              });
             }
             else {
-              this.packagelist = [];
+              this.customerdetail = [];
             }
             this.spinner.hide();
           },
@@ -129,78 +129,40 @@ export class FormBookSessionWizardComponent {
           () => {
             this.spinner.hide();
           });
-     }
-    getpackageDetail(e){
-      var data = this.packagelist.find(x => x.Package_ID == e.target.value);
-      if(data != null){
-        this.addpackage.controls.sessions.setValue(data["Session_Type_Period"]);
-        this.addpackage.controls.hours.setValue(data["Session_Hours"]);
-        this.addpackage.controls.report.setValue(data["Session_Reports_Period"]);
-        this.addpackage.controls.sessionstypeperiod.setValue(data["Session_Type_Period"]);
-        this.addpackage.controls.packageprice.setValue(data["Package_Price"]);
-      }
-      else{
-        this.addpackage.controls.sessions.setValue('');
-        this.addpackage.controls.hours.setValue('');
-        this.addpackage.controls.report.setValue('');
-        this.addpackage.controls.sessionstypeperiod.setValue('');
-        this.addpackage.controls.packageprice.setValue('');
-        this.addpackage.controls.subscriptiondate.setValue('');
-        this.addpackage.controls.subscriptionenddate.setValue('');
-      }
-     }
-    getCountry(){
+    }
+    
+  getSubscriptionDetail(){
       /** spinner starts on init */
       this.spinner.show();
       var url = this._appSettings.koncentAPI;
-      var entityMasterAPI = this._appSettings.entityMasterAPI;
-      url = url + entityMasterAPI;
-  
+      var fetchsubscriptionAPI = this._appSettings.fetchsubscriptionAPI;
+      url = url + fetchsubscriptionAPI;
+    
       var data = {
-        SQLFROM: "Country",
-        SQLBY: "ByCountry"
+      Customer_ID: this.param1,
+      Is_Active: true
       }
       this._ConfigurationService.post(url, data)
           .subscribe(response => {
             if (response["response"] == 1) {
-              this.countrylist = response["data"];
+              this.addpackage.patchValue({
+                subscriptiondate: this.pipe.transform(response["data"][0].Start_Date, 'yyyy-MM-dd').toString(),
+                subscriptionenddate: this.pipe.transform(response["data"][0].Cancellation_Date, 'yyyy-MM-dd').toString()
+              });
             }
             else {
-              this.countrylist = [];
+              this.gradelist = [];
             }
             this.spinner.hide();
           },
-            err => {
+          (error) => {
               this.spinner.hide();
-            });
-     }
-    geState(value:string){
-      /** spinner starts on init */
-      this.spinner.show();
-      var url = this._appSettings.koncentAPI;
-      var entityMasterAPI = this._appSettings.entityMasterAPI;
-      url = url + entityMasterAPI;
-  
-      var data = {
-        SQLFROM: "State",
-        SQLBY: "ByCountry_ID_State",
-        SQLPARAM: value
-      }
-      this._ConfigurationService.post(url, data)
-          .subscribe(response => {
-            if (response["response"] == 1) {
-              this.statelist = response["data"];
-            }
-            else {
-              this.statelist =  [];
-            }
-            this.spinner.hide();
+              this._commonfunctionsService.exactionLog(error.status, error.message);
           },
-            err => {
-              this.spinner.hide();
-              console.log("status code--->" + err.status)
-            });
-     }
+          () => {
+            this.spinner.hide();
+          });
+  }
     getGrade(){
     /** spinner starts on init */
     this.spinner.show();

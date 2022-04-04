@@ -8,8 +8,10 @@ import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/mo
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomSessionlistComponent } from '../../../common/cell-custom-sessionlist/cell-custom-sessionlist.component';
+import { CellCustomOrganizationlistComponent } from '../../../common/cell-custom-organizationlist/cell-custom-organizationlist.component';
+import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
+
 
 
 @Component({
@@ -37,13 +39,7 @@ export class SessionlistComponent implements OnInit {
     { field: 'MobileNo', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150 },
     { field: 'MobileNo', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150 },
     { field: 'MobileNo', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Is_Active',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Package_ID', headerName: 'Actions', cellRendererFramework: CellCustomSessionlistComponent,
-      cellRendererParams: {
-        type: JSON.stringify(this.CommonAccessModule),
-        editRouterLink: '/session/addsession/',
-        pageType: 'session'
-      }, maxWidth: 200, minWidth: 200 }
+    { field: 'Is_Active',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 }
   ]
 
   constructor(private router: Router,
@@ -62,18 +58,44 @@ export class SessionlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
-      search: new FormControl(''),
-      iscancelrequest: new FormControl(true)
+      customerid: new FormControl('', Validators.required),
+      packageid: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      iscancelrequest: new FormControl(true, Validators.required),
+      firstname: new FormControl('', Validators.required),
+      nexttv: new FormControl('', Validators.required)
     });
+    this.getPackageList();
   }
 
-  search(){
+  getPackageList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
     var fetchpackage = this._appSettings.fetchpackage;
     url = url + fetchpackage;
-    this.spinner.hide();
+
+    var data = {
+      Package_ID: 0,
+      Search: '',
+      Is_Active: null
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.packagelist = response["data"];
+          }
+          else {
+            this.packagelist = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
    }
    addsession(){
     this.router.navigateByUrl('/session/add');

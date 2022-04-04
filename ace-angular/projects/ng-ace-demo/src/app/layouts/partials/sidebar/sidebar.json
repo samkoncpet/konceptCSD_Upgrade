@@ -108,8 +108,8 @@
     {
         "id": "viewsession",
         "parent": "managesession",
-        "link": "session/duesessions",
-        "title": "Due Sessions"
+        "link": "session/list",
+        "title": "Session list"
     },
     {
         "id": "addsession",

@@ -48,6 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        
                                         <div class="form-group row">
                                             <div class="col-md-2">
                                                 <label for="id-form-field-1" class="mb-0">
@@ -156,21 +157,6 @@
                                                     {{getErrorMessage('homephone')}}
                                                 </span>
                                             </div>
-                                            <!-- <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                    Education Consultant <span class="text-danger">*</span>
-                                                </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select id="educationconsultant" formControlName="educationconsultant" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addcustomerFormControl.educationconsultant.touched || submitted) && addcustomerFormControl.educationconsultant.errors?.required)}">
-                                                    <option value="">--Select--</option>
-                                                    <option *ngFor="let data of educationconsultantlist"
-                                                        value={{data.User_ID}}>{{data.FullName}}</option>
-                                                </select>
-                                                <span class="form-text text-danger" *ngIf="(addcustomerFormControl.educationconsultant.touched || submitted) && (addcustomerFormControl.educationconsultant.errors?.required || addcustomerFormControl.educationconsultant.invalid)">
-                                                    {{getErrorMessage('educationconsultant')}}
-                                                </span>
-                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="card dcard">
@@ -187,102 +173,41 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-
-                                        <div class="form-group row">
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                    Subscription Date <span class="text-danger">*</span>
+                                        <form #form [formGroup]="addpackage">
+                                            <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subscription Date
                                                     </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                    20-Aug-2021
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-group date" id="id-timepicker">
+                                                        <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
+                                                        <div class="input-group-addon input-group-append">
+                                                            <div class="input-group-text">
+                                                                <i class="far fa-clock"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="id-form-field-1" class="mb-0">
+                                                        Subscription End Date
                                                     </label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                    Subscription End Date
-                                                    </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                    20-Nov-2021
-                                                    </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="card dcard">
-                                        <div class="card bgc-primary-d1 text-white">
-                                            <div class="card-header">
-                                                <div class="card-toolbar mr-auto no-border">
-                                                    <label class="mb-0">
-                                                            <span class="align-middle d-block d-sm-inline text-600">
-                                                                Login Information
-                                                            </span>
-                                                        </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-group date" id="id-timepicker">
+                                                        <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
+                                                        <div class="input-group-addon input-group-append">
+                                                            <div class="input-group-text">
+                                                                <i class="far fa-clock"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                        User Name <span class="text-danger">*</span>
-                                                    </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input id="username" type="text" formControlName="username" maxlength="10" class="form-control" placeholder="User Name" [ngClass]="{'border-danger': ((addcustomerFormControl.username.touched || submitted) && addcustomerFormControl.username.errors?.required)}">
-
-                                                <span class="form-text text-danger" *ngIf="(addcustomerFormControl.username.touched || submitted) && (addcustomerFormControl.username.errors?.required || addcustomerFormControl.username.invalid)">
-                                                        {{getErrorMessage('username')}}
-                                                    </span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                        Password <span class="text-danger">*</span>
-                                                    </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="d-inline-flex align-items-center">
-                                                    <input id="id-form-field-password-toggle" #inputPassword [attr.type]="isPassword ? 'password' : 'text'" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{'border-danger': ((addcustomerFormControl.password.touched || submitted) && addcustomerFormControl.password.errors?.required)}">
-                                                    <a role="button" (click)="isPassword = !isPassword; inputPassword.focus()" class="btn btn-sm border-0 btn-white btn-h-light-orange btn-a-light-orange text-100 ml-n5 no-underline radius-1 d-style">
-                                                        <i class="fa fa-eye{{isPassword ? '-slash': ''}} text-90 w-3"></i>
-                                                    </a>
-                                                </div>
-                                                <span class="form-text text-danger" *ngIf="(addcustomerFormControl.password.touched || submitted) && (addcustomerFormControl.password.errors?.required || addcustomerFormControl.password.invalid)">
-                                                        {{getErrorMessage('password')}}
-                                                    </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                        Re type Password <span class="text-danger">*</span>
-                                                    </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input id="repassword" type="password" formControlName="repassword" class="form-control" placeholder="Re type Password" (change)="onPasswordChange()" [ngClass]="{'border-danger': ((addcustomerFormControl.repassword.touched || submitted) && addcustomerFormControl.repassword.errors?.required)}">
-
-                                                <span class="form-text text-danger" *ngIf="(addcustomerFormControl.repassword.touched || submitted) && (addcustomerFormControl.repassword.errors?.required || addcustomerFormControl.repassword.invalid)">
-                                                        {{getErrorMessage('repassword')}}
-                                                    </span>
-                                                <span class="form-text text-danger" *ngIf="!passwordmatch">Password
-                                                        do not match.</span>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label for="id-form-field-1" class="mb-0">
-                                                        Is Active
-                                                    </label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="checkbox" formControlName="is_active" id="is_active" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle" [ngClass]="{ 'is-invalid': ((addcustomerFormControl.is_active.touched || submitted) && addcustomerFormControl.is_active.errors?.required)}">
-                                                <span class="form-text text-danger" *ngIf="(addcustomerFormControl.is_active.touched || submitted) && (addcustomerFormControl.is_active.errors?.required || addcustomerFormControl.is_active.invalid)">
-                                                        {{getErrorMessage('is_active')}}
-                                                    </span>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </form><br>
                                 <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
                                     <div class="btn-group mr-2 sw-btn-group" role="group"></div>
@@ -313,182 +238,7 @@
                             </ng-template>
 
                             <div class="border-y-1 brc-grey-l3 my-3 py-4">
-                                <form #form [formGroup]="addpackage">
-                                    <div class="form-group">
-                                        <div class="card dcard">
-                                            <div class="card bgc-primary-d1 text-white">
-                                                <div class="card-header">
-                                                    <div class="card-toolbar mr-auto no-border">
-                                                        <label class="mb-0">
-                                                            <span class="align-middle d-block d-sm-inline text-600">
-                                                                Subscription Detail
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Subscription Date <span class="text-danger">*</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="input-group date" id="id-timepicker">
-                                                            <input id="subscriptiondate" type="date" min="{{subscriptionStartMinDate}}" formControlName="subscriptiondate" #selectField (change)="subscriptionEndDateFilter(selectField.value)" placeholder="Subscription Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptiondate.touched || submitted) && addpackageFormControl.subscriptiondate.errors?.required)}">
-                                                            <div class="input-group-addon input-group-append">
-                                                                <div class="input-group-text">
-                                                                    <i class="far fa-clock"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptiondate.touched || submitted) && (addpackageFormControl.subscriptiondate.errors?.required || addpackageFormControl.subscriptiondate.invalid)">
-                                                            {{getErrorPackageMessage('subscriptiondate')}}
-                                                        </span></div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Subscription End Date <span class="text-danger">*</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="input-group date" id="id-timepicker">
-                                                            <input id="subscriptionenddate" type="date" min="{{subscriptionEndMinDate}}" formControlName="subscriptionenddate" placeholder="Subscription End Date" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.subscriptionenddate.touched || submitted) && addpackageFormControl.subscriptionenddate.errors?.required)}">
-                                                            <div class="input-group-addon input-group-append">
-                                                                <div class="input-group-text">
-                                                                    <i class="far fa-clock"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span class="form-text text-danger" *ngIf="(addpackageFormControl.subscriptionenddate.touched || submitted) && (addpackageFormControl.subscriptionenddate.errors?.required || addpackageFormControl.subscriptionenddate.invalid)">
-                                                            {{getErrorPackageMessage('subscriptionenddate')}}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Package <span class="text-danger">*</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="packageid" formControlName="packageid" (change)="getpackageDetail($event)" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.packageid.touched || submitted) && addpackageFormControl.packageid.errors?.required)}">
-                                                            <option value="">--Select--</option>
-                                                            <option *ngFor="let data of packagelist"
-                                                                value={{data.Package_ID}}>{{data.Package}}</option>
-                                                        </select>
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageid.touched || submitted) && (addpackageFormControl.packageid.errors?.required || addpackageFormControl.packageid.invalid)">
-                                                            {{getErrorPackageMessage('packageid')}}
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Package Price
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input id="packageprice" type="text" formControlName="packageprice" placeholder="Package Price" class="form-control" [ngClass]="{'border-danger': ((addpackageFormControl.packageprice.touched || submitted) && addpackageFormControl.packageprice.errors?.required)}">
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.packageprice.touched || submitted) && (addpackageFormControl.packageprice.errors?.required || addpackageFormControl.packageprice.invalid)">
-                                                            {{getErrorPackageMessage('packageprice')}}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Session Type
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="sessionstypeperiod" formControlName="sessionstypeperiod" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                            <option value="">--Select--</option>
-                                                            <option value="0">Weekly</option>
-                                                            <option value="1">Monthly</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Session Visits
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="sessions" formControlName="sessions" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                            <option value="">--Select--</option>
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Report
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="report" formControlName="report" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                            <option value="">--Select--</option>
-                                                            <option value="1">1 Weekly</option>
-                                                            <option value="2">2 Weekly</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Hours
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="hours" formControlName="hours" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                                            <option value="">--Select--</option>
-                                                            <option value="1">1 Hour</option>
-                                                            <option value="2">2 Hours</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-
-                                                    <div class="col-md-2">
-                                                        <label for="id-form-field-1" class="mb-0">
-                                                            Mode of payment <span class="text-danger">*</span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select id="paymenttypeid" formControlName="paymenttypeid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1" [ngClass]="{'border-danger': ((addpackageFormControl.paymenttypeid.touched || submitted) && addpackageFormControl.paymenttypeid.errors?.required)}">
-                                                            <option value="">--Select--</option>
-                                                            <option *ngFor="let data of paymentmodelist"
-                                                                value={{data.Payment_Type_ID}}>{{data.Payment_Type}}</option>
-                                                        </select>
-                                                        <span class="form-text text-danger" *ngIf="(addpackageFormControl.paymenttypeid.touched || submitted) && (addpackageFormControl.paymenttypeid.errors?.required || addpackageFormControl.paymenttypeid.invalid)">
-                                                            {{getErrorPackageMessage('paymenttypeid')}}
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-2">
-
-                                                    </div>
-                                                    <div class="col-md-4">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end">
-                                        <div class="btn-group mr-2 sw-btn-group" role="group"></div>
-                                        <div class="btn-group mr-2 sw-btn-group-extra" role="group">
-                                            <button class="btn btn-outline-secondary radius-l-1 mr-2px" (click)="wizard.goToPreviousStep()" [disabled]="wizard.currentStepIndex == 0">
-                                      <i class="fa fa-arrow-left mr-15"></i> Previous
-                                    </button>
-
-                                            <button class="btn btn-outline-primary radius-r-1" awNextStep [disabled]="addpackage.status === 'INVALID'" [class.d-none]="wizard.currentStepIndex == 3">
-                                      Next <i class="fa fa-arrow-right mr-15"></i>
-                                    </button>
-                                        </div>
-                                    </div>
-                                </form>
+                               
                             </div>
                         </aw-wizard-step>
 

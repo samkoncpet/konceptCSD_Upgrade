@@ -159,6 +159,22 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                              <div class="col-md-2">
+                                                <label for="id-form-field-1" class="mb-0">
+                                                  Is Active
+                                                </label>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <input type="checkbox" formControlName="is_active" id="is_active" class="mb-3 input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
+                                              </div>
+                                              <div class="col-md-2">
+
+                                              </div>
+                                              <div class="col-md-4">
+
+                                              </div>
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
@@ -351,7 +367,7 @@
                     <a ngbNavLink [NgAceClass]='{"-1": "nav-link"}' (click)="getSubscriptionDetail()" class="btn btn-brc-tp btn-outline-white btn-h-light-green btn-h-text-dark btn-a-text-green btn-a-white px-3 px-lg-4 py-25 border-0 radius-b-0">
                         Subscription Detail
                     </a>
-                    <ng-template ngbNavContent>                        
+                    <ng-template ngbNavContent>
                         <div class="p-2">
                             <form #form [formGroup]="addpackage">
                                 <div class="form-group">
@@ -513,9 +529,9 @@
                                                         <span *ngIf="isUpdate">Update</span>
                                                     </button>
                                                 </div>
-                                                <div class="col-md-2">                                                   
+                                                <div class="col-md-2">
                                                 </div>
-                                                <div class="col-md-4">                                                    
+                                                <div class="col-md-4">
                                                 </div>
                                             </div>
                                         </div>
@@ -545,7 +561,7 @@
                                                         <th class="d-none d-sm-table-cell">End Date</th>
                                                     </tr>
                                                 </thead>
-    
+
                                                 <tbody class="mt-1" *ngFor="let data of packagehistory">
                                                     <tr class="bgc-h-yellow-l4 d-style">
                                                         <td>{{ data.Index}}</td>

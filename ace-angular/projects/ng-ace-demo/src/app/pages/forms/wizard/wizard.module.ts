@@ -24,7 +24,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'session',
+    path: 'session/:id',
     component: FormBookSessionWizardComponent,
     data : {
       title: 'Session'
