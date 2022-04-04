@@ -1,3 +1,4 @@
+import { ManagerequestComponent } from './../../pages/managerequest/newrequest/managerequest.component';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { ConfigurationService } from '../../config/configuration.service';
 import { AppsettingsService } from '../../config/appsettings.service';
 import { NgAceToasterService } from 'ng-ace-admin';
 import { NotificationsService } from '../../config/notifications.service';
-import { UserlistComponent } from '../../pages/manageusers/userlist/userlist.component';
+import { SessionlistComponent } from '../../pages/managesession/sessionlist/sessionlist.component';
 
 @Component({
   selector: 'app-cell-custom-sessionlist',
@@ -29,7 +30,7 @@ export class CellCustomSessionlistComponent implements OnInit {
   public PackagesAccessModule = new PackagesAccessModule();
   public SettingsAccessModule = new SettingsAccessModule();
 
-  constructor(private http: HttpClient, private router: Router,    
+  constructor(private http: HttpClient, private router: Router,
     private _localstorageService: LocalstorageService,
     private toasterService: NgAceToasterService,
     private spinner: NgxSpinnerService,
@@ -37,12 +38,12 @@ export class CellCustomSessionlistComponent implements OnInit {
     public _modalService: NgAceModalService,
     private _ConfigurationService: ConfigurationService,
     private _notificationsService: NotificationsService,
-    public _userlistComponent: UserlistComponent) {    
+    public _sessionlistComponent: SessionlistComponent) {
   }
   agInit(params) {
     this.params = params;
-    this.data = params.value;
-    this.id = this.data; 
+    this.data = params.data;
+    this.id = this.data.Customer_ID;
   }
   ngOnInit() {
     this.getAccessModel();
@@ -54,11 +55,11 @@ export class CellCustomSessionlistComponent implements OnInit {
 
   editRow() {
     let rowData = this.params.value;
-    let i = rowData.rowIndex;   
-    this.id = rowData; 
+    let i = rowData.rowIndex;
+    this.id = rowData;
   }
 
-  open(content: any, options?: any) { 
+  open(content: any, options?: any) {
     this._notificationsService.toasterModalOpen(content, options)
   }
 }

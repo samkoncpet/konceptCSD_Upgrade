@@ -11,46 +11,48 @@ export class CommonfunctionsService {
 
   getBoolean(value){
     switch(value){
-      case "true":         
+      case "true":
         return true;
-      case "True":         
+      case "True":
         return true;
-      case 1:         
+      case 1:
         return true;
-      case "1":         
+      case "1":
         return true;
-      case "on":         
+      case "on":
         return true;
       case "yes":
         return true;
       case "Yes":
         return true;
-      case true:         
+      case true:
         return true;
-      case "false":         
+      case "false":
         return false;
-      case "False":         
+      case "False":
         return false;
-      case 0:         
+      case 0:
         return false;
-      case "0":         
+      case "0":
         return false;
-      case "off":         
+      case "off":
         return false;
       case "no":
         return false;
       case "No":
         return false;
-      case false:         
+      case false:
         return false;
-      default: 
+      case null:
+        return null;
+      default:
         return false;
      }
   }
-  
+
   exactionLog(status: number,  message: string) {
     console.log("status: " + status + " message: " + message);
-    if (status === 400) {      
+    if (status === 400) {
       // // 400 Bad Request
       // // The request could not be understood by the server due to incorrect syntax. The client SHOULD NOT repeat the request without modifications.
     }
@@ -73,11 +75,11 @@ export class CommonfunctionsService {
     else if (status === 405) {
       // // 405 Method Not Allowed
       // // The request HTTP method is known by the server but has been disabled and cannot be used for that resource.
-    }    
+    }
     else if (status === 406) {
       // // 406 Not Acceptable
       // // The server doesn’t find any content that conforms to the criteria given by the user agent in the Accept header sent in the request.
-    }   
+    }
     else if (status === 408) {
       // // 408 Request Timeout
       // // Indicates that the server did not receive a complete request from the client within the server’s allotted timeout period.

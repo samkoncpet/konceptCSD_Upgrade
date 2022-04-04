@@ -7,9 +7,9 @@ import { environment } from './../../environments/environment';
 export class AppsettingsService {
 
   constructor() { }
-  // Koncent Host URL's
-  koncentAPI: string = environment.koncentAPI;
-  
+    // Koncent Host URL's
+    koncentAPI: string = environment.koncentAPI;
+
     // Signin API
     signinAPI: string = "api/authentication/signin";
 
@@ -27,7 +27,7 @@ export class AppsettingsService {
     getUserTypeAPI: string = "api/user/fetch-user";
 
     // User API
-    insertUpdateUserAPI: string = "api/user/insertupdateuser";  
+    insertUpdateUserAPI: string = "api/user/insertupdateuser";
     fetchUserAPI: string = "api/user/fetchuser";
     deleteUserAPI: string = "api/user/deleteuser";
 
@@ -46,6 +46,9 @@ export class AppsettingsService {
     updatecustomerchildAPI: string = "api/customer/updatecustomerchild";
     updatecustomerAPI: string = "api/customer/updatecustomer";
     deletecustomerchildAPI: string = "api/customer/deletecustomerchild";
-  
+
+    // Session API
+    fetchcustomerduesessionAPI: string = "api/customersession/fetchcustomerduesession";
+
     defaultpicturePath: string = "assets/image/avatar/profile-pic.jpg";
 }

@@ -300,7 +300,7 @@
                                               </label>
                                               </div>
                                               <div class="col-md-4">
-                                                  <input id="nextcall" type="date" [readonly]="isView" min="{{subscriptionEndMinDate}}" formControlName="nextcall" placeholder="Next Call" class="form-control" [ngClass]="{'border-danger': ((addcustomerserviceremarksFormControl.nextcall.touched || submitted) && addcustomerserviceremarksFormControl.nextcall.errors?.required)}">
+                                                  <input id="nextcall" type="date" min="{{subscriptionEndMinDate}}" formControlName="nextcall" placeholder="Next Call" class="form-control" [ngClass]="{'border-danger': ((addcustomerserviceremarksFormControl.nextcall.touched || submitted) && addcustomerserviceremarksFormControl.nextcall.errors?.required)}">
                                                   <span class="form-text text-danger" *ngIf="(addcustomerserviceremarksFormControl.nextcall.touched || submitted) && (addcustomerserviceremarksFormControl.nextcall.errors?.required || addcustomerserviceremarksFormControl.nextcall.invalid)">
                                                   {{getErrorCustomerServiceRemarksMessage('nextcall')}}
                                               </span>
@@ -387,8 +387,6 @@
                                   <div *ngIf="touchDevice" class="alert bgc-white border-l-4 brc-purple-m1 shadow-sm" role="alert">
                                       Touch a date slot and hold down to add a new event
                                     </div>
-
-
 
                                     <div class="row">
                                       <div class="col-12 col-md-9" id='calendar-container'>
@@ -580,7 +578,7 @@
                                                       Upload File
                                                   </label>
                                               </div>
-                                              <div class="col-md-6">
+                                              <div class="col-md-4">
                                                   <input id="document" type="file" NgAceFile formControlName="document"/>
                                               </div>
                                               <div class="col-md-2">
@@ -599,7 +597,7 @@
                                   </div>
                               </div>
                           </form>
-                          <form class="mt-lg-3" [formGroup]="addpackage" autocomplete="off">
+                          <form class="mt-lg-3" [formGroup]="adddiscriptionHistory" autocomplete="off">
                               <div class="form-group">
                                   <div class="card dcard">
                                       <div class="card bgc-primary-d1 text-white">
@@ -607,35 +605,49 @@
                                               <div class="card-toolbar mr-auto no-border">
                                                   <label class="mb-0">
                                                       <span class="align-middle d-block d-sm-inline text-600">
-                                                          Package Information
+                                                          Discription History
                                                       </span>
                                                   </label>
                                               </div>
                                           </div>
                                       </div>
                                       <div class="card-body">
-
                                           <div class="form-group row">
-                                              <div class="col-md-2">
-                                                  <label for="id-form-field-1" class="mb-0">
-                                                      Subscription Start
-                                                  </label>
+                                              <div class="col-md-8">
+                                                <textarea id="history" type="text" formControlName="history" placeholder="Description History" class="form-control" [ngClass]="{'border-danger': ((addDiscriptionHistoryFormControl.history.touched || submitted) && addDiscriptionHistoryFormControl.history.errors?.required)}"></textarea>
+                                                <span class="form-text text-danger" *ngIf="(addDiscriptionHistoryFormControl.history.touched || submitted) && (addDiscriptionHistoryFormControl.history.errors?.required || addDiscriptionHistoryFormControl.history.invalid)">
+                                                    {{getErrorDiscriptionHistoryMessage('history')}}
+                                                </span>
                                               </div>
                                               <div class="col-md-4">
-                                                  <span>
-                                                      {{getScriptionDetail.Start_Date | date : 'dd-MMM-yyyy'}}
-                                                  </span>
+                                                <div class="offset-md-3 col-md-9 text-nowrap">
+                                                  <button class="btn btn-green btn-bold px-4" type="button" (click)="updateDiscriptionHistory()">
+                                                      <i class="fa fa-check mr-1"></i>
+                                                      Update
+                                                    </button>
+                                                </div>
                                               </div>
-                                              <div class="col-md-2">
-                                                  <label for="id-form-field-1" class="mb-0">
-                                                      Subscription End
-                                                  </label>
-                                              </div>
-                                              <div class="col-md-4">
-                                                  <span>
-                                                      {{getScriptionDetail.Cancellation_Date | date : 'dd-MMM-yyyy'}}
-                                                  </span>
-                                              </div>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                            <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                              <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                                  <tr>
+                                                      <th class="d-none d-sm-table-cell">History ID</th>
+                                                      <th class="d-none d-sm-table-cell">Added By</th>
+                                                      <th class="d-none d-sm-table-cell">Created On</th>
+                                                      <th class="d-none d-sm-table-cell">Description</th>
+                                                  </tr>
+                                              </thead>
+
+                                              <tbody class="mt-1" *ngFor="let data of remarkhistory">
+                                                  <tr class="bgc-h-yellow-l4 d-style">
+                                                      <td>{{ data.Index}}</td>
+                                                      <td>{{ data.Package}}</td>
+                                                      <td>{{ data.Session_Details}}</td>
+                                                      <td>{{ data.Session_Details }}</td>
+                                                  </tr>
+                                              </tbody>
+                                            </table>
                                           </div>
                                       </div>
                                   </div>
@@ -648,68 +660,37 @@
                                           <div class="card-toolbar mr-auto no-border">
                                               <label class="mb-0">
                                                   <span class="align-middle d-block d-sm-inline text-600">
-                                                      Student Information
+                                                      Request History
                                                   </span>
                                               </label>
                                           </div>
                                       </div>
                                   </div>
                                   <div class="card-body">
-                                      <div class="form-group col-md-7">
-                                          <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
-                                              <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
-                                                  <tr>
-                                                      <th class="d-none d-sm-table-cell">Sr. No.</th>
-                                                      <th class="d-none d-sm-table-cell">First Name</th>
-                                                      <th class="d-none d-sm-table-cell">Last Name</th>
-                                                      <th class="d-none d-sm-table-cell">Grade</th>
-                                                      <th class="d-none d-sm-table-cell" *ngIf="isUpdate">Action</th>
-                                                  </tr>
-                                              </thead>
+                                      <div class="form-group col-md-12">
+                                        <table id="simple-table" class="mb-0 table table-borderless table-bordered-x brc-secondary-l3 text-dark-m2 radius-1 overflow-hidden">
+                                          <thead class="text-dark-tp3 bgc-grey-l4 text-90 border-b-1 brc-transparent">
+                                              <tr>
+                                                  <th class="d-none d-sm-table-cell">ID</th>
+                                                  <th class="d-none d-sm-table-cell">Subject</th>
+                                                  <th class="d-none d-sm-table-cell">Type</th>
+                                                  <th class="d-none d-sm-table-cell">Created On</th>
+                                                  <th class="d-none d-sm-table-cell">Created By</th>
+                                                  <th class="d-none d-sm-table-cell">Status</th>
+                                              </tr>
+                                          </thead>
 
-                                              <tbody class="mt-1" *ngFor="let data of studentlist">
-                                                  <tr class="bgc-h-yellow-l4 d-style">
-                                                      <td>{{ data.id}}</td>
-                                                      <td>{{ data.FirstName}}</td>
-                                                      <td>{{ data.LastName}}</td>
-                                                      <td>{{ data.Level_ID}}</td>
-                                                      <td *ngIf="isUpdate">
-                                                          <a href="javascript:void(0)" (click)="editStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
-                                                              <i class="fa fa-pencil-alt"></i>
-                                                          </a>
-                                                          <a href="javascript:void(0)" (click)="deleteStudent(data.id)" class="mx-2px btn radius-1 border-2 btn-xs btn-brc-tp btn-light-secondary btn-h-lighter-danger btn-a-lighter-danger">
-                                                              <i class="fa fa-trash-alt"></i>
-                                                          </a>
-                                                      </td>
-                                                  </tr>
-                                              </tbody>
-                                          </table>
-                                      </div>
-                                      <div class="form-group col-md-5">
-                                          <div class="form-group row">
-                                              <div class="col-md-6">
-                                              Total Tutor Visit:
-                                              </div>
-                                              <div class="col-md-6">
-
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <div class="col-md-6">
-                                              Total Visit Completed:
-                                              </div>
-                                              <div class="col-md-6">
-
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <div class="col-md-6">
-                                              Total Visit Pending:
-                                              </div>
-                                              <div class="col-md-6">
-
-                                              </div>
-                                          </div>
+                                          <tbody class="mt-1" *ngFor="let data of remarkhistory">
+                                              <tr class="bgc-h-yellow-l4 d-style">
+                                                  <td>{{ data.Index}}</td>
+                                                  <td>{{ data.Package}}</td>
+                                                  <td>{{ data.Session_Details}}</td>
+                                                  <td>{{ data.Session_Details }}</td>
+                                                  <td>{{ data.Session_Details }}</td>
+                                                  <td>{{ data.Session_Details }}</td>
+                                              </tr>
+                                          </tbody>
+                                        </table>
                                       </div>
                                   </div>
                               </div>

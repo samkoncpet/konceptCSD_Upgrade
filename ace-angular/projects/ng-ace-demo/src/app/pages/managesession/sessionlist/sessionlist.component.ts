@@ -8,10 +8,8 @@ import { CommonAccessModule, OrganizationAccessModule } from '../../../shared/mo
 import { ConfigurationService } from '../../../config/configuration.service';
 import { AppsettingsService } from '../../../config/appsettings.service';
 import { LocalstorageService } from '../../../config/localstorage.service';
-import { CellCustomOrganizationlistComponent } from '../../../common/cell-custom-organizationlist/cell-custom-organizationlist.component';
-import { CellCustomActiveComponent } from '../../../common/cell-custom-active/cell-custom-active.component';
+import { CellCustomSessionlistComponent } from '../../../common/cell-custom-sessionlist/cell-custom-sessionlist.component';
 import { CommonfunctionsService } from '../../../common/functions/commonfunctions.service';
-
 
 
 @Component({
@@ -23,23 +21,27 @@ export class SessionlistComponent implements OnInit {
 
   submitted = false;
   searchForm: FormGroup;
-  public packagelist = [];
-  public organizationlist = [];
-  public organizationlistlength = 0;
-  public grouplist = [];
-    
+  public dueSessionList = [];
+
   public CommonAccessModule = new CommonAccessModule();
   public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
     { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'Username', headerName: 'Customer ID', sortable: true, editable: false, resizable: true },
-    { field: 'FullName', headerName: 'First Name', sortable: true, editable: false, resizable: true },
-    { field: 'Email', headerName: 'Last name', sortable: true, editable: false, resizable: true },
-    { field: 'MobileNo', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'MobileNo', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'MobileNo', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Is_Active',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 }
+    { field: 'PONO', headerName: 'PO NO.', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Father_FirstName', headerName: 'Father Name', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Mother_FullName', headerName: 'Mother Name', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Last_CS_Call_Date', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Last_TV_Date', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Next_TV_Date', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Package',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomSessionlistComponent,
+      cellRendererParams: {
+        type: JSON.stringify(this.CommonAccessModule),
+        editRouterLink: '/session/add/',
+        viewRouterLink: '/session/add/',
+        pageType: 'duesession'
+      }, maxWidth: 200, minWidth: 200, },
   ]
 
   constructor(private router: Router,
@@ -48,9 +50,9 @@ export class SessionlistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService,
-    private _commonfunctionsService: CommonfunctionsService) { 
+    private _commonfunctionsService: CommonfunctionsService) {
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
-      
+
     if(!this.CommonAccessModule.Is_Retrieve){
       this._ConfigurationService.logout();
     }
@@ -58,11 +60,8 @@ export class SessionlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
-      customerid: new FormControl('', Validators.required),
-      packageid: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
-      iscancelrequest: new FormControl(true, Validators.required),
-      firstname: new FormControl('', Validators.required),
-      nexttv: new FormControl('', Validators.required)
+      Search: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
+      Is_Show_Cancel_Request: new FormControl(true, Validators.required)
     });
     this.getPackageList();
   }
@@ -71,21 +70,22 @@ export class SessionlistComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
-    var fetchpackage = this._appSettings.fetchpackage;
-    url = url + fetchpackage;
+    var fetchcustomerduesession = this._appSettings.fetchcustomerduesessionAPI;
+    url = url + fetchcustomerduesession;
 
     var data = {
       Package_ID: 0,
       Search: '',
-      Is_Active: null
+      Is_Show_Cancel_Request: 0,
+      Next_TV: 0
     }
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
-            this.packagelist = response["data"];
+            this.dueSessionList = response["data"];
           }
           else {
-            this.packagelist = [];
+            this.dueSessionList = [];
           }
           this.spinner.hide();
         },
@@ -97,16 +97,44 @@ export class SessionlistComponent implements OnInit {
           this.spinner.hide();
         });
    }
-   addsession(){
-    this.router.navigateByUrl('/session/add');
-  }  
+   filterSessionList(){
+     /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchcustomerduesession = this._appSettings.fetchcustomerduesessionAPI;
+    url = url + fetchcustomerduesession;
+
+    var data = {
+      Package_ID: 0,
+      Search: this.searchForm.get('Search').value,
+      Is_Show_Cancel_Request: this.searchForm.get('Is_Show_Cancel_Request').value,
+      Next_TV: 0
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.dueSessionList = response["data"];
+          }
+          else {
+            this.dueSessionList = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
+   }
   reset(){
     this.searchForm.reset();
    }
   get searchFormControl() {
     return this.searchForm.controls;
   }
-  
+
   getErrorMessage(control: string) {
       return FormErrorMessage(this.searchForm, control);
   }
@@ -134,7 +162,7 @@ export class SessionlistComponent implements OnInit {
     this.currentPage = this.gridApi.paginationGetCurrentPage() + 1
     this.totalPages = this.gridApi.paginationGetTotalPages()
 
-    this.lastId = this.organizationlist.length;
+    this.lastId = this.dueSessionList.length;
   }
 
   ngOnDestroy() {
@@ -191,12 +219,12 @@ export class SessionlistComponent implements OnInit {
 
     let selectedRows = this.gridApi.getSelectedNodes()
     if (selectedRows.length > 0) {
-     this.organizationlist.splice(selectedRows[0].rowIndex + 1 , 0, row)
+     this.dueSessionList.splice(selectedRows[0].rowIndex + 1 , 0, row)
     }
     else {
-      this.organizationlist.push(row)
-    }    
-    this.gridApi.setRowData(this.organizationlist)
+      this.dueSessionList.push(row)
+    }
+    this.gridApi.setRowData(this.dueSessionList)
   }
 
   removeRows() {
@@ -205,16 +233,16 @@ export class SessionlistComponent implements OnInit {
 
     let removed = 0
     selectedRows.forEach((row: any) => {
-      this.organizationlist.splice(row.rowIndex - removed , 1)
+      this.dueSessionList.splice(row.rowIndex - removed , 1)
       removed++
     })
 
 
-    this.gridApi.setRowData(this.organizationlist)
+    this.gridApi.setRowData(this.dueSessionList)
   }
-  
+
   reloadData() {
-    this.gridApi.setRowData(this.organizationlist)
+    this.gridApi.setRowData(this.dueSessionList)
   }
 
 }

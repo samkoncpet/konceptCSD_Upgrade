@@ -27,6 +27,7 @@ export class NewsessionComponent implements OnInit {
   addcustomerserviceremarks: FormGroup;
   addstudent: FormGroup;
   addrequest: FormGroup;
+  adddiscriptionHistory: FormGroup;
   isPassword = true;
   passwordmatch = true;
   private packagelist = [];
@@ -100,6 +101,9 @@ export class NewsessionComponent implements OnInit {
       description: new FormControl('', [Validators.required, AlphaValidator, Validators.minLength(2), Validators.maxLength(250)]),
       requestType: new FormControl('', Validators.required),
       document: new FormControl('', Validators.required),
+    });
+    this.adddiscriptionHistory = this._formBuilder.group({
+      history: new FormControl('', Validators.required)
     });
     this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
@@ -353,8 +357,7 @@ export class NewsessionComponent implements OnInit {
     }
     this._ConfigurationService.post(url, data)
     .subscribe(response => {
-      if (response["response"] == 1) {
-        debugger
+      if (response["response"] === 1) {
         this.getScriptionDetail = response["data"]["0"];
         this.getpackageDetailByID(response["data"]["0"]["Package_ID"]);
         this.getStudentDetail();
@@ -528,6 +531,11 @@ export class NewsessionComponent implements OnInit {
          this.spinner.hide();
        });
   }
+  updateDiscriptionHistory(){
+    if (!this.adddiscriptionHistory.valid) {
+      return;
+    }
+  }
   subscriptionEndDateFilter(date: Date){
     this.subscriptionEndMinDate = this.pipe.transform(date, 'yyyy-MM-dd').toString();
   }
@@ -551,6 +559,10 @@ export class NewsessionComponent implements OnInit {
     return this.addrequest.controls;
   }
 
+  get addDiscriptionHistoryFormControl() {
+    return this.adddiscriptionHistory.controls;
+  }
+
   getErrorMessage(control: string) {
       return FormErrorMessage(this.addsummary, control);
   }
@@ -565,6 +577,9 @@ export class NewsessionComponent implements OnInit {
   }
   getErrorRequestMessage(control: string) {
     return FormErrorMessage(this.addrequest, control);
+  }
+  getErrorDiscriptionHistoryMessage(control: string) {
+    return FormErrorMessage(this.adddiscriptionHistory, control);
   }
 }
 

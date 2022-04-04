@@ -22,7 +22,7 @@ export class CustomerslistComponent implements OnInit {
   searchForm: FormGroup;
   public customerlist = [];
   public userlist = [];
-    
+
   public CommonAccessModule = new CommonAccessModule();
 
   columnDefs = [
@@ -60,7 +60,7 @@ export class CustomerslistComponent implements OnInit {
     private _localstorageService: LocalstorageService,
     private _ConfigurationService: ConfigurationService,
     private spinner: NgxSpinnerService,
-    private _commonfunctionsService: CommonfunctionsService) { 
+    private _commonfunctionsService: CommonfunctionsService) {
       this.CommonAccessModule = JSON.parse(this._localstorageService.localstorageGet("CommonAccess"));
   }
 
@@ -70,7 +70,7 @@ export class CustomerslistComponent implements OnInit {
       Customer_ID: new FormControl(0),
       Search: new FormControl('', [Validators.minLength(2), Validators.maxLength(50)]),
       State_ID: new FormControl(0),
-      Is_Active: new FormControl(true, Validators.required),
+      Is_Active: new FormControl(null, Validators.required),
     });
     this.getUserList();
     this.filterCustomerList();
@@ -234,7 +234,7 @@ export class CustomerslistComponent implements OnInit {
     }
     else {
       this.customerlist.push(row)
-    }    
+    }
     this.gridApi.setRowData(this.customerlist)
   }
 
@@ -251,7 +251,7 @@ export class CustomerslistComponent implements OnInit {
 
     this.gridApi.setRowData(this.customerlist)
   }
-  
+
   reloadData() {
     this.gridApi.setRowData(this.customerlist)
   }

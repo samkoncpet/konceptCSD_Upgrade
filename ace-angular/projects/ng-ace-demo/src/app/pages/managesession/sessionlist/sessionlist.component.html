@@ -4,7 +4,7 @@
         Dashboard
         <small class="page-info text-secondary-d2 text-nowrap">
             <i class="fa fa-angle-double-right text-80"></i>
-            Book Session
+            Due Sessions
         </small>
     </h1>
 
@@ -38,63 +38,27 @@
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                            Customer ID
+                              Search
                         </label>
                         </div>
                         <div class="col-md-3">
                             <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
-                                <input type="text" formControlName="customerid" maxlength="20" class="form-control" placeholder="Customer ID">
+                                <input type="text" formControlName="Search" maxlength="20" class="form-control" placeholder="Search">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <label for="id-form-field-1" class="mb-0">
-                                Package
+                              Show Cancel Request
                             </label>
                         </div>
-                        <div class="col-md-3">
-                            <select id="packageid" formControlName="packageid" class="ace-select no-border angle-double text-dark-tp3 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 border-2 brc-secondary-l1">
-                                <option value="">--Select--</option>
-                                <option *ngFor="let data of packagelist"
-                                    value={{data.Package_ID}}>{{data.Package}}</option>
-                            </select>
-                        </div>
                         <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                                Show Cancel Request
-                            </label>
-                            <input type="checkbox" class="form-control" formControlName="iscancelrequest">
+                          <input type="checkbox" formControlName="Is_Show_Cancel_Request" id="Is_Show_Cancel_Request" class="input-lg text-secondary-l1 bgc-purple-d1 ml-2 ace-switch ace-switch-onoff align-middle">
+
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                           First Name
-                        </label>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="pos-rel ml-sm-auto mr-sm-2 order-last order-sm-0">
-                                <input type="text" formControlName="firstname" maxlength="20" class="form-control" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="id-form-field-1" class="mb-0">
-                                Next TV
-                            </label>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="input-group date" id="id-timepicker">
-                                <input type="date" formControlName="nexttv" #selectField class="form-control" placeholder="Next TV">
-                                <div class="input-group-addon input-group-append">
-                                    <div class="input-group-text">
-                                        <i class="far fa-clock"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn px-4 btn-green mb-1">
-                                <i class=" fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
-                            </button>
+                        <div class="col-md-3 text-left">
+                          <button class="btn px-4 btn-green mb-1" (click)="filterSessionList()">
+                            <i class=" fa fa-search text-110"></i>&nbsp;&nbsp;&nbsp;Search
+                          </button>
                         </div>
                     </div>
                 </div>
@@ -107,7 +71,7 @@
                     <div class="card-toolbar mr-auto no-border">
                         <label class="mb-0">
                         <span class="align-middle d-block d-sm-inline text-600">
-                            Book session list
+                          Due session list
                         </span>
                     </label>
                     </div>
@@ -115,7 +79,7 @@
             </div>
             <div class="card-body px-1 px-md-3">
                 <div [ngbCollapse]="false" #collapse="ngbCollapse">
-                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="organizationlist" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()"
+                    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [rowData]="dueSessionList" [columnDefs]="columnDefs" rowSelection="multiple" [pagination]="true" [suppressPaginationPanel]="true" (paginationChanged)="onPaginationChanged()"
                         [paginationPageSize]="itemPerPage" (gridReady)="onGridReady($event)">
                     </ag-grid-angular>
 
@@ -165,20 +129,20 @@
                         </div>
 
 
-                        <div *ngIf="organizationlist.length > 0">
+                        <div *ngIf="dueSessionList.length > 0">
                             Showing
                             <span class="w-2 d-inline-block text-center">
                                     {{(currentPage - 1) * itemPerPage + 1}}
                                 </span> -
                             <span class="w-2 d-inline-block text-center mr-1">
-                                    {{currentPage * itemPerPage < organizationlist.length ? currentPage * itemPerPage : organizationlist.length}}
+                                    {{currentPage * itemPerPage < dueSessionList.length ? currentPage * itemPerPage : dueSessionList.length}}
                                 </span> of
                             <span class="w-2 d-inline-block text-center">
-                                    {{organizationlist.length}}
+                                    {{dueSessionList.length}}
                                 </span>
                         </div>
 
-                        <div *ngIf="organizationlist.length == 0">
+                        <div *ngIf="dueSessionList.length == 0">
                             Showing
                             <span class="w-2 d-inline-block text-center">
                                     0
