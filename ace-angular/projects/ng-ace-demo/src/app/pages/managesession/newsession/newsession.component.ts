@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlphaValidator, FormErrorMessage, NumericValidator, emailValidator } from '../../../config/validation.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AppsettingsService } from '../../../config/appsettings.service';
@@ -53,7 +53,8 @@ export class NewsessionComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private _notificationsService: NotificationsService,
     private _route: ActivatedRoute,
-    private _commonfunctionsService: CommonfunctionsService) {  }
+    private _commonfunctionsService: CommonfunctionsService,
+    private _el: ElementRef) {  }
 
   ngOnInit(): void {
     this.param1 = this._route.snapshot.params.id;
@@ -107,6 +108,9 @@ export class NewsessionComponent implements OnInit {
     });
     this.subscriptionStartMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
     this.subscriptionEndMinDate = this.pipe.transform(this.currentDate, 'yyyy-MM-dd').toString();
+
+    let myTag = this._el.nativeElement.querySelector("div"); // you can select html element by getelementsByClassName also, please use as per your requirement.
+    myTag.classList.remove('tab-sliding');
   }
 
   getCustomerDetail(){

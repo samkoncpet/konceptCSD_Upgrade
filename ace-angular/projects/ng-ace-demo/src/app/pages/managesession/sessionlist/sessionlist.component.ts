@@ -22,19 +22,20 @@ export class SessionlistComponent implements OnInit {
   submitted = false;
   searchForm: FormGroup;
   public dueSessionList = [];
+  public packagelist = [];
 
   public CommonAccessModule = new CommonAccessModule();
   public OrganizationAccessModule = new OrganizationAccessModule();
 
   columnDefs = [
-    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 100 },
-    { field: 'PONO', headerName: 'PO NO.', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Father_FirstName', headerName: 'Father Name', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Mother_FullName', headerName: 'Mother Name', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Last_CS_Call_Date', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Last_TV_Date', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Next_TV_Date', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150 },
-    { field: 'Package',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150 },
+    { field: 'Index', headerName: 'Sr. No.', sortable: true, editable: false, resizable: true, width: 50, maxWidth: 50, minWidth: 50, },
+    { field: 'PONO', headerName: 'PO NO.', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Father_FirstName', headerName: 'Father Name', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Mother_FullName', headerName: 'Mother Name', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Last_CS_Call_Date', headerName: 'CS Last Call', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Last_TV_Date', headerName: 'Last TV', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Next_TV_Date', headerName: 'Next TV', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
+    { field: 'Package',headerName: 'Package', sortable: true, editable: false, resizable: true, width: 150, maxWidth: 150, minWidth: 150, },
     { field: 'User_ID', headerName: 'Actions', resizable: true, cellRendererFramework: CellCustomSessionlistComponent,
       cellRendererParams: {
         type: JSON.stringify(this.CommonAccessModule),
@@ -61,12 +62,15 @@ export class SessionlistComponent implements OnInit {
   ngOnInit(): void {
     this.searchForm = this._formBuilder.group({
       Search: new FormControl('', [Validators.minLength(2), Validators.maxLength(20)]),
-      Is_Show_Cancel_Request: new FormControl(true, Validators.required)
+      PackageID: new FormControl(''),
+      Is_Show_Cancel_Request: new FormControl(true, Validators.required),
+      NextTv: new FormControl(''),
     });
+    this.getSessionList();
     this.getPackageList();
   }
 
-  getPackageList(){
+  getSessionList(){
     /** spinner starts on init */
     this.spinner.show();
     var url = this._appSettings.koncentAPI;
@@ -97,6 +101,37 @@ export class SessionlistComponent implements OnInit {
           this.spinner.hide();
         });
    }
+
+  getPackageList(){
+    /** spinner starts on init */
+    this.spinner.show();
+    var url = this._appSettings.koncentAPI;
+    var fetchpackage = this._appSettings.fetchpackage;
+    url = url + fetchpackage;
+
+    var data = {
+      Package_ID: 0,
+      Search: '',
+      Is_Active: null
+    }
+    this._ConfigurationService.post(url, data)
+        .subscribe(response => {
+          if (response["response"] == 1) {
+            this.packagelist = response["data"];
+          }
+          else {
+            this.packagelist = [];
+          }
+          this.spinner.hide();
+        },
+        (error) => {
+            this.spinner.hide();
+            this._commonfunctionsService.exactionLog(error.status, error.message);
+        },
+        () => {
+          this.spinner.hide();
+        });
+   }
    filterSessionList(){
      /** spinner starts on init */
     this.spinner.show();
@@ -105,11 +140,12 @@ export class SessionlistComponent implements OnInit {
     url = url + fetchcustomerduesession;
 
     var data = {
-      Package_ID: 0,
+      Package_ID: parseInt(this.searchForm.get('PackageID').value),
       Search: this.searchForm.get('Search').value,
-      Is_Show_Cancel_Request: this.searchForm.get('Is_Show_Cancel_Request').value,
-      Next_TV: 0
+      Is_Show_Cancel_Request: this._commonfunctionsService.getBoolean(this.searchForm.get('Is_Show_Cancel_Request').value),
+      Next_TV: this.searchForm.get('NextTv').value,
     }
+    debugger
     this._ConfigurationService.post(url, data)
         .subscribe(response => {
           if (response["response"] == 1) {
